@@ -2,7 +2,7 @@
 
 This project provides two React boilerplate versions for starting your React applications with different levels of complexity:
 
-- **react_bare**: A barebones React setup with no additional components, JS, or CSS. Ideal for developers who want to start a project from scratch.
+- **react_bare**: A barebones React setup with no additional components, JS, or CSS. Ideal for starting a project from scratch.
 - **react_basic**: A more feature-rich setup that includes **Bootstrap** integration, custom **CSS**, and a **Navbar** component. Also includes a sample single-page app to get started quickly.
 
 ---
@@ -19,9 +19,9 @@ This project provides two React boilerplate versions for starting your React app
 - No additional components, JS, or CSS files
 - SCSS files are provided but mostly empty to allow you to start with a clean slate
 
-This version is suitable for developers who want to start with a clean slate, without any pre-configured components or styling.
+This version is suitable for starting with a clean slate, without any pre-configured components or styling.
 
-### 2. react_basic - React with Bootstrap, Custom Navbar, and CSS
+### 2. `react_basic` - React with Bootstrap, Custom Navbar, and CSS
 
 `react_basic` is a more advanced setup that includes:
 
