@@ -1,0 +1,32 @@
+hr {
+  margin: 5px 0;
+}
+
+.docs-table {
+  tbody{
+    i {
+      display: inline-block;
+      margin: 0 auto;
+      font-size: 2em;
+      width: 100%;
+      text-align: center;
+    }  
+  }
+  
+}
+
+#page-wrapper {
+    height: 100%;
+    padding: 5px 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Edit Below to Customize Widths > 768px */
+@media (min-width:768px) {
+  #page-wrapper {
+	padding: 0px 25px 15px 25px;
+  }
+}
+
+  

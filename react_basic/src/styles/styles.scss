@@ -1,0 +1,23 @@
+// Base styles
+@use './base/base';
+@use "./base/settings";
+
+/* Note: remove salient.scss if bootstrap is use */
+/* Salient.scss is a custom library for headers */
+@use "../utils/salient";
+//@use "../utils/bootstrap-table";
+
+// Layout styles
+@use "layout/header";
+@use "layout/footer";
+@use "layout/navbar";
+@use "layout/grid";
+@use "layout/container";
+
+// Component styles
+@use "components/button";
+@use "components/card";
+
+// Utility styles
+@use "utilities/mixins";
+@use "utilities/functions";
