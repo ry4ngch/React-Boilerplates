@@ -30,7 +30,7 @@ This version is suitable for starting with a clean slate, without any pre-config
 - A sample single-page app (SPA) structure
 - This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar.
 
-### How to Use
+## How to Use
 1. Clone the repository or download the `react_basic` or `react_bare` folder.
 2. Navigate to the folder in your terminal:
    ```bash
@@ -108,5 +108,30 @@ Here’s the basic file structure for both versions:
 | **JavaScript**          | No additional JavaScript           | Includes custom JavaScript for Navbar (`salient.js`), Bootstrap integration |
 
 ---
+
+## Using Salient Navbar
+
+The Salient Navbar is a customizable navigation bar that can be easily tailored using simple classes and attributes.
+
+### Responsive Sidebar on Mobile
+On mobile screen sizes, the navbar automatically transforms into a sidebar with the following settings:
+- To enable the sidebar, add the `data-effect="shift"` attribute to the `<Nav>` tag.
+
+### Slide Animation for Lists
+The `<ul>` list within the navbar can display two types of slide animations:
+- Use the `sd-slide-down` class for a slide-down effect.
+- Use the `sd-slide-in` class for a slide-in effect.
+
+If the `sd-slide-in` class is applied to `<ul>` without the `data-effect="shift"` attribute on the `<Nav>` tag, the sidebar will slide in from the left but will not shift the page content.
+
+### Theme Customization
+The navbar supports the following pre-defined themes. Apply one of these classes to the `<Nav>` tag to customize the theme:
+- `dark-scheme`
+- `offwhite-scheme`
+- `grayscale-scheme`
+
+*Note*: If no theme is specified, the navbar will default to the **default theme** automatically.
+
+
 
 
