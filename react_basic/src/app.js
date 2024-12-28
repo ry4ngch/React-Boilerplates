@@ -13,9 +13,9 @@ import './utils/fontAwesome';
 import './styles/styles.scss';
 
 // import components
-import Header from './components/header';
-import Footer from './components/footer';
-import Container from './components/container';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
+import Container from './containers/Container';
 
 // import jQuery
 import 'jquery';
@@ -27,7 +27,7 @@ class App extends Component {
 		console.log('jQuery version', $.fn.jquery);
 		return (
 			<div id='wrapper'>
-				<Header title="Salient"></Header>
+				<Header title="Salient" shift={true}></Header>
 				<Container></Container>
 				<Footer ></Footer>
 			</div>

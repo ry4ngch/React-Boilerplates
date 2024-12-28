@@ -4,7 +4,10 @@
 
 /* Note: remove salient.scss if bootstrap is use */
 /* Salient.scss is a custom library for headers */
-@use "../utils/salient";
+@use "../utils/salient-nav";
+@use "../utils/salient-timeline";
+@use "../utils/salient-card";
+@use "../utils/salient-button";
 //@use "../utils/bootstrap-table";
 
 // Layout styles

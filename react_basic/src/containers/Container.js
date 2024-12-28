@@ -1,14 +1,28 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Table, Row, Col } from 'react-bootstrap';
+import Timeline from '../components/Timeline/Timeline';
+import TimelineEvents from '../components/Timeline/TimelineEvents';
+import { error } from 'jquery';
+import axios from 'axios';
 
 
 const Container = () => {
-  // useEffect(() => {
-  //   if (window.$) {
-  //     $('#table').bootstrapTable(); // Ensure jQuery is available before calling bootstrapTable
-  //   }
-  // }, []);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/assets/timeline_data.json')
+      .then((response) => {
+        setData(response.data.data || []);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log("Error fetching data", error);
+        setIsLoading(false);
+      });
+  }, []);
+
 
   let docs = [
     {
@@ -61,8 +75,8 @@ const Container = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {docs.map((row) => (
-                    <tr key={row.id}>
+                  {docs.map((row, index) => (
+                    <tr key={index}>
                       <td><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
                       <td>{row.Name} app</td>
                       <td>{row.Description}</td>
@@ -76,6 +90,24 @@ const Container = () => {
             </div>
           </Col>
         </Row>
+
+        <Timeline 
+          title="Timeline" 
+          showCount={4}
+          isHorz={true} 
+          isCard={true} 
+          flattenCard={true}
+          isLoading={isLoading}>
+          <ul>
+            {data.map((item, index) => (
+              <li key={item.id}>
+                <label className={`timeline-event-icon ${index === 0 ? 'icon-square' : 'icon-circle'}`}></label>
+                <span className="timeline-event-thumbnail">{item.thumbnail}</span>
+                <small>{item.text}</small>
+              </li>
+            ))}
+          </ul>
+        </Timeline>
       </div>
 
     </div>

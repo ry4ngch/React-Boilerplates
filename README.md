@@ -81,16 +81,14 @@ Here’s the basic file structure for both versions:
 │   │   ├── _salient.scss         (Only in `react_basic`, custom navbar CSS)
 │   │   ├── _fontAwesome.js       (Only in `react_basic`)
 │   │   └── _salient.js           (Only in `react_basic`, custom navbar JavaScript)
-│   ├── app.js
-│   └── index.js
+│   └── app.js
 ├── package.json
 ├── webpack.config.js
 └── .gitignore
 ```
 
 ## Key Files:
-- src/index.js: The entry point for the React app.
-- src/app.js: The main React component that renders the content.
+- src/app.js: The entry point for the React app.
 - src/components: Contains reusable components like footer.js and header.js.
 - src/styles: SCSS files and partials for base, components, and layouts.
 - webpack.config.js: Configured to handle modern setups, including Dart SASS and muted Bootstrap @import errors.

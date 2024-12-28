@@ -130,29 +130,50 @@ nav.grayscale-scheme .hamburger.active div{
 /* Brand */
 .navbar-brand {
     font-size: 1.2em;
-    height: 100%;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    vertical-align: middle;
+    height: 100%;
+    cursor: pointer;
+}
+
+.navbar-brand:has([class*="fa"]){
+    padding: .25em;
 }
 
 .navbar-brand span {
     padding: 0 15px;
     vertical-align: middle;
-    height: 100%;
-    top: 50%;
+    //height: 100%;
+    //top: 50%;
     position: relative;
-    transform: translateY(-50%);
+    //transform: translateY(-50%);
 }
 
-// .navbar-brand span:before {
+.brand-icon {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.brand-icon::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// .navbar-brand span::before,
+// .navbar-brand span::after {
 //     display: inline-block;
 //     vertical-align: middle;
 //     content: "";
 //     height:100%;
 // }
 
-// .navbar-brand:after {
+// .navbar-brand:before {
 //     content: "";
 //     display: table;
 //     clear: both;
@@ -295,7 +316,7 @@ nav.grayscale-scheme {
     top:0; 
     left:0; 
     background:rgba(0,0,0,0.6);
-    z-index:-1; 
+    z-index:999; 
     width:100%; 
     height:100%; 
 }
@@ -394,7 +415,7 @@ nav.grayscale-scheme .search-box input {
 /* Navlinks */
 
 .navlinks li {
-    padding: 15px;
+    //padding: 15px;
     cursor: pointer;
 }
 
@@ -405,6 +426,7 @@ nav.grayscale-scheme .search-box input {
 
 .navlinks li a {
     text-decoration: none;
+    padding: 15px;
 }
 
 nav.dark-scheme .navlinks li a,
@@ -446,6 +468,77 @@ nav.grayscale-scheme .navlinks li:hover a{
     margin-right: .8em;
 }
 
+/** Dropdown Menu **/
+
+nav li[data-dropdown] {
+    position: relative;
+}
+
+nav li[data-dropdown] ul.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    left: 0;
+    top: 50px;
+    margin: 0;
+    color: $navbar-default-color;
+    background-color: $navbar-default-bgcolor;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+nav.offwhite-scheme li[data-dropdown] ul.dropdown-menu {
+    background-color: $navbar-offwhite-bgcolor;
+}
+
+nav.grayscale-scheme li[data-dropdown] ul.dropdown-menu {
+    background-color: $navbar-grayscale-bgcolor;
+}
+
+.navbar.dark-scheme li[data-dropdown] ul.dropdown-menu {
+    background-color: $navbar-dark-bgcolor;
+}
+
+.navbar.offwhite-scheme li[data-dropdown]:hover a.dropdown-item {
+    color: $navbar-offwhite-color;
+}
+
+nav.grayscale-scheme li[data-dropdown]:hover a.dropdown-item {
+    color: $navbar-grayscale-color;
+}
+
+.navbar.dark-scheme li[data-dropdown]:hover a.dropdown-item {
+    color: $navbar-dark-color;
+}
+
+nav.offwhite-scheme li[data-dropdown] li:hover a.dropdown-item {
+    color: $navbar-offwhite-hovercolor;
+}
+
+nav.grayscale-scheme li[data-dropdown] li:hover a.dropdown-item {
+    color: $navbar-grayscale-hovercolor;
+}
+
+nav.dark-scheme li[data-dropdown] li:hover a.dropdown-item {
+    color: $navbar-dark-hovercolor;
+}
+
+nav li[data-dropdown] ul.dropdown-menu li {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
+    display: block;
+}
+
+/** End of Dropdown Menu **/
 
 @media screen and (max-width: 767px){
     .sd-slide-in.nav-collapse {
@@ -570,6 +663,22 @@ nav.grayscale-scheme .navlinks li:hover a{
         text-align: center;
     }
 
+
+    ul.dropdown-menu {
+        width: 100%;
+        position: static !important;
+        border-right: none !important;
+        border-left: none !important;
+        // opacity: 0;
+        // height: 0;
+        // transition: opacity 3s ease;
+    }
+
+    // ul.dropdown-menu.active-dropdown {
+    //     opacity: 1;
+    //     height: auto;
+    // }
+
 }
 
 
@@ -591,6 +700,7 @@ nav.grayscale-scheme .navlinks li:hover a{
     top: 50%;
     position: relative;
     transform: translateY(-50%);
+    vertical-align: middle;
     }
 }
 
