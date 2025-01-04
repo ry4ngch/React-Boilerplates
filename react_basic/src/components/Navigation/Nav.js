@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../utils/salient-nav';
+import '../../utils/Salient/salient-nav';
 import NavMenu from './NavMenu';
 //import classNames from 'classnames';
 

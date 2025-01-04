@@ -26,15 +26,20 @@ This version is suitable for starting with a clean slate, without any pre-config
 `react_basic` is a more advanced setup that includes:
 
 - Integration with Bootstrap for UI components (installed via npm)
-- A custom Navbar component built with customs classes (see salient.scss and salient.js)
+- A custom Navbar component built with customs classes (see salient folder in utils)
 - A sample single-page app (SPA) structure
 - This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar.
 
+### 3. `react_bootstrap` - React with Bootstrap
+
+- Integration with Bootstrap for UI components (installed via npm)
+- Navbar using Bootstrap Offcanvas design
+
 ## How to Use
-1. Clone the repository or download the `react_basic` or `react_bare` folder.
+1. Clone the repository or download the `react_basic` or `react_bare` or `react_bootstrap` folder.
 2. Navigate to the folder in your terminal:
    ```bash
-   cd react_bare  # or cd react_basic
+   cd react_bare  # or cd react_basic or cd react_bootstrap
 3. Install dependencies by running:
    ```bash
    npm install
@@ -47,40 +52,94 @@ This version is suitable for starting with a clean slate, without any pre-config
    npm run build
 
 ## Project Structure
-Here’s the basic file structure for both versions:
+Here’s the basic file structure for `react bare` versions:
 
 ```plaintext
 .
 ├── public
+│   ├── images
+│   │   └── favicon.png 
 │   └── index.html
 ├── src
 │   ├── components
-│   │   ├── footer.js          (Both versions)
-│   │   ├── header.js          (Both versions)
-│   │   ├── container.js       (Only in `react_basic`)
-│   │   └── navbar.js          (`react_basic` only, template together with salient)
+│   │   ├── footer.js          
+│   │   └── header.js          
 │   ├── styles
 │   │   ├── base
-│   │   │   ├── _base.scss     (Both versions)
-│   │   │   └── _settings.scss (Both versions)
+│   │   │   ├── _base.scss     
+│   │   │   └── _settings.scss 
 │   │   ├── components
-│   │   │   ├── _button.scss   (Both versions)
-│   │   │   └── _card.scss     (Both versions)
+│   │   │   ├── _button.scss   
+│   │   │   └── _card.scss     
 │   │   ├── layout
-│   │   │   ├── _footer.scss   (Both versions)
-│   │   │   ├── _grid.scss     (Both versions)
-│   │   │   ├── _header.scss   (Both versions)
-│   │   │   └── _navbar.scss   (Only in `react_basic`)
+│   │   │   ├── _footer.scss   
+│   │   │   ├── _grid.scss     
+│   │   │   └── _header.scss   
 │   │   ├── utilities
-│   │   │   ├── _functions.scss    (Both versions)
-│   │   │   └── _mixins.scss       (Both versions)
-│   │   ├── styles.scss            (Combines all SCSS files)
-│   │   └── custom-bootstrap.scss  (Only in `react_basic`)
+│   │   │   ├── _functions.scss    
+│   │   │   └── _mixins.scss       
+│   │   └── styles.scss            (Combines all SCSS files)
+│   └── app.js
+├── package.json
+├── webpack.config.js
+└── .gitignore
+```
+
+Here’s the basic file structure for `react basic` versions:
+
+```plaintext
+.
+├── public
+│   ├── assets
+│   │   └── timeline_data.json       (Dummy data for populating timeline and testing) 
+│   ├── images
+│   │   └── favicon.png       
+│   └── index.html
+├── src
+│   ├── components
+│   │   ├── Buttons    
+│   │   │   └── Buttons.js           (For Demo Purpose Only) 
+│   │   ├── Layout
+│   │   │   ├── Footer.js    
+│   │   │   └── Header.js
+│   │   ├── Navigation
+│   │   │   ├── Nav.js               (For Demo Purpose Only) 
+│   │   │   └── NavMenu.js           (For Demo Purpose Only)  
+│   │   ├── Timeline
+│   │   │   ├── Timeline.js          (For Demo Purpose Only)  
+│   │   │   └── TimelineEvents.js    (Unused, the current setup is fetching dummy data using Axios)
+│   ├── containers       
+│   │   └── Container.js           
+│   ├── styles
+│   │   ├── base
+│   │   │   ├── _base.scss     
+│   │   │   └── _settings.scss 
+│   │   ├── components
+│   │   │   ├── _button.scss   
+│   │   │   └── _card.scss     
+│   │   ├── layout
+│   │   │   ├── _footer.scss   
+│   │   │   ├── _grid.scss   
+│   │   │   ├── _container.scss 
+│   │   │   ├── _navbar.scss 
+│   │   │   └── _header.scss   
+│   │   ├── utilities
+│   │   │   ├── _functions.scss    
+│   │   │   └── _mixins.scss  
+│   │   ├── custom-bootstrap.scss        (For packing only the necessary css from bootstrap) 
+│   │   └── styles.scss                  (Combines all SCSS files)
 │   ├── utils
-│   │   ├── _bootstrap-table.scss (Only in `react_basic`, currently unused)
-│   │   ├── _salient.scss         (Only in `react_basic`, custom navbar CSS)
-│   │   ├── _fontAwesome.js       (Only in `react_basic`)
-│   │   └── _salient.js           (Only in `react_basic`, custom navbar JavaScript)
+│   │   ├── Boostrap
+│   │   │   └── _bootstrap-table.scss    (Currently unused, future plans to add customized table)    
+│   │   ├── FontAwesome
+│   │   │   └── fontAwesome.js           (For Packing all the font awesome library)  
+│   │   └── Salient                      (Salient is a custom CSS and Javascript Library that I've written)
+│   │       ├── _salient-button.scss     (custom Button CSS)
+│   │       ├── _salient-card.scss       (custom Card CSS)
+│   │       ├── _salient-nav.scss        (custom Navbar CSS)
+│   │       ├── _salient-timeline.scss   (custom Timeline CSS)
+│   │       ├── _salient-timeline.js     (custom Timeline Javascript, Workable with Axios)
+│   │       └── _salient-nav.js          (custom Navbar JavaScript)
 │   └── app.js
 ├── package.json
 ├── webpack.config.js
@@ -98,12 +157,12 @@ Here’s the basic file structure for both versions:
 | Feature                 | `react_bare`                        | `react_basic`                                   |
 |-------------------------|--------------------------------------|------------------------------------------------|
 | **Bootstrap**           | Not included                       | Integrated via npm for UI components                             |
-| **Navbar Component**    | Not included                       | Included with reusable styling (`salient.scss`)|
+| **Navbar Component**    | Not included                       | Included with reusable styling (`salient-nav.scss`)|
 | **Sample SPA Structure**| Not included                       | Provided for quick start                       |
 | **Custom SCSS Files**   | Basic SCSS setup                   | Includes detailed layout and component styles  |
 | **Font Awesome Support**| Not included                       | Integrated for icons                           |
 | **JQuery Support**      | Not included                       | Configured with Webpack for global usage       |
-| **JavaScript**          | No additional JavaScript           | Includes custom JavaScript for Navbar (`salient.js`), Bootstrap integration |
+| **JavaScript**          | No additional JavaScript           | Includes custom JavaScript for Navbar (`salient-nav.js`, `salient-timeline.js`), Bootstrap integration |
 
 ---
 

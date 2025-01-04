@@ -1,0 +1,9 @@
+@media screen and (max-width: 992px) {
+  .navbar > .container {
+    justify-content: flex-start !important;
+  }
+
+  .navbar-brand {
+    margin-left: 1em;
+  }
+}

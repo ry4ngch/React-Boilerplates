@@ -1,0 +1,21 @@
+@use "settings" as *;
+
+* {
+	font-family: "Roboto",Arial,sans-serif;
+	font-weight: 500;
+	zoom: .98; 
+	-moz-transform: scale(.98); 
+	-moz-transform-origin: 0 0;
+}
+
+body {
+	padding-top: 50px;
+	position: relative;
+}
+
+// fix bootstrap offcanvas backdrop
+// because bootstrap use viewport height and width which has some problems
+.offcanvas-backdrop {
+	width: 100% !important;
+	height: 100% !important;
+}

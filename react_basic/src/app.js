@@ -7,7 +7,7 @@ import 'normalize.css/normalize.css';
 import './styles/custom-bootstrap.scss';
 
 // import fontawesome styles
-import './utils/fontAwesome';
+import './utils/FontAwesome/fontAwesome';
 
 // import personal styles
 import './styles/styles.scss';

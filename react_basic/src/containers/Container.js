@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Table, Row, Col } from 'react-bootstrap';
 import Timeline from '../components/Timeline/Timeline';
-import TimelineEvents from '../components/Timeline/TimelineEvents';
-import { error } from 'jquery';
+//import TimelineEvents from '../components/Timeline/TimelineEvents';
+//import { error } from 'jquery';
 import axios from 'axios';
+import Buttons from '../components/Buttons/Buttons';
 
 
 const Container = () => {
@@ -108,6 +109,8 @@ const Container = () => {
             ))}
           </ul>
         </Timeline>
+
+        <Buttons></Buttons>
       </div>
 
     </div>
