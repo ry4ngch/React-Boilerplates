@@ -27,7 +27,7 @@ class App extends Component {
 		console.log('jQuery version', $.fn.jquery);
 		return (
 			<div id='wrapper'>
-				<Header title="Salient" shift={false} navSlideDown={true}></Header>
+				<Header title="Salient" shift={true} navSlideDown={true}></Header>
 				<Container></Container>
 				<Footer ></Footer>
 			</div>

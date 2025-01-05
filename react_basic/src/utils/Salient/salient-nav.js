@@ -8,11 +8,25 @@ window.addEventListener("DOMContentLoaded", () => {
   const dropdowns = document.querySelectorAll('[data-dropdown]');
 
   const isSmallScreen = () => window.innerWidth < 768;
-  const isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
+  const isMobile = () => Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
   const isHidden = () => searchBar.classList.contains('hide');
 
   // Toggle Classes Helper
   const toggleClass = (element, className) => element.classList.toggle(className);
+
+  // Function to check screen size and set display property for toggleNav
+  const updateNavDisplay = () => {
+    if (isMobile() || isSmallScreen()) {
+      if (!toggleNav.classList.contains('nav-collapse')) {
+        toggleNav.style.removeProperty('display') // Ensure nav is visible when not collapsed
+      } else {
+        toggleNav.style.display = "none"; // Hide nav if collapsed
+      }
+    } 
+  };
+
+  // initialize upon page load
+  updateNavDisplay();
 
   // Hamburger menu click handler
   const handleHamburgerClick = () => {
@@ -21,16 +35,13 @@ window.addEventListener("DOMContentLoaded", () => {
     if (navbar.getAttribute('data-effect') === 'shift') {
       toggleClass(navbar, 'sd-shift-navbar');
     }
-    toggleClass(toggleNav, 'nav-collapse');
 
-
-    // remove all the navlinks using display none, we dont want to accidentally click it even if it is not visible
-    if((isMobile || isSmallScreen()) && hbmenu.classList.contains('active')){
-      if(toggleNav.classList.contains('nav-collapse')){
-        toggleNav.style.display = "none";
-      } else {
-        toggleNav.style.display = "inline-block";
-      }
+    if(!toggleNav.classList.contains('nav-collapse')){
+      toggleNav.style.display = "none";
+      toggleNav.classList.add('nav-collapse');
+    } else {
+      toggleNav.style.removeProperty('display');
+      setTimeout(() => toggleNav.classList.remove('nav-collapse'), 0);
     }
     
   };
@@ -65,7 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const handleClickOutsideDropdown = (event) => {
 
     // only trigger when is large screen and not mobile
-    if(!(isMobile || isSmallScreen())){
+    if(!(isMobile() || isSmallScreen())){
       dropdowns.forEach(dropdown => {
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         // If the click target is not inside the dropdown or dropdown menu, trigger blur
@@ -82,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // This should close the navbar when the user clicks outside the navbar or overlay
   const handleClickOutsideNavbar = (event) => {
-    if (isMobile || isSmallScreen()) {
+    if (isMobile() || isSmallScreen()) {
       if (overlay.contains(event.target)) {
         // Close the navbar
         if (!toggleNav.classList.contains('nav-collapse')) {
@@ -94,7 +105,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Window resize handler
   const handleResize = () => {
-    if (!isMobile || !isSmallScreen()) {
+
+    // if large screen
+    if (!(isMobile() || isSmallScreen())) {
+      toggleNav.style.removeProperty('display');
       if (overlay.classList.contains('overlay')) {
         toggleClass(overlay, 'overlay');
       }
@@ -110,6 +124,10 @@ window.addEventListener("DOMContentLoaded", () => {
           dropdownMenu.blur();
         }
       });
+    } else {
+        if (toggleNav.classList.contains('nav-collapse')) {
+            toggleNav.style.display = "none"; // Ensure hidden on smaller screens
+        }
     }
   };
 

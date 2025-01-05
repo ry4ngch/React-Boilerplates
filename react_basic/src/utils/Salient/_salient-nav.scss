@@ -250,14 +250,14 @@ nav.grayscale-scheme .arrow-left:after{
     border-top: .2em solid $navbar-default-color;
     border-right: .2em solid $navbar-default-color;
     transition: all .2s ease-in-out;
-  }
+}
 
-  .arrow-left.pos-right {
+.arrow-left.pos-right {
     position: absolute;
     top: 50%;
     right: 20px;
     transform: translateY(-50%) rotate(-135deg);
-  }
+}
 
 /* Navbar */
 
@@ -541,6 +541,11 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 /** End of Dropdown Menu **/
 
 @media screen and (max-width: 767px){
+    .nav-collapse {
+        //opacity: 0;
+        pointer-events: none;
+    }
+
     .sd-slide-in.nav-collapse {
         //display: none;
         width: 0;
@@ -553,13 +558,16 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
         visibility: hidden;
     }
 
-    ul:not(.nav-collapse) li{
+    ul:not(.nav-collapse) li,
+    ul:not(.nav-collapse) li a{
         display: block;
     }
 
     ul.sd-slide-in:not(.nav-collapse){
         background-color: $navbar-default-bgcolor;
+        //opacity: 1;
         transition: 0.2s width ease-in-out;
+        pointer-events: auto;
         width: 45%;
         left: 0;
         box-shadow: 0 4px 10px rgba(0, 0, 0 , 0.2); 
@@ -582,7 +590,9 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 
     ul.sd-slide-down:not(.nav-collapse){
         background-color: $navbar-default-bgcolor;
+        //opacity: 1;
         transition: 0.2s max-height ease-in-out;
+        pointer-events: auto;
         left: 0;
         box-shadow: 0 4px 10px rgba(0, 0, 0 , 0.2); 
     }
@@ -683,24 +693,24 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 
 
 @media screen and (min-width: 768px) {
-.hamburger {
-    display: none;
-}
+    .hamburger {
+        display: none;
+    }
 
-.navbar .search-box {
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%);
-    width: 40%;
-    float: right;
-    margin-right: 45px;
-}
+    .navbar .search-box {
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+        width: 40%;
+        float: right;
+        margin-right: 45px;
+    }
 
-.navlinks {
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%);
-    vertical-align: middle;
+    .navlinks {
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+        vertical-align: middle;
     }
 }
 
