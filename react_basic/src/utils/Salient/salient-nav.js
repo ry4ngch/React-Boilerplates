@@ -58,24 +58,8 @@ window.addEventListener("DOMContentLoaded", () => {
   // Handle dropdown click
   const handleDropdownClick = (event) => {
     const dropdownMenu = event.currentTarget.querySelector('.dropdown-menu');
-    //if(!(isMobile || isSmallScreen())){
     dropdownMenu.classList.toggle('active-dropdown')
-    // } else {
-    //   if(!dropdownMenu.classList.contains('active-dropdown')){
-    //     dropdownMenu.style.display = 'block';
-    //     setTimeout(() => dropdownMenu.classList.add('active-dropdown'), 0);
-    //   } else {
-    //     dropdownMenu.style.removeProperty('display');
-    //     dropdownMenu.classList.remove('active-dropdown');
-    //   }
-    // }
   };
-
-  // const handleDropdownTransitionEnd = (event) => {
-  //   if(!event.target.classList.contains('active-dropdown')){
-  //     event.target.style.display = "none";
-  //   }
-  // }
 
   // Handle document click to detect if user clicked outside dropdown
   const handleClickOutsideDropdown = (event) => {

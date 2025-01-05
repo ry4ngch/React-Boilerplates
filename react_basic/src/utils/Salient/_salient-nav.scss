@@ -549,6 +549,7 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 
     .sd-slide-down.nav-collapse {
         height: 0;
+        max-height: 0; //added 
         visibility: hidden;
     }
 
@@ -561,7 +562,6 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
         transition: 0.2s width ease-in-out;
         width: 45%;
         left: 0;
-        //padding-left: 15px;
         box-shadow: 0 4px 10px rgba(0, 0, 0 , 0.2); 
     }
 
@@ -582,9 +582,8 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 
     ul.sd-slide-down:not(.nav-collapse){
         background-color: $navbar-default-bgcolor;
-        transition: 0.2s width ease-in-out;
+        transition: 0.2s max-height ease-in-out;
         left: 0;
-        //padding-left: 15px;
         box-shadow: 0 4px 10px rgba(0, 0, 0 , 0.2); 
     }
 
@@ -607,6 +606,7 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
         z-index: -1;
         padding-top: 65px;
         right: 0;
+        max-height: 100%;
         //margin: 0 auto;
     }
 
