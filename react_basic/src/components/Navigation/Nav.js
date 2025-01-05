@@ -4,12 +4,12 @@ import '../../utils/Salient/salient-nav';
 import NavMenu from './NavMenu';
 //import classNames from 'classnames';
 
-const Nav = ({title, shift}) => {
+const Nav = ({title, shift, navSlideDown}) => {
 
     return (
 		<div>
 			<div id="overlay"></div>
-			<nav className="navbar grayscale-scheme" {...(shift ? { 'data-effect': 'shift' } : {})}> {/* data-effect=shift */}
+			<nav className="navbar grayscale-scheme" {...(shift && !navSlideDown ? { 'data-effect': 'shift' } : {})}> {/* data-effect=shift */}
 				<div className="hamburger">
 					<div>
 						{/* Middle Line */}
@@ -21,7 +21,7 @@ const Nav = ({title, shift}) => {
 					<span>{title}</span>
 				</a>
 
-				<NavMenu></NavMenu>
+				<NavMenu navSlideDown={navSlideDown}></NavMenu>
 			</nav>
 		</div>
     )

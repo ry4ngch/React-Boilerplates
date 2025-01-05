@@ -1,28 +1,36 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames'
 
-const NavMenu = () => {
+const NavMenu = (props) => {
+    const navListClasses = classNames( 
+        'navlinks nav-collapse', {
+            'sd-slide-in': !props.navSlideDown,
+            'sd-slide-down': props.navSlideDown,
+        }
+    )
+
     return (
         <React.Fragment>
             {/* Change the sd-slide-in to sd-slide-down className and vice versa */}
             {/* Ensure that data-effect=shift is removed in nav tag when sd-slide-down is used */}
-            <ul className="navlinks sd-slide-in nav-collapse">
+            <ul className={navListClasses}>
                 <li data-tooltip="Home">
                     <a href="">
-                    <FontAwesomeIcon className="navlink-icon" icon="home"></FontAwesomeIcon>
-                    <span className="navlink-text">Home</span>
+                        <FontAwesomeIcon className="navlink-icon" icon="home"></FontAwesomeIcon>
+                        <span className="navlink-text">Home</span>
                     </a>
                 </li>
                 <li data-tooltip="About">
                     <a href="">
-                    <FontAwesomeIcon className="navlink-icon" icon="info-circle"></FontAwesomeIcon>
-                    <span className="navlink-text">About</span>
+                        <FontAwesomeIcon className="navlink-icon" icon="info-circle"></FontAwesomeIcon>
+                        <span className="navlink-text">About</span>
                     </a>
                 </li>
                 <li data-tooltip="Settings">
                     <a href="">
-                    <FontAwesomeIcon className="navlink-icon" icon="sliders"></FontAwesomeIcon>
-                    <span className="navlink-text">Settings</span>
+                        <FontAwesomeIcon className="navlink-icon" icon="sliders"></FontAwesomeIcon>
+                        <span className="navlink-text">Settings</span>
                     </a>
                 </li>
                 <li data-tooltip="Dropdown" data-dropdown>
