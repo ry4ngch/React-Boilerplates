@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Function to check screen size and set display property for toggleNav
   const updateNavDisplay = () => {
-    if (isMobile() || isSmallScreen()) {
+    if (isMobile() && isSmallScreen()) {
       if (!toggleNav.classList.contains('nav-collapse')) {
         toggleNav.style.removeProperty('display') // Ensure nav is visible when not collapsed
       } else {
@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const handleClickOutsideDropdown = (event) => {
 
     // only trigger when is large screen and not mobile
-    if(!(isMobile() || isSmallScreen())){
+    if(!(isMobile() && isSmallScreen())){
       dropdowns.forEach(dropdown => {
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         // If the click target is not inside the dropdown or dropdown menu, trigger blur
@@ -93,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // This should close the navbar when the user clicks outside the navbar or overlay
   const handleClickOutsideNavbar = (event) => {
-    if (isMobile() || isSmallScreen()) {
+    if (isMobile() && isSmallScreen()) {
       if (overlay.contains(event.target)) {
         // Close the navbar
         if (!toggleNav.classList.contains('nav-collapse')) {
@@ -105,9 +105,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Window resize handler
   const handleResize = () => {
-
+    
     // if large screen
-    if (!(isMobile() || isSmallScreen())) {
+    if (!(isMobile() && isSmallScreen())) {
       toggleNav.style.removeProperty('display');
       if (overlay.classList.contains('overlay')) {
         toggleClass(overlay, 'overlay');

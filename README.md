@@ -1,6 +1,6 @@
 # React Boilerplate
 
-This project provides two React boilerplate versions for starting your React applications with different levels of complexity:
+This project provides three React boilerplate versions for starting your React applications with different levels of complexity:
 
 - **react_bare**: A barebones React setup with no additional components, JS, or CSS. Ideal for starting a project from scratch.
 - **react_basic**: A more feature-rich setup that includes **Bootstrap** integration, custom **CSS**, and a **Navbar** component. Also includes a sample single-page app to get started quickly.
@@ -170,6 +170,8 @@ Here’s the basic file structure for `react basic` versions:
 
 The Salient Navbar is a customizable navigation bar that can be easily tailored using simple classes and attributes.
 
+![Salient Navbar Demo](Salient_Navbar_Demo.gif)
+
 ### Responsive Sidebar on Mobile
 On mobile screen sizes, the navbar automatically transforms into a sidebar with the following settings:
 - To enable the sidebar, add the `data-effect="shift"` attribute to the `<Nav>` tag.
@@ -189,6 +191,50 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 
 *Note*: If no theme is specified, the navbar will default to the **default theme** automatically.
 
+## Using Salient Timeline
 
+The Salient Timeline is a customizable timeline component that can be easily configured using classes and attributes.
 
+![Salient Timeline Demo](Salient_Timeline_Demo.gif)
 
+### Parameters
+
+- **`isHorz`**  
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Determines the timeline's orientation.  
+    - `true`: Displays the timeline horizontally (`timeline-horz` class is applied).  
+    - `false`: Default. Displays the timeline vertically.
+
+- **`isCard`**  
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Enables or disables card-style backgrounds for timeline items.  
+    - `true`: Applies the `.card` class.  
+    - `false`: Default. No card styling.
+
+- **`flattenCard`**  
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Flattens the card design, removing any effects.  
+    - `true`: Applies the `flat-em` class.  
+    - `false`: Default. No flattening applied.
+
+- **`isLoading`**  
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Used with React state to determine if data has been fetched.  
+    - Use `setIsLoaded` to update the state when data is fetched.  
+    - When loaded, the `loaded` class is applied to the timeline.
+
+- **`isStaggered`**  
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Applies a staggered layout to timeline items.  
+    - `true`: Adds the `timeline-staggered` class.  
+      - **Horizontal timeline**: Items stagger up and down.  
+      - **Vertical timeline**: Items stagger left and right.  
+    - `false`: Default. No staggering applied.
+
+- **`showCount`** (Mandatory)  
+  - **Type**: `Integer`  
+  - **Description**: Limits the number of timeline events displayed per page.  
+    - Events exceeding this count are pushed to subsequent pages.  
+    - **Up and Down Arrow Buttons**: Always visible for navigation between pages.  
+      - **Up Arrow**: Navigates to the previous page.  
+      - **Down Arrow**: Navigates to the next page.

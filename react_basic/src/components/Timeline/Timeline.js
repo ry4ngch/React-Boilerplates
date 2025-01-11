@@ -9,7 +9,8 @@ const Timeline = (props) => {
         'timeline-horz': props.isHorz,
         'card': props.isCard,
         'flat-em': props.flattenCard,
-        'loaded': !props.isLoading && React.Children.count(props.children) > 0
+        'loaded': !props.isLoading && React.Children.count(props.children) > 0,
+        'timeline-staggered': props.isStaggered
     })
 
     

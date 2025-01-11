@@ -98,7 +98,8 @@ const Container = () => {
           isHorz={true} 
           isCard={true} 
           flattenCard={true}
-          isLoading={isLoading}>
+          isLoading={isLoading}
+          isStaggered={true}>
           <ul>
             {data.map((item, index) => (
               <li key={item.id}>
