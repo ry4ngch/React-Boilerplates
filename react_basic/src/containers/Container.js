@@ -100,7 +100,7 @@ const Container = () => {
           flattenCard={true}
           isLoading={isLoading}
           isStaggered={true}
-          centerEvents={false}>
+          centerEvents={true}>
           <ul>
             {data.map((item, index) => (
               <li key={item.id}>

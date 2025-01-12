@@ -171,6 +171,7 @@ $li-padding-top: 1em;
     left: -#{calc($node-size/2)};
     position: absolute;
     z-index: 2;
+    cursor: pointer;
 }
 
 
@@ -296,6 +297,8 @@ $li-padding-top: 1em;
 
     li {
 
+      flex: 1;
+
       .timeline-event-icon ~ * {
         top: .4em;
       }
@@ -312,6 +315,10 @@ $li-padding-top: 1em;
         .timeline-event-icon {
           left: .2em;
         }
+      }
+
+      small {
+        padding-bottom: 1em;
       }
     }
   }
@@ -390,13 +397,20 @@ $li-padding-top: 1em;
   }
 
   .timeline-horz.center-events {
+    ul::before {
+      left: 0;
+      width: 100%;
+    }
 
     li {
       text-align: center;
+      padding: 0 1em !important;
+      margin-left: 0;
 
       &:hover::before,
       &:hover ~ li::before {
-        left: calc(1em + 50%) !important;
+        left: calc(50% + 1em) !important;
+        width: calc(100% + 1em + 1em);
       }
 
 
