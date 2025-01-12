@@ -94,12 +94,13 @@ const Container = () => {
 
         <Timeline 
           title="Timeline" 
-          showCount={4}
+          showCount={5}
           isHorz={true} 
           isCard={true} 
           flattenCard={true}
           isLoading={isLoading}
-          isStaggered={true}>
+          isStaggered={true}
+          centerEvents={false}>
           <ul>
             {data.map((item, index) => (
               <li key={item.id}>

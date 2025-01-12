@@ -10,7 +10,8 @@ const Timeline = (props) => {
         'card': props.isCard,
         'flat-em': props.flattenCard,
         'loaded': !props.isLoading && React.Children.count(props.children) > 0,
-        'timeline-staggered': props.isStaggered
+        'timeline-staggered': props.isStaggered,
+        'center-events': props.centerEvents
     })
 
     

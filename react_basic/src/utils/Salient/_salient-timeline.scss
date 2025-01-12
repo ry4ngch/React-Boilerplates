@@ -388,4 +388,26 @@ $li-padding-top: 1em;
       top : 0;
     }
   }
+
+  .timeline-horz.center-events {
+
+    li {
+      text-align: center;
+
+      &:hover::before,
+      &:hover ~ li::before {
+        left: calc(1em + 50%) !important;
+      }
+
+
+      .timeline-event-icon {
+        left: 50% !important;
+  
+        ~ * {
+          left: auto;
+        }
+      }
+    }
+
+  }
 }

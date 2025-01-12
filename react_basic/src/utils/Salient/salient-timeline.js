@@ -4,10 +4,48 @@ const initializeSalientTimeline = () => {
     const items = [...timeline.querySelectorAll('ul li')];
     const totalItems = items.length;  // Total number of list items
     const isHorz = timeline.classList.contains('timeline-horz');  // Check if timeline is horizontal
+    const timeline__ul = timeline.querySelector('ul');
+    const isMidScreen = () => window.innerWidth > 768 && window.innerWidth < 992 ; //middle screen size
 
     // Retrieve showCount from data-show-count attribute
     let showCount = parseInt(timeline.dataset.showCount, 10) || 3;  // Default to 3 if undefined
     let startIndex = 0;
+
+    /** Temporary Fix for Staggered Horizontal Timeline events layout */
+    //** Step 1:  get the max height of initialize li element **/
+    const max_li_height = Math.max(...items.map((el) => (el.offsetHeight)));
+
+    //** Step 2:  check if the timeline is horizontal and staggered and resize the Ul **/
+    const resizeTimelineUl = () => {
+        
+        if(['timeline-staggered', 'timeline-horz'].every(cls => timeline.classList.contains(cls)) && isMidScreen()){
+            const marginTopAfterEventIcon = 2; //em size
+            const marginBtmForEventTimeline = 6.5 //em size
+            
+            // Measure the height of the inner <small> instead of the <li>
+            const maxTextHeight = Math.max(
+                ...items.map(li => {
+                    const smallText = li.querySelector('small'); // Adjust the selector if needed
+                    return smallText ? smallText.offsetHeight : 0; // Safely handle missing <small>
+                })
+            ); 
+            
+            if(max_li_height !== -Infinity){
+                // Get the font-size of the base element in pixels
+                const fontSize = parseFloat(getComputedStyle(timeline).fontSize);
+
+                const totalHeightOfTimelineDiv = max_li_height*2 + Math.max(0, (maxTextHeight - max_li_height))*2 + (marginTopAfterEventIcon * fontSize) + (marginBtmForEventTimeline * fontSize);
+            
+                timeline__ul.style.setProperty('height', `${totalHeightOfTimelineDiv}px`);
+            }
+            
+        } else {
+            timeline__ul.style.removeProperty('height');
+        };
+    }
+
+    /** End of Temporary Fix **/
+    
 
     // Function to calculate the total height or width of the currently visible items
     const calculateItemSize = () => {
@@ -73,7 +111,10 @@ const initializeSalientTimeline = () => {
     // Initialize view
     updateUlSize();  // Set ul size based on the visible items
     updateVisibleItems();  // Adjust visibility and positions of items
-};
+
+    // for fixing horizontal staggered timeline layout
+    window.addEventListener('resize', resizeTimelineUl);
+}
 
 export default initializeSalientTimeline;
 
