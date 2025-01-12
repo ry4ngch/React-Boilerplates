@@ -4,6 +4,7 @@ This project provides three React boilerplate versions for starting your React a
 
 - **react_bare**: A barebones React setup with no additional components, JS, or CSS. Ideal for starting a project from scratch.
 - **react_basic**: A more feature-rich setup that includes **Bootstrap** integration, custom **CSS**, and a **Navbar** component. Also includes a sample single-page app to get started quickly.
+- **react_bootstrap**: React setup with **Bootstrap** integration, using Offcanvas **Navbar** component.
 
 ---
 
@@ -231,9 +232,9 @@ The Salient Timeline is a customizable timeline component that can be easily con
       - **Vertical timeline**: Items stagger left and right.  
     - `false`: Default. No staggering applied.
 
-- **`showCount`** (Mandatory)  
+- **`showCount`** 
   - **Type**: `Integer`  
-  - **Description**: Limits the number of timeline events displayed per page.  
+  - **Description**: Limits the number of timeline events displayed per page. Defaults to 3 if data-show-count attribute in Timeline.js is not found. However, it is better to set it as the props.showCount is use by React state. 
     - Events exceeding this count are pushed to subsequent pages.  
     - **Up and Down Arrow Buttons**: Always visible for navigation between pages.  
       - **Up Arrow**: Navigates to the previous page.  

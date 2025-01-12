@@ -232,6 +232,7 @@ $li-padding-top: 1em;
   width: calc(50% - $node-size)
 }
 
+
 .timeline-staggered li:nth-child(odd) {
   margin-left: calc(50% + 1em) !important;
 }
@@ -328,6 +329,10 @@ $li-padding-top: 1em;
   .timeline-horz.timeline-staggered li:nth-child(odd) {
     margin-left: 0 !important;
     height: 50%;
+
+    .timeline-event-icon ~ .timeline-event-thumbnail {
+      margin-top: 0;
+    }
   }
 
   .timeline-horz.timeline-staggered ul li:last-child::before {
@@ -373,10 +378,14 @@ $li-padding-top: 1em;
 
   .timeline-staggered.timeline-horz ul {
     height: 500px;
-  }
 
-  .timeline-staggered.timeline-horz ul li {
-    padding-bottom: 0;
-    padding-top: 0;
+    li {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+
+    .timeline-event-icon ~ * {
+      top : 0;
+    }
   }
 }
