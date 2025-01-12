@@ -122,6 +122,8 @@ $li-padding-top: 1em;
     padding-left: 2em;
     padding-bottom: 1em;
     padding-top: $li-padding-top;
+    transition: .2s transform ease-in-out, .8s opacity ease-in-out;
+
     &:hover {
       .timeline-event-icon {
         animation: circle 1.2s infinite;
