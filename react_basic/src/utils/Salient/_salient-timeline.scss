@@ -41,13 +41,42 @@ $li-padding-top: 1em;
     opacity: .7;
     font-size: 1em;
   }
-  h3 {
+
+  .timeline-header {
     margin-bottom: 1em;
-    padding-bottom: .5em;
     border-bottom: .1em solid #eee;
+    padding-bottom: .5em;
   }
+
+  .header-group > * {
+    display: inline-block;
+  }
+
+  .justify-between {
+    margin:0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+  }
+
   .header-icon {
     margin-right: .5em;
+  }
+
+  .header-widget {
+    backdrop-filter: blur(3px);
+    background-color: hsl(223, 14%, 20%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+    padding: .6em;
+    width: 5em;
+    color: whitesmoke;
   }
 
   button.toggle-timeline::before{
@@ -386,7 +415,7 @@ $li-padding-top: 1em;
   }
 
   .timeline-staggered.timeline-horz ul {
-    height: 500px;
+    height: 500px; // placeholder only, use javascript for calculating the height
 
     li {
       padding-bottom: 0;
