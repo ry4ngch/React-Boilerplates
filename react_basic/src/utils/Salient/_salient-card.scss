@@ -51,13 +51,13 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    height: 8vw;
-    max-height: 160px;
-    min-height: 140px;
-    min-width: 180px;
+    // height: 8vw;
+    // max-height: 160px;
+    // min-height: 140px;
+    // min-width: 180px;
     position: relative;
     transition: transform 250ms;
-    width: calc(100% / 7);
+    // width: calc(100% / 7);
 }
 
 .card.blur-out {
@@ -66,7 +66,7 @@
     backdrop-filter: blur(15px);
     box-shadow: 0px 20px 53px -30px rgb(95 102 173 / 57%);
     border-radius: 10px;
-    height: 100px;
+    //height: 100px;
 }
 
 /** Card content **/

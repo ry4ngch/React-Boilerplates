@@ -61,7 +61,12 @@ const Timeline = (props) => {
 
 // set default props for showControls to true when showControls prop is never set as an attribute
 Timeline.defaultProps = {
-    showControls: true
+    showControls: true,
+    isCard: false,
+    flattenCard: false,
+    isStaggered: false,
+    centerEvents: false,
+    isHorz: false
 }
 
 export default Timeline;

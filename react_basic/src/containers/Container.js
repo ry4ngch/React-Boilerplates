@@ -5,7 +5,8 @@ import Timeline from '../components/Timeline/Timeline';
 //import TimelineEvents from '../components/Timeline/TimelineEvents';
 //import { error } from 'jquery';
 import axios from 'axios';
-import Buttons from '../components/Buttons/Buttons';
+import Button from '../components/Buttons/Button';
+import Card from '../components/Card/Card';
 
 
 const Container = () => {
@@ -113,7 +114,30 @@ const Container = () => {
           </ul>
         </Timeline>
 
-        <Buttons></Buttons>
+        <Card className="bg-dracula flat-em">
+          <div className="card-content">
+            <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
+            <Button type="button" buttonStyle="blur" isBlock={true} expandFull={true}>Button2</Button>
+            <Button type="button" buttonStyle="clear" isBlock={true} expandFull={true}>Button3</Button>
+          </div>
+          <div className="card-content">
+            <Button type="checkbox"></Button>
+            <Button type="checkbox" disabled={true}></Button>
+            <Button type="switch"></Button>
+            <Button type="switch" disabled={true}></Button>
+          </div>
+          <div className="card-content">
+            <Button type="button" buttonType="widget" icon="leftArrow"></Button>
+            <Button type="button" buttonType="widget" icon="rightArrow"></Button>
+            <Button type="button" buttonType="widget" icon="topArrow"></Button>
+            <Button type="button" buttonType="widget" icon="btmArrow"></Button>
+          </div>
+        </Card>
+        
+        <Card className="flat">
+          <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
+          <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
+        </Card>
       </div>
 
     </div>
