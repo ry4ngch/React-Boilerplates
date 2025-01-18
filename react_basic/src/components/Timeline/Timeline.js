@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useLayoutEffect, useRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col } from 'react-bootstrap';
-import initializeSalientTimeline from '../../utils/Salient/salient-timeline';
+import {initializeSalientTimeline, recomputeTimelineLayout} from '../../utils/Salient/salient-timeline';
 import classNames from 'classnames'
 
 const Timeline = (props) => {
@@ -17,7 +17,7 @@ const Timeline = (props) => {
     const [showCount, setShowCount] = useState(props.showCount);
 
     const updateShowCount = (event) => {
-        setShowCount(parseInt(event.target.value));
+        setShowCount(parseInt(event.target.value, 10));
     }
 
     const hasInitialized = useRef(false); // Track if initialization is done
@@ -30,10 +30,11 @@ const Timeline = (props) => {
         }
     }, [props.isLoading, props.children]);  
     
-    // handle when state change
+    //handle when state change
     useEffect(() => {
         if(hasInitialized.current && !props.isLoading && React.Children.count(props.children) > 0){
-            initializeSalientTimeline();  
+            recomputeTimelineLayout();
+            
         }
     }, [props.children, showCount]);  
 

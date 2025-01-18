@@ -1,11 +1,9 @@
-const initializeSalientTimeline = () => {
+const renderTimeline = () => {
     const timeline = document.querySelector('.timeline');
 
     const items = [...timeline.querySelectorAll('ul li')];
     const totalItems = items.length;  // Total number of list items
     const isHorz = timeline.classList.contains('timeline-horz');  // Check if timeline is horizontal
-    const timeline__ul = timeline.querySelector('ul');
-    const isLargeScreen = () => window.innerWidth >= 768;
     const isSmallScreen = () => window.innerWidth < 768;
     const toggleBackBtn = document.querySelector('.toggle-back');
     const toggleForwardBtn = document.querySelector('.toggle-forward');
@@ -13,32 +11,6 @@ const initializeSalientTimeline = () => {
     // Retrieve showCount from data-show-count attribute
     let showCount = parseInt(timeline.dataset.showCount, 10) || 3;  // Default to 3 if undefined
     let startIndex = 0;
-
-    /* Resize for Staggered Horizontal Timeline events layout */
-    //check if the timeline is horizontal and staggered and resize the Ul **/
-    const resizeTimelineUl = () => {
-        
-        requestAnimationFrame(() => {
-            if(['timeline-staggered', 'timeline-horz'].every(cls => timeline.classList.contains(cls)) && isLargeScreen()){
-            
-                const maxHeight = Math.max(...Object.values(getMaxHeight(items)))
-                if(maxHeight !== 0){
-                    timeline__ul.style.setProperty('height', `${maxHeight * 2}px`);
-                };
-                
-            } else {
-                timeline__ul.style.removeProperty('height');
-            };
-        })
-        
-    }
-
-    // initialize the height of timeline horz staggered
-    window.onload = () => {
-        resizeTimelineUl();
-    }
-
-    /* End of Staggered Horizontal Timeline Resize */
     
 
     // Function to calculate the total height or width of the currently visible items
@@ -159,8 +131,44 @@ const initializeSalientTimeline = () => {
     updateUlSize();  // Set ul size based on the visible items
     updateVisibleItems();  // Adjust visibility and positions of items
 
-    // for fixing horizontal staggered timeline layout
-    window.addEventListener('resize', resizeTimelineUl);
+}
+
+/* Resize for Staggered Horizontal Timeline events layout */
+//check if the timeline is horizontal and staggered and resize the Ul **/
+const resizeTimelineUl = () => {
+    requestAnimationFrame(() => {
+        const timeline = document.querySelector('.timeline');
+        const items = [...timeline.querySelectorAll('ul li')];
+        const timeline__ul = timeline.querySelector('ul');
+        if(['timeline-staggered', 'timeline-horz'].every(cls => timeline.classList.contains(cls)) && window.innerWidth >= 768){
+        
+            const maxHeight = Math.max(...Object.values(getMaxHeight(items)))
+            if(maxHeight !== 0){
+                timeline__ul.style.setProperty('height', `${maxHeight * 2 + 30}px`);
+            };
+            
+        } else {
+            timeline__ul.style.removeProperty('height');
+        };
+    })
+    
+}
+
+const initializeSalientTimeline = () => {
+    renderTimeline();
+
+     // initialize the height of timeline horz staggered
+     window.onload = () => {
+        resizeTimelineUl();
+    };
+    
+     // for fixing horizontal staggered timeline layout
+     window.addEventListener('resize', resizeTimelineUl);
+}
+
+const recomputeTimelineLayout = () => {
+    renderTimeline();
+    resizeTimelineUl();
 }
 
 function getMaxHeight(listItems) {  
@@ -193,6 +201,6 @@ function getMaxHeight(listItems) {
   }
   
 
-export default initializeSalientTimeline;
+export {initializeSalientTimeline, recomputeTimelineLayout};
 
 //window.addEventListener('DOMContentLoaded', initializeSalientTimeline);
