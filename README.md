@@ -163,7 +163,7 @@ Here’s the basic file structure for `react basic` versions:
 | **Custom SCSS Files**   | Basic SCSS setup                   | Includes detailed layout and component styles  |
 | **Font Awesome Support**| Not included                       | Integrated for icons                           |
 | **JQuery Support**      | Not included                       | Configured with Webpack for global usage       |
-| **JavaScript**          | No additional JavaScript           | Includes custom JavaScript for Navbar (`salient-nav.js`, `salient-timeline.js`), Bootstrap integration |
+| **JavaScript**          | No additional JavaScript           | Includes custom JavaScript for Navbar (`salient-nav.js`) and Timeline (`salient-timeline.js`), Bootstrap integration |
 
 ---
 
@@ -236,6 +236,26 @@ The Salient Timeline is a customizable timeline component that can be easily con
   - **Type**: `Integer`  
   - **Description**: Limits the number of timeline events displayed per page. Defaults to 3 if data-show-count attribute in Timeline.js is not found. However, it is better to set it as the props.showCount is use by React state. 
     - Events exceeding this count are pushed to subsequent pages.  
-    - **Up and Down Arrow Buttons**: Always visible for navigation between pages.  
+    - **Up and Down Arrow Buttons**: Always visible for navigation between pages (See `showControls` props below).  
       - **Up Arrow**: Navigates to the previous page.  
       - **Down Arrow**: Navigates to the next page.
+
+- **`centerEvents`** 
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Centers the events items of the timeline on a horizontal timeline. This will apply the `center-events` class. 
+    - `true`: Applies the `center-events` class.  
+    - `false`: Default. Each events items are place at the left.
+  - Note: This props works only for horizontal timeline, when `screen size <= 768px`, the timeline will automatically become a vertical timeline.
+
+- **`title`** 
+  - **Type**: `String` 
+  - **Description**: Apply a header title to the timeline.
+
+- **`showControls`**
+  - **Type**:  `Boolean` (`true` | `false`) 
+  - **Description**: Conditions for showing the up and down arrow buttons  
+    - `true`: Default. To change the default behaviour, adjust the defaultProps in Timeline.js. Otherwise, the up and down arrow buttons will be visible.
+    - `false`: Will remove the up and down arrows from the DOM.
+  - **Example Usage with Dynamic data**: 
+    - `showControls={data.length > 0 && data.length > showCount}` may be set in Container.js where `data` refers to the an array fetch through axios or other means.
+    - Note: for the above example to work, ensure showCount is a variable instead of defining it as part of Timeline attribute directly. ie: `showCount = {showCount}`
