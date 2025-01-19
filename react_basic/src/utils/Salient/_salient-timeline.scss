@@ -93,17 +93,28 @@ $li-padding-top: 1em;
 
   button.toggle-timeline:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   }
 
-  .toggle-back::before {
-    transform: translate(-50%, -50%) rotate(-45deg);
+  .toggle-back{
+    &:hover {
+      box-shadow: 0 -8px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
   }
 
-  .toggle-forward::before {
-    transform: translate(-50%, -50%) rotate(135deg);
-  }
+  .toggle-forward{
+    &:hover {
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
 
+    &::before {
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+  }
+  
   .toggle-forward {
     top: 100%;
     position: absolute;

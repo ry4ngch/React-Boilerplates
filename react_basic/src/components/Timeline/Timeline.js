@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useLayoutEffect, useRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col } from 'react-bootstrap';
 import {initializeSalientTimeline, recomputeTimelineLayout} from '../../utils/Salient/salient-timeline';
 import classNames from 'classnames'
 
@@ -39,34 +38,36 @@ const Timeline = (props) => {
     }, [props.children, showCount]);  
 
     return (
-        <Col md="12" lg="12" xs="12">
-            <div className={timelineClass} data-show-count={showCount}>
-                <div className="timeline-header timeline-group justify-between">
-                    <h3><FontAwesomeIcon icon='history' className="header-icon"></FontAwesomeIcon>{props.title}</h3>
+        <React.Fragment>
+            <div className={`${timelineClass} ${props.className || ''}`} data-show-count={showCount}>
+                {props.title.trim().length > 0 && <div className="timeline-header timeline-group justify-between">
+                    <h3><FontAwesomeIcon icon={props.headerIcon} className="header-icon"></FontAwesomeIcon>{props.title}</h3>
                     <select value={showCount} onChange={updateShowCount} className="header-widget">
                         <option value="3">3</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
                         <option value="12">12</option>
                     </select>
-                </div>
+                </div>}
                 {props.showControls && <button className="toggle-timeline toggle-back"></button>}
                 {props.children}    
                 {props.showControls && <button className="toggle-timeline toggle-forward"></button>}
             </div>
             
-        </Col>
+        </React.Fragment>
     )
 }
 
 // set default props for showControls to true when showControls prop is never set as an attribute
 Timeline.defaultProps = {
+    title: '',
     showControls: true,
     isCard: false,
     flattenCard: false,
     isStaggered: false,
     centerEvents: false,
-    isHorz: false
+    isHorz: false,
+    headerIcon: 'history'
 }
 
 export default Timeline;

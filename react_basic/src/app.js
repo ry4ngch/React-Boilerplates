@@ -16,6 +16,8 @@ import './styles/styles.scss';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Container from './containers/Container';
+import Nav from './components/Navigation/Nav';
+import NavMenu from './components/Navigation/NavMenu';
 
 // import jQuery
 import 'jquery';
@@ -24,12 +26,21 @@ const root = createRoot(document.getElementById('app'));
 
 class App extends Component {
     render(){
+		// Get the current year dynamically
+		const currentYear = new Date().getFullYear();
+
 		console.log('jQuery version', $.fn.jquery);
 		return (
 			<div id='wrapper'>
-				<Header title="Salient" shift={true} navSlideDown={false}></Header>
-				<Container></Container>
-				<Footer ></Footer>
+				<Header>
+					<Nav title="Salient" shift={true} navSlideDown={false}>
+						<NavMenu navSlideDown={false}></NavMenu>
+					</Nav>
+				</Header>
+				<Container />
+				<Footer>
+					<p>&copy; {currentYear} Ryan Goh. All rights reserved.</p>
+				</Footer>
 			</div>
 		)
     }

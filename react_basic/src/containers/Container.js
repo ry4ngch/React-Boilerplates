@@ -135,6 +135,18 @@ const Container = () => {
         </Card>
         
         <Card className="flat">
+          <div className="card-content">
+            <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false} inverseColor={true}>Button4</Button>
+            <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false}>Button5</Button>
+            <Button type="button" buttonStyle="blur" isBlock={false} expandFull={false} inverseColor={true}>Button6</Button>
+            <Button type="button" buttonStyle="blur" isBlock={false} expandFull={false}>Button7</Button>
+            <Button type="button" buttonStyle="clear" isBlock={false} expandFull={false} inverseColor={true}>Button8</Button>
+            <Button type="button" buttonStyle="clear" isBlock={false} expandFull={false}>Button9</Button>
+          </div>
+        </Card>
+        
+        
+        <Card className="flat">
           <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
           <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
         </Card>

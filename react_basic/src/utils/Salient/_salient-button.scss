@@ -1,3 +1,22 @@
+// Import the 'sass:color' module
+@use 'sass:color';
+
+/* Color Template */
+$button-blueBlur-borderColor: rgb(249 250 251 / 55%); 
+$button-blueBlur-bgColor: rgb(146 151 179 / 13%);
+$button-blueBlur-bghoverColor: rgba(16 18 27 / 40%);
+
+$button-text-color: whitesmoke;
+
+$button-blur-bgColor: hsla(0, 0%, 100%, 0.25);
+
+$button-clear-borderColor: rgba(255, 255, 255, .1);
+$button-clear-bgColor: rgba(255, 255, 255, .1);
+$button-clear-bgHoverColor: rgba(255, 255, 255, 0.2);
+$button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
+
+
+
 /* Toggle checkbox */
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
@@ -165,6 +184,7 @@
 	text-decoration: none;
 	cursor: pointer;
 	padding: 8px 26px;
+	//color: $button-text-color;
 }
 
 .btn-block {
@@ -180,7 +200,7 @@
     font-weight: 500;
     font-family: inherit;
     border-radius: 0.5rem;
-    background: hsla(0, 0%, 100%, 0.25);
+    background: $button-blueBlur-bgColor;
     backdrop-filter: blur(12px);
     
 }
@@ -190,33 +210,60 @@
 }
 
 .btn-blue-blur {
-    background: rgb(146 151 179 / 13%);
-    color: rgb(249 250 251 / 55%);;
-    border: 1px solid rgb(249 250 251 / 55%);
-    color: #fff;
+    background: $button-blueBlur-bgColor;
+    //color: rgb(249 250 251 / 55%);
+    border: 1px solid $button-blueBlur-borderColor;
     border-radius: 20px;
     transition: 0.3s;
     white-space: nowrap;
 }
 
 .btn-blue-blur:hover:enabled{
-    background-color: rgba(16 18 27 / 40%);
+    background-color: $button-blueBlur-bghoverColor
 }
 
 .clear-button {
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-    background-color: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .1);
+    background-color: $button-clear-bgColor;
+    border: 1px solid $button-clear-borderColor;
     border-radius: 100px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);;
     outline: none;
 }
   
 .clear-button:hover:enabled {
-	background-color: rgba(255, 255, 255, 0.2);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	background-color: $button-clear-bgHoverColor;
+	border: 1px solid $button-clear-borderHoverColor;
 }
+
+.inverse {
+	//color: color.invert($button-text-color);
+
+	&.btn-blur {
+		background-color: color.invert($button-blur-bgColor);
+	}
+
+	&.btn-blue-blur {
+		border-color: color.invert($button-blueBlur-borderColor);
+		background-color: color.invert($button-blueBlur-bgColor);
+
+		&:hover:enabled {
+			background-color: color.invert($button-blueBlur-bghoverColor);
+		}
+	}
+
+	&.clear-button {
+		border-color: color.invert($button-clear-borderColor);
+		background-color: color.invert($button-clear-bgColor);
+
+		&:hover:enabled {
+			background-color: color.invert($button-clear-bgHoverColor);
+			border-color: color.invert($button-clear-borderHoverColor);
+		}
+	}
+}
+
 
 /* Button Display */
 .btn-group {

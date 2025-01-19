@@ -66,4 +66,8 @@ const NavMenu = (props) => {
     )
 }
 
+NavMenu.defaultProps = {
+    navSlideDown: false
+}
+
 export default NavMenu;
