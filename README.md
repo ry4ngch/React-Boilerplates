@@ -98,8 +98,13 @@ Here’s the basic file structure for `react basic` versions:
 │   └── index.html
 ├── src
 │   ├── components
+│   │   ├── Accordian
+│   │   │   ├── Accordian.js         (For Demo Purpose Only)
+│   │   │   └── AccordianItem.js     (For Demo Purpose Only)
 │   │   ├── Buttons    
-│   │   │   └── Buttons.js           (For Demo Purpose Only) 
+│   │   │   └── Button.js            (For Demo Purpose Only) 
+│   │   ├── Card   
+│   │   │   └── Card.js              (For Demo Purpose Only) 
 │   │   ├── Layout
 │   │   │   ├── Footer.js    
 │   │   │   └── Header.js
@@ -138,6 +143,8 @@ Here’s the basic file structure for `react basic` versions:
 │   │       ├── _salient-button.scss     (custom Button CSS)
 │   │       ├── _salient-card.scss       (custom Card CSS)
 │   │       ├── _salient-nav.scss        (custom Navbar CSS)
+│   │       ├── _salient-accordian.scss  (custom Accordian CSS)
+│   │       ├── _salient-accordian.js    (custom Accordian Javascript)
 │   │       ├── _salient-timeline.scss   (custom Timeline CSS)
 │   │       ├── _salient-timeline.js     (custom Timeline Javascript, Workable with Axios)
 │   │       └── _salient-nav.js          (custom Navbar JavaScript)
@@ -155,17 +162,29 @@ Here’s the basic file structure for `react basic` versions:
 
 ## Features
 ### Key Differences
-| Feature                 | `react_bare`                        | `react_basic`                                   |
-|-------------------------|--------------------------------------|------------------------------------------------|
-| **Bootstrap**           | Not included                       | Integrated via npm for UI components                             |
-| **Navbar Component**    | Not included                       | Included with reusable styling (`salient-nav.scss`)|
-| **Sample SPA Structure**| Not included                       | Provided for quick start                       |
-| **Custom SCSS Files**   | Basic SCSS setup                   | Includes detailed layout and component styles  |
-| **Font Awesome Support**| Not included                       | Integrated for icons                           |
-| **JQuery Support**      | Not included                       | Configured with Webpack for global usage       |
-| **JavaScript**          | No additional JavaScript           | Includes custom JavaScript for Navbar (`salient-nav.js`) and Timeline (`salient-timeline.js`), Bootstrap integration |
+| **Feature**             | **`react_bare`**                   | **`react_basic`**                                                                                     |
+|-------------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Bootstrap**           | Not included                      | Integrated via npm for UI components                                                                  |
+| **Navbar Component**    | Not included                      | Included with reusable styling (`salient-nav.scss`)                                                   |
+| **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` |
+| **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
+| **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
+| **JavaScript**          | No additional JavaScript          | Custom JavaScript for: <br> &nbsp;&nbsp; - Navbar component (`salient-nav.js`) <br> &nbsp;&nbsp; - Timeline component (`salient-timeline.js`) <br> &nbsp;&nbsp; - Accordian component ( `salient-accordian.js`) <br> Bootstrap integration |
 
 ---
+
+## Why Salient?
+
+The **Salient library** was developed with a core goal: to simplify the development process by eliminating the need to manually define custom states for controlling UI animations, styles, and effects. By leveraging Salient, developers can focus on building robust applications without worrying about intricate UI configurations.
+
+This library offers:
+- Predefined animations and styles that integrate seamlessly into React projects. 
+- An easy-to-use structure for dynamic UI effects without the overhead of managing custom state logic.
+- A faster development workflow, reducing boilerplate code while maintaining flexibility for customization.
+
+> **Note:**  
+> While controlling animations and effects in React is simple, it often requires managing additional state variables, which can complicate the codebase and lead to unnecessary boilerplate. Salient was created to address this issue by providing a streamlined solution that abstracts these complexities.
 
 ## Using Salient Navbar
 

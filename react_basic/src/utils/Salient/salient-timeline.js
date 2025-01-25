@@ -1,6 +1,5 @@
 const renderTimeline = () => {
     const timeline = document.querySelector('.timeline');
-
     const items = [...timeline.querySelectorAll('ul li')];
     const totalItems = items.length;  // Total number of list items
     const isHorz = timeline.classList.contains('timeline-horz');  // Check if timeline is horizontal
@@ -85,6 +84,8 @@ const renderTimeline = () => {
             toggleForwardBtn.removeAttribute('disabled');
             toggleForwardBtn.style.removeProperty('cursor');
         }
+
+        timeline.querySelector('ul').classList.add('rendering');
     };
 
 
@@ -157,13 +158,21 @@ const resizeTimelineUl = () => {
 const initializeSalientTimeline = () => {
     renderTimeline();
 
-     // initialize the height of timeline horz staggered
-     window.onload = () => {
+    // initialize the height of timeline horz staggered
+    window.onload = () => {
         resizeTimelineUl();
     };
     
-     // for fixing horizontal staggered timeline layout
-     window.addEventListener('resize', resizeTimelineUl);
+    // for fixing horizontal staggered timeline layout
+    window.addEventListener('resize', resizeTimelineUl);
+
+    // for removing ul::before animation
+    const timeline_ul = document.querySelector('.timeline ul');
+    
+    timeline_ul.addEventListener('animationend', () => {
+        timeline_ul.classList.remove('rendering');
+    });
+
 }
 
 const recomputeTimelineLayout = () => {

@@ -155,7 +155,24 @@ $li-padding-top: 1em;
         left: $node-margin;
     }
 
+    &.rendering {
+      &::before {
+        animation: ripple .5s linear forwards;
+        transform-origin: 50% 0%;
+      }
+    }
+
   }
+
+  @keyframes ripple {
+    to{
+      transform:scale(1);
+    } 
+    from {
+      transform: scale(0);
+    }
+  }
+
   ul li {
     position: relative;
     margin-left: $node-margin;
@@ -336,6 +353,13 @@ $li-padding-top: 1em;
     display: flex;
     flex-direction: row;
     width: calc(100% - $node-size);
+
+    &.rendering {
+      &::before {
+        animation: ripple .5s linear forwards;
+        transform-origin: 0% 50%;
+      }
+    }
 
     li {
 
