@@ -93,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // This should close the navbar when the user clicks outside the navbar or overlay
   const handleClickOutsideNavbar = (event) => {
-    if (isMobile() && isSmallScreen()) {
+    if (isMobile() || isSmallScreen()) {
       if (overlay.contains(event.target)) {
         // Close the navbar
         if (!toggleNav.classList.contains('nav-collapse')) {

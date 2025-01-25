@@ -7,6 +7,30 @@ import Timeline from '../components/Timeline/Timeline';
 import axios from 'axios';
 import Button from '../components/Buttons/Button';
 import Card from '../components/Card/Card';
+import Accordian from '../components/Accordian/Accordian';
+
+const accordianData = [
+  {
+      title: 'Title 1',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eius iste vel tempore. Officiis officia illum ut magnam reprehenderit voluptas!'
+  },
+  {
+      title: 'Title 2',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eius iste vel tempore. Officiis officia illum ut magnam reprehenderit voluptas!'
+  },
+  {
+      title: 'Title 3',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eius iste vel tempore. Officiis officia illum ut magnam reprehenderit voluptas!'
+  },
+  {
+      title: 'Title 4',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eius iste vel tempore. Officiis officia illum ut magnam reprehenderit voluptas!'
+  },
+  {
+      title: 'Title 5',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eius iste vel tempore. Officiis officia illum ut magnam reprehenderit voluptas!'
+  },
+]
 
 
 const Container = () => {
@@ -113,6 +137,12 @@ const Container = () => {
             ))}
           </ul>
         </Timeline>
+
+        <Card className="flat-em">
+          <Accordian data={accordianData}/>
+        </Card>
+        
+        
 
         <Card className="bg-dracula flat-em">
           <div className="card-content">

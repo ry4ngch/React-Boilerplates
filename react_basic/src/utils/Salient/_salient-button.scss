@@ -320,24 +320,24 @@ $arrow-head-width: .6em;
 	content: "";
 	position: absolute;
 	left: calc($arrow-line-width/2);
-	top: -#{calc($arrow-head-width/2)};
+	top: calc($arrow-line-width/2);
 	width: $arrow-head-width;
 	height: $arrow-head-width;
 	border-top: solid $arrow-line-width rgb(35, 35, 35);;
 	border-right: solid $arrow-line-width rgb(35, 35, 35);;
-	transform: rotate(-135deg);
+	transform: translateY(-50%) rotate(-135deg);
 }
 
 .right-arrow-icon::before {
 	content: "";
 	position: absolute;
 	right: calc($arrow-line-width/2);
-	top: -#{calc($arrow-head-width/2)};
+	top: calc($arrow-line-width/2);
 	width: $arrow-head-width;
 	height: $arrow-head-width;
 	border-bottom: solid $arrow-line-width rgb(35, 35, 35);;
 	border-left: solid $arrow-line-width rgb(35, 35, 35);;
-	transform: rotate(-135deg);
+	transform: translateY(-50%) rotate(-135deg);
 }
 
 .top-arrow-icon::before {
