@@ -8,6 +8,7 @@ import axios from 'axios';
 import Button from '../components/Buttons/Button';
 import Card from '../components/Card/Card';
 import Accordian from '../components/Accordian/Accordian';
+import Tab from '../components/Tab/Tab';
 
 const accordianData = [
   {
@@ -118,7 +119,7 @@ const Container = () => {
         </Row>
 
         <Card className="flat-em">
-          <div class="card-content">
+          <div className="card-content">
             <Timeline 
               title="Timeline" 
               showCount={5}
@@ -136,7 +137,9 @@ const Container = () => {
         <Card className="flat-em">
           <Accordian data={accordianData} activeToggle="single"/>
         </Card>
+
         
+        <Tab isVert={true}/>
         
 
         <Card className="bg-dracula flat-em">

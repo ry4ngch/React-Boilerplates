@@ -113,7 +113,7 @@ Here’s the basic file structure for `react basic` versions:
 │   │   │   └── NavMenu.js           (For Demo Purpose Only)  
 │   │   ├── Timeline
 │   │   │   ├── Timeline.js          (For Demo Purpose Only)  
-│   │   │   └── TimelineEvents.js    (Unused, the current setup is fetching dummy data using Axios)
+│   │   │   └── TimelineEvents.js    (For Demo Purpose Only)  
 │   ├── containers       
 │   │   └── Container.js           
 │   ├── styles

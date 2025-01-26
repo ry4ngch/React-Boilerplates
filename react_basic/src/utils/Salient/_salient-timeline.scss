@@ -1,6 +1,14 @@
 @use "sass:map";
 
-$color: (main: #8d9e78, sub: #3d405b, func: rgb(168, 50, 121), reverse: #fcfcfc, line: #cdcdcd, active: #ffad00);
+$color: (
+  main: #8d9e78, 
+  sub: #3d405b, 
+  func: rgb(168, 50, 121), 
+  reverse: #fcfcfc, 
+  line: #cdcdcd, 
+  active: #ffad00
+);
+
 $node-size: 1em;
 $node-margin: 1em;
 $line-width: .2em;
