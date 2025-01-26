@@ -68,12 +68,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Handle dropdown click
   const handleDropdownClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const dropdownMenu = event.currentTarget.querySelector('.dropdown-menu');
     dropdownMenu.classList.toggle('active-dropdown')
   };
 
   // Handle document click to detect if user clicked outside dropdown
   const handleClickOutsideDropdown = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
     // only trigger when is large screen and not mobile
     if(!(isMobile() && isSmallScreen())){
@@ -93,6 +97,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // This should close the navbar when the user clicks outside the navbar or overlay
   const handleClickOutsideNavbar = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (isMobile() || isSmallScreen()) {
       if (overlay.contains(event.target)) {
         // Close the navbar
