@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
+    const accordian = document.querySelector('.accordian');
+    const accordian_cards = document.querySelectorAll('.accordian-card');
+    const activeToggleOption = accordian.dataset.activeToggle || 'multiple';
+
     const card_headings = document.querySelectorAll('.accordian-heading');
 
     const handleAccordianToggle = (event) => {
@@ -14,6 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(() => {
                 currentParent.classList.add('open');
             });
+        }
+
+        // handle single active toggle option and close others that are open
+        if(activeToggleOption === 'single'){
+            accordian_cards.forEach((item) => {
+                if(!item.contains(event.target)){
+                    if(item.classList.contains('open')){
+                        item.classList.remove('open');
+                    }
+                }
+            })
         }
     }
 

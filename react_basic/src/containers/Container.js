@@ -139,7 +139,7 @@ const Container = () => {
         </Timeline>
 
         <Card className="flat-em">
-          <Accordian data={accordianData}/>
+          <Accordian data={accordianData} activeToggle="single"/>
         </Card>
         
         
