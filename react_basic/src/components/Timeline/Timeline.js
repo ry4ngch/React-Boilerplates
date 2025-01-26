@@ -1,14 +1,13 @@
 import React, {useEffect, useState, useLayoutEffect, useRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {initializeSalientTimeline, recomputeTimelineLayout} from '../../utils/Salient/salient-timeline';
-import classNames from 'classnames'
+import classNames from 'classnames';
+import TimelineEvents from "./TimelineEvents";
 
 const Timeline = (props) => {
     const timelineClass = classNames('timeline', {
         'timeline-horz': props.isHorz,
-        'card': props.isCard,
-        'flat-em': props.flattenCard,
-        'loaded': !props.isLoading && React.Children.count(props.children) > 0,
+        'loaded': !props.isLoading && props.data.length > 0,
         'timeline-staggered': props.isStaggered,
         'center-events': props.centerEvents
     });
@@ -23,19 +22,19 @@ const Timeline = (props) => {
 
     // handle when data fetch through axios
     useLayoutEffect(() => {
-        if(!props.isLoading && React.Children.count(props.children) > 0){
+        if(!props.isLoading && props.data.length > 0){
             initializeSalientTimeline();  
             hasInitialized.current = true;
         }
-    }, [props.isLoading, props.children]);  
+    }, [props.isLoading, props.data]);  
     
     //handle when state change
     useEffect(() => {
-        if(hasInitialized.current && !props.isLoading && React.Children.count(props.children) > 0){
+        if(hasInitialized.current && !props.isLoading && props.data.length > 0){
             recomputeTimelineLayout();
             
         }
-    }, [props.children, showCount]);  
+    }, [props.data, showCount]);  
 
     return (
         <React.Fragment>
@@ -50,7 +49,7 @@ const Timeline = (props) => {
                     </select>
                 </div>}
                 {props.showControls && <button className="toggle-timeline toggle-back"></button>}
-                {props.children}    
+                {props.data.length > 0 && <TimelineEvents data={props.data} />}
                 {props.showControls && <button className="toggle-timeline toggle-forward"></button>}
             </div>
             
@@ -62,8 +61,6 @@ const Timeline = (props) => {
 Timeline.defaultProps = {
     title: '',
     showControls: true,
-    isCard: false,
-    flattenCard: false,
     isStaggered: false,
     centerEvents: false,
     isHorz: false,

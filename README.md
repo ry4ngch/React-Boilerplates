@@ -225,18 +225,6 @@ The Salient Timeline is a customizable timeline component that can be easily con
     - `true`: Displays the timeline horizontally (`timeline-horz` class is applied).  
     - `false`: Default. Displays the timeline vertically.
 
-- **`isCard`**  
-  - **Type**: `Boolean` (`true` | `false`)  
-  - **Description**: Enables or disables card-style backgrounds for timeline items.  
-    - `true`: Applies the `.card` class.  
-    - `false`: Default. No card styling.
-
-- **`flattenCard`**  
-  - **Type**: `Boolean` (`true` | `false`)  
-  - **Description**: Flattens the card design, removing any effects.  
-    - `true`: Applies the `flat-em` class.  
-    - `false`: Default. No flattening applied.
-
 - **`isLoading`**  
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Used with React state to determine if data has been fetched.  

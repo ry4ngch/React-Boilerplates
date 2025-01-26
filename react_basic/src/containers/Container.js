@@ -117,26 +117,21 @@ const Container = () => {
           </Col>
         </Row>
 
-        <Timeline 
-          title="Timeline" 
-          showCount={5}
-          isHorz={true} 
-          isCard={true} 
-          flattenCard={true}
-          isLoading={isLoading}
-          isStaggered={true}
-          centerEvents={true}
-          showControls={true}>
-          <ul>
-            {data.map((item, index) => (
-              <li key={item.id}>
-                <label className={`timeline-event-icon ${index === 0 ? 'icon-square' : 'icon-circle'}`}></label>
-                <span className="timeline-event-thumbnail">{item.thumbnail}</span>
-                <small>{item.text}</small>
-              </li>
-            ))}
-          </ul>
-        </Timeline>
+        <Card className="flat-em">
+          <div class="card-content">
+            <Timeline 
+              title="Timeline" 
+              showCount={5}
+              isHorz={true} 
+              isLoading={isLoading}
+              isStaggered={true}
+              centerEvents={true}
+              showControls={true}
+              data={data}>
+            </Timeline>
+          </div>
+        </Card>
+       
 
         <Card className="flat-em">
           <Accordian data={accordianData} activeToggle="single"/>
