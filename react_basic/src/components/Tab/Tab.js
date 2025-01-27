@@ -4,23 +4,25 @@ import TabItems from "./TabItems";
 import '../../utils/Salient/salient-tabs';
 import classNames from "classnames";
 
+
+
 const Tab = (props) => {
     const tabClass = classNames('tabbed-content', {
-        'tabs-side': props.isVert,
+        'tabs-side': props.sideTabs,
     });
     
 
     return (
         <article className={tabClass}>
-            <TabItems />
-            <TabContent />
+            <TabItems/>
+            <TabContent/>
             
         </article>
     );
 }
 
 Tab.defaultProps = {
-    isVert: false
+    sideTabs: false
 }
 
 
