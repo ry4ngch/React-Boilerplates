@@ -33,26 +33,6 @@ $navbar-grayscale-color: #333;
 $navbar-grayscale-hoverbg: #333;
 $navbar-grayscale-hovercolor: #fff;
 
-
-/* General */
-*,
-*::after,
-*::before {
-    font-family: "Roboto",Arial,sans-serif;
-    //font-weight: 500;
-    zoom: .98; 
-    -moz-transform: scale(.98); 
-    -moz-transform-origin: 0 0;
-    margin: 0;
-    padding:0;
-  }
-
-
-body, html {
-    width: 100%;
-    height: 100%;
-}
-
 /* Hamburger Menu Icon */
 
 .hamburger {
