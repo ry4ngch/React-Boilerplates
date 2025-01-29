@@ -6,7 +6,6 @@ $hamburger-vert-margin: 5px;
 $navbar-height: 35px;
 $navbar-vert-pad: 15px;
 
-
 /* Specify Color Themes*/
 // Default color
 $navbar-default-bgcolor: #ededed;
@@ -32,6 +31,12 @@ $navbar-grayscale-bgcolor: #f8f8f8;
 $navbar-grayscale-color: #333;
 $navbar-grayscale-hoverbg: #333;
 $navbar-grayscale-hovercolor: #fff;
+
+/* Global */
+
+.navbar > * {
+    font-size: 1.4rem;
+}
 
 /* Hamburger Menu Icon */
 
@@ -109,7 +114,6 @@ nav.grayscale-scheme .hamburger.active div{
 
 /* Brand */
 .navbar-brand {
-    font-size: 1.2em;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -119,16 +123,15 @@ nav.grayscale-scheme .hamburger.active div{
 }
 
 .navbar-brand:has([class*="fa"]){
-    padding: .25em;
+    padding: .25rem;
+    font-size: 1em;
 }
 
 .navbar-brand span {
     padding: 0 15px;
     vertical-align: middle;
-    //height: 100%;
-    //top: 50%;
     position: relative;
-    //transform: translateY(-50%);
+    font-size: 1.2em;
 }
 
 .brand-icon {
@@ -445,7 +448,7 @@ nav.grayscale-scheme .navlinks li:hover a{
 }
 
 .navlink-icon {
-    margin-right: .8em;
+    margin-right: .8rem;
 }
 
 /** Dropdown Menu **/
@@ -631,7 +634,7 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 
     .active + .navbar-brand {
         display: inline-block;
-        margin-left: 1em;
+        margin-left: 1rem;
     }
 
     .active + .navbar-brand span {
