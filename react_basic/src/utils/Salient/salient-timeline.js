@@ -94,30 +94,45 @@ const renderTimeline = () => {
         }
 
         timeline.querySelector('ul').classList.add('rendering');
+
+        requestAnimationFrame(() => {
+            if(dataActiveIndex){
+                const firstVisibleIndex = Array.from(items).findIndex(item => window.getComputedStyle(item).display !== 'none');
+                if(firstVisibleIndex > dataActiveIndex){
+                    setEventActiveState(false)
+                } else {
+                    setEventActiveState(true)
+                }
+            }
+        })
+        
+        
     };
 
+    const updateToggleBackwardRender = () => {
+        if (startIndex - showCount < 0) {
+            // Prevent moving before the start
+            startIndex = 0;
+        } else {
+            // Move back by one batch
+            startIndex -= showCount;
+        }
+
+        // Update everything
+        setToggleBtnState();
+        updateVisibleItems();
+        updateUlSize(); // Adjust height for the new visible items
+    }
 
     // Handle back button click
     if(toggleBackBtn){
-        toggleBackBtn.addEventListener('click', () => {
-            if (startIndex - showCount < 0) {
-                // Prevent moving before the start
-                startIndex = 0;
-            } else {
-                // Move back by one batch
-                startIndex -= showCount;
-            }
-    
-            // Update everything
-            setToggleBtnState();
-            updateVisibleItems();
-            updateUlSize(); // Adjust height for the new visible items
-        });
+        // reset event listener on toggleButton before adding again
+        toggleBackBtn.removeEventListener('click', updateToggleBackwardRender);
+        toggleBackBtn.addEventListener('click', updateToggleBackwardRender);
     }
-    
-    if(toggleForwardBtn){
-        toggleForwardBtn.addEventListener('click', () => {
-            const maxStartIndex = totalItems - showCount; // The last valid start index
+
+    const updateToggleForwardRender = () => {
+        const maxStartIndex = totalItems - showCount; // The last valid start index
         
             if (startIndex + showCount > maxStartIndex) {
                 // Prevent moving beyond the end
@@ -131,7 +146,14 @@ const renderTimeline = () => {
             setToggleBtnState();
             updateVisibleItems();
             updateUlSize(); // Adjust height for the new visible items
-        });
+            
+    }
+
+    
+    if(toggleForwardBtn){
+        // reset event listener on toggleButton before adding again
+        toggleForwardBtn.removeEventListener('click', updateToggleForwardRender);
+        toggleForwardBtn.addEventListener('click', updateToggleForwardRender);
     }
     
 
@@ -181,31 +203,33 @@ const initializeSalientTimeline = () => {
         timeline_ul.classList.remove('rendering');
     });
 
-    // function for setting timeline event active state
-    const setEventActiveState = (state) => {
-        const timeline = document.querySelector('.timeline');
-        const isTimelineActive = timeline.classList.contains('timeline-active');
-        const dataActiveIndex = parseInt(timeline.dataset.activeId, 0) || undefined;
-        const items = [...timeline.querySelectorAll('ul li')];
-        if(dataActiveIndex){
-            if(!state){
-                if(isTimelineActive){
-                    timeline.classList.remove('timeline-active');
-                    items[dataActiveIndex].classList.remove('active-event');
-                }
-            } else {
-                if(!isTimelineActive){
+    timeline_ul.addEventListener('mouseenter', () => setEventActiveState(false));
+    timeline_ul.addEventListener('mouseleave', () => setEventActiveState(true));
+
+}
+
+// function for setting timeline event active state
+const setEventActiveState = (state) => {
+    const timeline = document.querySelector('.timeline');
+    const isTimelineActive = timeline.classList.contains('timeline-active');
+    const dataActiveIndex = parseInt(timeline.dataset.activeId, 0) || undefined;
+    const items = [...timeline.querySelectorAll('ul li')];
+    const firstVisibleIndex = Array.from(items).findIndex(item => window.getComputedStyle(item).display !== 'none');
+    if(dataActiveIndex){
+        if(!state){
+            if(isTimelineActive){
+                timeline.classList.remove('timeline-active');
+                items[dataActiveIndex].classList.remove('active-event');
+            }
+        } else {
+            if(!isTimelineActive){
+                if(dataActiveIndex >= firstVisibleIndex){
                     timeline.classList.add('timeline-active');
                     items[dataActiveIndex].classList.add('active-event');
                 }
             }
         }
     }
-
-
-    timeline_ul.addEventListener('mouseenter', () => setEventActiveState(false));
-    timeline_ul.addEventListener('mouseleave', () => setEventActiveState(true))
-
 }
 
 const recomputeTimelineLayout = () => {
