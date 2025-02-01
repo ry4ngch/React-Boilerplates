@@ -9,7 +9,8 @@ const Timeline = (props) => {
         'timeline-horz': props.isHorz,
         'loaded': !props.isLoading && props.data.length > 0,
         'timeline-staggered': props.isStaggered,
-        'center-events': props.centerEvents
+        'center-events': props.centerEvents,
+        'timeline-active': props.isTimelineActive && props.activeEventID
     });
 
     const [showCount, setShowCount] = useState(props.showCount);
@@ -38,7 +39,7 @@ const Timeline = (props) => {
 
     return (
         <React.Fragment>
-            <div className={`${timelineClass} ${props.className || ''}`} data-show-count={showCount}>
+            <div className={`${timelineClass} ${props.className || ''}`} data-show-count={showCount} data-active-id={props.activeEventID}>
                 {props.title.trim().length > 0 && <div className="timeline-header timeline-group justify-between">
                     <h3><FontAwesomeIcon icon={props.headerIcon} className="header-icon"></FontAwesomeIcon>{props.title}</h3>
                     <select value={showCount} onChange={updateShowCount} className="header-widget">
@@ -64,7 +65,9 @@ Timeline.defaultProps = {
     isStaggered: false,
     centerEvents: false,
     isHorz: false,
-    headerIcon: 'history'
+    headerIcon: 'history',
+    isTimelineActive: false,
+    activeEventID: undefined
 }
 
 export default Timeline;

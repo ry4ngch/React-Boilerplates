@@ -189,7 +189,8 @@ $li-padding-top: 1em;
     padding-top: $li-padding-top;
     transition: .2s transform ease-in-out, .8s opacity ease-in-out;
 
-    &:hover {
+    &:hover,
+    &.active-event {
       .timeline-event-icon {
         animation: circle 1.2s infinite;
         background-color: map.get($color, func);
@@ -261,7 +262,9 @@ $li-padding-top: 1em;
 
 // make the current li:before element and the element after that to have sub color
 .timeline ul li:hover::before,
-.timeline ul li:hover ~ li::before{
+.timeline ul li:hover ~ li::before,
+.timeline ul li.active-event::before,
+.timeline ul li.active-event ~ li::before{
   content: '';
   background: map.get($color, sub);
   width: $line-width;
@@ -273,24 +276,30 @@ $li-padding-top: 1em;
 }
 
 .timeline ul li:hover ~ li:last-child::before,
-.timeline ul li:last-child:hover::before {
+.timeline ul li:last-child:hover::before,
+.timeline ul li.active-event ~ li:last-child::before,
+.timeline ul li.active-event:last-child:hover::before {
   height: calc(100% - $li-padding-top - $node-size/2 - $line-width/2);
 }
 
 // upon hover, make all ul:before line func color
-.timeline ul:hover::before {
+.timeline ul:hover::before,
+.timeline.timeline-active ul::before {
   background: map.get($color, func);
 }
 
-.timeline ul:hover li:not(:hover) .timeline-event-icon{
+.timeline ul:hover li:not(:hover) .timeline-event-icon,
+.timeline.timeline-active ul li:not(.active-event) .timeline-event-icon{
   border-color: map.get($color, func);
 }
 
-.timeline ul:hover li:hover .timeline-event-icon {
+.timeline ul:hover li:hover .timeline-event-icon,
+.timeline.timeline-active ul li.active-event .timeline-event-icon {
   border-color: map.get($color, active);
 }
 
-.timeline ul:hover li:hover ~ li .timeline-event-icon{
+.timeline ul:hover li:hover ~ li .timeline-event-icon,
+.timeline.timeline-active ul li.active-event ~ li .timeline-event-icon{
   border-color: map.get($color, sub);
 }
 
@@ -313,7 +322,8 @@ $li-padding-top: 1em;
   left: calc(100% - $node-size/2)
 }
 
-.timeline-staggered li:nth-child(even):hover::before {
+.timeline-staggered li:nth-child(even):hover::before,
+.timeline-staggered li:nth-child(even).active-event::before {
   left: calc(100% + $line-width/2)
 }
 
@@ -322,7 +332,8 @@ $li-padding-top: 1em;
   padding-right: 2em;
 }
 
-.timeline-staggered ul li:hover ~ li:nth-child(even)::before {
+.timeline-staggered ul li:hover ~ li:nth-child(even)::before,
+.timeline-staggered.timeline-active ul li.active-event ~ li:nth-child(even)::before {
   left: calc(100% + $line-width/2);
 }
 
@@ -333,7 +344,9 @@ $li-padding-top: 1em;
 @media screen and (min-width: 768px) {
   .timeline-horz ul::before,
   .timeline-horz ul li:hover ~ li::before,
-  .timeline-horz ul li:hover::before{
+  .timeline-horz ul li:hover::before,
+  .timeline-horz.timeline-active ul li.active-event ~ li::before,
+  .timeline-horz.timeline-active ul li.active-event::before{
     height: $line-width;
     right: 1em;
     margin: 0 auto;
@@ -346,12 +359,15 @@ $li-padding-top: 1em;
   }
 
   .timeline-horz ul li:hover ~ li::before,
-  .timeline-horz ul li:hover::before {
+  .timeline-horz ul li:hover::before,
+  .timeline-horz.timeline-active ul li.active-event::before,
+  .timeline-horz.timeline-active ul li.active-event ~ li::before {
     width: calc(100% + $shift-ul-line);
     height: $line-width;
   }
 
   .timeline-horz ul li:hover ~ li:last-child::before,
+  .timeline-horz.timeline-active ul li.active-event ~ li:last-child::before,
   .timeline-horz ul li:last-child::before {
     width: 100%;
     height: $line-width !important;
@@ -377,7 +393,8 @@ $li-padding-top: 1em;
         top: .4em;
       }
 
-      &:hover ~ li::before{
+      &:hover ~ li::before,
+      &.active-event ~ li::before{
         top: calc($node-size/2 + $line-width/2 + $ul-padding);
       }
 
@@ -422,7 +439,9 @@ $li-padding-top: 1em;
   }
 
   .timeline-horz.timeline-staggered li:nth-child(odd):hover::before,
-  .timeline-horz.timeline-staggered li:hover ~ li::before {
+  .timeline-horz.timeline-staggered li:nth-child(odd).active-event::before,
+  .timeline-horz.timeline-staggered li:hover ~ li::before,
+  .timeline-horz.timeline-staggered.timeline-active ul li.active-event ~ li::before {
     top: 100%;
   }
 
@@ -437,13 +456,15 @@ $li-padding-top: 1em;
       top: -#{calc($node-size/2 + $line-width/2)};
     }
 
-    &:hover::before {
+    &:hover::before,
+    &.active-event::before {
       left: $shift-ul-line;
       top: 0;
     }
   }
 
-  .timeline-staggered.timeline-horz ul li:hover ~ li:nth-child(even)::before {
+  .timeline-staggered.timeline-horz ul li:hover ~ li:nth-child(even)::before,
+  .timeline-staggered.timeline-horz.timeline-active ul li.active-event ~ li:nth-child(even)::before {
     left: 0;
     top: 0;
     height: $line-width;
@@ -482,7 +503,9 @@ $li-padding-top: 1em;
       margin-left: 0;
 
       &:hover::before,
-      &:hover ~ li::before {
+      &:hover ~ li::before,
+      &.active-event::before,
+      &.active-event ~ li::before {
         left: calc(50% + 1em) !important;
         width: calc(100% + 1em + 1em);
       }

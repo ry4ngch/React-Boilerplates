@@ -81,7 +81,9 @@ const Container = () => {
               isStaggered={true}
               centerEvents={true}
               showControls={true}
-              data={data}>
+              data={data}
+              isTimelineActive={true}
+              activeEventID={3}>
             </Timeline>
           </div>
         </Card>

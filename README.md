@@ -230,19 +230,33 @@ The Salient Timeline is a customizable timeline component that can be easily con
 
 ### Parameters
 
-- **`isHorz`**  
+- **`data`** (Required)  
+  - **Type:** `Array<Object>`
+  - **Description:** Accepts an array of objects, where each object represents an item with specific properties.
+  
+#### Example:
+```jsx
+const data = [
+  { id: 1, thumbnail: "Timeline 1", text: Lorem ipsum dolor sit amet.},
+  { id: 2, thumbnail: "Timeline 2", text: Lorem ipsum dolor sit amet.}
+];
+
+<Timeline data={data} />
+```
+
+- **`isHorz`** (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Determines the timeline's orientation.  
     - `true`: Displays the timeline horizontally (`timeline-horz` class is applied).  
     - `false`: Default. Displays the timeline vertically.
 
-- **`isLoading`**  
+- **`isLoading`** (Required)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Used with React state to determine if data has been fetched.  
     - Use `setIsLoaded` to update the state when data is fetched.  
     - When loaded, the `loaded` class is applied to the timeline.
 
-- **`isStaggered`**  
+- **`isStaggered`**  (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Applies a staggered layout to timeline items.  
     - `true`: Adds the `timeline-staggered` class.  
@@ -250,7 +264,7 @@ The Salient Timeline is a customizable timeline component that can be easily con
       - **Vertical timeline**: Items stagger left and right.  
     - `false`: Default. No staggering applied.
 
-- **`showCount`** 
+- **`showCount`** (Optional)
   - **Type**: `Integer`  
   - **Description**: Limits the number of timeline events displayed per page. Defaults to 3 if data-show-count attribute in Timeline.js is not found. However, it is better to set it as the props.showCount is use by React state. 
     - Events exceeding this count are pushed to subsequent pages.  
@@ -258,18 +272,18 @@ The Salient Timeline is a customizable timeline component that can be easily con
       - **Up Arrow**: Navigates to the previous page.  
       - **Down Arrow**: Navigates to the next page.
 
-- **`centerEvents`** 
+- **`centerEvents`** (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Centers the events items of the timeline on a horizontal timeline. This will apply the `center-events` class. 
     - `true`: Applies the `center-events` class.  
     - `false`: Default. Each events items are place at the left.
   - Note: This props works only for horizontal timeline, when `screen size <= 768px`, the timeline will automatically become a vertical timeline.
 
-- **`title`** 
+- **`title`** (Optional)
   - **Type**: `String` 
   - **Description**: Apply a header title to the timeline.
 
-- **`showControls`**
+- **`showControls`** (Optional)
   - **Type**:  `Boolean` (`true` | `false`) 
   - **Description**: Conditions for showing the up and down arrow buttons  
     - `true`: Default. To change the default behaviour, adjust the defaultProps in Timeline.js. Otherwise, the up and down arrow buttons will be visible.
@@ -278,20 +292,48 @@ The Salient Timeline is a customizable timeline component that can be easily con
     - `showControls={data.length > 0 && data.length > showCount}` may be set in Container.js where `data` refers to the an array fetch through axios or other means.
     - Note: for the above example to work, ensure showCount is a variable instead of defining it as part of Timeline attribute directly. ie: `showCount = {showCount}`
 
+- **`isTimelineActive`** (Optional)
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Apply the `timeline-active` class to the timeline
+    - `true`: Adds the `timeline-active` class.  
+    - `false`: Default. `timeline-active` class is not applied.
+    - Note: To apply the style, `activeEventID` props must also be defined (see `activeEventID` below) 
+
+- **`activeEventID`** (Optional)
+  - **Type**: `Integer` 
+  - **Description**: Apply the `active-event` class to the timeline event
+    - Adds the `active-event` class to the timeline event where the index matches the `activeEventID`. The event item having matching index as `activeEventID` will have an effect similar to hovering state. Defaults to `undefined` if data-active-id attribute in Timeline.js is not found. When `undefined`, both `active-event` class and `timeline-active` class will not be applied.
+
 ## Using Salient Tabs
 
 The Salient Tabs is a customizable component that can be easily configured using classes and attributes.
 
 ### Parameters
 
-- **`sideTabs`**  
+- **`sideTabs`**  (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Determines the tab orientation.  
     - `true`: Displays the tabs vertically (`tabs-side` class is applied).  
     - `false`: Default. Displays the tabs horizontally.
 
-- **`tabStyleActive`**  
+- **`tabStyleActive`**  (Optional)
   - **Type**: `String` (`box` | `underline`)  
-  - **Description**: Determine the tab style effect when active state, either box or underline
+  - **Description**: Determine the tab style effect when active state, either box or underline. Default will be `box` tab style.
 
 *Note: The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design*
+
+## Using Salient Accordian
+
+The Salient Accordian is a customizable component that can be easily configured using classes and attributes.
+
+### Parameters
+
+- **`data`** (Required)  
+  - **Type:** `Array<Object>`
+  - **Description:** Accepts an array of objects, where each object represents an item with specific properties.
+
+- **`activeToggle`**  (Optional)
+  - **Type**: `String` (`single` | `multiple`)  
+  - **Description**: Controls the accordion toggle behavior.
+    - "single": Only one item can be expanded at a time.
+    - "multiple": Allows multiple items to be expanded simultaneously.

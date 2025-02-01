@@ -7,10 +7,18 @@ const renderTimeline = () => {
     const toggleBackBtn = document.querySelector('.toggle-back');
     const toggleForwardBtn = document.querySelector('.toggle-forward');
 
+
+    // retrieve activeEvent from data-active-event attribute and if its value is not undefined then apply the active-event class to the list item where the index matches dataActiveIndex
+    const dataActiveIndex = parseInt(timeline.dataset.activeId, 10) || undefined;
+    if(dataActiveIndex) {
+        if(!items[dataActiveIndex].classList.contains('active-event')){
+            items[dataActiveIndex].classList.add('active-event')
+        }
+    }
+
     // Retrieve showCount from data-show-count attribute
     let showCount = parseInt(timeline.dataset.showCount, 10) || 3;  // Default to 3 if undefined
     let startIndex = 0;
-    
 
     // Function to calculate the total height or width of the currently visible items
     const calculateItemSize = () => {
@@ -172,6 +180,31 @@ const initializeSalientTimeline = () => {
     timeline_ul.addEventListener('animationend', () => {
         timeline_ul.classList.remove('rendering');
     });
+
+    // function for setting timeline event active state
+    const setEventActiveState = (state) => {
+        const timeline = document.querySelector('.timeline');
+        const isTimelineActive = timeline.classList.contains('timeline-active');
+        const dataActiveIndex = parseInt(timeline.dataset.activeId, 0) || undefined;
+        const items = [...timeline.querySelectorAll('ul li')];
+        if(dataActiveIndex){
+            if(!state){
+                if(isTimelineActive){
+                    timeline.classList.remove('timeline-active');
+                    items[dataActiveIndex].classList.remove('active-event');
+                }
+            } else {
+                if(!isTimelineActive){
+                    timeline.classList.add('timeline-active');
+                    items[dataActiveIndex].classList.add('active-event');
+                }
+            }
+        }
+    }
+
+
+    timeline_ul.addEventListener('mouseenter', () => setEventActiveState(false));
+    timeline_ul.addEventListener('mouseleave', () => setEventActiveState(true))
 
 }
 
