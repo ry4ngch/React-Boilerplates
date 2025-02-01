@@ -33,8 +33,12 @@ This version is suitable for starting with a clean slate, without any pre-config
 
 ### 3. `react_bootstrap` - React with Bootstrap
 
-- Integration with Bootstrap for UI components (installed via npm)
+- Integration with Bootstrap version 5 for UI components (installed via npm)
 - Navbar using Bootstrap Offcanvas design
+
+> **Note:** 
+> Bootstrap 5 currently has some issues with the latest SASS implementation, webpack has been configured to ignore the @import warnings.
+> It is recommended to use tailwind for more seamless development experience with react.
 
 ## How to Use
 1. Clone the repository or download the `react_basic` or `react_bare` or `react_bootstrap` folder.
@@ -53,7 +57,7 @@ This version is suitable for starting with a clean slate, without any pre-config
    npm run build
 
 ## Project Structure
-Here’s the basic file structure for `react bare` versions:
+Here’s the basic file structure for `react_bare` versions:
 
 ```plaintext
 .
@@ -86,7 +90,7 @@ Here’s the basic file structure for `react bare` versions:
 └── .gitignore
 ```
 
-Here’s the basic file structure for `react basic` versions:
+Here’s the basic file structure for `react_basic` versions:
 
 ```plaintext
 .
@@ -99,26 +103,31 @@ Here’s the basic file structure for `react basic` versions:
 ├── src
 │   ├── components
 │   │   ├── Accordian
-│   │   │   ├── Accordian.js         (For Demo Purpose Only)
-│   │   │   └── AccordianItem.js     (For Demo Purpose Only)
+│   │   │   ├── Accordian.js         (Layout provided For Demo Purpose Only)
+│   │   │   └── AccordianItem.js     (Layout provided For Demo Purpose Only)
 │   │   ├── Buttons    
-│   │   │   └── Button.js            (For Demo Purpose Only) 
+│   │   │   └── Button.js            (Layout provided For Demo Purpose Only) 
 │   │   ├── Card   
-│   │   │   └── Card.js              (For Demo Purpose Only) 
+│   │   │   └── Card.js              (Layout provided For Demo Purpose Only) 
 │   │   ├── Layout
 │   │   │   ├── Footer.js    
 │   │   │   └── Header.js
 │   │   ├── Navigation
-│   │   │   ├── Nav.js               (For Demo Purpose Only) 
-│   │   │   └── NavMenu.js           (For Demo Purpose Only)  
+│   │   │   ├── Nav.js               (Layout provided For Demo Purpose Only) 
+│   │   │   └── NavMenu.js           (Layout provided For Demo Purpose Only)  
+│   │   ├── Tab
+│   │   │   ├── Tab.js               (Layout provided For Demo Purpose Only)  
+│   │   │   ├── TabContent.js        (Layout provided For Demo Purpose Only)  
+│   │   │   └── TabItems.js          (Layout provided For Demo Purpose Only)  
 │   │   ├── Timeline
-│   │   │   ├── Timeline.js          (For Demo Purpose Only)  
-│   │   │   └── TimelineEvents.js    (For Demo Purpose Only)  
-│   ├── containers       
+│   │   │   ├── Timeline.js          (Layout provided For Demo Purpose Only)  
+│   │   │   └── TimelineEvents.js    (Layout provided For Demo Purpose Only)  
+│   ├── containers  
+│   │   ├── demo_data.js             (Dummy data For Demo Purpose Only, remove this if actual data is available)     
 │   │   └── Container.js           
-│   ├── styles
+│   ├── styles                       (Note: The styles folder contains recommended styles structure, remove the files it if not necessary for your project)
 │   │   ├── base
-│   │   │   ├── _base.scss     
+│   │   │   ├── _base.scss
 │   │   │   └── _settings.scss 
 │   │   ├── components
 │   │   │   ├── _button.scss   
@@ -147,6 +156,8 @@ Here’s the basic file structure for `react basic` versions:
 │   │       ├── _salient-accordian.js    (custom Accordian Javascript)
 │   │       ├── _salient-timeline.scss   (custom Timeline CSS)
 │   │       ├── _salient-timeline.js     (custom Timeline Javascript, Workable with Axios)
+│   │       ├── _salient-tabs.js         (custom Tabs Javascript)
+│   │       ├── _salient-tabs.scss       (custom Tabs CSS)
 │   │       └── _salient-nav.js          (custom Navbar JavaScript)
 │   └── app.js
 ├── package.json
@@ -156,7 +167,7 @@ Here’s the basic file structure for `react basic` versions:
 
 ## Key Files:
 - src/app.js: The entry point for the React app.
-- src/components: Contains reusable components like footer.js and header.js.
+- src/components: Contains reusable components like footer.js and header.js (see features section for more description).
 - src/styles: SCSS files and partials for base, components, and layouts.
 - webpack.config.js: Configured to handle modern setups, including Dart SASS and muted Bootstrap @import errors.
 
@@ -167,10 +178,10 @@ Here’s the basic file structure for `react basic` versions:
 | **Bootstrap**           | Not included                      | Integrated via npm for UI components                                                                  |
 | **Navbar Component**    | Not included                      | Included with reusable styling (`salient-nav.scss`)                                                   |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **JavaScript**          | No additional JavaScript          | Custom JavaScript for: <br> &nbsp;&nbsp; - Navbar component (`salient-nav.js`) <br> &nbsp;&nbsp; - Timeline component (`salient-timeline.js`) <br> &nbsp;&nbsp; - Accordian component ( `salient-accordian.js`) <br> Bootstrap integration |
+| **JavaScript**          | No additional JavaScript          | Custom JavaScript for: <br> &nbsp;&nbsp; - Navbar component (`salient-nav.js`) <br> &nbsp;&nbsp; - Timeline component (`salient-timeline.js`) <br> &nbsp;&nbsp; - Accordian component ( `salient-accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `salient-tabs.js`) <br> Bootstrap integration |
 
 ---
 
@@ -266,3 +277,21 @@ The Salient Timeline is a customizable timeline component that can be easily con
   - **Example Usage with Dynamic data**: 
     - `showControls={data.length > 0 && data.length > showCount}` may be set in Container.js where `data` refers to the an array fetch through axios or other means.
     - Note: for the above example to work, ensure showCount is a variable instead of defining it as part of Timeline attribute directly. ie: `showCount = {showCount}`
+
+## Using Salient Tabs
+
+The Salient Tabs is a customizable component that can be easily configured using classes and attributes.
+
+### Parameters
+
+- **`sideTabs`**  
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Determines the tab orientation.  
+    - `true`: Displays the tabs vertically (`tabs-side` class is applied).  
+    - `false`: Default. Displays the tabs horizontally.
+
+- **`tabStyleActive`**  
+  - **Type**: `String` (`box` | `underline`)  
+  - **Description**: Determine the tab style effect when active state, either box or underline
+
+*Note: The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design*
