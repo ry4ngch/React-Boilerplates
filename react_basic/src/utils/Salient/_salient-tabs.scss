@@ -9,9 +9,18 @@ $text__hover: #525151;
 $border__color: #ddd;
 $width__tabs-side: 150px;
 $breakpoint: 768px;
-@mixin tab-active() {
-  background: $color__main;
-  color: $background__active;
+$tab-link__side-padding: 1em;
+$tab-link__vert-padding: 2em;
+@mixin tab-active($active-type: 'box') {
+
+    @if $active-type == 'underline' {
+        background-color: #00000020;
+        color: $color__main;
+        font-weight: bold;
+    } @else {
+        background: $color__main;
+        color: $background__active;
+    }
 
 }
 
@@ -43,7 +52,7 @@ $breakpoint: 768px;
 
         li {
             a {
-                padding: 1em 2em;
+                padding: $tab-link__side-padding $tab-link__vert-padding;
                 margin-right: .3em;
                 text-decoration: none;
                 color: $color__main;
@@ -59,6 +68,33 @@ $breakpoint: 768px;
                 }
             }
         } 
+    }
+
+    &.tabs-underline {
+        li {
+            a {
+                position: relative;
+                &::after {
+                    width: 100%;
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 2px;
+                    display: block;
+                    transform: scale(0);
+                    transition: transform .5s ease;
+                    background: $color__main;
+                }
+                &.active {
+                    @include tab-active('underline');
+
+                    &::after {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -209,7 +245,7 @@ $breakpoint: 768px;
 
                     a {
                         padding: 1em;
-                        margin-right: none;
+                        margin-right: 0;
                     }
                 }
 
@@ -217,6 +253,31 @@ $breakpoint: 768px;
                     padding: 1em;
                     margin-bottom: 0;
                     border-radius: 1em;
+                }
+
+                &.tabs-underline {
+                    li {
+                        a {
+                            position: relative;
+                            &::after {
+                                position: absolute;
+                                height: 100%;
+                                left: 0;
+                                top: 0;
+                                bottom: 0;
+                                width: 2px;
+                                transform: scale(0);
+                                transition: transform .5s ease;
+                            }
+                            &.active {
+                                @include tab-active('underline');
+
+                                &::after {
+                                    transform: scale(1);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }  

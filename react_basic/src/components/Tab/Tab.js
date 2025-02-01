@@ -14,7 +14,7 @@ const Tab = (props) => {
 
     return (
         <article className={tabClass}>
-            <TabItems/>
+            <TabItems tabStyleActive={props.tabStyleActive}/>
             <TabContent/>
             
         </article>

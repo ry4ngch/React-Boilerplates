@@ -92,7 +92,7 @@ const Container = () => {
         </Card>
 
         
-        <Tab sideTabs={true}/>
+        <Tab sideTabs={false} tabStyleActive="underline"/>
         
 
         <Card className="bg-dracula flat-em">
