@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+const initNav = () => {
   const hbmenu = document.querySelector('.hamburger');
   const toggleNav = document.querySelector('.navlinks');
   const navbar = document.querySelector('.navbar');
@@ -157,7 +157,9 @@ window.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('click', handleClickOutsideDropdown);
 
   window.addEventListener('resize', handleResize);
-});
+};
+
+export default initNav;
 
 /* Helper functions -- Not used */
 function collectionHas(a, b) { //helper function (see below)

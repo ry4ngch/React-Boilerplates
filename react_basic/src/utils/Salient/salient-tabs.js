@@ -61,4 +61,6 @@ const tabControl = () => {
     });
 }
 
-window.addEventListener('DOMContentLoaded', tabControl);
+export default tabControl;
+
+//document.addEventListener('DOMContentLoaded', tabControl);

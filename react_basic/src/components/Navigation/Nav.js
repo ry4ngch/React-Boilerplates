@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../utils/Salient/salient-nav';
+import initNav from '../../utils/Salient/salient-nav';
 
 const Nav = (props) => {
+	useEffect(() => {
+		initNav();
+	}, [])
 
     return (
 		<div>

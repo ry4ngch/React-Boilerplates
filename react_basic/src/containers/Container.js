@@ -97,7 +97,7 @@ const Container = () => {
         <Tab sideTabs={false} tabStyleActive="underline"/>
         
 
-        <Card className="bg-dracula flat-em">
+        <Card className="bg-dark flat-em">
           <div className="card-content">
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
             <Button type="button" buttonStyle="blur" isBlock={true} expandFull={true}>Button2</Button>
@@ -130,7 +130,9 @@ const Container = () => {
         
         
         <Card className="flat">
-          <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
+          <div className="card-info">
+            <p className="card__title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
+          </div>
           <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
         </Card>
       </div>

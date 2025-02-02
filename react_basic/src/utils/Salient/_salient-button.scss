@@ -20,8 +20,7 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 /* Toggle checkbox */
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-	input[type='checkbox'],
-  input[type='radio'] {
+	input[type='checkbox'], input[type='radio'] {
 		--active: #275EFE;
 		--active-inner: #fff;
 		--focus: 2px rgba(39, 94, 254, 0.3);

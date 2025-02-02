@@ -42,7 +42,7 @@ $tab-link__vert-padding: 2em;
     position: relative;
 
     ul {
-        margin: 0 0 1em 0;
+        //margin: 0 0 1em 0;
         padding: 0;
         background: $background__main;
 
@@ -220,15 +220,6 @@ $tab-link__vert-padding: 2em;
 
             .tab-content-wrapper {
                 margin-left: 1em;
-            }
-
-            .item {
-                //margin-left: 1em;
-                &.active {
-                    .item-content {
-                        padding-top: 0;
-                    }  
-                }
             }
             
             .tabs {

@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import AccordianItem from "./AccordianItem";
-import "../../utils/Salient/salient-accordian";
+import initAccordian from "../../utils/Salient/salient-accordian";
 
 const Accordian = (props) => {
+    useEffect(() => {
+        initAccordian();
+    }, []);
+
     return (
         <div className={`accordian ${props.className || ''}`} data-active-toggle={props.activeToggle}>
             {

@@ -1,7 +1,7 @@
-window.addEventListener('DOMContentLoaded', () => {
+const initAccordian = () => {
     const accordian = document.querySelector('.accordian');
     const accordian_cards = document.querySelectorAll('.accordian-card');
-    const activeToggleOption = accordian.dataset.activeToggle || 'multiple';
+    const activeToggleOption = accordian.dataset.activeToggle || accordian.getAttribute("data-active-toggle") || 'multiple';
 
     const card_headings = document.querySelectorAll('.accordian-heading');
 
@@ -48,4 +48,13 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     });
     
-});
+};
+
+function isSafari() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
+export default initAccordian;
+
+//document.addEventListener('DOMContentLoaded', initAccordian);
+

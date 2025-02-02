@@ -34,6 +34,11 @@ $navbar-grayscale-hovercolor: #fff;
 
 /* Global */
 
+.navbar {
+    box-sizing: border-box;
+    line-height: 1;
+}
+
 .navbar > * {
     font-size: 1.4rem;
 }
@@ -115,9 +120,9 @@ nav.grayscale-scheme .hamburger.active div{
 /* Brand */
 .navbar-brand {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    vertical-align: middle;
+    //top: 50%;
+    //transform: translateY(-50%);
+    //vertical-align: middle;
     height: 100%;
     cursor: pointer;
 }
@@ -249,7 +254,7 @@ nav.grayscale-scheme .arrow-left:after{
     top: 0;
     left: 0;
     right: 0;
-    height: $navbar-height;
+    //height: $navbar-height;
     padding: $navbar-vert-pad 20px;
     background: $navbar-default-bgcolor;
     z-index: 999;
@@ -410,6 +415,7 @@ nav.grayscale-scheme .search-box input {
 .navlinks li a {
     text-decoration: none;
     padding: 15px;
+    height: 15px;
 }
 
 nav.dark-scheme .navlinks li a,
@@ -652,7 +658,7 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
         right: 0;
         width: 30%;
         height: 35px;
-        top: 35px;
+        //top: 35px;
         text-align: center;
     }
 
@@ -682,7 +688,7 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
 
     .navbar .search-box {
         top: 50%;
-        position: relative;
+        //position: relative;
         transform: translateY(-50%);
         width: 40%;
         float: right;
@@ -690,10 +696,10 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
     }
 
     .navlinks {
-        top: 50%;
+        //top: 50%;
         position: relative;
-        transform: translateY(-50%);
-        vertical-align: middle;
+        //transform: translateY(-50%);
+        //vertical-align: middle;
     }
 }
 
