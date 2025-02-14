@@ -7,7 +7,7 @@ const ModalOverlay = (props) => {
         <React.Fragment>
             {
                 props.showModal &&
-                <div className={`modal ${props.className}`}>
+                <div style={props.style} className={`modal ${props.className}`}>
                     <div className='modal-content' tabIndex="-1" onBlur={props.onModalBlur}>
                         <a className='modal-close' onClick={props.onCloseModal}></a>
                         {((typeof(props.title)=='string' && props.title.length > 0) || typeof(props.title) === 'object') && <header className="modal-header">{props.title}</header>}

@@ -12,6 +12,7 @@ import Tab from '../components/Tab/Tab';
 import {docs, accordianData} from './demo_data';
 import Modal from '../components/Modal/Modal';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import Treeview from '../components/Treeview/Treeview';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -155,6 +156,12 @@ const Container = () => {
           <a href="#">Order Confirmation</a>
           <a href="#">Checkout</a>
         </Breadcrumb>
+
+        <Card className="flat bg-dark" style={{marginTop: '10px'}}>
+          <div className="card-content">
+            <Treeview/>
+          </div>
+        </Card>
       </div>
     </div>
   )
