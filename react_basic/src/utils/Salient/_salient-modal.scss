@@ -45,7 +45,6 @@
 
 .modal-content {
     width: 735px;
-    height: 500px;
     top: 20%;
     box-sizing: border-box;
     left: 0;
@@ -107,15 +106,29 @@
 }
 
 .modal-body {
-    
+    position: relative;
+    min-height: 150px;
     section {
         max-width: 0;
         max-height:0;
         display: block;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         width: 100%;
         visibility: hidden;
+        position: relative;
         pointer-events: none;
     }
+
+    section.fit-content {
+        width: 80%;
+    }
+
+    section.center-content {
+        text-align: center;
+    }
+
     section.active {
         max-width: 100%;
         max-height: 100%;
@@ -126,17 +139,20 @@
 }
 
 .modal-footer {
-    
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 10px auto;
+    width: 100%;
 }
 
 .modal-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    z-index: 15;
     width: 60%;
     padding-left: 0;
-    margin-left: -30%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     text-align: center;
     list-style: none;
 }
@@ -215,4 +231,10 @@
 
 .modal-control.left-arrow::after {
     transform: translate(-50%, -50%) rotate(225deg);
+}
+
+@media screen and (max-width: 768px){
+    .modal-content {
+        width: 90%;
+    }
 }

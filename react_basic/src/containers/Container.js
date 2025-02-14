@@ -75,14 +75,14 @@ const Container = () => {
 
         <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
         <Modal title='Header' showModal={showModal} onCloseModal={() => setShowModal(false)} className="light-theme" hasSections={true}>
-          <section>
+          <section className='center-content'>
                   Section 1
           </section>
-          <section>
-                  Section 2
+          <section className='fit-content'>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste corporis sunt culpa illum assumenda ex iusto totam mollitia facere. Libero deserunt natus ea ad sint ex voluptates repellendus architecto tenetur!
           </section>
-          <section>
-                  Section 3
+          <section className='fit-content'>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem facere fuga rerum. Voluptate molestiae assumenda dicta velit perferendis exercitationem ratione eligendi amet, modi soluta praesentium fugit, quidem alias voluptatum illo iure. Beatae nobis ipsam dolor quam, ex, nesciunt ea pariatur in quas quo debitis, corrupti illum provident laborum cum expedita!
           </section>
         </Modal>
 

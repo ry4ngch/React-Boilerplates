@@ -4,7 +4,7 @@ const initModal = () => {
         const sections = modalBody.querySelectorAll('section');
         
         //initialize the first section with active class
-        if(sections && sections.length > 0 && sections) {
+        if(sections && sections.length > 0) {
             sections[0].classList.add('active');
         }
     }
@@ -16,7 +16,7 @@ const toggleSection = (action) => {
     if(modalBody){
         const sections = modalBody.querySelectorAll('section');
         const modalIndicators = document.querySelectorAll('.modal-indicators li');
-        if(sections && sections.length > 0 && sections) {
+        if(sections && sections.length > 0) {
             //find the current index of the section with an active class
             const activeSectionIndex = Array.from(sections).findIndex((el) => el.classList.contains('active'));
             let newIndex;
@@ -47,4 +47,26 @@ const toggleSection = (action) => {
     }
 }
 
-export {initModal, toggleSection};
+const selectSection = (index) => {
+    const modalBody = document.querySelector('.modal-body');
+    console.log('hello');
+    if(modalBody){
+        const sections = modalBody.querySelectorAll('section');
+        const modalIndicators = document.querySelectorAll('.modal-indicators li');
+        const activeSectionIndex = Array.from(sections).findIndex((el) => el.classList.contains('active'));
+        if(sections && sections.length > 0) {
+             // remove active class from current section
+             sections[activeSectionIndex].classList.remove('active');
+
+             // assign the next section with active class
+             sections[index].classList.add('active')
+
+            if(modalIndicators){
+                modalIndicators[activeSectionIndex].classList.remove('active');
+                modalIndicators[index].classList.add('active');
+            }
+        }
+    }
+}
+
+export {initModal, toggleSection, selectSection};

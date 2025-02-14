@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import reactDOM from 'react-dom';
-import {initModal, toggleSection} from "../../utils/Salient/salient-modal";
+import {initModal, toggleSection, selectSection} from "../../utils/Salient/salient-modal";
 
 const ModalOverlay = (props) => {
     return (
@@ -19,7 +19,7 @@ const ModalOverlay = (props) => {
                         <div className="modal-footer">
                             {props.hasSections && <ul className="modal-indicators">
                                 {props.children.length > 0 && props.children.map((_,index) => (
-                                    <li key={index} className={index == 0 ? 'active' : ''}></li>
+                                    <li key={index} className={index == 0 ? 'active' : ''} onClick={() => selectSection(index)}></li>
                                 ))}
                             </ul>}
                         </div>
@@ -46,6 +46,10 @@ const Modal = (props) => {
             
         </React.Fragment>
     )
+}
+
+Modal.defaultProps = {
+    hasSections: false
 }
 
 export default Modal;
