@@ -69,6 +69,7 @@
     position: absolute;
     top: 5px;
     right: 10px;
+    z-index: 2;
 
     &::after, &::before {
         border-radius: 3px;
@@ -97,6 +98,7 @@
 
 .modal-header, .modal-body {
     padding: 10px;
+    display: block;
 }
 
 .modal-header {

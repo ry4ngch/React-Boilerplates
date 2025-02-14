@@ -2,15 +2,9 @@
 @use './base/base';
 @use "./base/settings";
 
-/* Note: remove salient.scss if bootstrap is use */
-/* Salient.scss is a custom library for headers */
-@use "../utils/Salient/salient-nav";
-@use "../utils/Salient/salient-timeline";
-@use "../utils/Salient/salient-card";
-@use "../utils/Salient/salient-button";
-@use "../utils/Salient/salient-accordian";
-@use "../utils/Salient/salient-tabs";
-@use "../utils/Salient/salient-modal";
+/* Note: remove salient-all.scss if bootstrap is use */
+/* Salient.scss is a custom library */
+@use "../utils/Salient/salient-all";
 //@use "../utils/bootstrap-table";
 
 // Layout styles

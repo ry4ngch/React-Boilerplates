@@ -11,7 +11,7 @@ import Accordian from '../components/Accordian/Accordian';
 import Tab from '../components/Tab/Tab';
 import {docs, accordianData} from './demo_data';
 import Modal from '../components/Modal/Modal';
-
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -29,9 +29,6 @@ const Container = () => {
         setIsLoading(false);
       });
   }, []);
-
-
-  
 
   return (
     <div id='page-wrapper'>
@@ -74,7 +71,8 @@ const Container = () => {
         </Row>
 
         <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
-        <Modal title='Header' showModal={showModal} onCloseModal={() => setShowModal(false)} className="light-theme" hasSections={true}>
+
+        <Modal title="Header" showModal={showModal} onCloseModal={() => setShowModal(false)} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
           <section className='center-content'>
                   Section 1
           </section>
@@ -150,6 +148,13 @@ const Container = () => {
           </div>
           <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
         </Card>
+
+        <Breadcrumb className="light-bc" hasBadge={true}>
+          <a href="#" className="active">Browse</a>
+          <a href="#">Compare</a>
+          <a href="#">Order Confirmation</a>
+          <a href="#">Checkout</a>
+        </Breadcrumb>
       </div>
     </div>
   )

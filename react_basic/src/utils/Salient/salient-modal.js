@@ -2,7 +2,8 @@ const initModal = () => {
     const modalBody = document.querySelector('.modal-body');
     if(modalBody){
         const sections = modalBody.querySelectorAll('section');
-        
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.focus();
         //initialize the first section with active class
         if(sections && sections.length > 0) {
             sections[0].classList.add('active');
@@ -49,7 +50,6 @@ const toggleSection = (action) => {
 
 const selectSection = (index) => {
     const modalBody = document.querySelector('.modal-body');
-    console.log('hello');
     if(modalBody){
         const sections = modalBody.querySelectorAll('section');
         const modalIndicators = document.querySelectorAll('.modal-indicators li');

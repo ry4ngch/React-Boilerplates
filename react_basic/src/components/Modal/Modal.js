@@ -8,9 +8,9 @@ const ModalOverlay = (props) => {
             {
                 props.showModal &&
                 <div className={`modal ${props.className}`}>
-                    <div className='modal-content'>
+                    <div className='modal-content' tabIndex="-1" onBlur={props.onModalBlur}>
                         <a className='modal-close' onClick={props.onCloseModal}></a>
-                        {props.title.length > 0 && <header className="modal-header">{props.title}</header>}
+                        {((typeof(props.title)=='string' && props.title.length > 0) || typeof(props.title) === 'object') && <header className="modal-header">{props.title}</header>}
                         <div className='modal-body'>
                             {props.children}
                             {props.hasSections && <a className="modal-control left-arrow" onClick={() => toggleSection('prev')}></a>}
