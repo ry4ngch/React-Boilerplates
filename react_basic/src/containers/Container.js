@@ -10,11 +10,13 @@ import Card from '../components/Card/Card';
 import Accordian from '../components/Accordian/Accordian';
 import Tab from '../components/Tab/Tab';
 import {docs, accordianData} from './demo_data';
+import Modal from '../components/Modal/Modal';
 
 
 const Container = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:8080/assets/timeline_data.json')
@@ -70,6 +72,19 @@ const Container = () => {
             </div>
           </Col>
         </Row>
+
+        <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
+        <Modal title='Header' showModal={showModal} onCloseModal={() => setShowModal(false)} className="light-theme" hasSections={true}>
+          <section>
+                  Section 1
+          </section>
+          <section>
+                  Section 2
+          </section>
+          <section>
+                  Section 3
+          </section>
+        </Modal>
 
         <Card className="flat-em">
           <div className="card-content">
@@ -136,7 +151,6 @@ const Container = () => {
           <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
         </Card>
       </div>
-
     </div>
   )
 }

@@ -415,7 +415,7 @@ nav.grayscale-scheme .search-box input {
 .navlinks li a {
     text-decoration: none;
     padding: 15px;
-    height: 15px;
+    //height: 15px;
 }
 
 nav.dark-scheme .navlinks li a,
@@ -547,8 +547,8 @@ nav li[data-dropdown] ul.dropdown-menu.active-dropdown {
         visibility: hidden;
     }
 
-    ul:not(.nav-collapse) li,
-    ul:not(.nav-collapse) li a{
+    .navbar ul:not(.nav-collapse) li,
+    .navbar ul:not(.nav-collapse) li a{
         display: block;
     }
 
