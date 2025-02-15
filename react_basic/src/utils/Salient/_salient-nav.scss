@@ -228,6 +228,7 @@ nav.grayscale-scheme .arrow-left:after{
     cursor: pointer;
     border: none;
     background: transparent;
+    z-index: 2;
 }
 
 .arrow-left:after {

@@ -31,6 +31,8 @@ const Container = () => {
       });
   }, []);
 
+  const [check, setCheck] = useState(false);
+
   return (
     <div id='page-wrapper'>
       <div className="container-fluid">
@@ -120,7 +122,7 @@ const Container = () => {
           <div className="card-content">
             <Button type="checkbox"></Button>
             <Button type="checkbox" disabled={true}></Button>
-            <Button type="switch"></Button>
+            <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check}></Button>
             <Button type="switch" disabled={true}></Button>
           </div>
           <div className="card-content">

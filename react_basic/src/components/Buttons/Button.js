@@ -26,15 +26,15 @@ const Button = (props) => {
                             </button>)
             break;
         default:
-            buttonContent = <button className={`${buttonStyle} ${props.className || ''}`} onClick={props.onClick} disabled={props.disabled}>{props.children}</button>
+            buttonContent = <button className={`${buttonStyle} ${props.className || ''}`} onChange={props.onClick} disabled={props.disabled}>{props.children}</button>
     }
 
     
 
     return (
         <React.Fragment>
-            {props.type === 'switch' && <input type="checkbox" className={`switch ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name}></input>}
-            {props.type === 'checkbox' && <input type="checkbox" className={`${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name}></input>}
+            {props.type === 'switch' && <input type="checkbox" className={`switch ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked}></input>}
+            {props.type === 'checkbox' && <input type="checkbox" className={`${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked}></input>}
             {props.type === 'button' && buttonContent}
         </React.Fragment>
 
@@ -48,7 +48,8 @@ Button.defaultProps = {
     buttonBlock: false,
     expandFull: false,
     disabled: false,
-    inverseColor: false
+    inverseColor: false,
+    onChange: () => {}
 }
 
 export default Button;

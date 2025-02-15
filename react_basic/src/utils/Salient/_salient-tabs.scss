@@ -36,6 +36,7 @@ $tab-link__vert-padding: 2em;
     overflow-y: hidden;
     background: $background__main;
     position: relative;
+    min-height: 120px;
 }
 
 .tabs {

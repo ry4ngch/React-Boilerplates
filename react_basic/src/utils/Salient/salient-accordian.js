@@ -6,9 +6,6 @@ const initAccordian = () => {
     const card_headings = document.querySelectorAll('.accordian-heading');
 
     const handleAccordianToggle = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        
         const currentParent = event.target.closest('.accordian-card');
         const currentContentEl = currentParent.querySelector('.accordian-body');
         if(currentParent.classList.contains('open')){
