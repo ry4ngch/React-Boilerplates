@@ -32,6 +32,8 @@ const Container = () => {
   }, []);
 
   const [check, setCheck] = useState(false);
+  const [isSideTab, setTabType] = useState(false);
+  const [tabStyle, setTabStyle] = useState("underline");
 
   return (
     <div id='page-wrapper'>
@@ -73,9 +75,17 @@ const Container = () => {
           </Col>
         </Row>
 
-        <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
+        <Card className='card-flat'>
+          <div className="card-info">
+            <p className="card__title">Modal (Click to View)</p>
+          </div>
+          <div className="card-content">
+            <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
+          </div>
+        </Card>
+        
 
-        <Modal title="Header" showModal={showModal} onCloseModal={() => setShowModal(false)} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
+        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
           <section className='center-content'>
                   Section 1
           </section>
@@ -87,7 +97,7 @@ const Container = () => {
           </section>
         </Modal>
 
-        <Card className="flat-em">
+        <Card className="card-border">
           <div className="card-content">
             <Timeline 
               title="Timeline" 
@@ -105,25 +115,53 @@ const Container = () => {
         </Card>
        
 
-        <Card className="flat-em">
+        <Card className="card-border">
+          <div className="card-info">
+            <p className="card__title">Accordian</p>
+          </div>
           <Accordian data={accordianData} activeToggle="single"/>
         </Card>
 
+        <Card className="card-border">
+          <div className="card-info">
+            <div className="card-justify">
+              <p className="card__title">Tabs</p>
+              <div>
+                <select onChange={(e) => setTabType(e.target.value==='true')} defaultValue={false}>
+                    <option value={true}>Side Tab</option>
+                    <option value={false}>Vertical Tab</option>
+                </select>
+                <select onChange={(e) => setTabStyle(e.target.value)}>
+                    <option value="underline">Underline</option>
+                    <option value="box">Box</option>
+                </select>
+              </div>
+              
+            </div>
+          </div>
+          <Tab sideTabs={isSideTab} tabStyleActive={tabStyle}/>
+        </Card>
         
-        <Tab sideTabs={false} tabStyleActive="underline"/>
-        
-
-        <Card className="bg-dark flat-em">
+        <Card className="bg-dark card-flat">
+          <div className="card-info">
+            <p className="card__title">Block Button</p>
+          </div>
           <div className="card-content">
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
             <Button type="button" buttonStyle="blur" isBlock={true} expandFull={true}>Button2</Button>
             <Button type="button" buttonStyle="clear" isBlock={true} expandFull={true}>Button3</Button>
+          </div>
+          <div className="card-info">
+            <p className="card__title">Toggle Switch and CheckBox</p>
           </div>
           <div className="card-content">
             <Button type="checkbox"></Button>
             <Button type="checkbox" disabled={true}></Button>
             <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check}></Button>
             <Button type="switch" disabled={true}></Button>
+          </div>
+          <div className="card-info">
+            <p className="card__title">Widget Button</p>
           </div>
           <div className="card-content">
             <Button type="button" buttonType="widget" icon="leftArrow"></Button>
@@ -133,7 +171,10 @@ const Container = () => {
           </div>
         </Card>
         
-        <Card className="flat">
+        <Card className="card-border">
+          <div className="card-info">
+            <p className="card__title">Inverse Buttons</p>
+          </div>
           <div className="card-content">
             <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false} inverseColor={true}>Button4</Button>
             <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false}>Button5</Button>
@@ -145,21 +186,103 @@ const Container = () => {
         </Card>
         
         
-        <Card className="flat">
-          <div className="card-info">
-            <p className="card__title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
+        <Card className="card-border">
+          <div className="card-content">
+            <Card>
+              <div className="card-info">
+                <p className="card__title">Card (Without Animation)</p>
+              </div>
+              <p className="card-content">Normal card without animation, for more card display option, apply card-flat or card-border class to Card Component</p>
+              <p className="card-content">className='card-border' remove box-shadow and uses border, while className='card-flat' applies a single box-shadow</p>
+            </Card>
+        
+            <Card animation='scale'>
+              <div className="card-info">
+                <p className="card__title">Card (With Scale Animation)</p>
+              </div>
+              <p className="card-content">This card will scale and grow large</p>
+            </Card>
+
+            <Card animation='flip-x'>
+              <div className="card-info">
+                <p className="card__title">Card (With Flip Animation)</p>
+              </div>
+              <p className="card-content">This will flip 180 around X-Axis</p>
+            </Card>
+
+            <Card animation='flip-y'>
+              <div className="card-info">
+                <p className="card__title">Card (With Flip Animation)</p>
+              </div>
+              <p className="card-content">This will flip 180 around Y-Axis</p>
+            </Card>
+
+            <Card animation="tilt">
+              <div className="card-grid">
+                <div className="card-info">
+                  <p className="card__title">Card (With Tilt Animation)</p>
+                </div>
+                <p className="card-content">Note: For Tilt Effect to work properly, card-grid class must be applied on inner div</p>
+              </div>
+            </Card>
           </div>
-          <p className="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id unde sint accusantium ea deleniti doloremque dicta maxime, nam quia dolor minima quibusdam debitis, quis voluptate in officia temporibus, possimus vel?</p>
+          
         </Card>
 
-        <Breadcrumb className="light-bc" hasBadge={true}>
-          <a href="#" className="active">Browse</a>
-          <a href="#">Compare</a>
-          <a href="#">Order Confirmation</a>
-          <a href="#">Checkout</a>
-        </Breadcrumb>
+        
 
-        <Card className="flat bg-dark" style={{marginTop: '10px'}}>
+        <Card className="card-border">
+          <div className="card-info">
+            <p className="card__title">Breadcrumbs (Light Background)</p>
+          </div>
+          <div className="card-content">
+            <Breadcrumb className="light-bc" hasBadge={true}>
+              <a href="#" className="active">Browse</a>
+              <a href="#">Compare</a>
+              <a href="#">Order Confirmation</a>
+              <a href="#">Checkout</a>
+            </Breadcrumb>
+          </div>
+          <div className="card-info">
+            <p className="card__title">Breadcrumbs (Dark Background)</p>
+          </div>
+          <div className="card-content">
+            <Breadcrumb hasBadge={true}>
+              <a href="#" className="active">Browse</a>
+              <a href="#">Compare</a>
+              <a href="#">Order Confirmation</a>
+              <a href="#">Checkout</a>
+            </Breadcrumb>
+          </div>
+          <div className="card-info">
+            <p className="card__title">Breadcrumbs (Transparent Background)</p>
+          </div>
+          <div className="card-content">
+            <Breadcrumb className="transparent-bc" hasBadge={true}>
+              <a href="#" className="active">Browse</a>
+              <a href="#">Compare</a>
+              <a href="#">Order Confirmation</a>
+              <a href="#">Checkout</a>
+            </Breadcrumb>
+          </div>
+          <div className="card-info">
+            <p className="card__title">Breadcrumbs (Flat Background: No Box Shadow), No Badge</p>
+          </div>
+          <div className="card-content">
+            <Breadcrumb className="flat-bc" hasBadge={false}>
+              <a href="#" className="active">Browse</a>
+              <a href="#">Compare</a>
+              <a href="#">Order Confirmation</a>
+              <a href="#">Checkout</a>
+            </Breadcrumb>
+          </div>
+        </Card>
+        
+
+        <Card className="card-border bg-dark" style={{marginTop: '10px'}}>
+          <div className="card-info">
+            <p className="card__title">Treeview</p>
+          </div>
           <div className="card-content">
             <Treeview/>
           </div>

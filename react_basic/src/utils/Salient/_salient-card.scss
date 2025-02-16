@@ -8,7 +8,6 @@
     margin-bottom: 1em;
     background-color: #fdfcfc;
     overflow: hidden;
-    /*box-shadow: -4px -4px 20px rgba(0, 0, 0, 0.505);*/
     word-wrap: break-word;
     position: relative;
     z-index: 1;
@@ -18,30 +17,18 @@
     margin-right: 1em;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    z-index: 1;
-    transform: scale(1.05);
-    transition: box-shadow 0.2s ease,
-                transform 0.2s ease,
-                z-index 0s 0s ease;
-}
-
 
 /** Card options **/
-.card.flat {
+.card.card-border {
     box-shadow: 0 0 0 0, 0 0 0 0 !important;
-    transform: none !important;
     border: 1px solid rgba(160, 160, 160, 0.2);
 }
 
-.card.flat-em {
+.card.card-flat {
     background-color: #fff;
     padding: 24px;
     border-radius: 16px;
     box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
-    //margin-bottom: 24px;
-    transform: none !important
 }
 
 .card.glass-morph{
@@ -65,7 +52,7 @@
 
 /** Card content **/
 
-.card .card-detail{
+.card .card-justify{
     display: flex;
     justify-content: space-between;
     align-items: center
@@ -179,6 +166,98 @@
     -webkit-backdrop-filter: blur(20px);
 }
 
-.bg-element{
-    background: linear-gradient(#80FFDB, #5390D9);
+.bg-gradient {
+    background: rgb(202,200,230);
+    background: linear-gradient(90deg, rgba(202,200,230,1) 10%, rgba(9,121,108,1) 50%, rgba(180,184,185,1) 90%);
 }
+
+.bg-pattern-1 {
+    background:
+      conic-gradient(from 135deg,#61696c 90deg,#0000 0) 32px calc(32px/2),
+      conic-gradient(from 135deg,#41414d 90deg,#0000 0),
+      conic-gradient(from 135deg at 50% 0,#61696c 90deg,#0000 0) #41414d;
+    background-size: 64px 32px;
+    color: whitesmoke;
+}
+
+/** Animation **/
+.card.card_flipY:hover {
+    transform: rotateY(180deg);
+}
+
+.card.card_flipX:hover {
+    transform: rotateX(180deg);
+}
+
+.card.card_scale:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    transform: scale(1.05);
+    transition: box-shadow 0.2s ease,
+                transform 0.2s ease,
+                z-index 0s 0s ease;
+}
+
+/*** Animation: Tilt Effect ***/
+.card.card_tilt {
+    --amt: 10;
+    --cols: 10;
+    --rows: 10;
+    --x: 0;
+    --y: 0;
+    position: relative;
+    display: grid;
+    box-shadow: none;
+    overflow: visible ;
+
+    &:hover {
+        transform: none;
+        transition: none;
+    }
+
+}
+
+.card_tilt:has(.cell:nth-child(10n):hover) { --y: calc( 1 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-1):hover) { --y: calc( 0.8 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-2):hover) { --y: calc( 0.6 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-3):hover) { --y: calc( 0.4 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-4):hover) { --y: calc( 0.2 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-5):hover) { --y: calc(-0.2 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-6):hover) { --y: calc(-0.4 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-7):hover) { --y: calc(-0.6 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-8):hover) { --y: calc(-0.8 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(10n-9):hover) { --y: calc(-1 * var(--amt)); }
+
+.card_tilt:has(.cell:nth-child(-n+10):hover) { --x: calc( 1 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+11):nth-child(-n+20):hover) { --x: calc( 0.8 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+21):nth-child(-n+30):hover) { --x: calc( 0.6 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+31):nth-child(-n+40):hover) { --x: calc( 0.4 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+41):nth-child(-n+50):hover) { --x: calc( 0.2 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+51):nth-child(-n+60):hover) { --x: calc(-0.2 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+61):nth-child(-n+70):hover) { --x: calc(-0.4 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+71):nth-child(-n+80):hover) { --x: calc(-0.6 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+81):nth-child(-n+90):hover) { --x: calc(-0.8 * var(--amt)); }
+.card_tilt:has(.cell:nth-child(n+91):hover) { --x: calc(-1 * var(--amt)); }
+
+.cell.debug {
+    border: 1px solid #f00;
+    transition: 200ms ease-out;
+}
+
+.tracker__cells {
+    grid-area: 1/1/-1/-1;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: repeat(var(--rows), 1fr);
+    grid-template-columns: repeat(var(--cols), 1fr);
+}
+
+.card_tilt .card-grid {
+    grid-area: 1 / 1 / -1 / -1;
+    background: #fff;
+    border-radius: inherit;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transform: perspective(800px) rotateY(calc(var(--y) * 1deg)) rotateX(calc(var(--x) * 1deg));
+    transition: transform 500ms ease;
+}
+

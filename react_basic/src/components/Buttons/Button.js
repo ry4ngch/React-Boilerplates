@@ -21,20 +21,20 @@ const Button = (props) => {
     let buttonContent;
     switch(props.buttonType){
         case "widget":
-            buttonContent = (<button className={`btn-icon-wrapper ${props.className || ''}`} onClick={props.onClick} disabled={props.disabled}>
+            buttonContent = (<button className={`btn-icon-wrapper ${props.className || ''}`} onClick={props.onClick} disabled={props.disabled} style={props.style}>
                                 <span className={widgetStyle}></span>
                             </button>)
             break;
         default:
-            buttonContent = <button className={`${buttonStyle} ${props.className || ''}`} onChange={props.onClick} disabled={props.disabled}>{props.children}</button>
+            buttonContent = <button className={`${buttonStyle} ${props.className || ''}`} onClick={props.onClick} disabled={props.disabled} style={props.style}>{props.children}</button>
     }
 
     
 
     return (
         <React.Fragment>
-            {props.type === 'switch' && <input type="checkbox" className={`switch ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked}></input>}
-            {props.type === 'checkbox' && <input type="checkbox" className={`${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked}></input>}
+            {props.type === 'switch' && <input type="checkbox" className={`switch ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
+            {props.type === 'checkbox' && <input type="checkbox" className={`${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
             {props.type === 'button' && buttonContent}
         </React.Fragment>
 

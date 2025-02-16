@@ -117,20 +117,22 @@
 // transparent background
 .transparent-bc a, .transparent-bc a:after {
 	background: transparent;
-	color: black;
+	color: #4a5568;
 	transition: all 0.5s;
+	opacity: 0.8;
 }
 
 .badge.transparent-bc a:before {
-	background: rgb(41, 98, 255);
-	color: #fff;
+	background: #494d59;;
+	color: white;
 	box-shadow: 0 0 0 1px #ccc;
 }
 
 .transparent-bc a:hover, .transparent-bc a.active, 
 .transparent-bc a:hover:after, .transparent-bc a.active:after{
 	background: transparent;
-	color: rgb(41, 98, 255);
+	color: black;
+	opacity: 1;
 }
 
 // flat background

@@ -6,7 +6,6 @@ const Breadcrumb = (props) => {
         'badge': props.hasBadge,
         'center-bc': props.centerBc
     });
-    
 
     return (
         <div className={`${breadcrumbClasses} ${props.className}`}>
