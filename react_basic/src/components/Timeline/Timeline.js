@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useLayoutEffect, useRef} from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {initializeSalientTimeline, recomputeTimelineLayout} from '../../utils/Salient/salient-timeline';
 import classNames from 'classnames';
 import TimelineEvents from "./TimelineEvents";
@@ -12,12 +11,6 @@ const Timeline = (props) => {
         'center-events': props.centerEvents,
         'timeline-active': props.isTimelineActive && props.activeEventID
     });
-
-    const [showCount, setShowCount] = useState(props.showCount);
-
-    const updateShowCount = (event) => {
-        setShowCount(parseInt(event.target.value, 10));
-    }
 
     const hasInitialized = useRef(false); // Track if initialization is done
 
@@ -35,20 +28,11 @@ const Timeline = (props) => {
             recomputeTimelineLayout();
             
         }
-    }, [props.data, showCount]);  
+    }, [props.data, props.showCount]);  
 
     return (
         <React.Fragment>
-            <div className={`${timelineClass} ${props.className || ''}`} data-show-count={showCount} data-active-id={props.activeEventID}>
-                {props.title.trim().length > 0 && <div className="timeline-header timeline-group justify-between">
-                    <h3><FontAwesomeIcon icon={props.headerIcon} className="header-icon"></FontAwesomeIcon>{props.title}</h3>
-                    <select value={showCount} onChange={updateShowCount} className="header-widget">
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="12">12</option>
-                    </select>
-                </div>}
+            <div className={`${timelineClass} ${props.className || ''}`} data-show-count={props.showCount} data-active-id={props.activeEventID} style={props.style}>
                 {props.showControls && <button className="toggle-timeline toggle-back"></button>}
                 {props.data.length > 0 && <TimelineEvents data={props.data} />}
                 {props.showControls && <button className="toggle-timeline toggle-forward"></button>}
@@ -60,12 +44,10 @@ const Timeline = (props) => {
 
 // set default props for showControls to true when showControls prop is never set as an attribute
 Timeline.defaultProps = {
-    title: '',
     showControls: true,
     isStaggered: false,
     centerEvents: false,
     isHorz: false,
-    headerIcon: 'history',
     isTimelineActive: false,
     activeEventID: undefined
 }

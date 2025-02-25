@@ -112,6 +112,8 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   ├── Layout
 │   │   │   ├── Footer.js    
 │   │   │   └── Header.js
+│   │   ├── Modal
+│   │   │   └── Modal.js             (Layout provided For Demo Purpose Only) 
 │   │   ├── Navigation
 │   │   │   ├── Nav.js               (Layout provided For Demo Purpose Only) 
 │   │   │   └── NavMenu.js           (Layout provided For Demo Purpose Only)  
@@ -119,6 +121,8 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   ├── Tab.js               (Layout provided For Demo Purpose Only)  
 │   │   │   ├── TabContent.js        (Layout provided For Demo Purpose Only)  
 │   │   │   └── TabItems.js          (Layout provided For Demo Purpose Only)  
+│   │   ├── Table
+│   │   │   └── Table.js             (Layout provided For Demo Purpose Only)  
 │   │   ├── Timeline
 │   │   │   ├── Timeline.js          (Layout provided For Demo Purpose Only)  
 │   │   │   └── TimelineEvents.js    (Layout provided For Demo Purpose Only)  
@@ -141,24 +145,29 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   ├── utilities
 │   │   │   ├── _functions.scss    
 │   │   │   └── _mixins.scss  
-│   │   ├── custom-bootstrap.scss        (For packing only the necessary css from bootstrap) 
-│   │   └── styles.scss                  (Combines all SCSS files)
-│   ├── utils
-│   │   ├── Boostrap
-│   │   │   └── _bootstrap-table.scss    (Currently unused, future plans to add customized table)    
+│   │   ├── custom-bootstrap.scss          (For packing only the necessary css from bootstrap) 
+│   │   └── styles.scss                    (Combines all SCSS files)
+│   ├── utils  
 │   │   ├── FontAwesome
-│   │   │   └── fontAwesome.js           (For Packing all the font awesome library)  
-│   │   └── Salient                      (Salient is a custom CSS and Javascript Library that I've written)
-│   │       ├── _salient-button.scss     (custom Button CSS)
-│   │       ├── _salient-card.scss       (custom Card CSS)
-│   │       ├── _salient-nav.scss        (custom Navbar CSS)
-│   │       ├── _salient-accordian.scss  (custom Accordian CSS)
-│   │       ├── _salient-accordian.js    (custom Accordian Javascript)
-│   │       ├── _salient-timeline.scss   (custom Timeline CSS)
-│   │       ├── _salient-timeline.js     (custom Timeline Javascript, Workable with Axios)
-│   │       ├── _salient-tabs.js         (custom Tabs Javascript)
-│   │       ├── _salient-tabs.scss       (custom Tabs CSS)
-│   │       └── _salient-nav.js          (custom Navbar JavaScript)
+│   │   │   └── fontAwesome.js             (For Packing all the font awesome library)  
+│   │   └── Salient                        (Salient is a custom CSS and Javascript Library that I've written)
+│   │       ├── _salient-all.scss          (For packing all the salient styles library)
+│   │       ├── _salient-breadcrumb.scss   (custom Breadcrumb CSS)
+│   │       ├── _salient-button.scss       (custom Button CSS)
+│   │       ├── _salient-card.scss         (custom Card CSS)
+│   │       ├── _salient-nav.scss          (custom Navbar CSS)
+│   │       ├── _salient-modal.scss        (custom Modal CSS)
+│   │       ├── _salient-accordian.scss    (custom Accordian CSS)
+│   │       ├── salient-accordian.js       (custom Accordian Javascript)
+│   │       ├── _salient-table.scss        (custom Table CSS)
+│   │       ├── salient-table.js           (custom Table Javascript)
+│   │       ├── _salient-treeview.scss     (custom Treeview CSS)
+│   │       ├── salient-treeview.js        (custom Treeview Javascript)
+│   │       ├── _salient-timeline.scss     (custom Timeline CSS)
+│   │       ├── salient-timeline.js        (custom Timeline Javascript, Workable with Axios)
+│   │       ├── salient-tabs.js            (custom Tabs Javascript)
+│   │       ├── _salient-tabs.scss         (custom Tabs CSS)
+│   │       └── salient-nav.js             (custom Navbar JavaScript)
 │   └── app.js
 ├── package.json
 ├── webpack.config.js
@@ -178,10 +187,10 @@ Here’s the basic file structure for `react_basic` versions:
 | **Bootstrap**           | Not included                      | Integrated via npm for UI components                                                                  |
 | **Navbar Component**    | Not included                      | Included with reusable styling (`salient-nav.scss`)                                                   |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **JavaScript**          | No additional JavaScript          | Custom JavaScript for: <br> &nbsp;&nbsp; - Navbar component (`salient-nav.js`) <br> &nbsp;&nbsp; - Timeline component (`salient-timeline.js`) <br> &nbsp;&nbsp; - Accordian component ( `salient-accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `salient-tabs.js`) <br> Bootstrap integration |
+| **JavaScript**          | No additional JavaScript          | Custom JavaScript for: <br> &nbsp;&nbsp; - Navbar component (`salient-nav.js`) <br> &nbsp;&nbsp; - Timeline component (`salient-timeline.js`) <br> &nbsp;&nbsp; - Accordian component ( `salient-accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `salient-tabs.js`) <br> &nbsp;&nbsp; - Table component ( `salient-table.js`) <br> Bootstrap integration |
 
 ---
 
@@ -196,6 +205,9 @@ This library offers:
 
 > **Note:**  
 > While controlling animations and effects in React is simple, it often requires managing additional state variables, which can complicate the codebase and lead to unnecessary boilerplate. Salient was created to address this issue by providing a streamlined solution that abstracts these complexities.
+
+> **Note:**  
+> The current salient library is only tested to work for a single component, this library is still under development. You are free to customize the code for your project.
 
 ## Using Salient Navbar
 
@@ -278,10 +290,6 @@ const data = [
     - `true`: Applies the `center-events` class.  
     - `false`: Default. Each events items are place at the left.
   - Note: This props works only for horizontal timeline, when `screen size <= 768px`, the timeline will automatically become a vertical timeline.
-
-- **`title`** (Optional)
-  - **Type**: `String` 
-  - **Description**: Apply a header title to the timeline.
 
 - **`showControls`** (Optional)
   - **Type**:  `Boolean` (`true` | `false`) 

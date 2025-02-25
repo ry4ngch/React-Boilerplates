@@ -1,23 +1,30 @@
 import React, {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Table, Row, Col } from 'react-bootstrap';
-import Timeline from '../components/Timeline/Timeline';
-//import TimelineEvents from '../components/Timeline/TimelineEvents';
-//import { error } from 'jquery';
+
+// import the Dummy datas
 import axios from 'axios';
+import {docs, accordianData} from './demo_data';
+
+// Import Components Build with Salient
+import Timeline from '../components/Timeline/Timeline';
 import Button from '../components/Buttons/Button';
 import Card from '../components/Card/Card';
 import Accordian from '../components/Accordian/Accordian';
 import Tab from '../components/Tab/Tab';
-import {docs, accordianData} from './demo_data';
 import Modal from '../components/Modal/Modal';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import Treeview from '../components/Treeview/Treeview';
+import Table from '../components/Table/Table';
 
 const Container = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const [showModal, setShowModal] = useState(false);
+  const [showCount, setShowCount] = useState(5);
+  const [check, setCheck] = useState(false);
+  const [isSideTab, setTabType] = useState(false);
+  const [tabStyle, setTabStyle] = useState("underline");
+  const [tableFilterValue, setTableFilterValue] = useState();
 
   useEffect(() => {
     axios.get('http://localhost:8080/assets/timeline_data.json')
@@ -31,49 +38,67 @@ const Container = () => {
       });
   }, []);
 
-  const [check, setCheck] = useState(false);
-  const [isSideTab, setTabType] = useState(false);
-  const [tabStyle, setTabStyle] = useState("underline");
+  
+  const updateShowCount = (event) => {
+    setShowCount(parseInt(event.target.value, 10));
+  }
+
+  // generic helper function for any filtering
+  function filterData(data, keyword) {
+      if (!Array.isArray(data)) return [];
+
+      if (!keyword) return data; // Return all rows if keyword is empty
+
+      const lowerKeyword = keyword.toLowerCase();
+
+      return data.filter(item => {
+          if (typeof item !== 'object' || item === null) return false;
+
+          return Object.values(item).some(value => {
+              if (value == null) return false; // Skip null or undefined values
+              return value.toString().toLowerCase().includes(lowerKeyword);
+          });
+      });
+  }
+
+  // filtered table
+  const filteredTable = filterData(docs, tableFilterValue);
 
   return (
     <div id='page-wrapper'>
       <div className="container-fluid">
-        <Row>
-          <Col xs md lg="12">
-            <h2>Documents</h2>
-            <hr />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs md lg="12">
-            <div className="docs-table">
-              <Table striped bordered hover responsive>
-                <thead>
-                  <tr>
-                    <th data-field="Type">Type</th>
-                    <th data-field="Name">Name</th>
-                    <th data-field="Description">Description</th>
-                    <th data-field="Tags">Tags</th>
-                    <th data-field="LastViewed">Last Viewed</th>
-                    <th data-field="Expiration">Expiration</th>
+        <Card className="card-border">
+          <div className="card-info">
+            <p className="card__title">Table with Pagination</p>
+          </div>
+          <div className="card-content">
+            <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em'}} onChange={(e) => setTableFilterValue(e.target.value)}/>
+            <Table draggable={false} maxRows={5}>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Tags</th>
+                  <th>Last Viewed</th>
+                  <th>Expiration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredTable.map((row, index) => (
+                  <tr key={index}>
+                    <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
+                    <td data-field="Name">{row.Name} app</td>
+                    <td data-field="Description">{row.Description}</td>
+                    <td data-field="Tags">{row.Tags}</td>
+                    <td data-field="Last Viewed">{row.LastViewed}</td>
+                    <td data-field="Expiration">{row.Expiration}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {docs.map((row, index) => (
-                    <tr key={index}>
-                      <td><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
-                      <td>{row.Name} app</td>
-                      <td>{row.Description}</td>
-                      <td>{row.Tags}</td>
-                      <td>{row.LastViewed}</td>
-                      <td>{row.Expiration}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
-          </Col>
-        </Row>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </Card>
 
         <Card className='card-flat'>
           <div className="card-info">
@@ -98,10 +123,20 @@ const Container = () => {
         </Modal>
 
         <Card className="card-border">
+        <div className="card-info">
+            <div className="card-justify">
+              <h3 className="card__title"><FontAwesomeIcon icon="history"></FontAwesomeIcon>Timeline</h3>
+              <select value={showCount} onChange={updateShowCount}>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="12">12</option>
+              </select>
+            </div>
+          </div>
           <div className="card-content">
             <Timeline 
-              title="Timeline" 
-              showCount={5}
+              showCount={showCount}
               isHorz={true} 
               isLoading={isLoading}
               isStaggered={true}

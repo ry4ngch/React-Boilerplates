@@ -3,12 +3,15 @@ const initCardTiltEffect = () => {
     let cols = 10;
     let rows = 10;
 
-    const card_tilt = document.querySelector('.card_tilt');
+    const card_tilt = document.querySelectorAll('.card_tilt');
 
     // dynamically setting resolution
     const setResolution = (rows, cols) => {
-        card_tilt.style.setProperty('--rows', rows);
-        card_tilt.style.setProperty('--cols', cols);
+        card_tilt.forEach(card => {
+            card.style.setProperty('--rows', rows);
+            card.style.setProperty('--cols', cols);
+        })
+        
     }
 
     setResolution(rows, cols);
@@ -17,22 +20,28 @@ const initCardTiltEffect = () => {
     const addGrid = (state) => {
 
         if(state){
-            let cells = [];
-            let tracker_div = document.createElement('div');
-            tracker_div.classList.add('tracker__cells');
-            tracker_div.setAttribute('aria-hidden', true);
+            card_tilt.forEach(card => {
+                let cells = [];
+                let tracker_div = document.createElement('div');
+                tracker_div.classList.add('tracker__cells');
+                tracker_div.setAttribute('aria-hidden', true);
+                
+                for (let i=0;i<rows*cols;i++) {
+                    cells.push(document.createElement('div'));
+                } 
+                
+                cells.map(cell => cell.classList.add('cell'));
+                
+                cells.forEach(cell => tracker_div.appendChild(cell));
+                card.insertBefore(tracker_div, card.firstChild);
+            })
             
-            for (let i=0;i<rows*cols;i++) {
-                cells.push(document.createElement('div'));
-            } 
-            
-            cells.map(cell => cell.classList.add('cell'));
-            
-            cells.forEach(cell => tracker_div.appendChild(cell));
-            card_tilt.insertBefore(tracker_div, card_tilt.firstChild);
         } else {
-            let allCells = card_tilt.querySelector('.tracker__cells');
-            allCells.remove();
+            card_tilt.forEach(card => {
+                const allCells = card.querySelector('.tracker__cells');
+                allCells.remove();
+            })
+            
         }
             
     }
