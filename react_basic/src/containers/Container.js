@@ -15,6 +15,7 @@ import Modal from '../components/Modal/Modal';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import Treeview from '../components/Treeview/Treeview';
 import Table from '../components/Table/Table';
+import Row from '../components/Table/Row';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -72,30 +73,18 @@ const Container = () => {
             <p className="card__title">Table with Pagination</p>
           </div>
           <div className="card-content">
-            <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em'}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <Table draggable={false} maxRows={5}>
-              <thead>
-                <tr>
-                  <th>Type</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Tags</th>
-                  <th>Last Viewed</th>
-                  <th>Expiration</th>
-                </tr>
-              </thead>
-              <tbody>
+            <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
+            <Table draggable={true} maxRows={5} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]}>
                 {filteredTable.map((row, index) => (
-                  <tr key={index}>
+                  <Row key={index}>
                     <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
                     <td data-field="Name">{row.Name} app</td>
                     <td data-field="Description">{row.Description}</td>
                     <td data-field="Tags">{row.Tags}</td>
                     <td data-field="Last Viewed">{row.LastViewed}</td>
                     <td data-field="Expiration">{row.Expiration}</td>
-                  </tr>
+                  </Row>
                 ))}
-              </tbody>
             </Table>
           </div>
         </Card>
