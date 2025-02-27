@@ -9,13 +9,12 @@ import {docs, accordianData} from './demo_data';
 import Timeline from '../components/Timeline/Timeline';
 import Button from '../components/Buttons/Button';
 import Card from '../components/Card/Card';
-import Accordian from '../components/Accordian/Accordian';
-import Tab from '../components/Tab/Tab';
+import Accordian, {AccordianItem} from '../components/Accordian/Accordian';
+import Tab, {TabContent, TabItems} from '../components/Tab/Tab';
 import Modal from '../components/Modal/Modal';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
-import Treeview from '../components/Treeview/Treeview';
-import Table from '../components/Table/Table';
-import Row from '../components/Table/Row';
+import Treeview, {TreeItem} from '../components/Treeview/Treeview';
+import Table, {TableRow} from '../components/Table/Table';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -76,14 +75,14 @@ const Container = () => {
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
             <Table draggable={true} maxRows={5} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]}>
                 {filteredTable.map((row, index) => (
-                  <Row key={index}>
+                  <TableRow key={index}>
                     <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
                     <td data-field="Name">{row.Name} app</td>
                     <td data-field="Description">{row.Description}</td>
                     <td data-field="Tags">{row.Tags}</td>
                     <td data-field="Last Viewed">{row.LastViewed}</td>
                     <td data-field="Expiration">{row.Expiration}</td>
-                  </Row>
+                  </TableRow>
                 ))}
             </Table>
           </div>
@@ -143,7 +142,11 @@ const Container = () => {
           <div className="card-info">
             <p className="card__title">Accordian</p>
           </div>
-          <Accordian data={accordianData} activeToggle="single"/>
+          <Accordian activeToggle="single">
+              {accordianData.map((item, index) => (
+                  <AccordianItem key={index} title={item.title} content={item.content} />
+              ))}
+          </Accordian>
         </Card>
 
         <Card className="card-border">
@@ -163,7 +166,31 @@ const Container = () => {
               
             </div>
           </div>
-          <Tab sideTabs={isSideTab} tabStyleActive={tabStyle}/>
+          <Tab sideTabs={isSideTab}>
+            <TabItems tabStyleActive={tabStyle}>
+                <li><a href="#tab1" className="active">Tab 1</a></li>
+                <li><a href="#tab2">Tab 2</a></li>
+                <li><a href="#tab3">Tab 3</a></li>
+            </TabItems>
+            <TabContent>  
+                <section id="tab1" className="item active" data-title="Tab 1">
+                    <div className="item-content">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut dicta neque deleniti dignissimos doloribus asperiores vel velit recusandae quasi? Fugit?</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus quibusdam ratione aliquid ut, dolorem illum velit ad sunt dolorum!</p>
+                    </div>
+                </section>
+                <section id="tab2" className="item" data-title="Tab 2">
+                    <div className="item-content">
+                        Tab 2 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+                    </div>
+                </section>
+                <section id="tab3" className="item" data-title="Tab 3">
+                    <div className="item-content">
+                        Tab 3 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+                    </div>
+                </section>
+            </TabContent>
+          </Tab>
         </Card>
         
         <Card className="bg-dark card-flat">
@@ -301,14 +328,30 @@ const Container = () => {
             </Breadcrumb>
           </div>
         </Card>
-        
 
         <Card className="card-border bg-dark" style={{marginTop: '10px'}}>
           <div className="card-info">
             <p className="card__title">Treeview</p>
           </div>
           <div className="card-content">
-            <Treeview/>
+            <Treeview>
+              <TreeItem text='Item 1' subtext="(with levels)">
+                <li><span>1.1</span></li>
+                <li><span>1.2</span></li>
+              </TreeItem>
+              <TreeItem text='Item 2' subtext="(multilevel)">
+                <li><span>2.1</span></li>
+                <TreeItem text="2.2">
+                  <li><span>2.2.1</span></li>
+                  <li><span>2.2.2</span></li>
+                  <TreeItem text="2.2.3" subtext="(we can continue adding levels)">
+                    <li><span>2.2.3.1</span></li>
+                    <li><span>2.2.3.2</span></li>
+                  </TreeItem>
+                </TreeItem>
+              </TreeItem>
+              <TreeItem text='Item 3' subtext="(No Level)"/>
+            </Treeview>
           </div>
         </Card>
       </div>

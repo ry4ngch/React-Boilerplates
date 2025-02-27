@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, Fragment, useState } from "react";
 import { initDraggableTable, initPagination } from "../../utils/Salient/salient-table";
 import classNames from "classnames";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Table = (props) => {
     const ref = useRef();
@@ -110,4 +109,15 @@ Table.defaultProps = {
     columns: [],
 };
 
+const TableRow = ({ children, hiddenColumns }) => {
+    return (
+        <tr>
+            {React.Children.map(children, (cell, index) => 
+                !hiddenColumns[index] ? cell : null
+            )}
+        </tr>
+    )
+}
+
 export default Table;
+export {TableRow}

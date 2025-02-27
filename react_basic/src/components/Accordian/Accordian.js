@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import AccordianItem from "./AccordianItem";
 import initAccordian from "../../utils/Salient/salient-accordian";
 
 const Accordian = (props) => {
@@ -9,11 +8,7 @@ const Accordian = (props) => {
 
     return (
         <div className={`accordian ${props.className || ''}`} data-active-toggle={props.activeToggle}>
-            {
-                props.data.map((item, index) => (
-                    <AccordianItem key={index} title={item.title} content={item.content} />
-                ))
-            }
+            {props.children}
         </div>
     )
 }
@@ -22,4 +17,18 @@ Accordian.defaultProps = {
     activeToggle: 'multiple'
 }
 
+const AccordianItem = (props) => {
+    return (
+        <div className="accordian-card">
+            <div className="accordian-heading">
+                <a>{props.title}</a>
+            </div>
+            <div className="accordian-body">
+                <p>{props.content}</p>
+            </div>
+        </div>
+    )
+}
+
 export default Accordian;
+export {AccordianItem};

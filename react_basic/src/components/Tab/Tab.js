@@ -1,11 +1,6 @@
 import React, {useEffect} from "react";
-import TabContent from './TabContent';
-import TabItems from "./TabItems";
-import '../../utils/Salient/salient-tabs';
 import classNames from "classnames";
 import tabControl from "../../utils/Salient/salient-tabs";
-
-
 
 const Tab = (props) => {
     const tabClass = classNames('tabbed-content', {
@@ -19,9 +14,7 @@ const Tab = (props) => {
 
     return (
         <article className={tabClass}>
-            <TabItems tabStyleActive={props.tabStyleActive}/>
-            <TabContent/>
-            
+            {props.children}
         </article>
     );
 }
@@ -30,5 +23,32 @@ Tab.defaultProps = {
     sideTabs: false
 }
 
+const TabContent = (props) => {
+    return (
+        <div className="tab-content-wrapper">
+            {props.children}
+        </div>
+    )
+}
+
+const TabItems = (props) => {
+    const tabItemsClass = classNames('tabs', {
+        'tabs-underline': props.tabStyleActive == 'underline',
+    });
+
+    return (
+        <nav className={tabItemsClass}>
+            <ul>
+               {props.children}
+            </ul>
+        </nav>
+    )
+}
+
+TabItems.defaultProps = {
+    tabStyleActive: 'box'
+}
+
 
 export default Tab;
+export {TabContent, TabItems};
