@@ -284,47 +284,58 @@ const Container = () => {
 
         <Card className="card-border">
           <div className="card-info">
-            <p className="card__title">Breadcrumbs (Light Background)</p>
+            <p className="card__title">Breadcrumbs With Seperator</p>
           </div>
           <div className="card-content">
-            <Breadcrumb className="light-bc" hasBadge={true}>
-              <a href="#" className="active">Browse</a>
-              <a href="#">Compare</a>
-              <a href="#">Order Confirmation</a>
-              <a href="#">Checkout</a>
+            <Breadcrumb separator="/">
+              <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
+              <li><a href="#0">Gallery</a></li>
+              <li className="active"><a href="#0">Web</a></li>
+              <li><a href="#0">Project</a></li>
             </Breadcrumb>
           </div>
           <div className="card-info">
-            <p className="card__title">Breadcrumbs (Dark Background)</p>
+            <p className="card__title">Breadcrumbs Dot Indicator</p>
           </div>
           <div className="card-content">
-            <Breadcrumb hasBadge={true}>
-              <a href="#" className="active">Browse</a>
-              <a href="#">Compare</a>
-              <a href="#">Order Confirmation</a>
-              <a href="#">Checkout</a>
+            <Breadcrumb bcType="dot">
+              <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
+              <li><a href="#0">Gallery</a></li>
+              <li className="active"><a href="#0">Web</a></li>
+              <li><a href="#0">Project</a></li>
             </Breadcrumb>
           </div>
           <div className="card-info">
-            <p className="card__title">Breadcrumbs (Transparent Background)</p>
+            <p className="card__title">Breadcrumbs Basic</p>
           </div>
           <div className="card-content">
-            <Breadcrumb className="transparent-bc" hasBadge={true}>
-              <a href="#" className="active">Browse</a>
-              <a href="#">Compare</a>
-              <a href="#">Order Confirmation</a>
-              <a href="#">Checkout</a>
+            <Breadcrumb>
+              <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
+              <li><a href="#0">Gallery</a></li>
+              <li className="active"><a href="#0">Web</a></li>
+              <li><a href="#0">Project</a></li>
             </Breadcrumb>
           </div>
           <div className="card-info">
-            <p className="card__title">Breadcrumbs (Flat Background: No Box Shadow), No Badge</p>
+            <p className="card__title">Breadcrumbs Multi Step with Badge</p>
           </div>
           <div className="card-content">
-            <Breadcrumb className="flat-bc" hasBadge={false}>
-              <a href="#" className="active">Browse</a>
-              <a href="#">Compare</a>
-              <a href="#">Order Confirmation</a>
-              <a href="#">Checkout</a>
+            <Breadcrumb bcType="multiStep" hasBadge={true}>
+              <li><a href="#0" data-badge="1">Home</a></li>
+              <li><a href="#0" data-badge="2">Gallery</a></li>
+              <li className="active"><a href="#0">Web</a></li>
+              <li><a href="#0">Project</a></li>
+            </Breadcrumb>
+          </div>
+          <div className="card-info">
+            <p className="card__title">Breadcrumbs Triangle</p>
+          </div>
+          <div className="card-content">
+            <Breadcrumb bcType="triangle">
+              <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
+              <li><a href="#0">Gallery</a></li>
+              <li className="active"><a href="#0">Web</a></li>
+              <li><a href="#0">Project</a></li>
             </Breadcrumb>
           </div>
         </Card>

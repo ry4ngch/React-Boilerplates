@@ -1,170 +1,390 @@
-//default
-.breadcrumb {
-	display: inline-block;
-	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
-	overflow: hidden;
-	border-radius: 5px;
-	counter-reset: flag; 
+/* -------------------------------- 
+Basic Style
+-------------------------------- */
+$bc-bg-active-color: hsl(223, 14%, 20%);
+$bc-txt-active-color: rgb(41, 98, 255);
+$bc-bg-color: #edeff0;
+$bc-badge-bg-color: #f8f8f8;
+$bc-badge-txt-color: hsl(223, 14%, 20%);
+
+.sl-breadcrumb a {
+    text-decoration: none;
 }
 
-.breadcrumb a {
-	text-decoration: none;
-	outline: none;
-	display: block;
-	float: left;
-	font-size: 12px;
-	line-height: 36px;
-	color: white;
-	padding: 0 20px 0 40px;
-	background: #666;
-	background: linear-gradient(#666, #333);
-	position: relative;
-
-	&:after {
-		content: '';
-		position: absolute;
-		top: 0; 
-		right: -18px;
-		width: 36px; 
-		height: 36px;
-		transform: scale(0.707) rotate(45deg);
-		z-index: 1;
-		background: #666;
-		background: linear-gradient(135deg, #666, #333);
-		box-shadow: 
-			1px -1px 0 1px rgba(0, 0, 0, 0.4), 
-			2px -2px 0 2px rgba(255, 255, 255, 0.1);
-		border-radius: 0 5px 0 50px;
-	}
-
-	&:first-child {
-		border-radius: 5px 0 0 5px;
-		padding: 0 20px 0 30px;
-	}
-
-	&:last-child {
-		border-radius: 0 5px 5px 0;
-		padding-right: 20px;
-
-		&:after {
-			content: none;
-		}
-	}
-
-	&.active, &:hover{
-		background: #333;
-		background: linear-gradient(#333, #000);
-	}
-
-	&.active:after, &:hover:after {
-		background: #333;
-		background: linear-gradient(135deg, #333, #000);
-	}
+.sl-breadcrumb, .sl-multi-steps {
+    width: 90%;
+    max-width: 768px;
+    padding: 0.5em 1em;
+    margin: 1em auto;
+    background-color: $bc-bg-color;
+    border-radius: .25em;
 }
 
-.breadcrumb.badge a {
-	padding: 0 10px 0 60px;
+.sl-breadcrumb::after, .sl-multi-steps::after {
+    clear: both;
+    content: "";
+    display: table;
+}
 
-	&:first-child{
-		padding-left: 46px;
-	}
+.sl-breadcrumb li, .sl-multi-steps li {
+    display: inline-block;
+    float: left;
+    margin: 0.5em 0;
+}
 
-	&:first-child:before {
-		left: 14px;
-	}
+.sl-breadcrumb li::after, .sl-multi-steps li::after {
+    /* this is the separator between items */
+    display: inline-block;
+    content: '\00bb';
+    margin: 0 .6em;
+    color: #959fa5;
+}
+
+.sl-breadcrumb li:last-of-type::after, .sl-multi-steps li:last-of-type::after {
+    /* hide separator after the last item */
+    display: none;
+}
+
+.sl-breadcrumb li > *, .sl-multi-steps li > * {
+    /* single step */
+    display: inline-block;
+    font-size: 1.4rem;
+    color: #2c3f4c;
+}
+
+.sl-breadcrumb li.active > *, .sl-multi-steps li.active > * {
+    /* selected step */
+    color: $bc-txt-active-color;
+}
+
+.sl-breadcrumb.custom-separator li::after, .sl-multi-steps.custom-separator li:not(:last-child)::after {
+    /* replace the default separator with a custom icon */
+    content: attr(data-separator);
+}
+
+.sl-breadcrumb.badge li a[data-badge] {
+	padding-left: 45px;
+    padding-right: 30px;
 
 	&:before {
-		content: counter(flag);
-		counter-increment: flag;
+		content: attr(data-badge);
 		border-radius: 100%;
 		width: 20px;
 		height: 20px;
 		line-height: 20px;
-		margin: 8px 0;
 		position: absolute;
-		top: 0;
-		left: 30px;
-		background: #444;
-		background: linear-gradient(#444, #333);
+		top: 50%;
+        transform: translateY(-50%);
+		left: 15px;
+		background: $bc-badge-bg-color;
+	    color: $bc-badge-txt-color;
 		font-weight: bold;
 		text-align: center;
 	}
 }
 
-// light blue background
-.breadcrumb.light-bc a:after {
-	box-shadow: 
-		1px -1px 0 1px rgba(41, 98, 255, 0.2), 
-		2px -2px 0 1px rgba(255, 255, 255, 0.1);
+
+@media only screen and (min-width: 768px) {
+    .sl-breadcrumb, .sl-multi-steps {
+        padding: 0 1.2em;
+    }
+
+    .sl-breadcrumb li, .sl-multi-steps li {
+        margin: 1.2em 0;
+    }
+
+    .sl-breadcrumb li::after, .sl-multi-steps li::after {
+        margin: 0 1em;
+    }
+
+    .sl-breadcrumb li > *, .sl-multi-steps li > * {
+        font-size: 1.6rem;
+    }
 }
 
-.light-bc a, .light-bc a:after {
-	background: white;
-	color: black;
-	transition: all 0.5s;
-}
-.badge.light-bc a:before {
-	background: rgb(41, 98, 255);
-	color: #fff;
-	box-shadow: 0 0 0 1px #ccc;
-}
-.light-bc a:hover, .light-bc a.active, 
-.light-bc a:hover:after, .light-bc a.active:after{
-	background: #e6eef9;
-	color: rgb(41, 98, 255);
+/* -------------------------------- 
+
+Triangle breadcrumb
+
+-------------------------------- */
+@media only screen and (min-width: 768px) {
+    .sl-breadcrumb.triangle {
+        /* reset basic style */
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .sl-breadcrumb.triangle li {
+        position: relative;
+        padding: 0;
+        margin: 4px 4px 4px 0;
+    }
+
+    .sl-breadcrumb.triangle li:last-of-type {
+        margin-right: 0;
+    }
+
+    .sl-breadcrumb.triangle li > * {
+        position: relative;
+        padding: 1em .8em 1em 2.5em;
+        color: #2c3f4c;
+        background-color: $bc-bg-color;
+        /* the border color is used to style its ::after pseudo-element */
+        border-color: $bc-bg-color;
+    }
+
+    .sl-breadcrumb.triangle li.active > * {
+        /* selected step */
+        color: #ffffff;
+        background-color: $bc-bg-active-color;
+        border-color: $bc-bg-active-color;
+    }
+
+    .sl-breadcrumb.triangle li:first-of-type > * {
+        padding-left: 1.6em;
+        border-radius: .25em 0 0 .25em;
+    }
+
+    .sl-breadcrumb.triangle li:last-of-type > * {
+        padding-right: 1.6em;
+        border-radius: 0 .25em .25em 0;
+    }
+   
+    .sl-breadcrumb.triangle li::after, .sl-breadcrumb.triangle li > *::after {
+        /* 
+            li > *::after is the colored triangle after each item
+            li::after is the white separator between two items
+        */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 100%;
+        content: '';
+        height: 0;
+        width: 0;
+        /* 48px is the height of the <a> element */
+        border: 24px solid transparent;
+        border-right-width: 0;
+        border-left-width: 20px;
+    }
+
+    .sl-breadcrumb.triangle li::after {
+        /* this is the white separator between two items */
+        z-index: 1;
+        -webkit-transform: translateX(4px);
+        -moz-transform: translateX(4px);
+        -ms-transform: translateX(4px);
+        -o-transform: translateX(4px);
+        transform: translateX(4px);
+        border-left-color: #ffffff;
+        /* reset style */
+        margin: 0;
+    }
+
+    .sl-breadcrumb.triangle li > *::after {
+        /* this is the colored triangle after each element */
+        z-index: 2;
+        border-left-color: inherit;
+    }
+
+    .sl-breadcrumb.triangle li:last-of-type::after, .sl-breadcrumb.triangle li:last-of-type > *::after {
+        /* hide the triangle after the last step */
+        display: none;
+    }
+
+    .sl-breadcrumb.triangle.custom-separator li::after {
+        /* reset style */
+        background-image: none;
+    }
+
+    @-moz-document url-prefix() {
+        .sl-breadcrumb.triangle li::after,
+        .sl-breadcrumb.triangle li > *::after {
+            /* fix a bug on Firefix - tooth edge on css triangle */
+            border-left-style: dashed;
+        }
+    }
 }
 
-// transparent background
-.transparent-bc a, .transparent-bc a:after {
-	background: transparent;
-	color: #4a5568;
-	transition: all 0.5s;
-	opacity: 0.8;
+/* -------------------------------- 
+
+Multi steps indicator 
+
+-------------------------------- */
+@media only screen and (min-width: 768px) {
+    .sl-multi-steps {
+        /* reset style */
+        background-color: transparent;
+        padding: 0;
+        text-align: center;
+    }
+
+    .sl-multi-steps li {
+        position: relative;
+        float: none;
+        margin: 0.4em 40px 0.4em 0;
+    }
+
+    .sl-multi-steps li:last-of-type {
+        margin-right: 0;
+    }
+
+    .sl-multi-steps li::after {
+        /* this is the line connecting 2 adjacent items */
+        position: absolute;
+        content: '';
+        height: 4px;
+        background: $bc-bg-color;
+        /* reset style */
+        margin: 0;
+    }
+
+    .sl-multi-steps li.visited::after {
+        background-color: $bc-bg-active-color;
+    }
+
+    .sl-multi-steps li > *, .sl-multi-steps li.active > * {
+        position: relative;
+        color: #2c3f4c;
+    }
+
+    .sl-multi-steps.custom-separator li::after {
+        /* reset style */
+        height: 4px;
+        background: $bc-bg-color;
+    }
+
+    .sl-multi-steps.text-center li::after {
+        width: 100%;
+        top: 50%;
+        left: 100%;
+        -webkit-transform: translateY(-50%) translateX(-1px);
+        -moz-transform: translateY(-50%) translateX(-1px);
+        -ms-transform: translateY(-50%) translateX(-1px);
+        -o-transform: translateY(-50%) translateX(-1px);
+        transform: translateY(-50%) translateX(-1px);
+    }
+    
+    .sl-multi-steps.text-center li > * {
+        z-index: 1;
+        padding: .6em 1em;
+        border-radius: .25em;
+        background-color: $bc-bg-color;
+    }
+   
+    .sl-multi-steps.text-center li.active > *, .sl-multi-steps.text-center li.visited > * {
+        color: #ffffff;
+        background-color: $bc-bg-active-color;
+    }
+
+    .sl-multi-steps.text-top li, .sl-multi-steps.text-bottom li {
+        width: 80px;
+        text-align: center;
+    }
+
+    .sl-multi-steps.text-top li::after, .sl-multi-steps.text-bottom li::after {
+        /* this is the line connecting 2 adjacent items */
+        position: absolute;
+        left: 50%;
+        /* 40px is the <li> right margin value */
+        width: calc(100% + 40px);
+    }
+
+    .sl-multi-steps.text-top li > *::before, .sl-multi-steps.text-bottom li > *::before {
+        /* this is the spot indicator */
+        content: '';
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        right: auto;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: $bc-bg-color;
+    }
+
+    .sl-multi-steps.text-top li.visited > *::before,
+    .sl-multi-steps.text-top li.active > *::before, .sl-multi-steps.text-bottom li.visited > *::before,
+    .sl-multi-steps.text-bottom li.active > *::before {
+        background-color: $bc-bg-active-color;
+    }
+
+    .sl-multi-steps.text-top li::after {
+        /* this is the line connecting 2 adjacent items */
+        bottom: 4px;
+    }
+    .sl-multi-steps.text-top li > * {
+        padding-bottom: 20px;
+    }
+
+    .sl-multi-steps.text-top li > *::before {
+        /* this is the spot indicator */
+        bottom: 0;
+    }
+
+    .sl-multi-steps.text-bottom li::after {
+        /* this is the line connecting 2 adjacent items */
+        top: 3px;
+    }
+
+    .sl-multi-steps.text-bottom li > * {
+        padding-top: 20px;
+    }
+
+    .sl-multi-steps.text-bottom li > *::before {
+        /* this is the spot indicator */
+        top: 0;
+    }
+}
+/* -------------------------------- 
+
+Add a counter to the multi-steps indicator 
+
+-------------------------------- */
+.sl-multi-steps.count li {
+    counter-increment: steps;
 }
 
-.badge.transparent-bc a:before {
-	background: #494d59;;
-	color: white;
-	box-shadow: 0 0 0 1px #ccc;
+.sl-multi-steps.count li > *::before {
+    content: counter(steps) " - ";
 }
 
-.transparent-bc a:hover, .transparent-bc a.active, 
-.transparent-bc a:hover:after, .transparent-bc a.active:after{
-	background: transparent;
-	color: black;
-	opacity: 1;
-}
+@media only screen and (min-width: 768px) {
+    .sl-multi-steps.text-top.count li > *::before,
+    .sl-multi-steps.text-bottom.count li > *::before {
+        /* this is the spot indicator */
+        content: counter(steps);
+        height: 26px;
+        width: 26px;
+        line-height: 26px;
+        font-size: 1.4rem;
+        color: #ffffff;
+    }
 
-// flat background
-.breadcrumb.flat-bc {
-	box-shadow: none;
+    .sl-multi-steps.text-top.count li:not(.active) em::before,
+    .sl-multi-steps.text-bottom.count li:not(.active) em::before {
+        /* steps not visited yet - counter color */
+        color: #2c3f4c;
+    }
 
-	a, a:after {
-		background: transparent;
-		color: black;
-		transition: all 0.5s;
-	}
-	
-	a:after {
-		box-shadow: 1px -1px 0 1px rgba(0, 0, 0, 0.1), 
-					2px -2px 0 2px rgba(255, 255, 255, 0.2);
-	}
+    .sl-multi-steps.text-top.count li::after {
+        bottom: 11px;
+    }
 
-	a:hover, a.active, 
-	a:hover:after, a.active:after{
-		background: transparent;
-		color: rgb(41, 98, 255);
-	}
-}
+    .sl-multi-steps.text-top.count li > * {
+        padding-bottom: 34px;
+    }
 
-.badge.flat-bc a:before {
-	background: rgb(41, 98, 255);
-	color: #fff;
-	box-shadow: 0 0 0 1px #ccc;
-}
+    .sl-multi-steps.text-bottom.count li::after {
+        top: 11px;
+    }
 
-.center-bc {
-	position: relative;
-	transform: translateX(-50%);
-	left: 50%;
+    .sl-multi-steps.text-bottom.count li > * {
+        padding-top: 34px;
+    }
 }
