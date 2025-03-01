@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import reactDOM from 'react-dom';
 
 const ModalOverlay = (props) => {
-    const [activeSectionIndex, setActiveSectionIndex] = useState(0)
+    const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+    const ref = useRef(null);
 
     const toggleSection = (action) => {
         if(React.Children.count(props.children) > 0){
@@ -18,12 +19,18 @@ const ModalOverlay = (props) => {
         }
     }
 
+    useEffect(() => {
+        if(props.showModal){
+            ref.current.focus();
+        }
+    }, [props.showModal])
+
     return (
         <React.Fragment>
             {
                 props.showModal &&
                 <div style={props.style} className={`modal ${props.className}`}>
-                    <div className='modal-content' tabIndex="-1" onBlur={props.onModalBlur}>
+                    <div className='modal-content' tabIndex="-1" onBlur={props.onModalBlur} ref={ref}>
                         <a className='modal-close' onClick={props.onCloseModal}></a>
                         {((typeof(props.title)=='string' && props.title.length > 0) || typeof(props.title) === 'object') && <header className="modal-header">{props.title}</header>}
                         <div className='modal-body'>
@@ -41,7 +48,7 @@ const ModalOverlay = (props) => {
                         </div>
                         <div className="modal-footer">
                             {props.hasSections && <ul className="modal-indicators">
-                                {props.children.length > 0 && props.children.map((_,index) => (
+                                {React.Children.count(props.children) > 0 && React.Children.map(props.children, (_,index) => (
                                     <li key={index} className={index === activeSectionIndex ? 'active' : ''} onClick={() => setActiveSectionIndex(index)}></li>
                                 ))}
                             </ul>}

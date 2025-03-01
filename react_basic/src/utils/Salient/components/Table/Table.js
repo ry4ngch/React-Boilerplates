@@ -1,24 +1,18 @@
 import React, { useRef, useEffect, Fragment, useState } from "react";
-import { initDraggableTable, initPagination } from "../../utils/Salient/salient-table";
 import classNames from "classnames";
 
 const Table = (props) => {
     const ref = useRef();
+
+    // states for column visibility
     const [dropdownState, setDropdownState] = useState(false);
     const [dropdownList, setDropdownList] = useState([]);
     const [hiddenColumns, setHiddenColumns] = useState({});
 
-    useEffect(() => {
-        if (props.draggable) {
-            initDraggableTable();
-        }
-    }, [props.draggable]);
-
-    useEffect(() => {
-        if (props.maxRows) {
-            initPagination(props.maxRows);
-        }
-    }, [props.maxRows, props.children]);
+    // states for drag event
+    const [rows, setRows] = useState(props.children);
+    const [highlightedRow, setHighlightedRow] = useState(null);
+    const [draggedRow, setDraggedRow] = useState(null);
 
     useEffect(() => {
         setDropdownList(props.columns || []);
@@ -26,6 +20,11 @@ const Table = (props) => {
             (props.columns || []).map((_, index) => [index, false]) // Initialize all columns as visible
         ));
     }, [props.columns]);
+
+    // update the rows after drag drop
+    useEffect(() => {
+        setRows(React.Children.toArray(props.children));
+    }, [props.children]);
 
     const toggleColumnVisibility = (index) => {
         setHiddenColumns((prevState) => ({
@@ -37,6 +36,31 @@ const Table = (props) => {
     const tableClasses = classNames('sl-table', {
         'table-draggable': props.draggable
     });
+
+    const handleDragStart = (index) => {
+        setDraggedRow(index);
+    };
+
+    const handleDragOver = (index, e) => {
+        e.preventDefault(); // Allows the drop event to occur
+        setHighlightedRow(index);
+    };
+
+    const handleDragLeave = () => {
+        setHighlightedRow(null); // Remove highlight if dragged item leaves the row
+    };
+
+    const handleDrop = (index) => {
+        if (draggedRow === null || draggedRow === index) return;
+
+        const updatedRows = [...rows];
+        const [movedRow] = updatedRows.splice(draggedRow, 1);
+        updatedRows.splice(index, 0, movedRow);
+
+        setRows(updatedRows);
+        setDraggedRow(null);
+        setHighlightedRow(null); // Clear highlight
+    };
 
     return (
         <Fragment>
@@ -80,26 +104,20 @@ const Table = (props) => {
                 </thead>
                 <tbody>
                     {/* Pass the hiddenColumns state to <Row> to decide which column to hide*/}
-                    {React.Children.map(props.children, (child) => 
-                        React.isValidElement(child) ? React.cloneElement(child, { hiddenColumns }) : child
+                    {React.Children.map(rows, (child, index) => 
+                        React.isValidElement(child) ? React.cloneElement(child, { 
+                            ...child.props,
+                            hiddenColumns, 
+                            draggable: props.draggable,
+                            onDragStart: () => handleDragStart(index),
+                            onDragOver: (e) => handleDragOver(index, e),
+                            onDrop: () => handleDrop(index),
+                            onDragLeave: handleDragLeave,
+                            isHighlighted: highlightedRow === index
+                        }) : child
                     )}
                 </tbody>
             </table>
-
-            {props.maxRows && (
-                <div className='pagination-container'>
-                    <nav>
-                        <ul className="pagination">
-                            <li data-page="prev">
-                                <span>&#60; <span className="sr-only">(previous)</span></span>
-                            </li>
-                            <li data-page="next">
-                                <span>&#62; <span className="sr-only">(next)</span></span>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            )}
         </Fragment>
     );
 };
@@ -109,9 +127,14 @@ Table.defaultProps = {
     columns: [],
 };
 
-const TableRow = ({ children, hiddenColumns }) => {
+const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted }) => {
     return (
-        <tr>
+        <tr draggable={draggable}
+            onDragStart={onDragStart}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+            onDragLeave={onDragLeave}
+            className={isHighlighted ? 'row-insert-highlight' : ''}>
             {React.Children.map(children, (cell, index) => 
                 !hiddenColumns[index] ? cell : null
             )}

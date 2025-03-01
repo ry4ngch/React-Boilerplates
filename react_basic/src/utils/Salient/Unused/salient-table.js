@@ -176,9 +176,17 @@ const addPaginationEventListeners = (table, maxRows) => {
 const limitPagging = () => {
     const pages = document.querySelectorAll('.pagination li');
     const activePage = document.querySelector('.pagination li.active');
+
+    // there is more than 7 pages, we will limit pagging
     if (pages.length > 7) {
+
+        // set all pagging li to display none
         pages.forEach(li => li.style.display = 'none');
+
+        // set the first li to be display,this is the left arrow 
         pages[0].style.display = '';
+
+        // set the last li to be display, this is the right arrow
         pages[pages.length - 1].style.display = '';
 
         let start = Math.max(1, parseInt(activePage.getAttribute('data-page')) - 2);

@@ -7,15 +7,14 @@ import {docs, accordianData} from './demo_data';
 
 // Import Components Build with Salient
 import Timeline from '../components/Timeline/Timeline';
-import Button from '../components/Buttons/Button';
-import Card from '../components/Card/Card';
-import Accordian, {AccordianItem} from '../components/Accordian/Accordian';
+import Button from '../utils/Salient/components/Buttons/Button';
+import Card from '../utils/Salient/components/Card/Card';
+import Accordian, {AccordianItem} from '../utils/Salient/components/Accordian/Accordian';
 import Tab, {TabContent, TabItems} from '../components/Tab/Tab';
-import Modal from '../components/Modal/Modal';
-import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import Modal from '../utils/Salient/components/Modal/Modal';
+import Breadcrumb from '../utils/Salient/components/Breadcrumb/Breadcrumb';
 import Treeview, {TreeItem} from '../components/Treeview/Treeview';
-import Table, {TableRow} from '../components/Table/Table';
-
+import PaginatedTable from '../components/DemoTable';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -74,18 +73,7 @@ const Container = () => {
           </div>
           <div className="card-content">
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <Table draggable={true} maxRows={5} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]}>
-                {filteredTable.map((row, index) => (
-                  <TableRow key={index}>
-                    <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
-                    <td data-field="Name">{row.Name} app</td>
-                    <td data-field="Description">{row.Description}</td>
-                    <td data-field="Tags">{row.Tags}</td>
-                    <td data-field="Last Viewed">{row.LastViewed}</td>
-                    <td data-field="Expiration">{row.Expiration}</td>
-                  </TableRow>
-                ))}
-            </Table>
+            <PaginatedTable items={filteredTable} itemsPerPage={5}/>
           </div>
         </Card>
 
@@ -99,7 +87,7 @@ const Container = () => {
         </Card>
         
 
-        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true}>{/*onModalBlur={() => setShowModal(false)}*/}
+        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
           <section className='center-content'>
                   Section 1
           </section>

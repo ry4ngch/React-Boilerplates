@@ -47,38 +47,6 @@ table.sl-table {
   display: none;
 }
 
-/* Icon filter */
-
-.icon{ 
-  float:left;
-  width:14px; 
-  height:14px; 
-  position:relative; 
-  display:block; 
-}
-
-.icon:before, 
-.icon:after{ 
-  position:absolute; 
-  content:""; 
-  display:block; 
-}
-
-.icon-filter:before{
-  height:0;
-  border-top:10px solid;
-  border-left:7px solid transparent;
-  border-right:7px solid transparent;
-}
-
-.icon-filter:after{
-  width:4px;
-  height:9px;
-  box-shadow:0 0 0 16px inset;
-  top:6px;
-  left:5px;
-}
-
 /** Dragging highight **/
 
 .row-insert-highlight{
@@ -184,7 +152,7 @@ table.sl-table {
 }
 
 .pagination {
-  display: inline-block;
+  display: flex;
   padding-left: 0;
   margin: 20px 0;
   border-radius: 4px;
@@ -194,7 +162,7 @@ table.sl-table {
   }
   
   & > li {
-    display: inline;
+    display: flex;
 
     &:first-child > a, &:first-child > span {
       margin-left: 0;
@@ -207,7 +175,8 @@ table.sl-table {
       float: left;
       padding: 6px 12px;
       margin-left: -1px;
-      line-height: 1.42857143;
+      line-height: 1.5;
+      min-height: 15px;
       color: #333;
       text-decoration: none;
       background-color: #fff;
@@ -215,17 +184,16 @@ table.sl-table {
     }
   }
 
-  & > .active > a, 
-  & > .active > a:focus, 
-  & > .active > a:hover, 
-  & > .active > span, 
-  & > .active > span:focus, 
-  & > .active > span:hover {
+  & > .active > span {
     z-index: 1;
     color: #fff;
-    cursor: default;
     background-color: #333;
     border-color: #333;
+  }
+
+  li:not(.active):hover span {
+    background-color: #ddd;
+    cursor: pointer;
   }
 }
 
@@ -238,6 +206,11 @@ table.sl-table {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.pagination .icon {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /** Responsive **/

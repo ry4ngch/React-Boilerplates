@@ -4,7 +4,7 @@
 
 /* Note: remove salient-all.scss if bootstrap is use */
 /* Salient.scss is a custom library */
-@use "../utils/Salient/salient-all";
+@use "../utils/Salient/styles/salient-all";
 
 // Layout styles
 @use "layout/header";
