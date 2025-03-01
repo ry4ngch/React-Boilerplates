@@ -1,5 +1,4 @@
-import React, {useLayoutEffect, useRef} from "react";
-import initCardTiltEffect from "../../utils/Salient/salient-card";
+import React, {useState, useEffect} from "react";
 import classNames from "classnames";
 
 const Card = (props) => {
@@ -10,19 +9,29 @@ const Card = (props) => {
         'card_scale': props.animation == 'scale'
     })
 
-    const ref = useRef();
+    const [gridState, setGridState] = useState(false);
+    const rows = 10;
+    const cols = 10;
+  
+    const cells = Array.from({ length: rows * cols });
 
-    useLayoutEffect(() => {
-        if(ref.current.classList.contains('card_tilt')){
-            initCardTiltEffect();
-        }
-    }, [])
-
+    useEffect(() => {
+        setGridState(props.animation == 'tilt');
+    }, [props.animation])
+  
     return (
-        <div style={props.style} className={`${cardClasses} ${props.className || ''}`} ref={ref}>
+        <div className={`${cardClasses} ${props.className || ''}`} style={{ '--rows': rows, '--cols': cols, ...props.style }}>
+            {gridState && (
+                <div className="tracker__cells" aria-hidden="true">
+                    {cells.map((_, index) => (
+                    <div key={index} className="cell"></div>
+                    ))}
+                </div>
+            )}
             {props.children}
-        </div>
-    )
+      </div>
+    );
+  
 }
 
 export default Card;

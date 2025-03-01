@@ -16,6 +16,7 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import Treeview, {TreeItem} from '../components/Treeview/Treeview';
 import Table, {TableRow} from '../components/Table/Table';
 
+
 const Container = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
@@ -98,7 +99,7 @@ const Container = () => {
         </Card>
         
 
-        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
+        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true}>{/*onModalBlur={() => setShowModal(false)}*/}
           <section className='center-content'>
                   Section 1
           </section>
