@@ -7,14 +7,17 @@ import {docs, accordianData} from './demo_data';
 
 // Import Components Build with Salient
 import Timeline from '../components/Timeline/Timeline';
-import Button from '../utils/Salient/components/Buttons/Button';
-import Card from '../utils/Salient/components/Card/Card';
-import Accordian, {AccordianItem} from '../utils/Salient/components/Accordian/Accordian';
+import Button from '../utils/Salient/UI/Buttons/Button';
+import Card, {CardInfo, CardContent} from '../utils/Salient/UI/Card/Card';
+import Accordian, {AccordianItem} from '../utils/Salient/UI/Accordian/Accordian';
 import Tab, {TabContent, TabItems} from '../components/Tab/Tab';
-import Modal from '../utils/Salient/components/Modal/Modal';
-import Breadcrumb from '../utils/Salient/components/Breadcrumb/Breadcrumb';
+import Modal from '../utils/Salient/UI/Modal/Modal';
+import Breadcrumb from '../utils/Salient/UI/Breadcrumb/Breadcrumb';
 import Treeview, {TreeItem} from '../components/Treeview/Treeview';
-import PaginatedTable from '../components/DemoTable';
+import DynamicPaginatedTable from '../components/SampleDynamicTable';
+import SampleStaticTable from '../components/SampleStaticTable';
+import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
+import withPagination from '../utils/Salient/UI/Pagination/withPagination';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -25,6 +28,7 @@ const Container = () => {
   const [isSideTab, setTabType] = useState(false);
   const [tabStyle, setTabStyle] = useState("underline");
   const [tableFilterValue, setTableFilterValue] = useState();
+  const ExternalPaginatedTable = withPagination()(Table);
 
   useEffect(() => {
     axios.get('http://localhost:8080/assets/timeline_data.json')
@@ -68,22 +72,63 @@ const Container = () => {
     <div id='page-wrapper'>
       <div className="container-fluid">
         <Card className="card-border">
-          <div className="card-info">
-            <p className="card__title">Table with Pagination</p>
-          </div>
-          <div className="card-content">
+          <CardInfo>
+            <p className="card__title">Dynamic Table with Pagination</p>
+            <p>using pagination in custom component</p>
+          </CardInfo>
+          <CardContent>
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <PaginatedTable items={filteredTable} itemsPerPage={5}/>
-          </div>
+            <DynamicPaginatedTable items={filteredTable} itemsPerPage={3}/>
+          </CardContent>
+        </Card>
+
+        <Card className="card-border">
+          <CardInfo>
+            <p className="card__title">Dynamic Table with Pagination</p>
+            <p>using pagination externally</p>
+            <p>Note: The following props are pass to the Table component from this external paginated component</p>
+            <ul style={{listStyle: 'none'}}>
+              <li>&#10148; draggable</li>
+              <li>&#10148; showColToggleUI</li>
+              <li>&#10148; columns</li>
+              <li>&#10148; data</li>
+            </ul>
+          </CardInfo>
+          <CardContent>
+            <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
+            <ExternalPaginatedTable items={filteredTable} itemsPerPage={5} draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} data={filteredTable}>
+            {(paginatedItems) =>
+              (Array.isArray(paginatedItems) ? paginatedItems : []).map((row, index) => (
+                <TableRow key={index}>
+                  <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
+                  <td data-field="Name">{row.Name} app</td>
+                  <td data-field="Description">{row.Description}</td>
+                  <td data-field="Tags">{row.Tags}</td>
+                  <td data-field="Last Viewed">{row.LastViewed}</td>
+                  <td data-field="Expiration">{row.Expiration}</td>
+                </TableRow>
+              ))
+            }
+            </ExternalPaginatedTable>
+          </CardContent>
+        </Card>
+
+        <Card className="card-border">
+          <CardInfo>
+            <p className="card__title">Static Table with Pagination</p>
+          </CardInfo>
+          <CardContent>
+            <SampleStaticTable itemsPerPage={4} />
+          </CardContent>
         </Card>
 
         <Card className='card-flat'>
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Modal (Click to View)</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
-          </div>
+          </CardContent>
         </Card>
         
 
@@ -100,7 +145,7 @@ const Container = () => {
         </Modal>
 
         <Card className="card-border">
-        <div className="card-info">
+          <CardInfo>
             <div className="card-justify">
               <h3 className="card__title"><FontAwesomeIcon icon="history"></FontAwesomeIcon>Timeline</h3>
               <select value={showCount} onChange={updateShowCount}>
@@ -110,8 +155,8 @@ const Container = () => {
                   <option value="12">12</option>
               </select>
             </div>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Timeline 
               showCount={showCount}
               isHorz={true} 
@@ -123,14 +168,14 @@ const Container = () => {
               isTimelineActive={true}
               activeEventID={3}>
             </Timeline>
-          </div>
+          </CardContent>
         </Card>
        
 
         <Card className="card-border">
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Accordian</p>
-          </div>
+          </CardInfo>
           <Accordian activeToggle="single">
               {accordianData.map((item, index) => (
                   <AccordianItem key={index} title={item.title} content={item.content} />
@@ -139,7 +184,7 @@ const Container = () => {
         </Card>
 
         <Card className="card-border">
-          <div className="card-info">
+          <CardInfo>
             <div className="card-justify">
               <p className="card__title">Tabs</p>
               <div>
@@ -154,7 +199,8 @@ const Container = () => {
               </div>
               
             </div>
-          </div>
+          </CardInfo>
+
           <Tab sideTabs={isSideTab}>
             <TabItems tabStyleActive={tabStyle}>
                 <li><a href="#tab1" className="active">Tab 1</a></li>
@@ -183,157 +229,157 @@ const Container = () => {
         </Card>
         
         <Card className="bg-dark card-flat">
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Block Button</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
             <Button type="button" buttonStyle="blur" isBlock={true} expandFull={true}>Button2</Button>
             <Button type="button" buttonStyle="clear" isBlock={true} expandFull={true}>Button3</Button>
-          </div>
-          <div className="card-info">
+          </CardContent>
+          <CardInfo>
             <p className="card__title">Toggle Switch and CheckBox</p>
-          </div>
+          </CardInfo>
           <div className="card-content">
             <Button type="checkbox"></Button>
             <Button type="checkbox" disabled={true}></Button>
             <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check}></Button>
             <Button type="switch" disabled={true}></Button>
           </div>
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Widget Button</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Button type="button" buttonType="widget" icon="leftArrow"></Button>
             <Button type="button" buttonType="widget" icon="rightArrow"></Button>
             <Button type="button" buttonType="widget" icon="topArrow"></Button>
             <Button type="button" buttonType="widget" icon="btmArrow"></Button>
-          </div>
+          </CardContent>
         </Card>
         
         <Card className="card-border">
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Inverse Buttons</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false} inverseColor={true}>Button4</Button>
             <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false}>Button5</Button>
             <Button type="button" buttonStyle="blur" isBlock={false} expandFull={false} inverseColor={true}>Button6</Button>
             <Button type="button" buttonStyle="blur" isBlock={false} expandFull={false}>Button7</Button>
             <Button type="button" buttonStyle="clear" isBlock={false} expandFull={false} inverseColor={true}>Button8</Button>
             <Button type="button" buttonStyle="clear" isBlock={false} expandFull={false}>Button9</Button>
-          </div>
+          </CardContent>
         </Card>
         
         
         <Card className="card-border">
-          <div className="card-content">
+          <CardContent>
             <Card>
-              <div className="card-info">
+              <CardInfo>
                 <p className="card__title">Card (Without Animation)</p>
-              </div>
+              </CardInfo>
               <p className="card-content">Normal card without animation, for more card display option, apply card-flat or card-border class to Card Component</p>
               <p className="card-content">className='card-border' remove box-shadow and uses border, while className='card-flat' applies a single box-shadow</p>
             </Card>
         
             <Card animation='scale'>
-              <div className="card-info">
+              <CardInfo>
                 <p className="card__title">Card (With Scale Animation)</p>
-              </div>
+              </CardInfo>
               <p className="card-content">This card will scale and grow large</p>
             </Card>
 
             <Card animation='flip-x'>
-              <div className="card-info">
+              <CardInfo>
                 <p className="card__title">Card (With Flip Animation)</p>
-              </div>
+              </CardInfo>
               <p className="card-content">This will flip 180 around X-Axis</p>
             </Card>
 
             <Card animation='flip-y'>
-              <div className="card-info">
+              <CardInfo>
                 <p className="card__title">Card (With Flip Animation)</p>
-              </div>
+              </CardInfo>
               <p className="card-content">This will flip 180 around Y-Axis</p>
             </Card>
 
             <Card animation="tilt">
               <div className="card-grid">
-                <div className="card-info">
+                <CardInfo>
                   <p className="card__title">Card (With Tilt Animation)</p>
-                </div>
+                </CardInfo>
                 <p className="card-content">Note: For Tilt Effect to work properly, card-grid class must be applied on inner div</p>
               </div>
             </Card>
-          </div>
+          </CardContent>
           
         </Card>
 
         
 
         <Card className="card-border">
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Breadcrumbs With Seperator</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Breadcrumb separator="/">
               <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
               <li><a href="#0">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
               <li><a href="#0">Project</a></li>
             </Breadcrumb>
-          </div>
-          <div className="card-info">
+          </CardContent>
+          <CardInfo>
             <p className="card__title">Breadcrumbs Dot Indicator</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Breadcrumb bcType="dot">
               <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
               <li><a href="#0">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
               <li><a href="#0">Project</a></li>
             </Breadcrumb>
-          </div>
-          <div className="card-info">
+          </CardContent>
+          <CardInfo>
             <p className="card__title">Breadcrumbs Basic</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Breadcrumb>
               <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
               <li><a href="#0">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
               <li><a href="#0">Project</a></li>
             </Breadcrumb>
-          </div>
-          <div className="card-info">
+          </CardContent>
+          <CardInfo>
             <p className="card__title">Breadcrumbs Multi Step with Badge</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Breadcrumb bcType="multiStep" hasBadge={true}>
               <li><a href="#0" data-badge="1">Home</a></li>
               <li><a href="#0" data-badge="2">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
               <li><a href="#0">Project</a></li>
             </Breadcrumb>
-          </div>
-          <div className="card-info">
+          </CardContent>
+          <CardInfo>
             <p className="card__title">Breadcrumbs Triangle</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Breadcrumb bcType="triangle">
               <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
               <li><a href="#0">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
               <li><a href="#0">Project</a></li>
             </Breadcrumb>
-          </div>
+          </CardContent>
         </Card>
 
         <Card className="card-border bg-dark" style={{marginTop: '10px'}}>
-          <div className="card-info">
+          <CardInfo>
             <p className="card__title">Treeview</p>
-          </div>
-          <div className="card-content">
+          </CardInfo>
+          <CardContent>
             <Treeview>
               <TreeItem text='Item 1' subtext="(with levels)">
                 <li><span>1.1</span></li>
@@ -352,7 +398,7 @@ const Container = () => {
               </TreeItem>
               <TreeItem text='Item 3' subtext="(No Level)"/>
             </Treeview>
-          </div>
+          </CardContent>
         </Card>
       </div>
     </div>

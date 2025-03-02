@@ -33,15 +33,21 @@ const NavMenu = (props) => {
                         <span className="navlink-text">Settings</span>
                     </a>
                 </li>
-                <li data-tooltip="Dropdown" data-dropdown>
+                <li data-tooltip="UI" data-dropdown>
                     <a>
                         <FontAwesomeIcon className="navlink-icon" icon="caret-down"></FontAwesomeIcon>
-                        <span className="navlink-text">Dropdown</span>
+                        <span className="navlink-text">Features</span>
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a className="dropdown-item" href="#">Action</a></li>
-                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                        <li><a className="dropdown-item" href="#">Tables</a></li>
+                        <li><a className="dropdown-item" href="#">Accordian</a></li>
+                        <li><a className="dropdown-item" href="#">Tabs</a></li>
+                        <li><a className="dropdown-item" href="#">Buttons</a></li>
+                        <li><a className="dropdown-item" href="#">Breadcrumbs</a></li>
+                        <li><a className="dropdown-item" href="#">Modal</a></li>
+                        <li><a className="dropdown-item" href="#">Card</a></li>
+                        <li><a className="dropdown-item" href="#">Treeview</a></li>
+                        <li><a className="dropdown-item" href="#">Timeline</a></li>
                     </ul>
                 </li>
                 <li data-tooltip="Dropdown" data-dropdown>

@@ -34,4 +34,21 @@ const Card = (props) => {
   
 }
 
+const CardInfo = (props) => {
+    return(
+        <div {...props} className={`card-info ${props.className || ''}`}>
+            {props.children}
+        </div>
+    )
+}
+
+const CardContent = (props) => {
+    return(
+        <div {...props} className={`card-content ${props.className || ''}`}>
+            {props.children}
+        </div>
+    )
+}
+
 export default Card;
+export {CardInfo, CardContent};

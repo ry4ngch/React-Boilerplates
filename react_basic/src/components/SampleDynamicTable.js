@@ -1,12 +1,16 @@
-import React, {useState} from "react";
-import Table, {TableRow} from '../utils/Salient/components/Table/Table';
-import withPagination from "../utils/Salient/components/Pagination/withPagination";
+import React from "react";
+import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
+import withPagination from "../utils/Salient/UI/Pagination/withPagination";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const DemoTable = (props) => {
+const SampleDynamicTable = (props) => {
+    const onDragUpdate = (returnData) => {
+        console.log(returnData);
+    }
+
     return (
-        <Table draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]}>
+        <Table draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} onDragUpdate={onDragUpdate} data={props.data}>
             {props.items.map((row, index) => (
                 <TableRow key={index}>
                     <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
@@ -21,6 +25,6 @@ const DemoTable = (props) => {
     )
 }
 
-const PaginatedTable = withPagination(DemoTable);
+const DynamicPaginatedTable = withPagination()(SampleDynamicTable);
 
-export default PaginatedTable;
+export default DynamicPaginatedTable;

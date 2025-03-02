@@ -2,6 +2,14 @@ import React, { useRef, useEffect, Fragment, useState } from "react";
 import classNames from "classnames";
 
 const Table = (props) => {
+    /*** Table props **/
+    // columns: For specifying the custom column name, this not necessary need to follow the data keys
+    // showColToggleUI: For enabling the column hiding button
+    // draggable: For enabling table rows to be draggable
+    // onDragUpdate: After dragging event of row ends, specify a custom function to run. The custom function will
+    //               receive the updated data after drag events completed 
+    // data: include the row of data retrived from external file, this is required to update the whole table object and return
+
     const ref = useRef();
 
     // states for column visibility
@@ -13,6 +21,9 @@ const Table = (props) => {
     const [rows, setRows] = useState(props.children);
     const [highlightedRow, setHighlightedRow] = useState(null);
     const [draggedRow, setDraggedRow] = useState(null);
+
+    // states for storing updatedData
+    const [dataStore, setDataStore] = useState(props.data || []);
 
     useEffect(() => {
         setDropdownList(props.columns || []);
@@ -58,9 +69,24 @@ const Table = (props) => {
         updatedRows.splice(index, 0, movedRow);
 
         setRows(updatedRows);
+        updateDataObj(index, draggedRow);
         setDraggedRow(null);
         setHighlightedRow(null); // Clear highlight
     };
+
+    const updateDataObj = (index, dragRow) => {
+        if(props.data && props.data.length > 0){
+            //create a copy of the original data
+            const updatedData = [...props.data];
+
+            // remove the drag row from the data and save it in movedRow variable
+            const [movedRow] = updatedData.splice(dragRow, 1);
+
+            // insert the movedRow to the index that we drop
+            updatedData.splice(index, 0, movedRow);
+            setDataStore(updatedData);
+        }
+    }
 
     return (
         <Fragment>
@@ -92,7 +118,7 @@ const Table = (props) => {
                 )}
             </div>}
 
-            <table className={`${tableClasses} ${props.className || ''}`} ref={ref} onDragEnd={props.onDragUpdate}>
+            <table className={`${tableClasses} ${props.className || ''}`} ref={ref} onDragEnd={() => props.onDragUpdate(dataStore)}>
                 <thead>
                     <tr>
                         {props.columns.map((columnName, index) => (
@@ -125,6 +151,8 @@ const Table = (props) => {
 Table.defaultProps = {
     draggable: false,
     columns: [],
+    data: [],
+    onDragUpdate: () => {}
 };
 
 const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted }) => {
@@ -136,7 +164,7 @@ const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver,
             onDragLeave={onDragLeave}
             className={isHighlighted ? 'row-insert-highlight' : ''}>
             {React.Children.map(children, (cell, index) => 
-                !hiddenColumns[index] ? cell : null
+                hiddenColumns?.[index] ? null : cell
             )}
         </tr>
     )
