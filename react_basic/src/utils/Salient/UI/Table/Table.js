@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Fragment, useState } from "react";
+import React, { useRef, useEffect, Fragment, useState, useMemo } from "react";
 import classNames from "classnames";
 
 const Table = (props) => {
@@ -9,8 +9,8 @@ const Table = (props) => {
     // onDragUpdate: After dragging event of row ends, specify a custom function to run. The custom function will
     //               receive the updated data after drag events completed 
     // data: include the row of data retrived from external file, this is required to update the whole table object and return
-
-    const ref = useRef();
+    // onRetrivedRows: this props receive a function that returns the data of the rows that was checked. 
+    // retrieveRowsBtnTitle: This props overrides the default button title that is use for row data retrieval.
 
     // states for column visibility
     const [dropdownState, setDropdownState] = useState(false);
@@ -22,8 +22,19 @@ const Table = (props) => {
     const [highlightedRow, setHighlightedRow] = useState(null);
     const [draggedRow, setDraggedRow] = useState(null);
 
+    // state for row checkbox
+    const initialRowsCheckBoxState = useMemo(() => {
+        return Object.fromEntries((props.data || []).map((_, index) => [index, false]));
+    }, [props.data]);
+
+    const initialRowsCheckBoxStateFallback = useMemo(() => {
+        return Object.fromEntries((rows || []).map((_, index) => [index, false]));
+    }, [rows]);
+
+    const [selectRows, setSelectRows] = Object.keys(initialRowsCheckBoxState).length > 0 ? useState(initialRowsCheckBoxState) : useState(initialRowsCheckBoxStateFallback);
+
     // states for storing updatedData
-    const [dataStore, setDataStore] = useState(props.data || []);
+    const [dataStore, setDataStore] = props.data && props.data.length > 0 ? useState(props.data) : useState(React.Children.toArray(rows || []));
 
     useEffect(() => {
         setDropdownList(props.columns || []);
@@ -32,7 +43,7 @@ const Table = (props) => {
         ));
     }, [props.columns]);
 
-    // update the rows after drag drop
+    // update the rows after pagination change
     useEffect(() => {
         setRows(React.Children.toArray(props.children));
     }, [props.children]);
@@ -75,52 +86,96 @@ const Table = (props) => {
     };
 
     const updateDataObj = (index, dragRow) => {
-        if(props.data && props.data.length > 0){
+        if(dataStore && dataStore.length > 0){
             //create a copy of the original data
-            const updatedData = [...props.data];
-
+            const updatedData = [...dataStore];
+            const updatedSelectedRow = {...selectRows};
+            
             // remove the drag row from the data and save it in movedRow variable
-            const [movedRow] = updatedData.splice(dragRow, 1);
+            const [movedRowData] = updatedData.splice(dragRow, 1);
+
+            // switch the row pair check state
+            const {[dragRow]: dragRowCheckState, [index]: targetRowCheckState} = updatedSelectedRow;
+            const updatedRowPairState = {[index]:dragRowCheckState, [dragRow]: targetRowCheckState};
 
             // insert the movedRow to the index that we drop
-            updatedData.splice(index, 0, movedRow);
+            updatedData.splice(index, 0, movedRowData);
             setDataStore(updatedData);
+
+            // update the row pair check state
+            setSelectRows((prevState) => ({
+                ...prevState,
+                ...updatedRowPairState
+            }));
+        }
+    }
+
+    const selectAllRows = (e) => {
+        setSelectRows((prevState) => {
+            const updatedRowStates = Object.fromEntries(
+                Object.entries(prevState).map(([key, value]) => [key, e.target.checked])
+            );
+            return updatedRowStates;
+        });
+    }
+
+    const updateRowCheckState = (index) => {
+        setSelectRows((prevState) => ({
+            ...prevState,
+            [index]: !prevState[index]
+        }));
+    }
+
+    // helper function to filter from object
+    Object.filter = (obj, predicate) => 
+        Object.fromEntries(Object.entries(obj).filter(predicate));
+
+    // return check rows data onclick
+    const handleCheckedRows = () => {
+        if(props.onRetrievedSelected){
+            const selectedRows = (Object.filter(selectRows, ([key, value]) => value));
+            const selectedRowsData = Object.filter(dataStore, ([key, value]) => Object.keys(selectedRows).includes(key));
+            props.onRetrievedSelected(selectedRowsData);
         }
     }
 
     return (
         <Fragment>
-            {props.showColToggleUI && <div className={`dropdown-btn btn-group ${dropdownState ? 'dropdown-open' : ''}`}>
-                <button
-                    aria-haspopup="true"
-                    aria-expanded={dropdownState}
-                    className="btn"
-                    onClick={() => setDropdownState(!dropdownState)}
-                >
-                    <span className="icon icon-filter">
-                    </span>
-                </button>
-                {dropdownState && (
-                    <ul className="btn-dropdown-menu">
-                        {dropdownList.map((field, index) => (
-                            <li key={index}>
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        onChange={() => toggleColumnVisibility(index)}
-                                        checked={!hiddenColumns[index]}
-                                    />
-                                    {field}
-                                </label>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>}
+            <div className="btn-group">
+                {props.showColToggleUI && <div className={`dropdown-btn ${dropdownState ? 'dropdown-open' : ''}`}>
+                    <button
+                        aria-haspopup="true"
+                        aria-expanded={dropdownState}
+                        className="btn"
+                        onClick={() => setDropdownState(!dropdownState)}
+                    >
+                        <span className="icon icon-filter">
+                        </span>
+                    </button>
+                    {dropdownState && (
+                        <ul className="btn-dropdown-menu">
+                            {dropdownList.map((field, index) => (
+                                <li key={index}>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            onChange={() => toggleColumnVisibility(index)}
+                                            checked={!hiddenColumns[index]}
+                                        />
+                                        {field}
+                                    </label>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>}
+                {Object.values(selectRows).includes(true) && <button className="btn" onClick={handleCheckedRows}>{props.retrieveRowsBtnTitle}</button>}
+            </div>
 
-            <table className={`${tableClasses} ${props.className || ''}`} ref={ref} onDragEnd={() => props.onDragUpdate(dataStore)}>
+            <table className={`${tableClasses} ${props.className || ''}`} onDragEnd={() => props.onDragUpdate(dataStore)}>
                 <thead>
                     <tr>
+                        {props.showRowSelector && <td className="row-checkbox"><input type="checkbox" onChange={(e) => selectAllRows(e)}/></td>}
                         {props.columns.map((columnName, index) => (
                             <th key={index} className={hiddenColumns[index] ? 'hide-table-col' : ''}>
                                 {columnName}
@@ -135,6 +190,10 @@ const Table = (props) => {
                             ...child.props,
                             hiddenColumns, 
                             draggable: props.draggable,
+                            showRowSelector: props.showRowSelector,
+                            selectRow: selectRows[props.itemsPerPage && props.currentPage ? props.itemsPerPage * props.currentPage - (props.itemsPerPage - index) : index],
+                            rowId: props.itemsPerPage && props.currentPage ? props.itemsPerPage * props.currentPage - (props.itemsPerPage - index) : index,
+                            updateRowCheckState,
                             onDragStart: () => handleDragStart(index),
                             onDragOver: (e) => handleDragOver(index, e),
                             onDrop: () => handleDrop(index),
@@ -152,10 +211,13 @@ Table.defaultProps = {
     draggable: false,
     columns: [],
     data: [],
-    onDragUpdate: () => {}
+    onDragUpdate: () => {},
+    showColToggleUI: false,
+    showRowSelector: false,
+    retrieveRowsBtnTitle: 'Retrieve Rows'
 };
 
-const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted }) => {
+const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted, showRowSelector, selectRow, updateRowCheckState, rowId }) => {
     return (
         <tr draggable={draggable}
             onDragStart={onDragStart}
@@ -163,6 +225,7 @@ const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver,
             onDrop={onDrop}
             onDragLeave={onDragLeave}
             className={isHighlighted ? 'row-insert-highlight' : ''}>
+            {showRowSelector && <td className="row-checkbox"><input type="checkbox" checked={selectRow} onChange={() => updateRowCheckState(rowId)}/></td>}
             {React.Children.map(children, (cell, index) => 
                 hiddenColumns?.[index] ? null : cell
             )}

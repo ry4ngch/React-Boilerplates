@@ -6,11 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SampleDynamicTable = (props) => {
     const onDragUpdate = (returnData) => {
+        //console.log(returnData);
+    }
+
+    const handleRetrievedRows = (returnData) => {
         console.log(returnData);
     }
 
     return (
-        <Table draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} onDragUpdate={onDragUpdate} data={props.data}>
+        <Table {...props} draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} onDragUpdate={onDragUpdate} data={props.data} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} retrieveRowsBtnTitle="Get Row">
             {props.items.map((row, index) => (
                 <TableRow key={index}>
                     <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
@@ -25,6 +29,6 @@ const SampleDynamicTable = (props) => {
     )
 }
 
-const DynamicPaginatedTable = withPagination()(SampleDynamicTable);
+const SampleDynamicPaginatedTable = withPagination()(SampleDynamicTable);
 
-export default DynamicPaginatedTable;
+export default SampleDynamicPaginatedTable;

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const withPagination = (config = {}) => (WrappedComponent) => {
   return ({ items = [], itemsPerPage = config.itemsPerPage || 5, pageRange = config.pageRange || 4, children, ...props }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(items.length > 0 ? items.length : React.Children.count(children) / itemsPerPage);
-
+    const totalPages = Math.ceil(items.length > 0 ? items.length / itemsPerPage : React.Children.count(children) / itemsPerPage);
+    
     const [pageLimit, setPageLimit] = useState({
       min: 1,
       max: Math.min(totalPages, currentPage + pageRange),
@@ -41,7 +41,7 @@ const withPagination = (config = {}) => (WrappedComponent) => {
       // Fallback: directly use children (for cases like SampleDynamicTable) and Static Table
 
       /* For static table only */
-      const rows = React.Children.toArray(children)
+      const rows = React.Children.toArray(children);
 
       const paginatedRows = rows.slice(
         (currentPage - 1) * itemsPerPage,
@@ -56,7 +56,7 @@ const withPagination = (config = {}) => (WrappedComponent) => {
 
     return (
       <div>
-        <WrappedComponent {...props} items={paginatedItems} data={items}>
+        <WrappedComponent {...props} items={paginatedItems} data={items.length > 0 ? items : React.Children.toArray(children)} itemsPerPage={itemsPerPage} currentPage={currentPage}>
           {renderChildren()}
         </WrappedComponent>
         <div className="pagination-container">

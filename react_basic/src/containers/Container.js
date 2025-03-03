@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // import the Dummy datas
@@ -14,10 +14,11 @@ import Tab, {TabContent, TabItems} from '../components/Tab/Tab';
 import Modal from '../utils/Salient/UI/Modal/Modal';
 import Breadcrumb from '../utils/Salient/UI/Breadcrumb/Breadcrumb';
 import Treeview, {TreeItem} from '../components/Treeview/Treeview';
-import DynamicPaginatedTable from '../components/SampleDynamicTable';
-import SampleStaticTable from '../components/SampleStaticTable';
+import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
+import SampleStaticPaginatedTable from '../components/SampleStaticPaginatedTable';
 import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
 import withPagination from '../utils/Salient/UI/Pagination/withPagination';
+import SampleStaticTable from '../components/SampleStaticTable';
 
 const Container = () => {
   const [data, setData] = useState([]);
@@ -78,11 +79,9 @@ const Container = () => {
           </CardInfo>
           <CardContent>
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <DynamicPaginatedTable items={filteredTable} itemsPerPage={3}/>
+            <SampleDynamicPaginatedTable items={filteredTable} itemsPerPage={3}/>
           </CardContent>
-        </Card>
 
-        <Card className="card-border">
           <CardInfo>
             <p className="card__title">Dynamic Table with Pagination</p>
             <p>using pagination externally</p>
@@ -96,7 +95,7 @@ const Container = () => {
           </CardInfo>
           <CardContent>
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <ExternalPaginatedTable items={filteredTable} itemsPerPage={5} draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} data={filteredTable}>
+            <ExternalPaginatedTable items={filteredTable} itemsPerPage={5} draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} data={filteredTable} showRowSelector={true}>
             {(paginatedItems) =>
               (Array.isArray(paginatedItems) ? paginatedItems : []).map((row, index) => (
                 <TableRow key={index}>
@@ -111,14 +110,17 @@ const Container = () => {
             }
             </ExternalPaginatedTable>
           </CardContent>
-        </Card>
-
-        <Card className="card-border">
           <CardInfo>
             <p className="card__title">Static Table with Pagination</p>
           </CardInfo>
           <CardContent>
-            <SampleStaticTable itemsPerPage={4} />
+            <SampleStaticPaginatedTable itemsPerPage={4}/>
+          </CardContent>
+          <CardInfo>
+            <p className="card__title">Static Table No Pagination</p>
+          </CardInfo>
+          <CardContent>
+            <SampleStaticTable />
           </CardContent>
         </Card>
 
