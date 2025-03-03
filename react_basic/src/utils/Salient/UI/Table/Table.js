@@ -11,6 +11,10 @@ const Table = (props) => {
     // data: include the row of data retrived from external file, this is required to update the whole table object and return
     // onRetrivedRows: this props receive a function that returns the data of the rows that was checked. 
     // retrieveRowsBtnTitle: This props overrides the default button title that is use for row data retrieval.
+    
+
+    // ref for returning the nth-child of the table
+    const tBodyRef = useRef();
 
     // states for column visibility
     const [dropdownState, setDropdownState] = useState(false);
@@ -133,8 +137,20 @@ const Table = (props) => {
     // return check rows data onclick
     const handleCheckedRows = () => {
         if(props.onRetrievedSelected){
+            let selectedRowsData;
             const selectedRows = (Object.filter(selectRows, ([key, value]) => value));
-            const selectedRowsData = Object.filter(dataStore, ([key, value]) => Object.keys(selectedRows).includes(key));
+           
+            // props.data was specified directly to Table or through pagination
+            // if props.data contains props, we want to return the childNodes ref, this is especially true for static table that has pagination
+            // for dynamic tables, this will return the selected row data which was part of the input data props.
+            if(props.data && props.data.length > 0 && !dataStore.some(obj => obj.hasOwnProperty('props'))){
+                selectedRowsData = Object.filter(dataStore, ([key, value]) => Object.keys(selectedRows).includes(key));
+            } else {
+                if(tBodyRef.current){
+                    const childNodes = Array.from(tBodyRef.current.children);
+                    selectedRowsData = Object.filter(childNodes, ([key, value]) => Object.keys(selectedRows).includes(key));
+                } 
+            }
             props.onRetrievedSelected(selectedRowsData);
         }
     }
@@ -183,7 +199,7 @@ const Table = (props) => {
                         ))}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ref={tBodyRef}>
                     {/* Pass the hiddenColumns state to <Row> to decide which column to hide*/}
                     {React.Children.map(rows, (child, index) => 
                         React.isValidElement(child) ? React.cloneElement(child, { 
