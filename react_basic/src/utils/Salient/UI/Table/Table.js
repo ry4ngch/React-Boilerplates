@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Fragment, useState, useMemo } from "react";
+import React, { useRef, useEffect, Fragment, useState, useMemo} from "react";
 import classNames from "classnames";
 
 const Table = (props) => {
@@ -143,13 +143,19 @@ const Table = (props) => {
             // props.data was specified directly to Table or through pagination
             // if props.data contains props, we want to return the childNodes ref, this is especially true for static table that has pagination
             // for dynamic tables, this will return the selected row data which was part of the input data props.
-            if(props.data && props.data.length > 0 && !dataStore.some(obj => obj.hasOwnProperty('props'))){
-                selectedRowsData = Object.filter(dataStore, ([key, value]) => Object.keys(selectedRows).includes(key));
+            if(dataStore.some(obj => obj.hasOwnProperty('props'))){
+                const reactChildrensRows = Object.filter(dataStore, ([key, value]) => Object.keys(selectedRows).includes(key));
+                selectedRowsData = Object.entries(reactChildrensRows).reduce((acc, [key, value]) => {
+                    const fields = value.props.children.reduce((fieldsAcc, child) => {
+                        const ob = child.props;
+                        fieldsAcc[ob['data-field']] = ob.children;
+                        return fieldsAcc;
+                    }, {});
+                    acc[key] = fields;
+                    return acc;
+                }, {});
             } else {
-                if(tBodyRef.current){
-                    const childNodes = Array.from(tBodyRef.current.children);
-                    selectedRowsData = Object.filter(childNodes, ([key, value]) => Object.keys(selectedRows).includes(key));
-                } 
+                selectedRowsData = Object.filter(dataStore, ([key, value]) => Object.keys(selectedRows).includes(key));
             }
             props.onRetrievedSelected(selectedRowsData);
         }
@@ -188,7 +194,7 @@ const Table = (props) => {
                 {Object.values(selectRows).includes(true) && <button className="btn" onClick={handleCheckedRows}>{props.retrieveRowsBtnTitle}</button>}
             </div>
 
-            <table className={`${tableClasses} ${props.className || ''}`} onDragEnd={() => props.onDragUpdate(dataStore)}>
+            <table className={`${tableClasses} ${props.className || ''}`} onDragEnd={() => props.onDragUpdate(dataStore)} ref={props.ref}>
                 <thead>
                     <tr>
                         {props.showRowSelector && <td className="row-checkbox"><input type="checkbox" onChange={(e) => selectAllRows(e)}/></td>}
@@ -201,21 +207,23 @@ const Table = (props) => {
                 </thead>
                 <tbody ref={tBodyRef}>
                     {/* Pass the hiddenColumns state to <Row> to decide which column to hide*/}
-                    {React.Children.map(rows, (child, index) => 
-                        React.isValidElement(child) ? React.cloneElement(child, { 
-                            ...child.props,
-                            hiddenColumns, 
-                            draggable: props.draggable,
-                            showRowSelector: props.showRowSelector,
-                            selectRow: selectRows[props.itemsPerPage && props.currentPage ? props.itemsPerPage * props.currentPage - (props.itemsPerPage - index) : index],
-                            rowId: props.itemsPerPage && props.currentPage ? props.itemsPerPage * props.currentPage - (props.itemsPerPage - index) : index,
-                            updateRowCheckState,
-                            onDragStart: () => handleDragStart(index),
-                            onDragOver: (e) => handleDragOver(index, e),
-                            onDrop: () => handleDrop(index),
-                            onDragLeave: handleDragLeave,
-                            isHighlighted: highlightedRow === index
-                        }) : child
+                    {React.Children.map(rows, (child, index) => {
+                        const rowIndex = props.itemsPerPage && props.currentPage ? (props.currentPage - 1) * props.itemsPerPage + index : index;
+                        return React.isValidElement(child) ? React.cloneElement(child, { 
+                                ...child.props,
+                                hiddenColumns, 
+                                draggable: props.draggable,
+                                showRowSelector: props.showRowSelector,
+                                selectRow: selectRows[rowIndex],
+                                rowId: rowIndex,
+                                updateRowCheckState,
+                                onDragStart: () => handleDragStart(index),
+                                onDragOver: (e) => handleDragOver(index, e),
+                                onDrop: () => handleDrop(index),
+                                onDragLeave: handleDragLeave,
+                                isHighlighted: highlightedRow === index
+                            }) : child
+                        }
                     )}
                 </tbody>
             </table>

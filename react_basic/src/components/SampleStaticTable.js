@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import Table, {TableRow} from "../utils/Salient/UI/Table/Table";
 
 const SampleStaticTable = () => {
@@ -6,8 +6,16 @@ const SampleStaticTable = () => {
         console.log(returnData);
     }
 
+    const tableRef = useRef(null);
+
+    useEffect(() => {
+        // sample of how to get forwarded ref
+        //console.log(tableRef.current);
+    }, [])
+
+
     return (
-        <Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows}>
+        <Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} ref={tableRef}>
             <TableRow>
                 <td data-field="Company">Alfreds Futterkiste</td>
                 <td data-field="Contact">Maria Anders</td>
