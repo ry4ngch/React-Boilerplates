@@ -10,7 +10,7 @@ import Timeline from '../components/Timeline/Timeline';
 import Button from '../utils/Salient/UI/Buttons/Button';
 import Card, {CardInfo, CardContent} from '../utils/Salient/UI/Card/Card';
 import Accordian, {AccordianItem} from '../utils/Salient/UI/Accordian/Accordian';
-import Tab, {TabContent, TabItems} from '../components/Tab/Tab';
+import Tab, {TabContent, TabItems} from '../utils/Salient/UI/Tab/Tab';
 import Modal from '../utils/Salient/UI/Modal/Modal';
 import Breadcrumb from '../utils/Salient/UI/Breadcrumb/Breadcrumb';
 import Treeview, {TreeItem} from '../components/Treeview/Treeview';
@@ -205,23 +205,23 @@ const Container = () => {
 
           <Tab sideTabs={isSideTab}>
             <TabItems tabStyleActive={tabStyle}>
-                <li><a href="#tab1" className="active">Tab 1</a></li>
-                <li><a href="#tab2">Tab 2</a></li>
-                <li><a href="#tab3">Tab 3</a></li>
+                <li><a>Tab 1</a></li>
+                <li><a>Tab 2</a></li>
+                <li><a>Tab 3</a></li>
             </TabItems>
             <TabContent>  
-                <section id="tab1" className="item active" data-title="Tab 1">
+                <section className="item" data-title="Tab 1">
                     <div className="item-content">
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut dicta neque deleniti dignissimos doloribus asperiores vel velit recusandae quasi? Fugit?</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus quibusdam ratione aliquid ut, dolorem illum velit ad sunt dolorum!</p>
                     </div>
                 </section>
-                <section id="tab2" className="item" data-title="Tab 2">
+                <section className="item" data-title="Tab 2">
                     <div className="item-content">
                         Tab 2 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
                     </div>
                 </section>
-                <section id="tab3" className="item" data-title="Tab 3">
+                <section className="item" data-title="Tab 3">
                     <div className="item-content">
                         Tab 3 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
                     </div>

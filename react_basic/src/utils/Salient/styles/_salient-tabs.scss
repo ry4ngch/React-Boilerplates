@@ -52,6 +52,11 @@ $tab-link__vert-padding: 2em;
         }*/
 
         li {
+
+            &:hover {
+                cursor: pointer;
+            }
+            
             a {
                 padding: $tab-link__side-padding $tab-link__vert-padding;
                 margin-right: .3em;

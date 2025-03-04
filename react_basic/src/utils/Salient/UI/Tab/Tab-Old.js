@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import classNames from "classnames";
-import tabControl from "../../utils/Salient/salient-tabs";
+import tabControl from "../../salient-tabs";
 
 const Tab = (props) => {
     const tabClass = classNames('tabbed-content', {

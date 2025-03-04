@@ -46,10 +46,10 @@ const tabControl = () => {
                         itemElements = container.querySelectorAll('.item');
 
                     container.querySelectorAll('.tabs a').forEach(function(tabLink) {
-                    tabLink.classList.remove('active');
+                        tabLink.classList.remove('active');
                     });
                     itemElements.forEach(function(itemElement) {
-                    itemElement.classList.remove('active');
+                        itemElement.classList.remove('active');
                     });
 
                     // Set the clicked item and corresponding tab link to active
