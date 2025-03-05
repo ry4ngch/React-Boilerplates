@@ -77,7 +77,10 @@ const Table = (props) => {
     };
 
     const handleDrop = (index) => {
-        if (draggedRow === null || draggedRow === index) return;
+        if (draggedRow === null || draggedRow === index) {
+            setHighlightedRow(null);
+            return;
+        };
 
         const updatedRows = [...rows];
         const [movedRow] = updatedRows.splice(draggedRow, 1);
@@ -164,7 +167,7 @@ const Table = (props) => {
     return (
         <Fragment>
             <div className="btn-group">
-                {props.showColToggleUI && <div className={`dropdown-btn ${dropdownState ? 'dropdown-open' : ''}`}>
+                {props.showColToggleUI && <div className={['dropdown-btn', dropdownState ? 'dropdown-open' : ''].join(' ').trim()}>
                     <button
                         aria-haspopup="true"
                         aria-expanded={dropdownState}
@@ -194,7 +197,7 @@ const Table = (props) => {
                 {Object.values(selectRows).includes(true) && <button className="btn" onClick={handleCheckedRows}>{props.retrieveRowsBtnTitle}</button>}
             </div>
 
-            <table className={`${tableClasses} ${props.className || ''}`} onDragEnd={() => props.onDragUpdate(dataStore)} ref={props.ref}>
+            <table className={[tableClasses, props.className || ''].join(' ').trim()} onDragEnd={() => props.onDragUpdate(dataStore)} ref={props.ref}>
                 <thead>
                     <tr>
                         {props.showRowSelector && <td className="row-checkbox"><input type="checkbox" onChange={(e) => selectAllRows(e)}/></td>}
@@ -241,14 +244,15 @@ Table.defaultProps = {
     retrieveRowsBtnTitle: 'Retrieve Rows'
 };
 
-const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted, showRowSelector, selectRow, updateRowCheckState, rowId }) => {
+const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted, showRowSelector, selectRow, updateRowCheckState, rowId, className }) => {
     return (
         <tr draggable={draggable}
             onDragStart={onDragStart}
             onDragOver={onDragOver}
             onDrop={onDrop}
             onDragLeave={onDragLeave}
-            className={isHighlighted ? 'row-insert-highlight' : ''}>
+            className={[className || '', isHighlighted ? 'row-insert-highlight' : ''].join(' ').trim()}
+            >
             {showRowSelector && <td className="row-checkbox"><input type="checkbox" checked={selectRow} onChange={() => updateRowCheckState(rowId)}/></td>}
             {React.Children.map(children, (cell, index) => 
                 hiddenColumns?.[index] ? null : cell

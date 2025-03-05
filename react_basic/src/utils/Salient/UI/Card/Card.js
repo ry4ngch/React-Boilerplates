@@ -20,7 +20,7 @@ const Card = (props) => {
     }, [props.animation])
   
     return (
-        <div className={`${cardClasses} ${props.className || ''}`} style={{ '--rows': rows, '--cols': cols, ...props.style }}>
+        <div className={[cardClasses, props.className || ''].join(' ').trim()} style={{ '--rows': rows, '--cols': cols, ...props.style }}>
             {gridState && (
                 <div className="tracker__cells" aria-hidden="true">
                     {cells.map((_, index) => (
@@ -28,7 +28,7 @@ const Card = (props) => {
                     ))}
                 </div>
             )}
-            {props.children}
+            {gridState ? <div className="card-grid">{props.children}</div> : props.children}
       </div>
     );
   
@@ -36,19 +36,31 @@ const Card = (props) => {
 
 const CardInfo = (props) => {
     return(
-        <div {...props} className={`card-info ${props.className || ''}`}>
+        <div {...props} className={['card-info', props.className || ''].join(' ').trim()}>
+            {props.justify ? <div className="card-justify">{props.children}</div> : props.children}
+        </div>
+    )
+}
+
+CardInfo.defaultProps = {
+    justify: false
+}
+
+const CardContent = (props) => {
+    return(
+        <div {...props} className={['card-content', props.className || ''].join(' ').trim()}>
             {props.children}
         </div>
     )
 }
 
-const CardContent = (props) => {
+const CardTitle = (props) => {
     return(
-        <div {...props} className={`card-content ${props.className || ''}`}>
+        <div className={['card__title', props.className || ''].join(' ').trim()}>
             {props.children}
         </div>
     )
 }
 
 export default Card;
-export {CardInfo, CardContent};
+export {CardInfo, CardContent, CardTitle};

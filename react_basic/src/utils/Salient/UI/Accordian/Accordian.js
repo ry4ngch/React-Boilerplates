@@ -17,7 +17,7 @@ const Accordian = (props) => {
       }, [props.children]);
     
     return (
-        <div className={`accordian ${props.className || ''}`} data-active-toggle={props.activeToggle}>
+        <div className={['accordian', props.className || ''].join(' ').trim()} data-active-toggle={props.activeToggle}>
             {React.Children.map(props.children, (child, _refIndex) => 
                 React.isValidElement(child) ? React.cloneElement(child, { _accordianItemsState, _setAccordianItemsState, _refIndex, activeToggle: props.activeToggle }) : child
             )}
@@ -52,7 +52,7 @@ const AccordianItem = (props) => {
     }, [props._accordianItemsState[props._refIndex]]);
 
     return (
-        <div className={`accordian-card ${delayedClass ? 'open' : ''}`} ref={isFirstRender}>
+        <div className={['accordian-card', delayedClass ? 'open' : ''].join(' ').trim()} ref={isFirstRender}>
             <div className="accordian-heading" onClick={() => props._setAccordianItemsState((prevState) => {
                if (props.activeToggle === 'single') {
                     // Set all to false, then toggle the clicked one

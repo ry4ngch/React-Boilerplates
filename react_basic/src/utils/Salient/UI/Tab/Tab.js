@@ -6,7 +6,7 @@ const Tab = (props) => {
         'tabs-side': props.sideTabs,
     });
 
-    const [isActiveIndex, setIsActiveIndex] = useState(0);
+    const [isActiveIndex, setIsActiveIndex] = useState(props.activeTabIndex || 0);
 
     return (
         <article className={tabClass}>

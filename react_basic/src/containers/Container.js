@@ -5,19 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import {docs, accordianData} from './demo_data';
 
-// Import Components Build with Salient
-import Timeline from '../components/Timeline/Timeline';
+// import Salient Library
 import Button from '../utils/Salient/UI/Buttons/Button';
-import Card, {CardInfo, CardContent} from '../utils/Salient/UI/Card/Card';
+import Card, {CardInfo, CardContent, CardTitle} from '../utils/Salient/UI/Card/Card';
 import Accordian, {AccordianItem} from '../utils/Salient/UI/Accordian/Accordian';
 import Tab, {TabContent, TabItems} from '../utils/Salient/UI/Tab/Tab';
 import Modal from '../utils/Salient/UI/Modal/Modal';
 import Breadcrumb from '../utils/Salient/UI/Breadcrumb/Breadcrumb';
+import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
+import withPagination from '../utils/Salient/UI/Pagination/withPagination';
+
+// Import Components Build with Salient
+import Timeline from '../components/Timeline/Timeline';
 import Treeview, {TreeItem} from '../components/Treeview/Treeview';
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
 import SampleStaticPaginatedTable from '../components/SampleStaticPaginatedTable';
-import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
-import withPagination from '../utils/Salient/UI/Pagination/withPagination';
 import SampleStaticTable from '../components/SampleStaticTable';
 
 const Container = () => {
@@ -74,7 +76,7 @@ const Container = () => {
       <div className="container-fluid">
         <Card className="card-border">
           <CardInfo>
-            <p className="card__title">Dynamic Table with Pagination</p>
+            <CardTitle>Dynamic Table with Pagination</CardTitle>
             <p>using pagination in custom component</p>
           </CardInfo>
           <CardContent>
@@ -83,7 +85,7 @@ const Container = () => {
           </CardContent>
 
           <CardInfo>
-            <p className="card__title">Dynamic Table with Pagination</p>
+            <CardTitle>Dynamic Table with Pagination</CardTitle>
             <p>using pagination externally</p>
             <p>Note: The following props are pass to the Table component from this external paginated component</p>
             <ul style={{listStyle: 'none'}}>
@@ -111,13 +113,13 @@ const Container = () => {
             </ExternalPaginatedTable>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Static Table with Pagination</p>
+            <CardTitle>Static Table with Pagination</CardTitle>
           </CardInfo>
           <CardContent>
             <SampleStaticPaginatedTable itemsPerPage={4}/>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Static Table No Pagination</p>
+            <CardTitle>Static Table No Pagination</CardTitle>
           </CardInfo>
           <CardContent>
             <SampleStaticTable />
@@ -126,10 +128,10 @@ const Container = () => {
 
         <Card className='card-flat'>
           <CardInfo>
-            <p className="card__title">Modal (Click to View)</p>
+            <CardTitle>Modal (Click to View)</CardTitle>
           </CardInfo>
           <CardContent>
-            <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={() => setShowModal(true)}>Show Modal</Button>
+            <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true} inverseColor={true} onClick={(e) => {e.preventDefault(); setShowModal(true)}}>Show Modal</Button>
           </CardContent>
         </Card>
         
@@ -147,16 +149,14 @@ const Container = () => {
         </Modal>
 
         <Card className="card-border">
-          <CardInfo>
-            <div className="card-justify">
-              <h3 className="card__title"><FontAwesomeIcon icon="history"></FontAwesomeIcon>Timeline</h3>
+          <CardInfo justify={true}>
+              <CardTitle>Timeline</CardTitle>
               <select value={showCount} onChange={updateShowCount}>
                   <option value="3">3</option>
                   <option value="5">5</option>
                   <option value="6">6</option>
                   <option value="12">12</option>
               </select>
-            </div>
           </CardInfo>
           <CardContent>
             <Timeline 
@@ -176,7 +176,7 @@ const Container = () => {
 
         <Card className="card-border">
           <CardInfo>
-            <p className="card__title">Accordian</p>
+            <CardTitle>Accordian</CardTitle>
           </CardInfo>
           <Accordian activeToggle="single">
               {accordianData.map((item, index) => (
@@ -186,9 +186,8 @@ const Container = () => {
         </Card>
 
         <Card className="card-border">
-          <CardInfo>
-            <div className="card-justify">
-              <p className="card__title">Tabs</p>
+          <CardInfo justify={true}>
+              <CardTitle>Tabs</CardTitle>
               <div>
                 <select onChange={(e) => setTabType(e.target.value==='true')} defaultValue={false}>
                     <option value={true}>Side Tab</option>
@@ -199,11 +198,9 @@ const Container = () => {
                     <option value="box">Box</option>
                 </select>
               </div>
-              
-            </div>
           </CardInfo>
 
-          <Tab sideTabs={isSideTab}>
+          <Tab sideTabs={isSideTab} activeTabIndex={1}>
             <TabItems tabStyleActive={tabStyle}>
                 <li><a>Tab 1</a></li>
                 <li><a>Tab 2</a></li>
@@ -232,7 +229,7 @@ const Container = () => {
         
         <Card className="bg-dark card-flat">
           <CardInfo>
-            <p className="card__title">Block Button</p>
+            <CardTitle>Block Button</CardTitle>
           </CardInfo>
           <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
@@ -240,7 +237,7 @@ const Container = () => {
             <Button type="button" buttonStyle="clear" isBlock={true} expandFull={true}>Button3</Button>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Toggle Switch and CheckBox</p>
+            <CardTitle>Toggle Switch and CheckBox</CardTitle>
           </CardInfo>
           <div className="card-content">
             <Button type="checkbox"></Button>
@@ -249,7 +246,7 @@ const Container = () => {
             <Button type="switch" disabled={true}></Button>
           </div>
           <CardInfo>
-            <p className="card__title">Widget Button</p>
+            <CardTitle>Widget Button</CardTitle>
           </CardInfo>
           <CardContent>
             <Button type="button" buttonType="widget" icon="leftArrow"></Button>
@@ -261,7 +258,7 @@ const Container = () => {
         
         <Card className="card-border">
           <CardInfo>
-            <p className="card__title">Inverse Buttons</p>
+            <CardTitle>Inverse Buttons</CardTitle>
           </CardInfo>
           <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={false} expandFull={false} inverseColor={true}>Button4</Button>
@@ -278,40 +275,38 @@ const Container = () => {
           <CardContent>
             <Card>
               <CardInfo>
-                <p className="card__title">Card (Without Animation)</p>
+                <CardTitle>Card (Without Animation)</CardTitle>
               </CardInfo>
-              <p className="card-content">Normal card without animation, for more card display option, apply card-flat or card-border class to Card Component</p>
-              <p className="card-content">className='card-border' remove box-shadow and uses border, while className='card-flat' applies a single box-shadow</p>
+              <CardContent>Normal card without animation, for more card display option, apply card-flat or card-border class to Card Component</CardContent>
+              <CardContent>className='card-border' remove box-shadow and uses border, while className='card-flat' applies a single box-shadow</CardContent>
             </Card>
         
             <Card animation='scale'>
               <CardInfo>
-                <p className="card__title">Card (With Scale Animation)</p>
+                <CardTitle>Card (With Scale Animation)</CardTitle>
               </CardInfo>
-              <p className="card-content">This card will scale and grow large</p>
+              <CardContent>This card will scale and grow large</CardContent>
             </Card>
 
             <Card animation='flip-x'>
               <CardInfo>
-                <p className="card__title">Card (With Flip Animation)</p>
+                <CardTitle>Card (With Flip Animation)</CardTitle>
               </CardInfo>
-              <p className="card-content">This will flip 180 around X-Axis</p>
+              <CardContent>This will flip 180 around X-Axis</CardContent>
             </Card>
 
             <Card animation='flip-y'>
               <CardInfo>
-                <p className="card__title">Card (With Flip Animation)</p>
+                <CardTitle>Card (With Flip Animation)</CardTitle>
               </CardInfo>
-              <p className="card-content">This will flip 180 around Y-Axis</p>
+              <CardContent>This will flip 180 around Y-Axis</CardContent>
             </Card>
 
             <Card animation="tilt">
-              <div className="card-grid">
                 <CardInfo>
-                  <p className="card__title">Card (With Tilt Animation)</p>
+                  <CardTitle>Card (With Tilt Animation)</CardTitle>
                 </CardInfo>
-                <p className="card-content">Note: For Tilt Effect to work properly, card-grid class must be applied on inner div</p>
-              </div>
+                <CardContent>Note: For Tilt Effect to work properly, card-grid class must be applied on inner div</CardContent>
             </Card>
           </CardContent>
           
@@ -321,7 +316,7 @@ const Container = () => {
 
         <Card className="card-border">
           <CardInfo>
-            <p className="card__title">Breadcrumbs With Seperator</p>
+            <CardTitle>Breadcrumbs With Seperator</CardTitle>
           </CardInfo>
           <CardContent>
             <Breadcrumb separator="/">
@@ -332,7 +327,7 @@ const Container = () => {
             </Breadcrumb>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Breadcrumbs Dot Indicator</p>
+            <CardTitle>Breadcrumbs Dot Indicator</CardTitle>
           </CardInfo>
           <CardContent>
             <Breadcrumb bcType="dot">
@@ -343,7 +338,7 @@ const Container = () => {
             </Breadcrumb>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Breadcrumbs Basic</p>
+            <CardTitle>Breadcrumbs Basic</CardTitle>
           </CardInfo>
           <CardContent>
             <Breadcrumb>
@@ -354,7 +349,7 @@ const Container = () => {
             </Breadcrumb>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Breadcrumbs Multi Step with Badge</p>
+            <CardTitle>Breadcrumbs Multi Step with Badge</CardTitle>
           </CardInfo>
           <CardContent>
             <Breadcrumb bcType="multiStep" hasBadge={true}>
@@ -365,7 +360,7 @@ const Container = () => {
             </Breadcrumb>
           </CardContent>
           <CardInfo>
-            <p className="card__title">Breadcrumbs Triangle</p>
+            <CardTitle>Breadcrumbs Triangle</CardTitle>
           </CardInfo>
           <CardContent>
             <Breadcrumb bcType="triangle">
@@ -379,7 +374,7 @@ const Container = () => {
 
         <Card className="card-border bg-dark" style={{marginTop: '10px'}}>
           <CardInfo>
-            <p className="card__title">Treeview</p>
+            <CardTitle>Treeview</CardTitle>
           </CardInfo>
           <CardContent>
             <Treeview>
