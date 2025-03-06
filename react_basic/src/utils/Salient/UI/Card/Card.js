@@ -35,9 +35,10 @@ const Card = (props) => {
 }
 
 const CardInfo = (props) => {
+    const { justify, children, ...rest } = props;
     return(
-        <div {...props} className={['card-info', props.className || ''].join(' ').trim()}>
-            {props.justify ? <div className="card-justify">{props.children}</div> : props.children}
+        <div {...rest} className={['card-info', props.className || ''].join(' ').trim()}>
+            {justify ? (<div className="card-justify">{children}</div>) : (children)}
         </div>
     )
 }

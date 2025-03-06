@@ -14,10 +14,10 @@ import Modal from '../utils/Salient/UI/Modal/Modal';
 import Breadcrumb from '../utils/Salient/UI/Breadcrumb/Breadcrumb';
 import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
 import withPagination from '../utils/Salient/UI/Pagination/withPagination';
+import Treeview, {TreeItem} from '../utils/Salient/UI/Treeview/Treeview';
 
 // Import Components Build with Salient
 import Timeline from '../components/Timeline/Timeline';
-import Treeview, {TreeItem} from '../components/Treeview/Treeview';
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
 import SampleStaticPaginatedTable from '../components/SampleStaticPaginatedTable';
 import SampleStaticTable from '../components/SampleStaticTable';

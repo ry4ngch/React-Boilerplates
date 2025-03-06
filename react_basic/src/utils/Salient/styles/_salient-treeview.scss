@@ -28,13 +28,14 @@
     transform-origin: top;
     transform: scaleY(1);
     opacity: 1;
-    height: auto;
-    transition: transform .3s ease-in-out, opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+    max-height: 1000px;
+    overflow: hidden;
+    transition: transform .3s ease-in-out, opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
     
     &.hide {
         transform: scaleY(0);
         opacity: 0;
-        height: 0;
+        max-height: 0;
     }
 }
 .list-tree li{
