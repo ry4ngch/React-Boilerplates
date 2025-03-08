@@ -15,9 +15,9 @@ import Breadcrumb from '../utils/Salient/UI/Breadcrumb/Breadcrumb';
 import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
 import withPagination from '../utils/Salient/UI/Pagination/withPagination';
 import Treeview, {TreeItem} from '../utils/Salient/UI/Treeview/Treeview';
+import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 
 // Import Components Build with Salient
-import Timeline from '../components/Timeline/Timeline';
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
 import SampleStaticPaginatedTable from '../components/SampleStaticPaginatedTable';
 import SampleStaticTable from '../components/SampleStaticTable';
@@ -97,7 +97,7 @@ const Container = () => {
           </CardInfo>
           <CardContent>
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <ExternalPaginatedTable items={filteredTable} itemsPerPage={5} draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} data={filteredTable} showRowSelector={true}>
+            <ExternalPaginatedTable items={filteredTable} itemsPerPage={5} draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} showRowSelector={true}>
             {(paginatedItems) =>
               (Array.isArray(paginatedItems) ? paginatedItems : []).map((row, index) => (
                 <TableRow key={index}>
@@ -166,9 +166,15 @@ const Container = () => {
               isStaggered={true}
               centerEvents={true}
               showControls={true}
-              data={data}
               isTimelineActive={true}
               activeEventID={3}>
+                {data.map((item, index) => (
+                    <TimelineEvent 
+                    key={item.id} 
+                    icon={index === 0 ? 'icon-square' : 'icon-circle'}
+                    text={item.text}
+                    event={item.thumbnail}/>
+                ))}
             </Timeline>
           </CardContent>
         </Card>

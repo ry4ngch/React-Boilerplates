@@ -143,7 +143,7 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   ├── _salient_breadcrumb.scss
 │   │   │   │   ├── _salient_button.scss
 │   │   │   │   ├── _salient_card.scss
-│   │   │   │   ├── -salient-icons.scss
+│   │   │   │   ├── _salient-icons.scss
 │   │   │   │   ├── _salient-modal.scss
 │   │   │   │   ├── _salient-nav.scss
 │   │   │   │   ├── _salient-table.scss
@@ -210,10 +210,9 @@ This library offers:
 
 > **Note:**  
 > The current salient library is only tested to work for a single component, this library is still under development. You are free to customize the code for your project.
-> The below components are still under development:
->   - Navbar
->   - Timeline
-> <br> The other components have been tested to work with multiple instance.
+> The other components have been tested to work with multiple instance except for the below components:
+> - Navbar
+> - Timeline
 
 ## Using Salient Navbar
 
@@ -342,31 +341,31 @@ The Salient Tabs is a customizable component that can be easily configured using
 
 ### Usage:
 ```jsx
-  <Tab sideTabs={isSideTab} activeTabIndex={1}>
-    <TabItems tabStyleActive={tabStyle}>
-        <li><a>Tab 1</a></li>
-        <li><a>Tab 2</a></li>
-        <li><a>Tab 3</a></li>
-    </TabItems>
-    <TabContent>  
-        <section className="item" data-title="Tab 1">
-            <div className="item-content">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut dicta neque deleniti dignissimos doloribus asperiores vel velit recusandae quasi? Fugit?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus quibusdam ratione aliquid ut, dolorem illum velit ad sunt dolorum!</p>
-            </div>
-        </section>
-        <section className="item" data-title="Tab 2">
-            <div className="item-content">
-                Tab 2 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-            </div>
-        </section>
-        <section className="item" data-title="Tab 3">
-            <div className="item-content">
-                Tab 3 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-            </div>
-        </section>
-    </TabContent>
-  </Tab>
+<Tab sideTabs={isSideTab} activeTabIndex={1}>
+  <TabItems tabStyleActive={tabStyle}>
+      <li><a>Tab 1</a></li>
+      <li><a>Tab 2</a></li>
+      <li><a>Tab 3</a></li>
+  </TabItems>
+  <TabContent>  
+      <section className="item" data-title="Tab 1">
+          <div className="item-content">
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut dicta neque deleniti dignissimos doloribus asperiores vel velit recusandae quasi? Fugit?</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus quibusdam ratione aliquid ut, dolorem illum velit ad sunt dolorum!</p>
+          </div>
+      </section>
+      <section className="item" data-title="Tab 2">
+          <div className="item-content">
+              Tab 2 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+          </div>
+      </section>
+      <section className="item" data-title="Tab 3">
+          <div className="item-content">
+              Tab 3 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+          </div>
+      </section>
+  </TabContent>
+</Tab>
 ```
 
 ## Salient Accordian
@@ -383,12 +382,11 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
-  <Accordian activeToggle="single">
-      <AccordianItem title="Section 1" content="Content for Section 1" />
-      <AccordianItem title="Section 2" content="Content for Section 2" />
-      <AccordianItem title="Section 3" content="Content for Section 3" />
-  </Accordian>
-
+<Accordian activeToggle="single">
+    <AccordianItem title="Section 1" content="Content for Section 1" />
+    <AccordianItem title="Section 2" content="Content for Section 2" />
+    <AccordianItem title="Section 3" content="Content for Section 3" />
+</Accordian>
 ```
 
 ## Salient Card
@@ -400,15 +398,15 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
-  <Card className="card-flat" animation="tilt">
-    <CardInfo>
-      {Insert any HTML code here or add a card title as shown below}
-      <CardTitle>Title</CardTitle>
-    </CardInfo>
-    <CardContent>
-      {Insert any HTML code here}
-    </CardContent>
-  </Card>
+<Card className="card-flat" animation="tilt">
+  <CardInfo>
+    {Insert any HTML code here or add a card title as shown below}
+    <CardTitle>Title</CardTitle>
+  </CardInfo>
+  <CardContent>
+    {Insert any HTML code here}
+  </CardContent>
+</Card>
 ```
 
 ## Salient Modal
@@ -436,17 +434,17 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
-  <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
-    <section className='center-content'>
-            Section 1
-    </section>
-    <section className='fit-content'>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste corporis sunt culpa illum assumenda ex iusto totam mollitia facere. Libero deserunt natus ea ad sint ex voluptates repellendus architecto tenetur!
-    </section>
-    <section className='fit-content'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem facere fuga rerum. Voluptate molestiae assumenda dicta velit perferendis exercitationem ratione eligendi amet, modi soluta praesentium fugit, quidem alias voluptatum illo iure. Beatae nobis ipsam dolor quam, ex, nesciunt ea pariatur in quas quo debitis, corrupti illum provident laborum cum expedita!
-    </section>
-  </Modal>
+<Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
+  <section className='center-content'>
+          Section 1
+  </section>
+  <section className='fit-content'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste corporis sunt culpa illum assumenda ex iusto totam mollitia facere. Libero deserunt natus ea ad sint ex voluptates repellendus architecto tenetur!
+  </section>
+  <section className='fit-content'>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem facere fuga rerum. Voluptate molestiae assumenda dicta velit perferendis exercitationem ratione eligendi amet, modi soluta praesentium fugit, quidem alias voluptatum illo iure. Beatae nobis ipsam dolor quam, ex, nesciunt ea pariatur in quas quo debitis, corrupti illum provident laborum cum expedita!
+  </section>
+</Modal>
 ```
 
 > **Note:**  
@@ -485,23 +483,23 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
- <Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} ref={tableRef}>
-    <TableRow>
-        <td data-field="Company">Alfreds Futterkiste</td>
-        <td data-field="Contact">Maria Anders</td>
-        <td data-field="Country">Germany</td>
-    </TableRow>
-    <TableRow>
-        <td data-field="Company">Centro comercial Moctezuma</td>
-        <td data-field="Contact">Francisco Chang</td>
-        <td data-field="Country">Mexico</td>
-    </TableRow>
-    <TableRow>
-        <td data-field="Company">Ernst Handel</td>
-        <td data-field="Contact">Roland Mendel</td>
-        <td data-field="Country">Austria</td>
-    </TableRow>
-  </Table>
+<Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} ref={tableRef}>
+  <TableRow>
+      <td data-field="Company">Alfreds Futterkiste</td>
+      <td data-field="Contact">Maria Anders</td>
+      <td data-field="Country">Germany</td>
+  </TableRow>
+  <TableRow>
+      <td data-field="Company">Centro comercial Moctezuma</td>
+      <td data-field="Contact">Francisco Chang</td>
+      <td data-field="Country">Mexico</td>
+  </TableRow>
+  <TableRow>
+      <td data-field="Company">Ernst Handel</td>
+      <td data-field="Contact">Roland Mendel</td>
+      <td data-field="Country">Austria</td>
+  </TableRow>
+</Table>
 ```
 
 ## Salient Treeview
@@ -517,25 +515,24 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
-  <Treeview>
-    <TreeItem text='Item 1' subtext="(with levels)">
-      <li><span>1.1</span></li>
-      <li><span>1.2</span></li>
-    </TreeItem>
-    <TreeItem text='Item 2' subtext="(multilevel)">
-      <li><span>2.1</span></li>
-      <TreeItem text="2.2">
-        <li><span>2.2.1</span></li>
-        <li><span>2.2.2</span></li>
-        <TreeItem text="2.2.3" subtext="(we can continue adding levels)">
-          <li><span>2.2.3.1</span></li>
-          <li><span>2.2.3.2</span></li>
-        </TreeItem>
+<Treeview>
+  <TreeItem text='Item 1' subtext="(with levels)">
+    <li><span>1.1</span></li>
+    <li><span>1.2</span></li>
+  </TreeItem>
+  <TreeItem text='Item 2' subtext="(multilevel)">
+    <li><span>2.1</span></li>
+    <TreeItem text="2.2">
+      <li><span>2.2.1</span></li>
+      <li><span>2.2.2</span></li>
+      <TreeItem text="2.2.3" subtext="(we can continue adding levels)">
+        <li><span>2.2.3.1</span></li>
+        <li><span>2.2.3.2</span></li>
       </TreeItem>
     </TreeItem>
-    <TreeItem text='Item 3' subtext="(No Level)"/>
-  </Treeview>
-
+  </TreeItem>
+  <TreeItem text='Item 3' subtext="(No Level)"/>
+</Treeview>
 ```
 
 ## Salient Breadcrumb
@@ -560,13 +557,12 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
-  <Breadcrumb bcType="dot" centerBc={true}>
-    <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
-    <li><a href="#0">Gallery</a></li>
-    <li className="active"><a href="#0">Web</a></li>
-    <li><a href="#0">Project</a></li>
-  </Breadcrumb>
-
+<Breadcrumb bcType="dot" centerBc={true}>
+  <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
+  <li><a href="#0">Gallery</a></li>
+  <li className="active"><a href="#0">Web</a></li>
+  <li><a href="#0">Project</a></li>
+</Breadcrumb>
 ```
 
 ## Salient Pagination
@@ -634,27 +630,27 @@ import SampleStaticPaginatedTable from '../components/SampleStaticPaginatedTable
 
 In this example, the ExternalPaginatedTable component is used to create a dynamic, paginated table with customizable features such as row dragging, column toggling, and row selection
 ```jsx
-  import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
-  const ExternalPaginatedTable = withPagination()(Table);
+import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
+const ExternalPaginatedTable = withPagination()(Table);
 
-  <ExternalPaginatedTable 
-    items={filteredTable} 
-    itemsPerPage={5} 
-    draggable={true} 
-    showColToggleUI={true} 
-    columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} 
-    data={filteredTable} showRowSelector={true}>
-      {(paginatedItems) =>
-        (Array.isArray(paginatedItems) ? paginatedItems : []).map((row, index) => (
-          <TableRow key={index}>
-            <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
-            <td data-field="Name">{row.Name} app</td>
-            <td data-field="Description">{row.Description}</td>
-            <td data-field="Tags">{row.Tags}</td>
-            <td data-field="Last Viewed">{row.LastViewed}</td>
-            <td data-field="Expiration">{row.Expiration}</td>
-          </TableRow>
-        ))
-      }
-  </ExternalPaginatedTable>
+<ExternalPaginatedTable 
+  items={filteredTable} 
+  itemsPerPage={5} 
+  draggable={true} 
+  showColToggleUI={true} 
+  columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} 
+  showRowSelector={true}>
+    {(paginatedItems) =>
+      (Array.isArray(paginatedItems) ? paginatedItems : []).map((row, index) => (
+        <TableRow key={index}>
+          <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
+          <td data-field="Name">{row.Name} app</td>
+          <td data-field="Description">{row.Description}</td>
+          <td data-field="Tags">{row.Tags}</td>
+          <td data-field="Last Viewed">{row.LastViewed}</td>
+          <td data-field="Expiration">{row.Expiration}</td>
+        </TableRow>
+      ))
+    }
+</ExternalPaginatedTable>
 ```
