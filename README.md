@@ -189,10 +189,10 @@ Here’s the basic file structure for `react_basic` versions:
 |-------------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------|
 | **Bootstrap**           | Not included                      | Integrated via npm (Note: Bootstrap is not used in any Salient components)                                                                                    |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`) <br> Custom HOC: <br> - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -213,7 +213,7 @@ This library offers:
 > The below components are still under development:
 > - Navbar
 > - Timeline
-> The other components have been tested to work with multiple instance.
+> <br> The other components have been tested to work with multiple instance.
 
 ## Using Salient Navbar
 
@@ -384,9 +384,9 @@ The Salient Accordion is a customizable component designed for easy integration.
 ### Usage:
 ```jsx
   <Accordian activeToggle="single">
-      <AccordianItem key={index} title="Section 1" content="Content for Section 1" />
-      <AccordianItem key={index} title="Section 2" content="Content for Section 2" />
-      <AccordianItem key={index} title="Section 3" content="Content for Section 3" />
+      <AccordianItem title="Section 1" content="Content for Section 1" />
+      <AccordianItem title="Section 2" content="Content for Section 2" />
+      <AccordianItem title="Section 3" content="Content for Section 3" />
   </Accordian>
 
 ```
@@ -536,7 +536,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Breadcrumb
 
-## Parameters:
+### Parameters:
 - **`bcType`**  (Optional)
   - **Type**: `String` (`dot` | `triangle` | `multiStep`)  
   - **Description**: Specifies the breadcrumb style to be used by the component.
