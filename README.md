@@ -211,8 +211,8 @@ This library offers:
 > **Note:**  
 > The current salient library is only tested to work for a single component, this library is still under development. You are free to customize the code for your project.
 > The below components are still under development:
-> - Navbar
-> - Timeline
+>   - Navbar
+>   - Timeline
 > <br> The other components have been tested to work with multiple instance.
 
 ## Using Salient Navbar
@@ -336,9 +336,9 @@ The Salient Tabs is a customizable component that can be easily configured using
 
 - **`activeTabIndex`**  (Optional)
   - **Type**: `Integer`
-  - **Description**: Initialize the tab content based on the set index. 
+  - **Description**: Initialize the tab content based on the set index. Default to 0, the first tab
 
-*Note: The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design*
+> Note: The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design*
 
 ### Usage:
 ```jsx
@@ -400,7 +400,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Usage:
 ```jsx
-  <Card className="bg-dark card-flat">
+  <Card className="card-flat" animation="tilt">
     <CardInfo>
       {Insert any HTML code here or add a card title as shown below}
       <CardTitle>Title</CardTitle>
@@ -429,6 +429,10 @@ The Salient Accordion is a customizable component designed for easy integration.
 - **`onModalBlur`**  (Optional)
   - **Type**: `Function` 
   - **Description**: A callback function invoked to close the modal when a click event occurs outside its boundaries.
+
+- **`title`**  (Optional)
+  - **Type**: `String` 
+  - **Description**: Set the modal header title
 
 ### Usage:
 ```jsx
@@ -563,4 +567,94 @@ The Salient Accordion is a customizable component designed for easy integration.
     <li><a href="#0">Project</a></li>
   </Breadcrumb>
 
+```
+
+## Salient Pagination
+
+The pagination component is a higher-order component (HOC) designed using the currying approach, allowing props to be passed seamlessly to child components. 
+
+This flexible design lets you integrate pagination in two ways:
+- **Direct Integration**: Use it within a custom component, passing props directly.
+- **Wrapper Usage**: Wrap it around an external component to automatically forward props to its children.
+
+This versatility makes it easy to manage paginated data while maintaining clean and reusable component structures.
+
+### Parameters:
+- **`itemsPerPage`**  (Required)
+  - **Type**: `Integer` 
+  - **Description**: Defines the number of items to display on each page.
+
+- **`items`**  (Optional)
+  - **Type**: `Array<Object>`
+  - **Description**: An array of dynamic data to be paginated.
+
+### Usage:
+
+#### Method 1: Using in Custom Component
+##### Write the following in a custom component:
+```jsx
+const StaticPaginatedTable = withPagination()(Table);
+const SampleStaticPaginatedTable = (props) => {
+    return (
+        <StaticPaginatedTable {...props} columns={["Company", "Contact", "Country"]}>
+            <TableRow>
+                <td data-field="Company">Alfreds Futterkiste</td>
+                <td data-field="Contact">Maria Anders</td>
+                <td data-field="Country">Germany</td>
+            </TableRow>
+            <TableRow>
+                <td data-field="Company">Centro comercial Moctezuma</td>
+                <td data-field="Contact">Francisco Chang</td>
+                <td data-field="Country">Mexico</td>
+            </TableRow>
+            <TableRow>
+                <td data-field="Company">Ernst Handel</td>
+                <td data-field="Contact">Roland Mendel</td>
+                <td data-field="Country">Austria</td>
+            </TableRow>
+        </StaticPaginatedTable>
+    )
+}
+
+export default SampleStaticPaginatedTable;
+```
+
+##### Write the following in the parent component:
+```jsx
+import SampleStaticPaginatedTable from '../components/SampleStaticPaginatedTable';
+
+<SampleStaticPaginatedTable itemsPerPage={4}/>
+
+```
+
+#### Method 2: Using it Externally As Render Prop Pattern
+- ExternalPaginatedTable invokes this function and passes the paginated data (paginatedItems) as an argument.
+- The function returns JSX — a dynamic list of rows based on the current page’s data.
+
+
+In this example, the ExternalPaginatedTable component is used to create a dynamic, paginated table with customizable features such as row dragging, column toggling, and row selection
+```jsx
+  import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
+  const ExternalPaginatedTable = withPagination()(Table);
+
+  <ExternalPaginatedTable 
+    items={filteredTable} 
+    itemsPerPage={5} 
+    draggable={true} 
+    showColToggleUI={true} 
+    columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} 
+    data={filteredTable} showRowSelector={true}>
+      {(paginatedItems) =>
+        (Array.isArray(paginatedItems) ? paginatedItems : []).map((row, index) => (
+          <TableRow key={index}>
+            <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
+            <td data-field="Name">{row.Name} app</td>
+            <td data-field="Description">{row.Description}</td>
+            <td data-field="Tags">{row.Tags}</td>
+            <td data-field="Last Viewed">{row.LastViewed}</td>
+            <td data-field="Expiration">{row.Expiration}</td>
+          </TableRow>
+        ))
+      }
+  </ExternalPaginatedTable>
 ```
