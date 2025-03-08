@@ -35,13 +35,11 @@ const ModalOverlay = (props) => {
                         {((typeof(props.title)=='string' && props.title.length > 0) || typeof(props.title) === 'object') && <header className="modal-header">{props.title}</header>}
                         <div className='modal-body'>
                             {
-                                props.hasSections 
-                                ? React.Children.map(props.children, (child, index) => 
+                                React.Children.map(props.children, (child, index) => 
                                     React.isValidElement(child) ? React.cloneElement(child, {
-                                        ...child.props, className: [child.props.className, index === activeSectionIndex ? 'active': ''].join(' ').trim()
+                                        ...child.props, className: [child.props.className, (props.hasSections === false || index === activeSectionIndex) ? 'active': ''].join(' ').trim()
                                     }) : child
                                 )
-                                : props.children
                             }
                             {props.hasSections && <a className="modal-control left-arrow" onClick={() => toggleSection('prev')}></a>}
                             {props.hasSections && <a className="modal-control right-arrow" onClick={() => toggleSection('next')}></a>}

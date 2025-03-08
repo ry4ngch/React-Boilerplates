@@ -239,12 +239,12 @@ const Container = () => {
           <CardInfo>
             <CardTitle>Toggle Switch and CheckBox</CardTitle>
           </CardInfo>
-          <div className="card-content">
+          <CardContent>
             <Button type="checkbox"></Button>
             <Button type="checkbox" disabled={true}></Button>
             <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check}></Button>
             <Button type="switch" disabled={true}></Button>
-          </div>
+          </CardContent>
           <CardInfo>
             <CardTitle>Widget Button</CardTitle>
           </CardInfo>
@@ -330,7 +330,7 @@ const Container = () => {
             <CardTitle>Breadcrumbs Dot Indicator</CardTitle>
           </CardInfo>
           <CardContent>
-            <Breadcrumb bcType="dot">
+            <Breadcrumb bcType="dot" centerBc={true}>
               <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
               <li><a href="#0">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
@@ -352,9 +352,9 @@ const Container = () => {
             <CardTitle>Breadcrumbs Multi Step with Badge</CardTitle>
           </CardInfo>
           <CardContent>
-            <Breadcrumb bcType="multiStep" hasBadge={true}>
-              <li><a href="#0" data-badge="1">Home</a></li>
-              <li><a href="#0" data-badge="2">Gallery</a></li>
+            <Breadcrumb bcType="multiStep" hasBadge={true} centerBc={true}>
+              <li><a href="#0">Home</a></li>
+              <li><a href="#0">Gallery</a></li>
               <li className="active"><a href="#0">Web</a></li>
               <li><a href="#0">Project</a></li>
             </Breadcrumb>

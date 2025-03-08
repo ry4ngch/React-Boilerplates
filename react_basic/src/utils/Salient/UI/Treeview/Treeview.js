@@ -40,7 +40,7 @@ const TreeItem = ({ children, text, subtext }) => {
             </span>
             {subtext && <span className='comment'>{subtext}</span>}
             {children && isVisible && (
-                <ul className={isExpanded ? 'expand' : 'hide'}>
+                <ul className={isExpanded ? '' : 'hide'}>
                     {React.Children.map(children, (child) =>
                         React.isValidElement(child) ? React.cloneElement(child) : child
                     )}

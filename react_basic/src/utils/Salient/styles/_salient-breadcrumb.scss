@@ -15,7 +15,6 @@ $bc-badge-txt-color: hsl(223, 14%, 20%);
     width: 90%;
     max-width: 768px;
     padding: 0.5em 1em;
-    margin: 1em auto;
     background-color: $bc-bg-color;
     border-radius: .25em;
 }
@@ -28,7 +27,6 @@ $bc-badge-txt-color: hsl(223, 14%, 20%);
 
 .sl-breadcrumb li, .sl-multi-steps li {
     display: inline-block;
-    float: left;
     margin: 0.5em 0;
 }
 
@@ -62,25 +60,11 @@ $bc-badge-txt-color: hsl(223, 14%, 20%);
     content: attr(data-separator);
 }
 
-.sl-breadcrumb.badge li a[data-badge] {
-	padding-left: 45px;
-    padding-right: 30px;
-
-	&:before {
-		content: attr(data-badge);
-		border-radius: 100%;
-		width: 20px;
-		height: 20px;
-		line-height: 20px;
-		position: absolute;
-		top: 50%;
-        transform: translateY(-50%);
-		left: 15px;
-		background: $bc-badge-bg-color;
-	    color: $bc-badge-txt-color;
-		font-weight: bold;
-		text-align: center;
-	}
+.sl-breadcrumb.bc-center {
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
+    text-align: center;
 }
 
 
@@ -216,7 +200,6 @@ Multi steps indicator
         /* reset style */
         background-color: transparent;
         padding: 0;
-        text-align: center;
     }
 
     .sl-multi-steps li {

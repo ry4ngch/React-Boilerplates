@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import classNames from "classnames";
 
 const Tab = (props) => {
@@ -6,15 +6,33 @@ const Tab = (props) => {
         'tabs-side': props.sideTabs,
     });
 
-    const [isActiveIndex, setIsActiveIndex] = useState(props.activeTabIndex || 0);
+    const [_isActiveIndex, _setIsActiveIndex] = useState(props.activeTabIndex || 0);
+    const [_isTabItemsHidden, _setIsTabItemsHidden] = useState(false);
+    const tabRef = useRef();
+
+    useEffect(() => {
+        const observer = new ResizeObserver(() => {
+          if (tabRef.current) {
+            const isVisible = Array.from(tabRef.current.querySelectorAll('.tabs')).some(
+                (el) => el.offsetParent === null
+            );
+            _setIsTabItemsHidden(!isVisible);
+          }
+        });
+    
+        observer.observe(tabRef.current);
+    
+        return () => observer.disconnect();
+      }, []);
 
     return (
-        <article className={tabClass}>
+        <article className={tabClass} ref={tabRef}>
             {React.Children.map(props.children, (child, index) => 
                 React.isValidElement(child) ? React.cloneElement(child, {
                     ...child.props,
-                    isActiveIndex,
-                    setIsActiveIndex
+                    _isActiveIndex,
+                    _setIsActiveIndex,
+                    _isTabItemsHidden
                 }) : child
             )}
         </article>
@@ -26,12 +44,18 @@ Tab.defaultProps = {
 }
 
 const TabContent = (props) => {
+    const handleClick = (index, event) => {
+        event.preventDefault(); // Prevent anchor tags or button default behavior
+        props._setIsActiveIndex(index); // Update state without causing page scroll
+    }
+
     return (
         <div className="tab-content-wrapper">
             {React.Children.map(props.children, (child, index) => 
                 React.isValidElement(child) ? React.cloneElement(child, {
                     ...child.props, 
-                    className: [child.props.className, props.isActiveIndex === index ? 'active' : ''].join(' ').trim() 
+                    className: [child.props.className, props._isActiveIndex === index ? 'active' : ''].join(' ').trim(),
+                    onClick: props._isTabItemsHidden ? undefined : (e) => handleClick(index, e)
                 }) : child
             )}
         </div>
@@ -45,7 +69,7 @@ const TabItems = (props) => {
 
     const handleClick = (index, event) => {
         event.preventDefault(); // Prevent anchor tags or button default behavior
-        props.setIsActiveIndex(index); // Update state without causing page scroll
+        props._setIsActiveIndex(index); // Update state without causing page scroll
     }
 
     return (
@@ -58,7 +82,7 @@ const TabItems = (props) => {
                             React.isValidElement(grandChild) ? React.cloneElement(grandChild, {
                                 ...grandChild.props,
                                 onClick: (e) => handleClick(index, e), 
-                                className: props.isActiveIndex === index ? 'active' : ''  
+                                className: props._isActiveIndex === index ? 'active' : ''  
                             }) : grandChild 
                         )
                     }) : child

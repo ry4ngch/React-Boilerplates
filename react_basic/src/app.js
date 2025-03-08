@@ -16,8 +16,7 @@ import './styles/styles.scss';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Container from './containers/Container';
-import Nav from './components/Navigation/Nav';
-import NavMenu from './components/Navigation/NavMenu';
+import Navbar from './components/Navigation/Navbar';
 
 // import jQuery
 import 'jquery';
@@ -33,9 +32,7 @@ class App extends Component {
 		return (
 			<div id='wrapper'>
 				<Header>
-					<Nav title="Salient" shift={true} navSlideDown={false}>
-						<NavMenu navSlideDown={false}></NavMenu>
-					</Nav>
+					<Navbar />
 				</Header>
 				<Container />
 				<Footer>

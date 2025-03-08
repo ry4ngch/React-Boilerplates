@@ -57,10 +57,12 @@
 .accordian-card.open {
     a {
         &:after {
+            height: 18px;
             transform: translate(0%, -50%) rotate(45deg);
         }
 
         &:before {
+            height: 18px;
             transform: translate(0%, -50%) rotate(-45deg);
         }
     }

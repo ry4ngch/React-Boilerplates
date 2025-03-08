@@ -8,20 +8,23 @@ const Breadcrumb = (props) => {
         'sl-multi-steps': ['multiStep', 'dot'].indexOf(props.bcType) !== -1,
         'text-top': props.bcType === 'dot',
         'text-center': props.bcType === 'multiStep',
-        'badge': props.hasBadge
+        'count': props.hasBadge,
+        'bc-center': props.centerBc
     });
+
+    const {separator, children, bcType, hasBadge, className, centerBc, ...rest}  = props;
 
     return (
         <nav>
-            <ol className={breadcrumbClasses}>
-            {React.Children.map(props.children, (child, index) =>
+            <ol className={[breadcrumbClasses, className || ''].join(' ').trim()} {...rest}>
+            {React.Children.map(children, (child, index) =>
                 React.isValidElement(child) ? React.cloneElement(
                     child, 
                     {
-                        ...(index < React.Children.count(props.children) - 1 && !props.bcType && { 'data-separator': props.separator || ''}),
+                        ...(index < React.Children.count(children) - 1 && !bcType && { 'data-separator': separator || ''}),
                         className: `${child.props.className || ''} ${
-                            ['multiStep', 'dot'].includes(props.bcType) && 
-                            index < React.Children.toArray(props.children).findIndex((el) => el.props.className?.includes('active'))
+                            ['multiStep', 'dot'].includes(bcType) && 
+                            index < React.Children.toArray(children).findIndex((el) => el.props.className?.includes('active'))
                               ? 'visited'
                               : ''
                           }`.trim()
@@ -34,7 +37,8 @@ const Breadcrumb = (props) => {
 }
 
 Breadcrumb.defaultProps = {
-    hasBadge: false
+    hasBadge: false,
+    centerBc: false
 }
 
 export default Breadcrumb;

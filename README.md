@@ -102,30 +102,16 @@ Here’s the basic file structure for `react_basic` versions:
 │   └── index.html
 ├── src
 │   ├── components
-│   │   ├── Accordian
-│   │   │   ├── Accordian.js         (Layout provided For Demo Purpose Only)
-│   │   │   └── AccordianItem.js     (Layout provided For Demo Purpose Only)
-│   │   ├── Buttons    
-│   │   │   └── Button.js            (Layout provided For Demo Purpose Only) 
-│   │   ├── Card   
-│   │   │   └── Card.js              (Layout provided For Demo Purpose Only) 
+│   │   ├── Navigation
+│   │   │   └── Navbar.js            (Layout provided For Demo Purpose Only using Nav component)
+│   │   ├── Timeline                 
+│   │   │   └── Timeline.js          (This timeline component is part of Salient component and is under development)   
 │   │   ├── Layout
 │   │   │   ├── Footer.js    
-│   │   │   └── Header.js
-│   │   ├── Modal
-│   │   │   └── Modal.js             (Layout provided For Demo Purpose Only) 
-│   │   ├── Navigation
-│   │   │   ├── Nav.js               (Layout provided For Demo Purpose Only) 
-│   │   │   └── NavMenu.js           (Layout provided For Demo Purpose Only)  
-│   │   ├── Tab
-│   │   │   ├── Tab.js               (Layout provided For Demo Purpose Only)  
-│   │   │   ├── TabContent.js        (Layout provided For Demo Purpose Only)  
-│   │   │   └── TabItems.js          (Layout provided For Demo Purpose Only)  
-│   │   ├── Table
-│   │   │   └── Table.js             (Layout provided For Demo Purpose Only)  
-│   │   ├── Timeline
-│   │   │   ├── Timeline.js          (Layout provided For Demo Purpose Only)  
-│   │   │   └── TimelineEvents.js    (Layout provided For Demo Purpose Only)  
+│   │   │   └── Header.js 
+│   │   ├── SampleDynamicPaginatedTable.js  (Demo usage of Table component & pagination using dynamic data)
+│   │   ├── SampleStaticPaginatedTable.js   (Demo usage of Table component & pagination using HTML table)
+│   │   ├── SampleStaticTable.js            (Demo usage of Table component without pagination using HTML table)
 │   ├── containers  
 │   │   ├── demo_data.js             (Dummy data For Demo Purpose Only, remove this if actual data is available)     
 │   │   └── Container.js           
@@ -150,24 +136,41 @@ Here’s the basic file structure for `react_basic` versions:
 │   ├── utils  
 │   │   ├── FontAwesome
 │   │   │   └── fontAwesome.js             (For Packing all the font awesome library)  
-│   │   └── Salient                        (Salient is a custom CSS and Javascript Library that I've written)
-│   │       ├── _salient-all.scss          (For packing all the salient styles library)
-│   │       ├── _salient-breadcrumb.scss   (custom Breadcrumb CSS)
-│   │       ├── _salient-button.scss       (custom Button CSS)
-│   │       ├── _salient-card.scss         (custom Card CSS)
-│   │       ├── _salient-nav.scss          (custom Navbar CSS)
-│   │       ├── _salient-modal.scss        (custom Modal CSS)
-│   │       ├── _salient-accordian.scss    (custom Accordian CSS)
-│   │       ├── salient-accordian.js       (custom Accordian Javascript)
-│   │       ├── _salient-table.scss        (custom Table CSS)
-│   │       ├── salient-table.js           (custom Table Javascript)
-│   │       ├── _salient-treeview.scss     (custom Treeview CSS)
-│   │       ├── salient-treeview.js        (custom Treeview Javascript)
-│   │       ├── _salient-timeline.scss     (custom Timeline CSS)
-│   │       ├── salient-timeline.js        (custom Timeline Javascript, Workable with Axios)
-│   │       ├── salient-tabs.js            (custom Tabs Javascript)
-│   │       ├── _salient-tabs.scss         (custom Tabs CSS)
-│   │       └── salient-nav.js             (custom Navbar JavaScript)
+│   │   ├── Salient                        (Salient is a custom CSS and Javascript Library that I've written)
+│   │   │   ├── styles.scss                (Salient styles library)
+│   │   │   │   ├── _salient-all.scss      (For packing all the salient styles library)
+│   │   │   │   ├── _salient-accordian.scss
+│   │   │   │   ├── _salient_breadcrumb.scss
+│   │   │   │   ├── _salient_button.scss
+│   │   │   │   ├── _salient_card.scss
+│   │   │   │   ├── -salient-icons.scss
+│   │   │   │   ├── _salient-modal.scss
+│   │   │   │   ├── _salient-nav.scss
+│   │   │   │   ├── _salient-table.scss
+│   │   │   │   ├── _salient-tabs.scss
+│   │   │   │   ├── _salient-timeline.scss
+│   │   │   │   └── _salient-treeview.scss
+│   │   │   ├── UI                         (Salient components library)
+│   │   │   │   ├── Accordian  
+│   │   │   │   │   └── Accordian.js    
+│   │   │   │   ├── Breadcrumb  
+│   │   │   │   │   └── Breadcrumb.js   
+│   │   │   │   ├── Button  
+│   │   │   │   │   └── Breadcrumb.js  
+│   │   │   │   ├── Card  
+│   │   │   │   │   └── Card.js 
+│   │   │   │   ├── Modal  
+│   │   │   │   │   └── Modal.js 
+│   │   │   │   ├── Navigation  
+│   │   │   │   │   └── Nav.js 
+│   │   │   │   ├── Pagination  
+│   │   │   │   │   └── Pagination.js 
+│   │   │   │   ├── Tab  
+│   │   │   │   │   └── Pagination.js 
+│   │   │   │   ├── Table  
+│   │   │   │   │   └── Table.js 
+│   │   │   │   └── Treeview  
+│   │   │   │       └── Treeview.js 
 │   └── app.js
 ├── package.json
 ├── webpack.config.js
@@ -184,13 +187,12 @@ Here’s the basic file structure for `react_basic` versions:
 ### Key Differences
 | **Feature**             | **`react_bare`**                   | **`react_basic`**                                                                                     |
 |-------------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------|
-| **Bootstrap**           | Not included                      | Integrated via npm for UI components                                                                  |
-| **Navbar Component**    | Not included                      | Included with reusable styling (`salient-nav.scss`)                                                   |
+| **Bootstrap**           | Not included                      | Integrated via npm (Note: Bootstrap is not used in any Salient components)                                                                                    |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **JavaScript**          | No additional JavaScript          | Custom JavaScript for: <br> &nbsp;&nbsp; - Navbar component (`salient-nav.js`) <br> &nbsp;&nbsp; - Timeline component (`salient-timeline.js`) <br> &nbsp;&nbsp; - Accordian component ( `salient-accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `salient-tabs.js`) <br> &nbsp;&nbsp; - Table component ( `salient-table.js`) <br> Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`) <br> Custom HOC: <br> - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -208,6 +210,10 @@ This library offers:
 
 > **Note:**  
 > The current salient library is only tested to work for a single component, this library is still under development. You are free to customize the code for your project.
+> The below components are still under development:
+> - Navbar
+> - Timeline
+> The other components have been tested to work with multiple instance.
 
 ## Using Salient Navbar
 
@@ -234,7 +240,7 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 
 *Note*: If no theme is specified, the navbar will default to the **default theme** automatically.
 
-## Using Salient Timeline
+## Salient Timeline
 
 The Salient Timeline is a customizable timeline component that can be easily configured using classes and attributes.
 
@@ -312,7 +318,7 @@ const data = [
   - **Description**: Apply the `active-event` class to the timeline event
     - Adds the `active-event` class to the timeline event where the index matches the `activeEventID`. The event item having matching index as `activeEventID` will have an effect similar to hovering state. Defaults to `undefined` if data-active-id attribute in Timeline.js is not found. When `undefined`, both `active-event` class and `timeline-active` class will not be applied.
 
-## Using Salient Tabs
+## Salient Tabs
 
 The Salient Tabs is a customizable component that can be easily configured using classes and attributes.
 
@@ -328,20 +334,233 @@ The Salient Tabs is a customizable component that can be easily configured using
   - **Type**: `String` (`box` | `underline`)  
   - **Description**: Determine the tab style effect when active state, either box or underline. Default will be `box` tab style.
 
+- **`activeTabIndex`**  (Optional)
+  - **Type**: `Integer`
+  - **Description**: Initialize the tab content based on the set index. 
+
 *Note: The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design*
 
-## Using Salient Accordian
+### Usage:
+```jsx
+  <Tab sideTabs={isSideTab} activeTabIndex={1}>
+    <TabItems tabStyleActive={tabStyle}>
+        <li><a>Tab 1</a></li>
+        <li><a>Tab 2</a></li>
+        <li><a>Tab 3</a></li>
+    </TabItems>
+    <TabContent>  
+        <section className="item" data-title="Tab 1">
+            <div className="item-content">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut dicta neque deleniti dignissimos doloribus asperiores vel velit recusandae quasi? Fugit?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus quibusdam ratione aliquid ut, dolorem illum velit ad sunt dolorum!</p>
+            </div>
+        </section>
+        <section className="item" data-title="Tab 2">
+            <div className="item-content">
+                Tab 2 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+            </div>
+        </section>
+        <section className="item" data-title="Tab 3">
+            <div className="item-content">
+                Tab 3 content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+            </div>
+        </section>
+    </TabContent>
+  </Tab>
+```
 
-The Salient Accordian is a customizable component that can be easily configured using classes and attributes.
+## Salient Accordian
+
+The Salient Accordion is a customizable component designed for easy integration. It allows for smooth expand-and-collapse functionality and can be tailored using classes and attributes to fit any design need.
 
 ### Parameters
-
-- **`data`** (Required)  
-  - **Type:** `Array<Object>`
-  - **Description:** Accepts an array of objects, where each object represents an item with specific properties.
 
 - **`activeToggle`**  (Optional)
   - **Type**: `String` (`single` | `multiple`)  
   - **Description**: Controls the accordion toggle behavior.
     - "single": Only one item can be expanded at a time.
     - "multiple": Allows multiple items to be expanded simultaneously.
+
+### Usage:
+```jsx
+  <Accordian activeToggle="single">
+      <AccordianItem key={index} title="Section 1" content="Content for Section 1" />
+      <AccordianItem key={index} title="Section 2" content="Content for Section 2" />
+      <AccordianItem key={index} title="Section 3" content="Content for Section 3" />
+  </Accordian>
+
+```
+
+## Salient Card
+
+### Parameters
+- **`animation`**  (Optional)
+  - **Type**: `String` (`flip-x` | `flip-x` | `tilt` | `scale`)  
+  - **Description**: Add an in-built hover effect to the card.
+
+### Usage:
+```jsx
+  <Card className="bg-dark card-flat">
+    <CardInfo>
+      {Insert any HTML code here or add a card title as shown below}
+      <CardTitle>Title</CardTitle>
+    </CardInfo>
+    <CardContent>
+      {Insert any HTML code here}
+    </CardContent>
+  </Card>
+```
+
+## Salient Modal
+
+### Parameters
+- **`showModal`**  (Required)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Controls the visibility of the modal based on its state
+
+- **`onCloseModal`**  (Required)
+  - **Type**: `Function` 
+  - **Description**: A callback function triggered to close the modal.
+
+- **`hasSection`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Specifies whether the modal content should be displayed in sections. When set to `true`, a dot indicator appears at the bottom, along with left and right arrows for navigation. The default value is `false`, displaying all content on a single page.
+
+- **`onModalBlur`**  (Optional)
+  - **Type**: `Function` 
+  - **Description**: A callback function invoked to close the modal when a click event occurs outside its boundaries.
+
+### Usage:
+```jsx
+  <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
+    <section className='center-content'>
+            Section 1
+    </section>
+    <section className='fit-content'>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste corporis sunt culpa illum assumenda ex iusto totam mollitia facere. Libero deserunt natus ea ad sint ex voluptates repellendus architecto tenetur!
+    </section>
+    <section className='fit-content'>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem facere fuga rerum. Voluptate molestiae assumenda dicta velit perferendis exercitationem ratione eligendi amet, modi soluta praesentium fugit, quidem alias voluptatum illo iure. Beatae nobis ipsam dolor quam, ex, nesciunt ea pariatur in quas quo debitis, corrupti illum provident laborum cum expedita!
+    </section>
+  </Modal>
+```
+
+> **Note:**  
+> Any element can be added within the modal. In the example above, each section is displayed on a separate page.
+
+## Salient Table
+
+### Parameters:
+- **`draggable`**  (Optional)
+    - **Type**: `Boolean` (`true` | `false`)  
+    - **Description**: Enables or disables row dragging in the table. By default, rows are not draggable.
+
+- **`showColToggleUI`**  (Optional)
+    - **Type**: `Boolean` (`true` | `false`)  
+    - **Description**: Displays column toggle buttons when set to `true`. The default value is `false`.
+
+- **`onRetrievedSelected`**  (Optional)
+    - **Type**: `Function` 
+    - **Description**: A callback function invoked to fetch the data of selected rows.
+
+- **`showRowSelector`**  (Optional)
+    - **Type**: `Boolean` (`true` | `false`)  
+    - **Description**: Displays checkboxes for each row. Works in conjunction with the `onRetrievedSelected` prop.
+
+- **`ref`**  (Optional)
+  - **Type**: `Reference` 
+  - **Description**: Provides access to the DOM elements for additional customization.
+
+- **`data`**  (Optional)
+  - **Type**: `Array<Object>` 
+  - **Description**: Accepts an array of objects, where each object represents a row. Required for dynamic tables.
+
+- **`columns`**  (Required)
+  - **Type**: `Array` 
+  - **Description**: An array of elements used to define and display the table headers (thead).
+
+### Usage:
+```jsx
+ <Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} ref={tableRef}>
+    <TableRow>
+        <td data-field="Company">Alfreds Futterkiste</td>
+        <td data-field="Contact">Maria Anders</td>
+        <td data-field="Country">Germany</td>
+    </TableRow>
+    <TableRow>
+        <td data-field="Company">Centro comercial Moctezuma</td>
+        <td data-field="Contact">Francisco Chang</td>
+        <td data-field="Country">Mexico</td>
+    </TableRow>
+    <TableRow>
+        <td data-field="Company">Ernst Handel</td>
+        <td data-field="Contact">Roland Mendel</td>
+        <td data-field="Country">Austria</td>
+    </TableRow>
+  </Table>
+```
+
+## Salient Treeview
+
+### Parameters:
+- **`text`**  (Required)
+  - **Type**: `String` 
+  - **Description**: Tree item title
+
+- **`subtext`**  (Optional)
+  - **Type**: `String` 
+  - **Description**: Add a comment next to the main text.
+
+### Usage:
+```jsx
+  <Treeview>
+    <TreeItem text='Item 1' subtext="(with levels)">
+      <li><span>1.1</span></li>
+      <li><span>1.2</span></li>
+    </TreeItem>
+    <TreeItem text='Item 2' subtext="(multilevel)">
+      <li><span>2.1</span></li>
+      <TreeItem text="2.2">
+        <li><span>2.2.1</span></li>
+        <li><span>2.2.2</span></li>
+        <TreeItem text="2.2.3" subtext="(we can continue adding levels)">
+          <li><span>2.2.3.1</span></li>
+          <li><span>2.2.3.2</span></li>
+        </TreeItem>
+      </TreeItem>
+    </TreeItem>
+    <TreeItem text='Item 3' subtext="(No Level)"/>
+  </Treeview>
+
+```
+
+## Salient Breadcrumb
+
+## Parameters:
+- **`bcType`**  (Optional)
+  - **Type**: `String` (`dot` | `triangle` | `multiStep`)  
+  - **Description**: Specifies the breadcrumb style to be used by the component.
+
+- **`centerBc`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Centers the breadcrumb items. By default, items are aligned to the left and placed next to each other.
+
+- **`hasBadge`**  (Optional)
+- **Type**: `Boolean` (`true` | `false`) 
+- **Description**: Displays a counter badge on each breadcrumb item.
+
+- **`separator`**  (Optional)
+- **Type**: `String` 
+- **Description**: Sets a custom separator between breadcrumb items. The default separator is `>>`.
+> Note: Seperator will not work with multiStep and triangle breadcrumbs.
+
+### Usage:
+```jsx
+  <Breadcrumb bcType="dot" centerBc={true}>
+    <li><a href="#0"><FontAwesomeIcon icon="house" style={{marginRight: '.6em'}}/>Home</a></li>
+    <li><a href="#0">Gallery</a></li>
+    <li className="active"><a href="#0">Web</a></li>
+    <li><a href="#0">Project</a></li>
+  </Breadcrumb>
+
+```
