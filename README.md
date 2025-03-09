@@ -104,8 +104,6 @@ Here’s the basic file structure for `react_basic` versions:
 │   ├── components
 │   │   ├── Navigation
 │   │   │   └── Navbar.js            (Layout provided For Demo Purpose Only using Nav component)
-│   │   ├── Timeline                 
-│   │   │   └── Timeline.js          (This timeline component is part of Salient component and is under development)   
 │   │   ├── Layout
 │   │   │   ├── Footer.js    
 │   │   │   └── Header.js 
@@ -169,8 +167,10 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   │   └── Pagination.js 
 │   │   │   │   ├── Table  
 │   │   │   │   │   └── Table.js 
-│   │   │   │   └── Treeview  
-│   │   │   │       └── Treeview.js 
+│   │   │   │   ├── Treeview  
+│   │   │   │   │    └── Treeview.js 
+│   │   │   │   └── Timeline  
+│   │   │   │       └── Timeline.js 
 │   └── app.js
 ├── package.json
 ├── webpack.config.js
@@ -192,7 +192,7 @@ Here’s the basic file structure for `react_basic` versions:
 | **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -212,7 +212,6 @@ This library offers:
 > The current salient library is only tested to work for a single component, this library is still under development. You are free to customize the code for your project.
 > The other components have been tested to work with multiple instance except for the below components:
 > - Navbar
-> - Timeline
 
 ## Using Salient Navbar
 
@@ -237,7 +236,7 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 - `offwhite-scheme`
 - `grayscale-scheme`
 
-*Note*: If no theme is specified, the navbar will default to the **default theme** automatically.
+> Note: If no theme is specified, the navbar will default to the **default theme** automatically.
 
 ## Salient Timeline
 
@@ -246,21 +245,6 @@ The Salient Timeline is a customizable timeline component that can be easily con
 ![Salient Timeline Demo](Salient_Timeline_Demo.gif)
 
 ### Parameters
-
-- **`data`** (Required)  
-  - **Type:** `Array<Object>`
-  - **Description:** Accepts an array of objects, where each object represents an item with specific properties.
-  
-#### Example:
-```jsx
-const data = [
-  { id: 1, thumbnail: "Timeline 1", text: Lorem ipsum dolor sit amet.},
-  { id: 2, thumbnail: "Timeline 2", text: Lorem ipsum dolor sit amet.}
-];
-
-<Timeline data={data} />
-```
-
 - **`isHorz`** (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Determines the timeline's orientation.  
@@ -316,6 +300,29 @@ const data = [
   - **Type**: `Integer` 
   - **Description**: Apply the `active-event` class to the timeline event
     - Adds the `active-event` class to the timeline event where the index matches the `activeEventID`. The event item having matching index as `activeEventID` will have an effect similar to hovering state. Defaults to `undefined` if data-active-id attribute in Timeline.js is not found. When `undefined`, both `active-event` class and `timeline-active` class will not be applied.
+
+### Usage:
+```jsx
+import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
+
+<Timeline 
+    showCount={3}
+    isHorz={true} 
+    isLoading={isLoading}
+    isStaggered={true}
+    centerEvents={true}
+    showControls={true}
+    isTimelineActive={true}
+    activeEventID={3}>
+      {data.map((item, index) => (
+          <TimelineEvent 
+          key={item.id} 
+          icon={index === 0 ? 'icon-square' : 'icon-circle'}
+          text={item.text}
+          event={item.thumbnail}/>
+      ))}
+</Timeline>
+```
 
 ## Salient Tabs
 
@@ -480,6 +487,10 @@ The Salient Accordion is a customizable component designed for easy integration.
 - **`columns`**  (Required)
   - **Type**: `Array` 
   - **Description**: An array of elements used to define and display the table headers (thead).
+
+- **`retrieveRowsBtnTitle`** (Optional)
+  - **Type**: `String`
+  - **Description**: Customizes the default button title used for retrieving row data
 
 ### Usage:
 ```jsx

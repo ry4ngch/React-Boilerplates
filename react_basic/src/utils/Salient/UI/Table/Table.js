@@ -2,15 +2,16 @@ import React, { useRef, useEffect, Fragment, useState, useMemo} from "react";
 import classNames from "classnames";
 
 const Table = (props) => {
-    /*** Table props **/
-    // columns: For specifying the custom column name, this not necessary need to follow the data keys
-    // showColToggleUI: For enabling the column hiding button
-    // draggable: For enabling table rows to be draggable
-    // onDragUpdate: After dragging event of row ends, specify a custom function to run. The custom function will
-    //               receive the updated data after drag events completed 
-    // data: include the row of data retrived from external file, this is required to update the whole table object and return
-    // onRetrivedRows: this props receive a function that returns the data of the rows that was checked. 
-    // retrieveRowsBtnTitle: This props overrides the default button title that is use for row data retrieval.
+    /*** Table Properties **/ 
+    /* 
+    columns: Defines custom column names, which do not necessarily need to match the data keys 
+    showColToggleUI: Enables the column visibility toggle button
+    draggable: Allows table rows to be draggable 
+    onDragUpdate: Specifies a custom function to execute after a row drag event finishes. This function will  receive the updated data once the drag event is complete 
+    data: Contains the rows of data retrieved from an external file, essential for updating the entire table object
+    onRetrivedRows: Accepts a function that returns the data of the selected rows
+    retrieveRowsBtnTitle: Customizes the default button title used for retrieving row data
+    */
     
 
     // ref for returning the nth-child of the table
