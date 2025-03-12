@@ -208,11 +208,6 @@ This library offers:
 > **Note:**  
 > While controlling animations and effects in React is simple, it often requires managing additional state variables, which can complicate the codebase and lead to unnecessary boilerplate. Salient was created to address this issue by providing a streamlined solution that abstracts these complexities.
 
-> **Note:**  
-> The current salient library is only tested to work for a single component, this library is still under development. You are free to customize the code for your project.
-> The other components have been tested to work with multiple instance except for the below components:
-> - Navbar
-
 ## Using Salient Navbar
 
 The Salient Navbar is a customizable navigation bar that can be easily tailored using simple classes and attributes.
@@ -237,6 +232,53 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 - `grayscale-scheme`
 
 > Note: If no theme is specified, the navbar will default to the **default theme** automatically.
+
+### Parameters
+- **`shift`** (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Controls the positioning of the hamburger menu and navbar on small screens.
+    - `true`: Default. Shifts both the hamburger button and the navbar to the right when the menu is open, applying the `sd-shift-navbar` class.
+    - `false`: Instead of shifting, the navbar slides downwards when the hamburger button is clicked.
+    > Note: If the `navSlideDown` prop is set to true, the shift prop will be ignored.
+
+- **`navSlideDown`** (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Determines the direction in which the navbar menu expands on small screens.
+    - `true`: The navbar slides open downwards, expanding vertically.
+    - `false`: Default. The navbar opens horizontally, sliding from left to right.
+
+- **`brandLogo`** (Optional)
+  - **Type**: `ReactNode`
+  - **Description**: Inserts a brand logo alongside the brand name within the navbar. This allows for the seamless integration of icons or custom images.
+  - **Example**: 
+  ```jsx
+  brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
+  ```
+
+### Usage:
+```jsx
+<Nav title="Salient" shift={true} navSlideDown={false} brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
+  <NavMenu>
+      <li data-tooltip="Home">
+          <a href="">
+              <FontAwesomeIcon className="navlink-icon" icon="home"></FontAwesomeIcon>
+              <span className="navlink-text">Home</span>
+          </a>
+      </li>
+      <li data-tooltip="Dropdown" data-dropdown>
+          <a>
+              <FontAwesomeIcon className="navlink-icon" icon="caret-down"></FontAwesomeIcon>
+              <span className="navlink-text">Dropdown</span>
+          </a>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a className="dropdown-item" href="#">Action</a></li>
+              <li><a className="dropdown-item" href="#">Another action</a></li>
+              <li><a className="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+      </li>
+  </NavMenu>
+</Nav>
+```
 
 ## Salient Timeline
 
@@ -400,7 +442,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ### Parameters
 - **`animation`**  (Optional)
-  - **Type**: `String` (`flip-x` | `flip-x` | `tilt` | `scale`)  
+  - **Type**: `String` (`flip-x` | `flip-y` | `tilt` | `scale`)  
   - **Description**: Add an in-built hover effect to the card.
 
 ### Usage:
@@ -558,12 +600,12 @@ The Salient Accordion is a customizable component designed for easy integration.
   - **Description**: Centers the breadcrumb items. By default, items are aligned to the left and placed next to each other.
 
 - **`hasBadge`**  (Optional)
-- **Type**: `Boolean` (`true` | `false`) 
-- **Description**: Displays a counter badge on each breadcrumb item.
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Displays a counter badge on each breadcrumb item.
 
 - **`separator`**  (Optional)
-- **Type**: `String` 
-- **Description**: Sets a custom separator between breadcrumb items. The default separator is `>>`.
+  - **Type**: `String` 
+  - **Description**: Sets a custom separator between breadcrumb items. The default separator is `>>`.
 > Note: Seperator will not work with multiStep and triangle breadcrumbs.
 
 ### Usage:
