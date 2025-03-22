@@ -16,6 +16,7 @@ import Table, {TableRow} from '../utils/Salient/UI/Table/Table';
 import withPagination from '../utils/Salient/UI/Pagination/withPagination';
 import Treeview, {TreeItem} from '../utils/Salient/UI/Treeview/Treeview';
 import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
+import Dropdown, {DropdownItem} from '../utils/Salient/UI/Form/Dropdown';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -403,6 +404,20 @@ const Container = () => {
             </Treeview>
           </CardContent>
         </Card>
+
+        <Card className="card-border">
+            <CardInfo>
+              <CardTitle>Form Dropdown</CardTitle>
+            </CardInfo>
+            <CardContent>
+              <Dropdown placeholder="Dropdown" isSearchable={true}>
+                <DropdownItem value="Test1">Test1</DropdownItem>
+                <DropdownItem value="Test2">Test2</DropdownItem>
+                <DropdownItem value="Test3">Test3</DropdownItem>
+              </Dropdown>
+          </CardContent>
+        </Card>
+       
       </div>
     </div>
   )

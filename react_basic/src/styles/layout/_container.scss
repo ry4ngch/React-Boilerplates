@@ -2,25 +2,12 @@ hr {
   margin: 5px 0;
 }
 
-.docs-table {
-  tbody{
-    i {
-      display: inline-block;
-      margin: 0 auto;
-      font-size: 2em;
-      width: 100%;
-      text-align: center;
-    }  
-  }
-  
-}
-
 #page-wrapper {
     height: 100%;
     padding: 5px 15px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin-bottom: 109px; //height of header + height of footer
+    // overflow-x: hidden;
+    // overflow-y: auto;
+    margin-bottom: 42px;
 }
 
 /* Edit Below to Customize Widths > 768px */

@@ -1,0 +1,108 @@
+.dropdown {
+    border: 1px solid #cacaca;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: relative;
+    border-radius: 2px;
+    line-height: 1.5;
+    user-select: none;
+    cursor: pointer;
+    transition: .1s;
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+    width: 100%;
+    color: #000;
+    
+    &.active {
+      background-color: #e5e5e5;
+      font-weight: 500;
+      height: auto;
+      
+      .dropdown__selected::after {
+        transform: rotateZ(225deg);
+        top: calc(50% - 3px);
+        border-color: #333;
+      }
+    }
+
+    &__selected {
+      display: flex;
+      margin: auto 0;
+      align-items: center;
+      height: 30px;
+      position: relative;
+
+      &::after {
+        transform: rotateZ(45deg);
+        border: 2px solid #999;
+        top: calc(50% - 10px);
+        position: absolute;
+        border-left: none;
+        border-top: none;
+        transition: border-color .2s;
+        height: 10px;
+        right: 18px;
+        content: '';
+        width: 10px;
+      }
+    }
+
+    &__selected:has(.dropdown__input){
+      padding: 0;
+    }
+
+    &__input, &__selected {
+        padding: 0px 5px;
+    }
+
+    &__input {
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+    
+    &__list {
+        border-top: 1px solid #cacaca;
+        background-color: #fff;
+        border-radius: 2px;
+        display: flex;
+        width: 100%;
+        vertical-align: middle;
+        flex-direction: column;
+        position:absolute;
+        visibility: hidden;
+        max-height: 0px;
+        list-style: none;
+        user-select: none;
+        overflow-y: auto;
+        top: 100%;
+        opacity: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      
+      .active & {
+        visibility: visible;
+        opacity: 1;
+        max-height: 264px;
+        user-select: auto;
+        position: relative;
+      }
+      
+      &__item {
+        padding: 5px;
+        display: block;
+        
+        &:hover {
+          background-color: #e5e5e5;
+        }
+        
+        &.active {
+          background-color: #e5e5e5;
+        }
+      }
+    }
+  }
+  

@@ -20,7 +20,7 @@ const Card = (props) => {
     }, [props.animation])
   
     return (
-        <div className={[cardClasses, props.className || ''].join(' ').trim()} style={{ '--rows': rows, '--cols': cols, ...props.style }}>
+        <div className={[cardClasses, props.className || ''].join(' ').trim()} style={props.animation === 'tilt' ? {'--rows': rows, '--cols': cols, ...props.style} : {...props.style}}>
             {gridState && (
                 <div className="tracker__cells" aria-hidden="true">
                     {cells.map((_, index) => (
