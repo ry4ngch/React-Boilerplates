@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const Dropdown = ({ onChange, placeholder, isSearchable = false, children, className }) => {
+const Dropdown = ({ onChange, placeholder, isSearchable = false, children, className, inputPrefix }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -65,6 +65,7 @@ const Dropdown = ({ onChange, placeholder, isSearchable = false, children, class
     >
       {isSearchable ? (
         <div className="dropdown__selected">
+          {inputPrefix ? inputPrefix : ''}
           <input
             type="text"
             className="dropdown__input"
@@ -74,7 +75,10 @@ const Dropdown = ({ onChange, placeholder, isSearchable = false, children, class
           />
         </div>
       ) : (
-        <div className="dropdown__selected">{selectedOption?.props.children || placeholder}</div>
+        <div className="dropdown__selected">
+          {inputPrefix ? inputPrefix : ''}
+          {selectedOption?.props.children || placeholder}
+        </div>
       )}
       <ul ref={listRef} className="dropdown__list">
         {React.Children.map(children, (item, index) =>

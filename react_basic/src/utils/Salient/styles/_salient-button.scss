@@ -16,10 +16,9 @@ $button-clear-bgHoverColor: rgba(255, 255, 255, 0.2);
 $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 
 
-
 /* Toggle checkbox */
-
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+	// General Style for Checkbox and Radio Button
 	input[type='checkbox'], input[type='radio'] {
 		--active: #275EFE;
 		--active-inner: #fff;
@@ -134,6 +133,7 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		--r: 43deg;
 	}
 
+	// Specific to Switch Type Toggle Button
 	input[type='checkbox'].switch {
 		width: 38px;
 		border-radius: 11px;
@@ -158,6 +158,19 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		opacity: .6;
 	}
 
+	input[type='checkbox'].switch.slider-dark {
+		--active: #131339;
+		--border: #d2d9ef;
+		--focus: #d2d9ef;
+		--border-hover: #131339;
+	}
+
+	input[type=checkbox].switch.slider-dark:after {
+		background: var(--ab, #131339);
+	}
+
+
+	// Specific to Radio Button
 	input[type='radio'] {
 		border-radius: 50%;
 	}

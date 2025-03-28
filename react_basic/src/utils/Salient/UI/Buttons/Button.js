@@ -18,6 +18,10 @@ const Button = (props) => {
         'inverse': props.inverseColor
     })
 
+    const switchStyle = classNames('switch', {
+        'slider-dark': props.sliderMode === 'dark'
+    })
+
     let buttonContent;
     switch(props.buttonType){
         case "widget":
@@ -33,7 +37,7 @@ const Button = (props) => {
 
     return (
         <React.Fragment>
-            {props.type === 'switch' && <input type="checkbox" className={['switch', props.className || ''].join(' ').trim()} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
+            {props.type === 'switch' && <input type="checkbox" className={[switchStyle, props.className || ''].join(' ').trim()} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
             {props.type === 'checkbox' && <input type="checkbox" className={`${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
             {props.type === 'button' && buttonContent}
         </React.Fragment>

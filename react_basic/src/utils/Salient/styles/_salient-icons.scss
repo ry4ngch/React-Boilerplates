@@ -1,8 +1,8 @@
-
+$icon-size: 14px;
 .icon{ 
     float:left;
-    width:14px; 
-    height:14px; 
+    width:$icon-size; 
+    aspect-ratio: 1;
     position:relative; 
     display:block; 
 }
@@ -51,20 +51,25 @@
 }
 
 /* Search */
-.icon-search{ top:-3px; left:1px; width:13px; }
+.icon-search{left:0px; top: 2px}
+.icon-search {
+    top: 50%;
+    transform: translateX(-50%) rotate(-45deg) translateY(-50%);
+    left: 50%;
+}
 .icon-search:before{
-    width:10px;
-    height:10px; 
-    border-radius:10px; 
-    box-shadow:0 0 0 2px inset; 
+    width:inherit;
+    aspect-ratio: 1;
+    border-radius:50%; 
+    border: 2px solid;
 }
 .icon-search:after{ 
     width:4px; 
     height:10px; 
-    top:9px;
-    left:3px;
+    top: calc(100% + 4px);  //4px from width
+    left: 50%;
     box-shadow:0 0 0 2px inset; 
-    border-radius:3px; 
+    border-radius:50%; 
 }
 
 /* Comment */

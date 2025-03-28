@@ -17,6 +17,7 @@ import withPagination from '../utils/Salient/UI/Pagination/withPagination';
 import Treeview, {TreeItem} from '../utils/Salient/UI/Treeview/Treeview';
 import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 import Dropdown, {DropdownItem} from '../utils/Salient/UI/Form/Dropdown';
+import FormPrefix from '../utils/Salient/UI/Form/FormPrefix';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -249,7 +250,8 @@ const Container = () => {
           <CardContent>
             <Button type="checkbox"></Button>
             <Button type="checkbox" disabled={true}></Button>
-            <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check}></Button>
+            <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check} sliderMode="dark"></Button>
+            <Button type="switch"></Button>
             <Button type="switch" disabled={true}></Button>
           </CardContent>
           <CardInfo>
@@ -410,7 +412,7 @@ const Container = () => {
               <CardTitle>Form Dropdown</CardTitle>
             </CardInfo>
             <CardContent>
-              <Dropdown placeholder="Dropdown" isSearchable={true}>
+              <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>}>
                 <DropdownItem value="Test1">Test1</DropdownItem>
                 <DropdownItem value="Test2">Test2</DropdownItem>
                 <DropdownItem value="Test3">Test3</DropdownItem>
