@@ -22,14 +22,14 @@ This project provides three React boilerplate versions for starting your React a
 
 This version is suitable for starting with a clean slate, without any pre-configured components or styling.
 
-### 2. `react_basic` - React with Bootstrap, Custom Navbar, and CSS
+### 2. `react_basic` - React with Bootstrap, Custom Components, and CSS
 
 `react_basic` is a more advanced setup that includes:
 
 - Integration with Bootstrap for UI components (installed via npm)
-- A custom Navbar component built with customs classes (see salient folder in utils)
+- A custom component built with customs classes (see salient folder in utils)
 - A sample single-page app (SPA) structure
-- This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar.
+- This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar, dropdown, timeline, breadcrumb, button, card, modal, pagination, tab, table, timeline and treeview.
 
 ### 3. `react_bootstrap` - React with Bootstrap
 
@@ -147,6 +147,7 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   ├── _salient-table.scss
 │   │   │   │   ├── _salient-tabs.scss
 │   │   │   │   ├── _salient-timeline.scss
+│   │   │   │   ├── _salient-form.scss
 │   │   │   │   └── _salient-treeview.scss
 │   │   │   ├── UI                         (Salient components library)
 │   │   │   │   ├── Accordian  
@@ -157,6 +158,9 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   │   └── Breadcrumb.js  
 │   │   │   │   ├── Card  
 │   │   │   │   │   └── Card.js 
+│   │   │   │   ├── Form  
+│   │   │   │   │   ├── Dropdown.js
+│   │   │   │   │   └── FormPrefix.js
 │   │   │   │   ├── Modal  
 │   │   │   │   │   └── Modal.js 
 │   │   │   │   ├── Navigation  
@@ -189,10 +193,10 @@ Here’s the basic file structure for `react_basic` versions:
 |-------------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------|
 | **Bootstrap**           | Not included                      | Integrated via npm (Note: Bootstrap is not used in any Salient components)                                                                                    |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> &nbsp;&nbsp; - Form Dropdown component ( `Dropdown.js`, `FormPrefix.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -707,3 +711,101 @@ const ExternalPaginatedTable = withPagination()(Table);
     }
 </ExternalPaginatedTable>
 ```
+
+## Salient Buttons
+Salient Button consist of the following types:
+- Toggle Switch
+- Normal Buttons
+- Checkboxes
+
+### Parameters:
+- **`type`**  (Required)
+  - **Type**: `String` (`button` | `checkbox` | `switch`)  
+  - **Description**: Specifies the button style to be used by the component.
+
+- **`isBlock`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Determines if the button style should be block. By default, buttons are placed next to each other inline. If `isBlock` is specified as `true`, the adjacent buttons will be place below the current button. Note: This works only for button of type `button`.
+
+- **`expandFull`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Determine if the button should take up the full container width. By default, the buttons only takes up the necessary space. This works only for button of type `button`.
+
+- **`buttonStyle`**  (Optional)
+  - **Type**: `String` (`clear` | `blur` | `blueBlur`) 
+  - **Description**: Sets a button design and theme based on in-built CSS. Note: this works only for button of type `button`
+
+- **`inverseColor`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false` ) 
+  - **Description**: Inverse the color of the in-built button theme. Note: this works only for button of type `button`
+
+- **`buttonType`**  (Optional)
+  - **Type**: `String` (`widget`) 
+  - **Description**: Determine if a button should consist of an icons, this will create a button with a predefined icons sets. If this parameter is set, `icon` parameter must also be set
+
+- **`icon`**  (Optional)
+  - **Type**: `String` (`leftArrow` | `rightArrow` | `topArrow` | `btmArrow`) 
+  - **Description**: Insert an icon to the button from predefined icons sets. Note: this parameter only works for `buttonType='button'`.
+  - > Note: This parameter will be updated in future to accomodate `ReactNode` type.
+
+- **`onChange`**  (Required)
+  - **Type**: `Function`
+  - **Description**: A callback function invoked to perform an action when the button state change.
+
+- **`checked`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Set the state of a button of type `switch` or `checkbox`.
+
+- **`disabled`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Set the button should be disabled.
+
+- **`sliderMode`**  (Optional)
+  - **Type**: `String` (`dark`)
+  - **Description**: Determines if the `switch` button should have a dark theme. This parameter only works with `buttonType='switch'`.
+
+### Usage:
+#### For Button of Type `switch`
+```jsx
+<Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check} sliderMode="dark"></Button>
+```
+
+#### For Button of Type `checkbox`
+```jsx
+<Button type="checkbox" disabled={true}></Button>
+```
+
+#### For Button of Type `button`
+```jsx
+<Button type="button" buttonStyle="blur" isBlock={false} expandFull={false} inverseColor={true}>Button6</Button>
+```
+
+## Salient Form Dropdown
+### Parameters:
+- **`placeholder`**  (Optional)
+  - **Type**: `String`   
+  - **Description**: Insert a placeholder on initialization of the dropdown.
+
+- **`isSearchable`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Determine if the dropdown should include an input field to search through the dropdown items. The searching feature works based on match instead of filtering and match based on starting text.
+
+- **`inputPrefix`**  (Optional)
+  - **Type**: `ReactNode`
+  - **Description**: Include an icon at the front of the dropdown field. To use this, `FormPrefix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormPrefix` component.
+  - **In-built Icons**: 
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`.
+    - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
+    - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
+    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
+    - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
+    - Other Icons:  `icon-wrench`, `icon-gear`
+
+```jsx
+<Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>}>
+  <DropdownItem value="Test1">Test1</DropdownItem>
+  <DropdownItem value="Test2">Test2</DropdownItem>
+  <DropdownItem value="Test3">Test3</DropdownItem>
+</Dropdown>
+```
+
