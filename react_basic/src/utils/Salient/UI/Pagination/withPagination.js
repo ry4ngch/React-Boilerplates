@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 
 const withPagination = (config = {}) => (WrappedComponent) => {
-  return ({ items = [], itemsPerPage = config.itemsPerPage || 5, pageRange = config.pageRange || 4, children, ...props }) => {
+  return ({ items = [], itemsPerPage = config.itemsPerPage || 5, pageRange = config.pageRange || 4, showPageItemsControl = config.showPageItemsControl || false, children, ...props }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(items.length > 0 ? items.length / itemsPerPage : React.Children.count(children) / itemsPerPage);
+    const [itemsShownPerPage, setItemsShownPerPage] = useState(itemsPerPage);
+    const totalPages = Math.ceil(items.length > 0 ? items.length / itemsShownPerPage : React.Children.count(children) / itemsShownPerPage);
     
     const [pageLimit, setPageLimit] = useState({
       min: 1,
@@ -11,9 +12,14 @@ const withPagination = (config = {}) => (WrappedComponent) => {
     });
 
     const paginatedItems = items.slice(
-      (currentPage - 1) * itemsPerPage,
-      currentPage * itemsPerPage
+      (currentPage - 1) * itemsShownPerPage,
+      currentPage * itemsShownPerPage
     );
+
+    const updateItemsShownPerPage = (e) => {
+      if(parseInt(e.target.value) > (items.length > 0 ? items.length : React.Children.count(children))) return;
+      setItemsShownPerPage(parseInt(e.target.value));
+    }
 
     const togglePage = (action) => {
       setCurrentPage((prevPage) => {
@@ -44,8 +50,8 @@ const withPagination = (config = {}) => (WrappedComponent) => {
       const rows = React.Children.toArray(children);
 
       const paginatedRows = rows.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
+        (currentPage - 1) * itemsShownPerPage,
+        currentPage * itemsShownPerPage
       );
       /* End of static table paginatedRows */
 
@@ -56,11 +62,20 @@ const withPagination = (config = {}) => (WrappedComponent) => {
 
     return (
       <div>
-        <WrappedComponent {...props} items={paginatedItems} data={items.length > 0 ? items : React.Children.toArray(children)} itemsPerPage={itemsPerPage} currentPage={currentPage}>
+        <WrappedComponent {...props} items={paginatedItems} data={items.length > 0 ? items : React.Children.toArray(children)} itemsPerPage={itemsShownPerPage} currentPage={currentPage}>
           {renderChildren()}
         </WrappedComponent>
-        <div className="pagination-container">
-          <nav>
+        <div className="pagination-footer">
+          <span className="pagination-detail">
+            <p className="pagination-info">Showing {(currentPage - 1) * itemsShownPerPage + 1} to {currentPage * itemsShownPerPage} of {items.length > 0 ? items.length : React.Children.count(children)} entries</p>
+            {showPageItemsControl && 
+              <React.Fragment>
+                <label>Items Per Page: </label>
+                <input className="pagination-pageCount" type="number" min="1" max={items.length > 0 ? items.length : React.Children.count(children)} onChange={updateItemsShownPerPage} value={itemsShownPerPage}/>
+              </React.Fragment>
+            }
+          </span>
+          <nav className="pagination-container">
             <ul className="pagination">
               <li
                 onClick={() => togglePage('prev')}

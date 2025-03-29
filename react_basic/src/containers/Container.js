@@ -29,7 +29,7 @@ const Container = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [showModal, setShowModal] = useState(false);
   const [showCount, setShowCount] = useState(5);
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
   const [isSideTab, setTabType] = useState(false);
   const [tabStyle, setTabStyle] = useState("underline");
   const [tableFilterValue, setTableFilterValue] = useState();
@@ -83,7 +83,7 @@ const Container = () => {
           </CardInfo>
           <CardContent>
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <SampleDynamicPaginatedTable items={filteredTable} itemsPerPage={3}/>
+            <SampleDynamicPaginatedTable items={filteredTable} itemsPerPage={3} showPageItemsControl={true}/>
           </CardContent>
 
           <CardInfo>
@@ -236,34 +236,82 @@ const Container = () => {
         </Card>
         
         <Card className="bg-dark card-flat">
-          <CardInfo>
-            <CardTitle>Block Button</CardTitle>
-          </CardInfo>
+          <CardTitle>Block Button</CardTitle>
           <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
             <Button type="button" buttonStyle="blur" isBlock={true} expandFull={true}>Button2</Button>
             <Button type="button" buttonStyle="clear" isBlock={true} expandFull={true}>Button3</Button>
           </CardContent>
-          <CardInfo>
-            <CardTitle>Toggle Switch and CheckBox</CardTitle>
-          </CardInfo>
-          <CardContent>
-            <Button type="checkbox"></Button>
-            <Button type="checkbox" disabled={true}></Button>
-            <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check} sliderMode="dark"></Button>
-            <Button type="switch" sliderMode="forest"></Button>
-            <Button type="switch"></Button>
-            <Button type="switch" disabled={true}></Button>
-          </CardContent>
-          <CardInfo>
+        </Card>
+
+        <Card className="card-flat">
+          <CardTitle>Checkbox</CardTitle>
+            <CardContent>
+            <Table columns={['Checkbox Status', 'Display']}>
+                <TableRow>
+                    <td data-field="Checkbox Status">Enabled</td>
+                    <td data-field="Display"><Button type="checkbox"></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Checkbox Status">Disabled</td>
+                    <td data-field="Display"><Button type="checkbox" disabled={true}></Button></td>
+                </TableRow>
+              </Table>
+            </CardContent>
+            <CardTitle>Toggle Switch</CardTitle>
+            <CardContent>
+              <Table columns={['Slider Mode / Status', 'Display']}>
+                <TableRow>
+                    <td data-field="Slider Mode">Dark</td>
+                    <td data-field="Display"><Button type="switch" sliderMode="dark" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Slider Mode">Forest</td>
+                    <td data-field="Display"><Button type="switch" sliderMode="forest" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Slider Mode">Sunset</td>
+                    <td data-field="Display"><Button type="switch" sliderMode="sunset" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Slider Mode">Normal</td>
+                    <td data-field="Display"><Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Slider Mode">Indigo</td>
+                    <td data-field="Display"><Button type="switch" sliderMode="indigo" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Status">Disabled</td>
+                    <td data-field="Display"><Button type="switch" disabled={true}></Button></td>
+                </TableRow>
+              </Table>
+            </CardContent>
             <CardTitle>Widget Button</CardTitle>
-          </CardInfo>
-          <CardContent>
-            <Button type="button" buttonType="widget" icon="icon-left-arrow"></Button>
-            <Button type="button" buttonType="widget" icon="icon-right-arrow"></Button>
-            <Button type="button" buttonType="widget" icon="icon-top-arrow"></Button>
-            <Button type="button" buttonType="widget" icon="icon-bottom-arrow"></Button>
-          </CardContent>
+            <CardContent>
+              <Table columns={['Icon', 'Display']}>
+                <TableRow>
+                    <td data-field="Icon">Left Arrow</td>
+                    <td data-field="Display"><Button type="button" buttonType="widget" icon="icon-left-arrow"></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Icon">Right Arrow</td>
+                    <td data-field="Display"><Button type="button" buttonType="widget" icon="icon-right-arrow"></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Icon">Top Arrow</td>
+                    <td data-field="Display"><Button type="button" buttonType="widget" icon="icon-top-arrow"></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Icon">Bottom Arrow</td>
+                    <td data-field="Display"><Button type="button" buttonType="widget" icon="icon-bottom-arrow"></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Icon">Tag</td>
+                    <td data-field="Display"><Button type="button" buttonType="widget" icon="icon-tag"></Button></td>
+                </TableRow>
+              </Table>
+            </CardContent>
         </Card>
         
         <Card className="card-border">

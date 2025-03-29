@@ -641,6 +641,10 @@ This versatility makes it easy to manage paginated data while maintaining clean 
   - **Type**: `Array<Object>`
   - **Description**: An array of dynamic data to be paginated.
 
+- **`showPageItemsControls`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Show the UI for setting the number of rows to be displayed per page. Default is `false`.
+
 ### Usage:
 
 #### Method 1: Using in Custom Component
@@ -754,7 +758,7 @@ Salient Button consist of the following types:
     - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
     - Other Icons:  `icon-wrench`, `icon-gear`
 
-- **`onChange` | `onClick` **  (Required)
+- **`onChange`** | **`onClick`**  (Required)
   - **Type**: `Function`
   - **Description**: A callback function invoked to perform an action when the button state change or when the button is clicked.
 
@@ -767,8 +771,8 @@ Salient Button consist of the following types:
   - **Description**: Determine if the button should be disabled.
 
 - **`sliderMode`**  (Optional)
-  - **Type**: `String` (`dark` | `forest`)
-  - **Description**: Determines if the `switch` button should have a `dark` or `forest` theme. By default, the switch button has a blue background. This parameter only works with `buttonType='switch'`.
+  - **Type**: `String` (`dark` | `forest`, `sunset`, `indigo`)
+  - **Description**: Determines if the `switch` button should have a `dark`, `forest`, `sunset` or `indigo` theme. By default, the switch button has a blue background. This parameter only works with `buttonType='switch'`.
 
 ### Usage:
 #### For Button of Type `switch`

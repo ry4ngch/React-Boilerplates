@@ -77,8 +77,12 @@
 .bg-dark {
     background-color: hsl(223, 14%, 20%) !important;
 
-    p, h1, h2, h3, h4, h5, h6, button, span, div {
+    p, h1, h2, h3, h4, h5, h6, button, span, div, table {
         color: whitesmoke;
+    }
+
+    table tr:hover, table thead tr {
+        color: hsl(223, 14%, 20%);
     }
 }
 

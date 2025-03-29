@@ -125,9 +125,9 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		border: 2px solid var(--active-inner);
 		border-top: 0;
 		border-left: 0;
-		left: 7px;
-		top: 4px;
-		transform: rotate(var(--r, 20deg));
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%) rotate(var(--r, 20deg));
 	}
 
 	input[type='checkbox']:not(.switch):checked {
@@ -175,6 +175,20 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		--border: #ccc;
 		--focus: #ccc;
 		--border-hover: #40bb93;
+	}
+
+	input[type='checkbox'].switch.slider-sunset {
+		--active: #FF6850;
+		--border: #ccc;
+		--focus: #ccc;
+		--border-hover: #FF6850;
+	}
+
+	input[type='checkbox'].switch.slider-indigo {
+		--active: #5a67d8;
+		--border: #ccc;
+		--focus: #ccc;
+		--border-hover: #5a67d8;
 	}
 
 	// Specific to Radio Button
@@ -296,9 +310,11 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 .btn-icon-wrapper {
 	border-radius: 50%;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-	background-color: rgba(255, 255, 255, 0.5);
+	//background-color: rgba(255, 255, 255, 0.5);
 	color: rgba(0, 0, 0, 0.7);
-	border: 2px solid rgba(0, 0, 0, 0.6);
+	//border: 2px solid rgba(0, 0, 0, 0.6);
+	background-color: revert-layer;
+	border: none;
 	width: 3em;
 	height: 3em;
 	display: flex;

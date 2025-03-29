@@ -13,7 +13,9 @@ const Button = (props) => {
 
     const switchStyle = classNames('switch', {
         'slider-dark': props.sliderMode === 'dark',
-        'slider-forest': props.sliderMode === 'forest'
+        'slider-forest': props.sliderMode === 'forest',
+        'slider-sunset': props.sliderMode === 'sunset',
+        'slider-indigo': props.sliderMode == 'indigo'
     })
 
     let buttonContent;
