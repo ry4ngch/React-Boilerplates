@@ -2,13 +2,6 @@ import React from "react";
 import classNames from "classnames";
 
 const Button = (props) => {
-    const widgetStyle = classNames('', {
-        "left-arrow-icon": props.icon==="leftArrow",
-        "right-arrow-icon": props.icon==="rightArrow",
-        "top-arrow-icon": props.icon==="topArrow",
-        "bottom-arrow-icon": props.icon==="btmArrow"
-    })
-
     const buttonStyle = classNames('button', {
         'clear-button': props.buttonStyle==='clear',
         'btn-blur': props.buttonStyle==='blur',
@@ -19,14 +12,15 @@ const Button = (props) => {
     })
 
     const switchStyle = classNames('switch', {
-        'slider-dark': props.sliderMode === 'dark'
+        'slider-dark': props.sliderMode === 'dark',
+        'slider-forest': props.sliderMode === 'forest'
     })
 
     let buttonContent;
     switch(props.buttonType){
         case "widget":
             buttonContent = (<button className={['btn-icon-wrapper', props.className || ''].join(' ').trim()} onClick={props.onClick} disabled={props.disabled} style={props.style}>
-                                <span className={widgetStyle}></span>
+                                <span className={['icon', props.icon].join(' ').trim()}></span>
                             </button>)
             break;
         default:

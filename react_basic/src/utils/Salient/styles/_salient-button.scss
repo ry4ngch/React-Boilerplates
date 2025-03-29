@@ -1,5 +1,6 @@
 // Import the 'sass:color' module
 @use 'sass:color';
+@use 'sass:math';
 
 /* Color Template */
 $button-blueBlur-borderColor: rgb(249 250 251 / 55%); 
@@ -169,6 +170,12 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		background: var(--ab, #131339);
 	}
 
+	input[type='checkbox'].switch.slider-forest {
+		--active: #40bb93;
+		--border: #ccc;
+		--focus: #ccc;
+		--border-hover: #40bb93;
+	}
 
 	// Specific to Radio Button
 	input[type='radio'] {
@@ -297,82 +304,10 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 	display: flex;
 	align-content: center;
 	justify-content: center;
+	flex-wrap: wrap;
 	cursor: pointer;
 }
   
 .btn-icon-wrapper:hover:enabled {
 	background-color: rgba(255, 255, 255, 0.3);
-}
-  
-$arrow-line-width: .1em;
-$arrow-head-width: .6em;
-
-.left-arrow-icon,
-.right-arrow-icon {
-	width: 20px;
-	height: $arrow-line-width;
-}
-
-.left-arrow-icon,
-.right-arrow-icon,
-.top-arrow-icon,
-.bottom-arrow-icon {
-	position: relative;
-	margin: auto;
-	background-color: rgb(35, 35, 35);
-	line-height: 1;
-}
-
-.top-arrow-icon,
-.bottom-arrow-icon {
-	width: $arrow-line-width;
-	height: 20px;
-}
-
-.left-arrow-icon::before {
-	content: "";
-	position: absolute;
-	left: calc($arrow-line-width/2);
-	top: calc($arrow-line-width/2);
-	width: $arrow-head-width;
-	height: $arrow-head-width;
-	border-top: solid $arrow-line-width rgb(35, 35, 35);;
-	border-right: solid $arrow-line-width rgb(35, 35, 35);;
-	transform: translateY(-50%) rotate(-135deg);
-}
-
-.right-arrow-icon::before {
-	content: "";
-	position: absolute;
-	right: calc($arrow-line-width/2);
-	top: calc($arrow-line-width/2);
-	width: $arrow-head-width;
-	height: $arrow-head-width;
-	border-bottom: solid $arrow-line-width rgb(35, 35, 35);;
-	border-left: solid $arrow-line-width rgb(35, 35, 35);;
-	transform: translateY(-50%) rotate(-135deg);
-}
-
-.top-arrow-icon::before {
-	content: "";
-	position: absolute;
-	left: -#{calc($arrow-head-width/2)};
-	top: calc($arrow-line-width/2);
-	width: $arrow-head-width;
-	height: $arrow-head-width;
-	border-bottom: solid $arrow-line-width rgb(35, 35, 35);;
-	border-left: solid $arrow-line-width rgb(35, 35, 35);;
-	transform: rotate(135deg);
-}
-
-.bottom-arrow-icon::before {
-	content: "";
-	position: absolute;
-	left: -#{calc($arrow-head-width/2)};
-	bottom: calc($arrow-line-width/2);
-	width: $arrow-head-width;
-	height: $arrow-head-width;
-	border-top: solid $arrow-line-width rgb(35, 35, 35);;
-	border-right: solid $arrow-line-width rgb(35, 35, 35);;
-	transform: rotate(135deg);
 }

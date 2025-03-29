@@ -508,3 +508,62 @@ $icon-size: 14px;
 .icon-up:before, .icon-down:before{ left:3px; }
 .icon-up:after, .icon-down:after{ left:8px; }
 .icon-up:before, .icon-up:after, .icon-down:before, .icon-down:after{ top:2px; }
+
+//left, up, right, down arrow with trailing tail
+$arrow-line-width: 2px;
+$arrow-head-width: calc($arrow-line-width * 4);
+
+.icon-left-arrow::after,
+.icon-right-arrow::after,
+.icon-top-arrow::after,
+.icon-bottom-arrow::after {
+    content: '';
+	height: 20px;
+	width: $arrow-line-width !important;
+    box-shadow: 0 0 0 20px inset;
+}
+
+.icon-left-arrow,
+.icon-right-arrow,
+.icon-top-arrow,
+.icon-bottom-arrow {
+	position: relative;
+	margin: auto;
+	line-height: 1;
+}
+
+.icon-left-arrow::before,
+.icon-right-arrow::before,
+.icon-top-arrow::before,
+.icon-bottom-arrow::before {
+	top: -$arrow-line-width;
+    left: 50%;
+	width: $arrow-head-width;
+	height: $arrow-head-width;
+	border-top: solid $arrow-line-width;
+	border-right: solid $arrow-line-width;
+	border-top-right-radius: 1px;
+	transform: translateX(-50%) rotate(-45deg);
+	transform-origin: 50%;
+}
+
+.icon-left-arrow::after,
+.icon-right-arrow::after,
+.icon-top-arrow::after,
+.icon-bottom-arrow::after{
+    left: 50%;
+    transform: translateX(-50%);
+    top: -$arrow-line-width;
+}
+
+.icon-left-arrow {
+	transform: rotate(-90deg);
+}
+
+.icon-right-arrow {
+	transform: rotate(90deg);
+}
+
+.icon-bottom-arrow {
+	transform: rotate(270deg);
+}

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const Dropdown = ({ onChange, placeholder, isSearchable = false, children, className, inputPrefix }) => {
+const Dropdown = ({ onChange, placeholder, isSearchable = false, children, className, inputPrefix}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);

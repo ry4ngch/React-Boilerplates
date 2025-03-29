@@ -744,13 +744,19 @@ Salient Button consist of the following types:
   - **Description**: Determine if a button should consist of an icons, this will create a button with a predefined icons sets. If this parameter is set, `icon` parameter must also be set
 
 - **`icon`**  (Optional)
-  - **Type**: `String` (`leftArrow` | `rightArrow` | `topArrow` | `btmArrow`) 
+  - **Type**: `String` (See below list of in-built icons) 
   - **Description**: Insert an icon to the button from predefined icons sets. Note: this parameter only works for `buttonType='button'`.
-  - > Note: This parameter will be updated in future to accomodate `ReactNode` type.
+  - **In-built Icons**: 
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-arrow-right`, `icon-arrow-left`, `icon-top-arrow`, `icon-bottom-arrow`
+    - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
+    - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
+    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
+    - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
+    - Other Icons:  `icon-wrench`, `icon-gear`
 
-- **`onChange`**  (Required)
+- **`onChange` | `onClick` **  (Required)
   - **Type**: `Function`
-  - **Description**: A callback function invoked to perform an action when the button state change.
+  - **Description**: A callback function invoked to perform an action when the button state change or when the button is clicked.
 
 - **`checked`**  (Optional)
   - **Type**: `Boolean` (`true` | `false`)
@@ -758,11 +764,11 @@ Salient Button consist of the following types:
 
 - **`disabled`**  (Optional)
   - **Type**: `Boolean` (`true` | `false`)
-  - **Description**: Set the button should be disabled.
+  - **Description**: Determine if the button should be disabled.
 
 - **`sliderMode`**  (Optional)
-  - **Type**: `String` (`dark`)
-  - **Description**: Determines if the `switch` button should have a dark theme. This parameter only works with `buttonType='switch'`.
+  - **Type**: `String` (`dark` | `forest`)
+  - **Description**: Determines if the `switch` button should have a `dark` or `forest` theme. By default, the switch button has a blue background. This parameter only works with `buttonType='switch'`.
 
 ### Usage:
 #### For Button of Type `switch`
@@ -794,13 +800,14 @@ Salient Button consist of the following types:
   - **Type**: `ReactNode`
   - **Description**: Include an icon at the front of the dropdown field. To use this, `FormPrefix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormPrefix` component.
   - **In-built Icons**: 
-    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`.
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-arrow-right`, `icon-arrow-left`, `icon-top-arrow`, `icon-bottom-arrow`
     - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
     - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
     - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
     - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
     - Other Icons:  `icon-wrench`, `icon-gear`
 
+### Usage:
 ```jsx
 <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>}>
   <DropdownItem value="Test1">Test1</DropdownItem>

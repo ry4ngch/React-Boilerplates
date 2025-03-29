@@ -251,6 +251,7 @@ const Container = () => {
             <Button type="checkbox"></Button>
             <Button type="checkbox" disabled={true}></Button>
             <Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check} sliderMode="dark"></Button>
+            <Button type="switch" sliderMode="forest"></Button>
             <Button type="switch"></Button>
             <Button type="switch" disabled={true}></Button>
           </CardContent>
@@ -258,10 +259,10 @@ const Container = () => {
             <CardTitle>Widget Button</CardTitle>
           </CardInfo>
           <CardContent>
-            <Button type="button" buttonType="widget" icon="leftArrow"></Button>
-            <Button type="button" buttonType="widget" icon="rightArrow"></Button>
-            <Button type="button" buttonType="widget" icon="topArrow"></Button>
-            <Button type="button" buttonType="widget" icon="btmArrow"></Button>
+            <Button type="button" buttonType="widget" icon="icon-left-arrow"></Button>
+            <Button type="button" buttonType="widget" icon="icon-right-arrow"></Button>
+            <Button type="button" buttonType="widget" icon="icon-top-arrow"></Button>
+            <Button type="button" buttonType="widget" icon="icon-bottom-arrow"></Button>
           </CardContent>
         </Card>
         
