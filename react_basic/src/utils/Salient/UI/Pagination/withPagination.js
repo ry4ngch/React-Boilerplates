@@ -17,9 +17,21 @@ const withPagination = (config = {}) => (WrappedComponent) => {
     );
 
     const updateItemsShownPerPage = (e) => {
-      if(parseInt(e.target.value) > (items.length > 0 ? items.length : React.Children.count(children))) return;
+      if(e.target.value.trim().length <= 0 || parseInt(e.target.value) > (items.length > 0 ? items.length : React.Children.count(children))) return;
       setItemsShownPerPage(parseInt(e.target.value));
     }
+
+    const updatePageItemCount = (action) => {
+      setItemsShownPerPage((prev) => {
+        const maxItems = items.length || React.Children.count(children);
+        
+        if (action === 'add') {
+          return Math.min(prev + 1, maxItems);
+        }
+        
+        return Math.max(prev - 1, 1);
+      });
+    };
 
     const togglePage = (action) => {
       setCurrentPage((prevPage) => {
@@ -68,11 +80,18 @@ const withPagination = (config = {}) => (WrappedComponent) => {
         <div className="pagination-footer">
           <span className="pagination-detail">
             <p className="pagination-info">Showing {(currentPage - 1) * itemsShownPerPage + 1} to {currentPage * itemsShownPerPage} of {items.length > 0 ? items.length : React.Children.count(children)} entries</p>
-            {showPageItemsControl && 
-              <React.Fragment>
-                <label>Items Per Page: </label>
-                <input className="pagination-pageCount" type="number" min="1" max={items.length > 0 ? items.length : React.Children.count(children)} onChange={updateItemsShownPerPage} value={itemsShownPerPage}/>
-              </React.Fragment>
+            {
+              showPageItemsControl && 
+              <div className="pagecount-wrapper">
+                <div className="pagecount-data">
+                  <input className="pagination-pagecount" type="number" min="1" max={items.length > 0 ? items.length : React.Children.count(children)} onChange={updateItemsShownPerPage} value={itemsShownPerPage} />
+                  <span>Rows Per Page</span>
+                </div>
+                <div className="pagecount-controls">
+                  <span className="input-button add" onClick={() => updatePageItemCount('add')}>+</span>
+                  <span className="input-button remove" onClick={() => updatePageItemCount('remove')}>-</span>
+                </div>
+              </div>
             }
           </span>
           <nav className="pagination-container">
