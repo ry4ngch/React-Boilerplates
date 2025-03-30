@@ -771,7 +771,7 @@ Salient Button consist of the following types:
   - **Description**: Determine if the button should be disabled.
 
 - **`sliderMode`**  (Optional)
-  - **Type**: `String` (`dark` | `forest`, `sunset`, `indigo`)
+  - **Type**: `String` (`dark` | `forest` | `sunset` | `indigo`)
   - **Description**: Determines if the `switch` button should have a `dark`, `forest`, `sunset` or `indigo` theme. By default, the switch button has a blue background. This parameter only works with `buttonType='switch'`.
 
 ### Usage:
@@ -818,5 +818,48 @@ Salient Button consist of the following types:
   <DropdownItem value="Test2">Test2</DropdownItem>
   <DropdownItem value="Test3">Test3</DropdownItem>
 </Dropdown>
+```
+
+## Salient Form Numeric Field
+### Parameters:
+- **`min`**  (Required)
+  - **Type**: `Number`   
+  - **Description**: Set the minimum numeric value of the input field
+
+- **`max`**  (Required)
+  - **Type**: `Number`
+  - **Description**: Set the maximum numeric value of the input field.
+
+- **`step`**  (Optional)
+  - **Type**: `Number`
+  - **Description**: Set the increment or decrement step value. Default is 1.
+
+- **`value`**  (Optional)
+  - **Type**: `Number`
+  - **Description**: Set the initial value of the field. Defaults to `min` if not set.
+
+- **`enableSuggestion`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Enable Suggestion Dropdowns. This suggestion dropdown will contain a range of values between the min and max values.
+
+- **`suggestionLimit`**  (Optional)
+  - **Type**: `Integer`
+  - **Description**: Determines the number of suggestion to be included in the dropdown. By default this value is 5.
+
+- **`fieldName`**  (Required)
+  - **Type**: `String`
+  - **Description**: Add a description below the field.
+
+- **`callbackFn`**  (Optional)
+  - **Type**: `Function`
+  - **Description**: Add a callback function to be triggered on input change. 
+
+- **`ref`**  (Optional)
+  - **Type**: `useRef Object`
+  - **Description**: Attach a reference object to the element.
+
+### Usage:
+```jsx
+<NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={8} callBackFn={someFunction} ref={ref}/>
 ```
 

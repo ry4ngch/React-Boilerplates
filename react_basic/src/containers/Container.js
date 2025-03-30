@@ -74,6 +74,13 @@ const Container = () => {
   // filtered table
   const filteredTable = filterData(docs, tableFilterValue);
 
+  const testNumericFieldCallback = (returnVal) => {
+    console.log(returnVal);
+    console.log(testRef);
+  }
+
+  const testRef = useRef(null);
+
   return (
     <div id='page-wrapper'>
       <div className="container-fluid">
@@ -471,7 +478,7 @@ const Container = () => {
           </CardContent>
           <CardContent>
               <CardTitle>Form Numeric Input</CardTitle>
-              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={8}/>
+              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={8} callbackFn={testNumericFieldCallback} ref={testRef}/>
           </CardContent>
           
         </Card>

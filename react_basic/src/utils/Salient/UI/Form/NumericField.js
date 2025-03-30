@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useImperativeHandle } from "react";
 
-const NumericField = ({ fieldName = "Field Name", min = 0, max = 100, step = 1, value = min, className = "", enableSuggestion = false, suggestionLimit = 5, ...rest }) => {
+const NumericField = ({ fieldName = "Field Name", min = 0, max = 100, step = 1, value = min, className = "", enableSuggestion = false, suggestionLimit = 5, callbackFn, ref, ...rest }) => {
     const [fieldCount, setFieldCount] = useState(value);
     const [dropdownActive, setDropdownActive] = useState(false);
     const suggestionRef = useRef(null);
@@ -66,6 +66,16 @@ const NumericField = ({ fieldName = "Field Name", min = 0, max = 100, step = 1, 
             document.removeEventListener("wheel", handleWheel);
         };
     }, []);
+
+    // trigger the callback function on field change
+    useEffect(() => {
+        if(typeof callbackFn === 'function') {
+            callbackFn(fieldCount);
+        }
+    }, [fieldCount])
+
+    // forward the internal ref of the input field to external parent
+    useImperativeHandle(ref, () => inputRef.current);
 
     return (
         <div className="numeric-field-group" tabIndex="0" onBlur={() => setDropdownActive(false)}>
