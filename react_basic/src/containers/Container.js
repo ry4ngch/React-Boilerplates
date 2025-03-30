@@ -18,6 +18,7 @@ import Treeview, {TreeItem} from '../utils/Salient/UI/Treeview/Treeview';
 import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 import Dropdown, {DropdownItem} from '../utils/Salient/UI/Form/Dropdown';
 import FormPrefix from '../utils/Salient/UI/Form/FormPrefix';
+import NumericField from '../utils/Salient/UI/Form/NumericField';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -458,17 +459,22 @@ const Container = () => {
 
         <Card className="card-border">
             <CardInfo>
-              <CardTitle>Form Dropdown</CardTitle>
+              <CardTitle>Form Controls</CardTitle>
             </CardInfo>
             <CardContent>
+              <CardTitle>Dropdown</CardTitle>
               <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>}>
                 <DropdownItem value="Test1">Test1</DropdownItem>
                 <DropdownItem value="Test2">Test2</DropdownItem>
                 <DropdownItem value="Test3">Test3</DropdownItem>
               </Dropdown>
           </CardContent>
+          <CardContent>
+              <CardTitle>Form Numeric Input</CardTitle>
+              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={8}/>
+          </CardContent>
+          
         </Card>
-       
       </div>
     </div>
   )
