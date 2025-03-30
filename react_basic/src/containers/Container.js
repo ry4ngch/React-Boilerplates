@@ -470,7 +470,7 @@ const Container = () => {
             </CardInfo>
             <CardContent>
               <CardTitle>Dropdown</CardTitle>
-              <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>}>
+              <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>} expandFull={true}>
                 <DropdownItem value="Test1">Test1</DropdownItem>
                 <DropdownItem value="Test2">Test2</DropdownItem>
                 <DropdownItem value="Test3">Test3</DropdownItem>
@@ -478,7 +478,7 @@ const Container = () => {
           </CardContent>
           <CardContent>
               <CardTitle>Form Numeric Input</CardTitle>
-              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={8} callbackFn={testNumericFieldCallback} ref={testRef}/>
+              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={5} callbackFn={testNumericFieldCallback} ref={testRef} fieldControlPlacement="bottom"/>
           </CardContent>
           
         </Card>

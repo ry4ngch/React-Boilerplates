@@ -9,10 +9,9 @@
     user-select: none;
     cursor: pointer;
     transition: .1s;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     height: 30px;
-    width: 100%;
     color: #000;
     
     &.active {
@@ -175,6 +174,7 @@
   /* Ensures consistency across browsers */
   & > input[type="number"] {
     -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; 
   }
 
   &.field-dropdown {
@@ -192,11 +192,13 @@
       width: 5px;
       height: 5px;
       opacity: 0.3;
+      cursor: pointer;
     }
   }
 
   &.field-dropdown.field-active::after {
     opacity: 1;
+    transform: translateY(-50%) rotateZ(-135deg);
   }
 }
 
@@ -260,4 +262,87 @@
   position: relative;
   flex-direction: column;
   display: inline-flex;
+}
+
+
+// numeric field controls placement options
+.field-controls-btm {
+  flex-direction: column;
+
+  .numeric-field-data {
+    border-radius: 4px 4px 0 0px;
+  }
+
+  .numeric-field-controls {
+    top: -0.5px;
+
+    .control-btn {
+
+      &.btn-increment,
+      &.btn-decrement {
+        border: solid #E3E3E3;
+        border-top: none;
+      }
+
+      &.btn-increment {
+        border-radius: 0 0px 0 4px;
+      }
+    }
+  }
+}
+
+.field-controls-top {
+  flex-direction: column-reverse;
+
+  .numeric-field-data {
+    border-radius: 0 0 4px 4px;
+  }
+
+  .numeric-field-controls {
+    top: auto;
+    bottom: -0.5px;
+
+    .control-btn {
+
+      &.btn-increment,
+      &.btn-decrement {
+        border: solid #E3E3E3;
+        border-bottom: none;
+      }
+
+      &.btn-increment {
+        border-radius: 4px 0 0 0;
+      }
+
+      &.btn-decrement {
+        border-radius: 0 4px 0 0;
+      }
+    }
+  }
+}
+
+.field-controls-btm,
+.field-controls-top {
+
+  .numeric-field-controls {
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    min-height: 20px;
+
+    .control-btn {
+      width: 50%;
+      height: auto;
+      aspect-ratio: auto;
+    }
+  }
+}
+
+// General 
+.expand-full {
+  width: 100%;
 }

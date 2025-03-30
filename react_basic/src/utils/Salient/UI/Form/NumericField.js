@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect, useImperativeHandle } from "react";
+import classNames from "classnames";
 
-const NumericField = ({ fieldName = "Field Name", min = 0, max = 100, step = 1, value = min, className = "", enableSuggestion = false, suggestionLimit = 5, callbackFn, ref, ...rest }) => {
+const NumericField = ({ fieldName = "Field Name", min = 0, max = 100, step = 1, value = min, className = "", enableSuggestion = false, suggestionLimit = 5, callbackFn, ref, fieldControlPlacement, ...rest }) => {
+     const numericFieldClasses = classNames('numeric-field-wrapper', {
+        'field-controls-btm': fieldControlPlacement === 'bottom',
+        'field-controls-top': fieldControlPlacement === 'top'
+    });
+    
     const [fieldCount, setFieldCount] = useState(value);
     const [dropdownActive, setDropdownActive] = useState(false);
     const suggestionRef = useRef(null);
@@ -78,8 +84,8 @@ const NumericField = ({ fieldName = "Field Name", min = 0, max = 100, step = 1, 
     useImperativeHandle(ref, () => inputRef.current);
 
     return (
-        <div className="numeric-field-group" tabIndex="0" onBlur={() => setDropdownActive(false)}>
-            <div className={`numeric-field-wrapper ${className}`.trim()} {...rest}>
+        <div className={`numeric-field-group ${className}`.trim()} tabIndex="0" onBlur={() => setDropdownActive(false)} {...rest}>
+            <div className={numericFieldClasses}>
                 <div 
                     className={`numeric-field-data ${enableSuggestion ? 'field-dropdown' : ''} ${dropdownActive && inputRef.current !== document.activeElement && enableSuggestion ? 'field-active' : ''}`.trim()} 
                     onClick={() => setDropdownActive((prevState) => !prevState)}  

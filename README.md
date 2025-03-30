@@ -800,6 +800,10 @@ Salient Button consist of the following types:
   - **Type**: `Boolean` (`true` | `false`) 
   - **Description**: Determine if the dropdown should include an input field to search through the dropdown items. The searching feature works based on match instead of filtering and match based on starting text.
 
+- **`expandFull`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`) 
+  - **Description**: Determine if the dropdown element should take up the full width.
+
 - **`inputPrefix`**  (Optional)
   - **Type**: `ReactNode`
   - **Description**: Include an icon at the front of the dropdown field. To use this, `FormPrefix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormPrefix` component.
@@ -857,6 +861,10 @@ Salient Button consist of the following types:
 - **`ref`**  (Optional)
   - **Type**: `useRef Object`
   - **Description**: Attach a reference object to the element.
+
+- **`fieldControlPlacement`**  (Optional)
+  - **Type**: `String` (`top` | `bottom` | `right`)
+  - **Description**: Determines the placement of the increment and decrement control button. By default, the controls are place on the right hand side of the field.
 
 ### Usage:
 ```jsx

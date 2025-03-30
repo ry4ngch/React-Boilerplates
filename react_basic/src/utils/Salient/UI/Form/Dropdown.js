@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const Dropdown = ({ onChange, placeholder, isSearchable = false, children, className, inputPrefix}) => {
+const Dropdown = ({ onChange, placeholder, isSearchable = false, children, className, inputPrefix, expandFull = false}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -58,7 +58,7 @@ const Dropdown = ({ onChange, placeholder, isSearchable = false, children, class
 
   return (
     <div
-      className={['dropdown', active ? "active" : "", className || ''].join(' ').trim()}
+      className={['dropdown', active ? "active" : "", expandFull ? 'expand-full' : '', className || ''].join(' ').trim()}
       ref={dropdownRef}
       onClick={showList}
       tabIndex={0}
