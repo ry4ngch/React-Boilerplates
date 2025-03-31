@@ -160,6 +160,7 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   │   └── Card.js 
 │   │   │   │   ├── Form  
 │   │   │   │   │   ├── Dropdown.js
+│   │   │   │   │   ├── NumericField.js
 │   │   │   │   │   └── FormPrefix.js
 │   │   │   │   ├── Modal  
 │   │   │   │   │   └── Modal.js 
@@ -196,7 +197,7 @@ Here’s the basic file structure for `react_basic` versions:
 | **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> &nbsp;&nbsp; - Form Dropdown component ( `Dropdown.js`, `FormPrefix.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> &nbsp;&nbsp; - Form Dropdown component ( `Dropdown.js`, `FormPrefix.js`, `NumericField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -850,9 +851,13 @@ Salient Button consist of the following types:
   - **Type**: `Integer`
   - **Description**: Determines the number of suggestion to be included in the dropdown. By default this value is 5.
 
-- **`fieldName`**  (Required)
+- **`fieldName`**  (Optional)
   - **Type**: `String`
   - **Description**: Add a description below the field.
+
+- **`hasFieldName`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Determine if a field name should be included below the input.
 
 - **`callbackFn`**  (Optional)
   - **Type**: `Function`

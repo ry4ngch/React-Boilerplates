@@ -5,6 +5,7 @@ const withPagination = (config = {}) => (WrappedComponent) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsShownPerPage, setItemsShownPerPage] = useState(itemsPerPage);
     const totalPages = Math.ceil(items.length > 0 ? items.length / itemsShownPerPage : React.Children.count(children) / itemsShownPerPage);
+    const totalEntries = items.length > 0 ? items.length : React.Children.count(children);
     
     const [pageLimit, setPageLimit] = useState({
       min: 1,
@@ -79,12 +80,12 @@ const withPagination = (config = {}) => (WrappedComponent) => {
         </WrappedComponent>
         <div className="pagination-footer">
           <span className="pagination-detail">
-            <p className="pagination-info">Showing {(currentPage - 1) * itemsShownPerPage + 1} to {currentPage * itemsShownPerPage} of {items.length > 0 ? items.length : React.Children.count(children)} entries</p>
+            <p className="pagination-info">Showing {(currentPage - 1) * itemsShownPerPage + 1} to {Math.min(currentPage * itemsShownPerPage, totalEntries)} of {totalEntries} entries</p>
             {
               showPageItemsControl && 
               <div className="pagecount-wrapper">
                 <div className="pagecount-data">
-                  <input className="pagination-pagecount" type="number" min="1" max={items.length > 0 ? items.length : React.Children.count(children)} onChange={updateItemsShownPerPage} value={itemsShownPerPage} />
+                  <input className="pagination-pagecount" type="number" min={1} max={totalEntries} onChange={updateItemsShownPerPage} value={itemsShownPerPage} />
                   <span>Rows Per Page</span>
                 </div>
                 <div className="pagecount-controls">

@@ -478,7 +478,7 @@ const Container = () => {
           </CardContent>
           <CardContent>
               <CardTitle>Form Numeric Input</CardTitle>
-              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={5} callbackFn={testNumericFieldCallback} ref={testRef} fieldControlPlacement="bottom"/>
+              <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={5} callbackFn={testNumericFieldCallback} ref={testRef} fieldControlPlacement="side"/>
           </CardContent>
           
         </Card>
