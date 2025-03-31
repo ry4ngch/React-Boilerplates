@@ -1,18 +1,12 @@
 // Adapted from: https://codepen.io/cbolson/pen/gOVrZpz
 // Minor modification with animation and caret
 .bg-dark .list-tree {
+    --tree-clr: whitesmoke;
     span:not(.comment):hover {
         color: hsl(223, 14%, 20%);
     }
-
-    li, ul li::before {
-        border-color: whitesmoke;
-    }
-
-    li::after {
-        background-color: whitesmoke;
-    }
 }
+
 .list-tree {
     --tree-clr: #222;
     --tree-font-size: 1.4rem;
@@ -53,6 +47,7 @@
         font-style: italic;
         font-weight: 100;
         opacity: .65;
+        margin-left: .8rem;
     
     }
 
@@ -100,5 +95,6 @@
         --tree-clr: rgb(175, 208, 84);
         */
         --tree-style: dotted;
+        border-color: transparent;
     }
 }

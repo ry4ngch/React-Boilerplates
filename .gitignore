@@ -33,6 +33,3 @@ coverage/
 # Ignore OS generated files (Windows, Linux, etc.)
 Thumbs.db      # Windows
 Desktop.ini    # Windows
-
-# Ignore react_tailwind folder
-**/react_tailwind/
