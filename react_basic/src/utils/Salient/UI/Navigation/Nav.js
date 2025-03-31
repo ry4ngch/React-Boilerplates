@@ -55,7 +55,7 @@ const Nav = (props) => {
   return (
     <div>
       <div id="overlay" ref={overlayRef} className={isNavCollapsed ? '' : 'overlay'}></div>
-      <nav className={classNames("navbar grayscale-scheme", { "sd-shift-navbar": props.shift && !props.navSlideDown && !isNavCollapsed })} {...(props.shift && !props.navSlideDown ? { 'data-effect': 'shift' } : {})}>
+      <nav className={`${classNames("navbar", { "sd-shift-navbar": props.shift && !props.navSlideDown && !isNavCollapsed })} ${props.className}`} {...(props.shift && !props.navSlideDown ? { 'data-effect': 'shift' } : {})}>
         <div className={classNames("hamburger", { "active": !isNavCollapsed })} onClick={handleHamburgerClick}>
           <div></div>
         </div>

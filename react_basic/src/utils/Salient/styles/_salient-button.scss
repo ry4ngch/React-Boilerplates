@@ -317,7 +317,7 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 	border: none;
 	width: 3em;
 	height: 3em;
-	display: flex;
+	display: inline-flex;
 	align-content: center;
 	justify-content: center;
 	flex-wrap: wrap;
