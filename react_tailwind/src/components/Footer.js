@@ -36,12 +36,12 @@ const Footer = () => {
                         <div className="tab w-full overflow-hidden">
                             <input className="absolute hidden opacity-0" id="tab-multi-one" type="checkbox" name="tabs"/>
                             <div className="label relative">
-                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" for="tab-multi-one">
+                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" htmlFor="tab-multi-one">
                                     Product
                                 </label>
                                 <div className="w-full absolute inset-0 flex flex-end justify-end items-center pointer-events-none">
                                     <svg className="icon w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
                                 </div>
                             </div>
@@ -58,12 +58,12 @@ const Footer = () => {
                         <div className="tab w-full overflow-hidden">
                             <input className="absolute hidden opacity-0" id="tab-multi-two" type="checkbox" name="tabs"/>
                             <div className="label relative">
-                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" for="tab-multi-two">
+                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" htmlFor="tab-multi-two">
                                     Company
                                 </label>
                                 <div className="w-full absolute inset-0 flex flex-end justify-end items-center pointer-events-none">
                                     <svg className="icon w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
                                 </div>
                             </div>
@@ -80,12 +80,12 @@ const Footer = () => {
                         <div className="tab w-full overflow-hidden">
                             <input className="absolute hidden opacity-0" id="tab-multi-three" type="checkbox" name="tabs"/>
                             <div className="label relative">
-                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" for="tab-multi-three">
+                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" htmlFor="tab-multi-three">
                                 Developers
                                 </label>
                                 <div className="w-full absolute inset-0 flex flex-end justify-end items-center pointer-events-none">
                                     <svg className="icon w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
                                 </div>
                             </div>
@@ -101,12 +101,12 @@ const Footer = () => {
                         <div className="tab w-full overflow-hidden">
                             <input className="absolute hidden opacity-0" id="tab-multi-four" type="checkbox" name="tabs"/>
                             <div className="label relative">
-                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" for="tab-multi-four">
+                                <label className="block py-2 px-3 text-white uppercase font-medium tracking-wide cursor-pointer" htmlFor="tab-multi-four">
                                 Explore
                                 </label>
                                 <div className="w-full absolute inset-0 flex flex-end justify-end items-center pointer-events-none">
                                     <svg className="icon w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
                                 </div>
                             </div>

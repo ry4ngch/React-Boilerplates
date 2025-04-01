@@ -2,13 +2,13 @@ import React from "react"
 
 const Breadcrumb = () => {
     return (
-        <nav class="container-fluid">
-            <ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
-                <li class="px-2"><a href="#" class="no-underline text-indigo">Home</a></li>
+        <nav className="container-fluid">
+            <ol className="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
+                <li className="px-2"><a href="#" className="no-underline text-indigo">Home</a></li>
                 <li>/</li>
-                <li class="px-2"><a href="#" class="no-underline text-indigo">Library</a></li>
+                <li className="px-2"><a href="#" className="no-underline text-indigo">Library</a></li>
                 <li>/</li>
-                <li class="px-2">Data</li>
+                <li className="px-2">Data</li>
             </ol>
         </nav>
     )
