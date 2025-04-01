@@ -38,10 +38,19 @@ This version is suitable for starting with a clean slate, without any pre-config
 
 > **Note:** 
 > Bootstrap 5 currently has some issues with the latest SASS implementation, webpack has been configured to ignore the @import warnings.
-> It is recommended to use tailwind for more seamless development experience with react.
+
+
+### 4. `react_tailwind` - React with Tailwind
+
+- Integration with Tailwind for styling (installed via npm)
+- Ideal for quick iterations, prototypes, or proof of concept (PoC) development.
+
+> **Note:** 
+> Based on personal experience, it's not advisable to use Tailwind for large-scale project development. While Tailwind provides great flexibility and speed in development, its utility-based approach might become difficult to manage as the project grows larger and more complex.
+
 
 ## How to Use
-1. Clone the repository or download the `react_basic` or `react_bare` or `react_bootstrap` folder.
+1. Clone the repository or download the `react_basic` or `react_bare` or `react_bootstrap` or `react_tailwind` folder.
 2. Navigate to the folder in your terminal:
    ```bash
    cd react_bare  # or cd react_basic or cd react_bootstrap
