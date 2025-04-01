@@ -20,7 +20,7 @@ const Header = ({title = "Tailwind CSS"}) => {
             </label>
             <input className="hidden" type="checkbox" id="menu-toggle" onClick={() => setShowNav(!showNav)} />
 
-            <div className={`overflow-hidden lg:overflow-visible w-full h-0 block flex-grow lg:flex lg:items-center lg:w-auto transition-all ease-out duration-500 lg:transition-none lg:h-auto ${showNav ? 'h-32': ''}`} id="menu">
+            <div className={`overflow-hidden lg:overflow-visible w-full h-0 block flex-grow lg:flex lg:items-center lg:w-auto transition-all ease-out duration-500 lg:transition-none lg:h-auto ${showNav ? 'h-32' : ''}`} id="menu">
                 <div className="flex flex-col lg:flex-row text-sm lg:flex-grow duration-300 ease-out sm:transition-none">
                     <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-500 hover:text-gray-700 mr-4">
                         Docs

@@ -123,7 +123,7 @@ const Footer = () => {
                 </div>
             
                 <div className="border-t border-gray-800 flex flex-col md:flex-row justify-center items-center p-6 mt-4 text-gray-600">
-                    <div>© 2020 Wishful Thinking Agency LLC.</div>
+                    <div>© 2025 Ryan Goh</div>
                     <div>&nbsp;All rights reserved.</div>
                 </div>
             </footer>
@@ -194,7 +194,7 @@ const Footer = () => {
                 </div>
 
                 <div className="border-t border-gray-800 flex flex-col md:flex-row justify-center items-center p-6 mt-4 text-gray-600">
-                    <div>© 2020 Wishful Thinking Agency LLC.</div>
+                    <div>© 2025 Ryan Goh</div>
                     <div>&nbsp;All rights reserved.</div>
                 </div>
             </footer>

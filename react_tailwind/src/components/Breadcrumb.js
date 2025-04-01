@@ -2,7 +2,7 @@ import React from "react"
 
 const Breadcrumb = () => {
     return (
-        <nav class="container">
+        <nav class="container-fluid">
             <ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-grey">
                 <li class="px-2"><a href="#" class="no-underline text-indigo">Home</a></li>
                 <li>/</li>
