@@ -1,10 +1,11 @@
 # React Boilerplate
 
-This project provides three React boilerplate versions for starting your React applications with different levels of complexity:
+This project provides four React boilerplate versions for starting your React applications with different levels of complexity:
 
 - **react_bare**: A barebones React setup with no additional components, JS, or CSS. Ideal for starting a project from scratch.
 - **react_basic**: A more feature-rich setup that includes **Bootstrap** integration, custom **CSS**, and a **Navbar** component. Also includes a sample single-page app to get started quickly.
 - **react_bootstrap**: React setup with **Bootstrap** integration, using Offcanvas **Navbar** component.
+- **react_tailwind**: React setup with **Tailwind** CSS integration
 
 ---
 
@@ -780,9 +781,9 @@ Salient Button consist of the following types:
   - **Type**: `Boolean` (`true` | `false`)
   - **Description**: Determine if the button should be disabled.
 
-- **`sliderMode`**  (Optional)
-  - **Type**: `String` (`dark` | `forest` | `sunset` | `indigo`)
-  - **Description**: Determines if the `switch` button should have a `dark`, `forest`, `sunset` or `indigo` theme. By default, the switch button has a blue background. This parameter only works with `buttonType='switch'`.
+- **`mode`**  (Optional)
+  - **Type**: `String` (`dark` | `forest` | `sunset` | `indigo` | `light`)
+  - **Description**: Determines if the `switch` or `checkbox` button should have a `dark`, `forest`, `sunset`, `indigo` or `light` theme. By default, the switch button has a blue background. This parameter only works with `buttonType='switch'` and `buttonType='checkbox'`.
 
 ### Usage:
 #### For Button of Type `switch`

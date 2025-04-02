@@ -257,12 +257,32 @@ const Container = () => {
             <CardContent>
             <Table columns={['Checkbox Status', 'Display']}>
                 <TableRow>
-                    <td data-field="Checkbox Status">Enabled</td>
-                    <td data-field="Display"><Button type="checkbox"></Button></td>
+                    <td data-field="Checkbox Status">Enabled (Blue)</td>
+                    <td data-field="Display"><Button type="checkbox" checked></Button></td>
                 </TableRow>
                 <TableRow>
                     <td data-field="Checkbox Status">Disabled</td>
                     <td data-field="Display"><Button type="checkbox" disabled={true}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Checkbox Status">Enabled (Dark)</td>
+                    <td data-field="Display"><Button type="checkbox" mode="dark" checked></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Checkbox Status">Enabled (Light)</td>
+                    <td data-field="Display"><Button type="checkbox" mode="light" checked></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Checkbox Status">Enabled (Forest)</td>
+                    <td data-field="Display"><Button type="checkbox" mode="forest" checked></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Checkbox Status">Enabled (Sunset)</td>
+                    <td data-field="Display"><Button type="checkbox" mode="sunset" checked></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Checkbox Status">Enabled (Indigo)</td>
+                    <td data-field="Display"><Button type="checkbox" mode="indigo" checked></Button></td>
                 </TableRow>
               </Table>
             </CardContent>
@@ -271,15 +291,15 @@ const Container = () => {
               <Table columns={['Slider Mode / Status', 'Display']}>
                 <TableRow>
                     <td data-field="Slider Mode">Dark</td>
-                    <td data-field="Display"><Button type="switch" sliderMode="dark" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                    <td data-field="Display"><Button type="switch" mode="dark" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
                 </TableRow>
                 <TableRow>
                     <td data-field="Slider Mode">Forest</td>
-                    <td data-field="Display"><Button type="switch" sliderMode="forest" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                    <td data-field="Display"><Button type="switch" mode="forest" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
                 </TableRow>
                 <TableRow>
                     <td data-field="Slider Mode">Sunset</td>
-                    <td data-field="Display"><Button type="switch" sliderMode="sunset" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                    <td data-field="Display"><Button type="switch" mode="sunset" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
                 </TableRow>
                 <TableRow>
                     <td data-field="Slider Mode">Normal</td>
@@ -287,11 +307,15 @@ const Container = () => {
                 </TableRow>
                 <TableRow>
                     <td data-field="Slider Mode">Indigo</td>
-                    <td data-field="Display"><Button type="switch" sliderMode="indigo" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
+                    <td data-field="Display"><Button type="switch" mode="indigo" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
                 </TableRow>
                 <TableRow>
                     <td data-field="Status">Disabled</td>
                     <td data-field="Display"><Button type="switch" disabled={true}></Button></td>
+                </TableRow>
+                <TableRow>
+                    <td data-field="Status">Light</td>
+                    <td data-field="Display"><Button type="switch" mode="light" onChange={(e) => {setCheck(!check)}} checked={check}></Button></td>
                 </TableRow>
               </Table>
             </CardContent>

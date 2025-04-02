@@ -12,10 +12,19 @@ const Button = (props) => {
     })
 
     const switchStyle = classNames('switch', {
-        'slider-dark': props.sliderMode === 'dark',
-        'slider-forest': props.sliderMode === 'forest',
-        'slider-sunset': props.sliderMode === 'sunset',
-        'slider-indigo': props.sliderMode == 'indigo'
+        'slider-dark': props.mode === 'dark',
+        'slider-forest': props.mode === 'forest',
+        'slider-sunset': props.mode === 'sunset',
+        'slider-indigo': props.mode === 'indigo',
+        'slider-light': props.mode === 'light'
+    })
+
+    const checkboxStyle = classNames('', {
+        'dark-cb': props.mode === 'dark',
+        'light-cb': props.mode === 'light',
+        'forest-cb': props.mode === 'forest',
+        'sunset-cb': props.mode === 'sunset',
+        'indigo-cb': props.mode === 'indigo'
     })
 
     let buttonContent;
@@ -34,7 +43,7 @@ const Button = (props) => {
     return (
         <React.Fragment>
             {props.type === 'switch' && <input type="checkbox" className={[switchStyle, props.className || ''].join(' ').trim()} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
-            {props.type === 'checkbox' && <input type="checkbox" className={`${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
+            {props.type === 'checkbox' && <input type="checkbox" className={`${checkboxStyle} ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
             {props.type === 'button' && buttonContent}
         </React.Fragment>
 

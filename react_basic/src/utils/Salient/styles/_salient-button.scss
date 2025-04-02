@@ -116,7 +116,7 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 	}
 
 	input[type='checkbox']:not(.switch) {
-		border-radius: 7px;
+		border-radius: 4px;
 	}
 
 	input[type='checkbox']:not(.switch):after {
@@ -127,11 +127,58 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		border-left: 0;
 		left: 50%;
 		top: 50%;
-		transform: translate(-50%, -50%) rotate(var(--r, 20deg));
+		transform: translate(-50%, calc(-50% - 2px)) rotate(var(--r, 20deg));
+		//translate(-50%, calc(-50% - 2.5px)) rotate(45deg);
 	}
 
 	input[type='checkbox']:not(.switch):checked {
 		--r: 43deg;
+	}
+
+	// checkboxes themes
+	input[type='checkbox']:not(.switch){
+		&.forest-cb {
+			--active: hsl(153, 90%, 35%);
+			--active-inner: hsl(223, 10%, 10%);
+			--border-hover: #40bb93;
+			--focus: 2px rgba(224, 251, 245, 0.6);
+			--border: #ddd;
+		}
+
+		&.light-cb {
+			--active: #fff;
+			--focus: 2px rgba(255, 255, 255, 0.6);
+			--border: #ddd;
+			--border-hover: #333;
+			--active-inner: #555;
+		}
+
+		&.dark-cb {
+			--active: #333;
+			--focus: 2px rgba(14, 30, 37, 0.12);
+			--border: #ddd;
+			--border-hover: #333;
+		}
+
+		&.sunset-cb {
+			--active: #d9534f;
+			--active-inner: rgb(249, 242, 244);
+			--focus: 2px #f9f2f4;
+			--border: #ddd;
+			--border-hover: rgb(199, 37, 78);
+		}
+
+		&.indigo-cb {
+			--active: #3f51b5;
+			--active-inner: #fff;
+			--border: #b8b8b8;
+			--border-hover: #3f51b5;
+			--focus: 2px #e4e7f6;
+		}
+	}
+
+	input[type='checkbox']:not(.switch).light-cb:checked {
+		--bc: #333;
 	}
 
 	// Specific to Switch Type Toggle Button
@@ -159,36 +206,51 @@ $button-clear-borderHoverColor: rgba(255, 255, 255, 0.3);
 		opacity: .6;
 	}
 
-	input[type='checkbox'].switch.slider-dark {
-		--active: #131339;
-		--border: #d2d9ef;
-		--focus: #d2d9ef;
-		--border-hover: #131339;
-	}
+	// switch theme
+	input[type='checkbox'].switch{
+		&.slider-dark {
+			--active: #131339;
+			--border: #d2d9ef;
+			--focus: #d2d9ef;
+			--border-hover: #131339;
+		}
 
-	input[type=checkbox].switch.slider-dark:after {
-		background: var(--ab, #131339);
-	}
+		&.slider-dark:after {
+			background: var(--ab, #131339);
+		}
 
-	input[type='checkbox'].switch.slider-forest {
-		--active: #40bb93;
-		--border: #ccc;
-		--focus: #ccc;
-		--border-hover: #40bb93;
-	}
+		&.slider-forest {
+			--active: #40bb93;
+			--border: #ccc;
+			--focus: #ccc;
+			--border-hover: #40bb93;
+		}
 
-	input[type='checkbox'].switch.slider-sunset {
-		--active: #FF6850;
-		--border: #ccc;
-		--focus: #ccc;
-		--border-hover: #FF6850;
-	}
+		&.slider-sunset {
+			--active: #FF6850;
+			--border: #ccc;
+			--focus: #ccc;
+			--border-hover: #FF6850;
+		}
 
-	input[type='checkbox'].switch.slider-indigo {
-		--active: #5a67d8;
-		--border: #ccc;
-		--focus: #ccc;
-		--border-hover: #5a67d8;
+		&.slider-indigo {
+			--active: #5a67d8;
+			--border: #ccc;
+			--focus: #ccc;
+			--border-hover: #5a67d8;
+		}
+
+		&.slider-light {
+			--active: #fff;
+			--border: #ddd;
+			--focus: rgba(14, 30, 37, 0.12);
+			--border-hover: #555;
+			--active-inner: #555;
+
+			&:checked {
+				--bc: #555;
+			}
+		}
 	}
 
 	// Specific to Radio Button
