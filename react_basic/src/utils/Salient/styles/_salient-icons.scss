@@ -51,11 +51,9 @@ $icon-size: 14px;
 }
 
 /* Search */
-.icon-search{left:0px; top: 2px}
 .icon-search {
-    top: 50%;
-    transform: translateX(-50%) rotate(-45deg) translateY(-50%);
-    left: 50%;
+    transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+    transform-origin: 100% 50%;
 }
 .icon-search:before{
     width:inherit;

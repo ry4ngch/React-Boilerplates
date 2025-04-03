@@ -43,7 +43,7 @@ const Button = (props) => {
     return (
         <React.Fragment>
             {props.type === 'switch' && <input type="checkbox" className={[switchStyle, props.className || ''].join(' ').trim()} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
-            {props.type === 'checkbox' && <input type="checkbox" className={`${checkboxStyle} ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}></input>}
+            {props.type === 'checkbox' && <input type="checkbox" className={`${checkboxStyle} ${props.className || ''}`} onChange={props.onChange} disabled={props.disabled} name={props.name} value={props.value} checked={props.checked} style={props.style}>{props.children}</input>}
             {props.type === 'button' && buttonContent}
         </React.Fragment>
 

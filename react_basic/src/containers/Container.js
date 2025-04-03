@@ -19,6 +19,7 @@ import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 import Dropdown, {DropdownItem} from '../utils/Salient/UI/Form/Dropdown';
 import FormPrefix from '../utils/Salient/UI/Form/FormPrefix';
 import NumericField from '../utils/Salient/UI/Form/NumericField';
+import TextField from '../utils/Salient/UI/Form/TextField';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -504,7 +505,10 @@ const Container = () => {
               <CardTitle>Form Numeric Input</CardTitle>
               <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={5} callbackFn={testNumericFieldCallback} ref={testRef} fieldControlPlacement="side"/>
           </CardContent>
-          
+          <CardContent>
+              <CardTitle>Form Text Input</CardTitle>
+              <TextField placeholder="Username" expandFull={true} inputPrefix={<FormPrefix icon="icon-search"/>}/>
+          </CardContent>
         </Card>
       </div>
     </div>

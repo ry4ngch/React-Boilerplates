@@ -11,7 +11,6 @@
     transition: .1s;
     display: inline-flex;
     flex-direction: column;
-    height: 30px;
     color: #000;
     
     &.active {
@@ -30,10 +29,10 @@
     }
 
     &__selected {
-      display: flex;
+      display: inline-flex;
       margin: auto 0;
       align-items: center;
-      height: 30px;
+      min-height: 30px;
       position: relative;
 
       &::after {
@@ -61,6 +60,7 @@
 
     &__input {
       height: 100%;
+      min-height: inherit;
       width: 100%;
       border: none;
       outline: none;
@@ -113,10 +113,8 @@
 .form-prefix {
   padding: 0px 10px;
   height: 100%;
-
-  &:has(.icon-search) > * {
-    translate: 0% -25%;
-  }
+  align-self: center;
+  display: block;
 }
 
 
@@ -346,4 +344,78 @@
 // General 
 .expand-full {
   width: 100%;
+}
+
+// Text Field
+
+.text-field-input {
+  --border-default: #cacaca;
+  --border-active: #3D6DF9;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin: auto 0;
+  min-height: 30px;
+  flex-direction: row;
+  border: var(--border-width, 1px)solid var(--border, var(--border-default));
+  border-radius: 2px;
+  overflow: hidden;
+
+  input {
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  &:has(input:focus-within) {
+    --border-width: 1.5px;
+    --border: var(--border-active);
+  }
+
+}
+
+.text-field-group {
+  position: relative;
+  z-index: 0;
+  transition: all 10s;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.text-field-title:not(.label-floating) {
+  position: relative;
+  margin-bottom: .5em;
+}
+
+
+/** NOT USED AT THE MOMENT */
+.text-field-group:not(:has(input:focus-within)) .text-field-title.label-floating {
+  top: 0;
+  transform: translateY(50%);
+  color: #777;
+}
+
+.text-field-title.label-floating{
+  position: absolute;
+  z-index: 1;
+  transition: all 0.3s;
+  left: 40px;
+}
+
+.text-field-group:has(input:focus-within) .text-field-title.label-floating {
+  color: #222;
+  transform: translateY(-20px);
+  left: 0;
+  background: #fff;
+  display: block;
+}
+
+.error-highlight {
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
 }
