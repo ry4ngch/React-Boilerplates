@@ -20,6 +20,7 @@ import Dropdown, {DropdownItem} from '../utils/Salient/UI/Form/Dropdown';
 import FormAffix from '../utils/Salient/UI/Form/FormAffix';
 import NumericField from '../utils/Salient/UI/Form/NumericField';
 import TextField from '../utils/Salient/UI/Form/TextField';
+import Badge from '../utils/Salient/UI/Badge/Badge';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -515,6 +516,22 @@ const Container = () => {
                 inputSuffix={<FontAwesomeIcon icon="eye" style={{padding: '0 5px'}}/>}
                 label="Username:"
               />
+          </CardContent>
+        </Card>
+
+        <Card className="card-border">
+          <CardInfo>
+            <CardTitle>Badge</CardTitle>
+          </CardInfo>
+          <CardContent>
+            <Badge text="Active" status="active" hasIndicator={true}/>
+            <Badge text="Disabled" status="disabled" hasIndicator={true}/>
+            <Badge text="Awaiting" status="awaiting" hasIndicator={true}/>
+            <Badge text="Pending" status="pending" hasIndicator={true}/>
+            <Badge text="Loading" status="loading" hasIndicator={true}/>
+            <Badge text="Cancel" status="cancel" hasIndicator={true}/>
+            <Badge text="Stall" status="stall" hasIndicator={true}/>
+            <Badge text="Idle" status="idle" hasIndicator={true}/>
           </CardContent>
         </Card>
       </div>
