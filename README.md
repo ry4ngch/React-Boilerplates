@@ -45,6 +45,7 @@ This version is suitable for starting with a clean slate, without any pre-config
 
 - Integration with Tailwind for styling (installed via npm)
 - Ideal for quick iterations, prototypes, or proof of concept (PoC) development.
+- Prebuilt with Offcanvas Navbar (side nav) and Standard top navbar 
 
 > **Note:** 
 > Based on personal experience, it's not advisable to use Tailwind for large-scale project development. While Tailwind provides great flexibility and speed in development, its utility-based approach might become difficult to manage as the project grows larger and more complex.
@@ -171,7 +172,8 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   ├── Form  
 │   │   │   │   │   ├── Dropdown.js
 │   │   │   │   │   ├── NumericField.js
-│   │   │   │   │   └── FormPrefix.js
+│   │   │   │   │   ├── TextField.js
+│   │   │   │   │   └── FormAffix.js
 │   │   │   │   ├── Modal  
 │   │   │   │   │   └── Modal.js 
 │   │   │   │   ├── Navigation  
@@ -207,7 +209,7 @@ Here’s the basic file structure for `react_basic` versions:
 | **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> &nbsp;&nbsp; - Form Dropdown component ( `Dropdown.js`, `FormPrefix.js`, `NumericField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> &nbsp;&nbsp; - Form Dropdown component ( `Dropdown.js`, `FormAffix.js`, `NumericField.js`,  `TextField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -219,6 +221,7 @@ This library offers:
 - Predefined animations and styles that integrate seamlessly into React projects. 
 - An easy-to-use structure for dynamic UI effects without the overhead of managing custom state logic.
 - A faster development workflow, reducing boilerplate code while maintaining flexibility for customization.
+- Reusable components that are flexible to accept other attributes that are available on common HTML elements.
 
 > **Note:**  
 > While controlling animations and effects in React is simple, it often requires managing additional state variables, which can complicate the codebase and lead to unnecessary boilerplate. Salient was created to address this issue by providing a streamlined solution that abstracts these complexities.
@@ -272,7 +275,7 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 
 ### Usage:
 ```jsx
-<Nav title="Salient" shift={true} navSlideDown={false} brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
+<Nav title="Salient" className="offwhite-scheme" shift={true} navSlideDown={false} brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
   <NavMenu>
       <li data-tooltip="Home">
           <a href="">
@@ -458,7 +461,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 ### Parameters
 - **`animation`**  (Optional)
   - **Type**: `String` (`flip-x` | `flip-y` | `tilt` | `scale`)  
-  - **Description**: Add an in-built hover effect to the card.
+  - **Description**: Adds an in-built hover effect to the card.
 
 ### Usage:
 ```jsx
@@ -788,12 +791,12 @@ Salient Button consist of the following types:
 ### Usage:
 #### For Button of Type `switch`
 ```jsx
-<Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check} sliderMode="dark"></Button>
+<Button type="switch" onChange={(e) => {setCheck(!check)}} checked={check} mode="dark"></Button>
 ```
 
 #### For Button of Type `checkbox`
 ```jsx
-<Button type="checkbox" disabled={true}></Button>
+<Button type="checkbox" disabled={true} mode="light"></Button>
 ```
 
 #### For Button of Type `button`
@@ -817,7 +820,7 @@ Salient Button consist of the following types:
 
 - **`inputPrefix`**  (Optional)
   - **Type**: `ReactNode`
-  - **Description**: Include an icon at the front of the dropdown field. To use this, `FormPrefix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormPrefix` component.
+  - **Description**: Include an icon at the front of the dropdown field. To use this, `FormAffix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormAffix` component.
   - **In-built Icons**: 
     - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`
     - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
@@ -828,7 +831,7 @@ Salient Button consist of the following types:
 
 ### Usage:
 ```jsx
-<Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>}>
+<Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormAffix icon="icon-search"/>}>
   <DropdownItem value="Test1">Test1</DropdownItem>
   <DropdownItem value="Test2">Test2</DropdownItem>
   <DropdownItem value="Test3">Test3</DropdownItem>
@@ -874,7 +877,7 @@ Salient Button consist of the following types:
   - **Description**: Add a callback function to be triggered on input change. 
 
 - **`ref`**  (Optional)
-  - **Type**: `useRef Object`
+  - **Type**: `React useRef Object`
   - **Description**: Attach a reference object to the element.
 
 - **`fieldControlPlacement`**  (Optional)
@@ -885,4 +888,60 @@ Salient Button consist of the following types:
 ```jsx
 <NumericField min={1} max={20} value={5} step={.01} fieldName="Items Per Page" enableSuggestion={true} suggestionLimit={8} callBackFn={someFunction} ref={ref}/>
 ```
+
+## Salient Form Text Field
+### Parameters:
+- **`type`**  (Required)
+  - **Type**: `String`   
+  - **Description**: Set the type of input field. Standard types following HTML input elements.
+
+- **`expandFull`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Determines if the text field should be expanded to full width.
+
+- **`inputPrefix`**  (Optional)
+  - **Type**: `ReactNode`
+  - **Description**: Include an icon at the **front** of the text field. To use this, `FormAffix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormAffix` component or using the `FontAwesomeIcon` component from fontAwesome library.
+
+- **`inputSuffix`**  (Optional)
+  - **Type**: `ReactNode`
+  - **Description**: Include an icon at the **back** of the text field. To use this, `FormAffix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormAffix` component or using the `FontAwesomeIcon` component from fontAwesome library.
+
+- **`label`**  (Optional)
+  - **Type**: `String`
+  - **Description**: Adds a label on top of the text input
+
+> Note: The component also accepts other attributes similar to those on found on standard HTML elements such as `className`, `style` or any other attributes.
+
+### Usage:
+```jsx
+<TextField 
+  placeholder="Username" 
+  type="text"
+  expandFull={true} 
+  inputPrefix={<FormAffix icon="icon-search"/>}
+  inputSuffix={<FontAwesomeIcon icon="eye" style={{padding: '0 5px'}}/>}
+  label="Username:"
+/>
+```
+
+## Salient Form Affix
+Salient Form affix is a component used to apply in-built icons before a field (prefix) or after a field (suffix).
+
+- **`icon`**  (Required)
+  - **Type**: `String`   
+  - **Description**: Set the type of in-built icons to be applied (see below list).
+  - **In-built Icons**: 
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`
+    - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
+    - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
+    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
+    - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
+    - Other Icons:  `icon-wrench`, `icon-gear`
+
+### Usage:
+```jsx
+<FormAffix icon="icon-search"/>
+```
+
 

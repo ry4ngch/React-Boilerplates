@@ -17,7 +17,7 @@ import withPagination from '../utils/Salient/UI/Pagination/withPagination';
 import Treeview, {TreeItem} from '../utils/Salient/UI/Treeview/Treeview';
 import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 import Dropdown, {DropdownItem} from '../utils/Salient/UI/Form/Dropdown';
-import FormPrefix from '../utils/Salient/UI/Form/FormPrefix';
+import FormAffix from '../utils/Salient/UI/Form/FormAffix';
 import NumericField from '../utils/Salient/UI/Form/NumericField';
 import TextField from '../utils/Salient/UI/Form/TextField';
 
@@ -495,7 +495,7 @@ const Container = () => {
             </CardInfo>
             <CardContent>
               <CardTitle>Dropdown</CardTitle>
-              <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormPrefix icon="icon-search"/>} expandFull={true}>
+              <Dropdown placeholder="Dropdown" isSearchable={true} inputPrefix={<FormAffix icon="icon-search"/>} expandFull={true}>
                 <DropdownItem value="Test1">Test1</DropdownItem>
                 <DropdownItem value="Test2">Test2</DropdownItem>
                 <DropdownItem value="Test3">Test3</DropdownItem>
@@ -507,7 +507,14 @@ const Container = () => {
           </CardContent>
           <CardContent>
               <CardTitle>Form Text Input</CardTitle>
-              <TextField placeholder="Username" expandFull={true} inputPrefix={<FormPrefix icon="icon-search"/>}/>
+              <TextField 
+                placeholder="Username" 
+                type="text"
+                expandFull={true} 
+                inputPrefix={<FormAffix icon="icon-search"/>}
+                inputSuffix={<FontAwesomeIcon icon="eye" style={{padding: '0 5px'}}/>}
+                label="Username:"
+              />
           </CardContent>
         </Card>
       </div>

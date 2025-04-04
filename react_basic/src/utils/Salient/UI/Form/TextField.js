@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextField = ({inputPrefix, expandFull = false, className, children, label, ...rest}) => {
+const TextField = ({inputPrefix, expandFull = false, className, children, label, inputSuffix, ...rest}) => {
     return (
         <div className={`text-field-group ${expandFull ? 'expand-full' : ''} ${className || ''}`.trim()}>
             {children}
@@ -8,6 +8,7 @@ const TextField = ({inputPrefix, expandFull = false, className, children, label,
             <div className='text-field-input'>
                 {inputPrefix ? inputPrefix : ''}
                 <input {...rest}/>
+                {inputSuffix ? inputSuffix : ''}
             </div>
         </div>
     )
