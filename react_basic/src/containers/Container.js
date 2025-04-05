@@ -21,6 +21,7 @@ import FormAffix from '../utils/Salient/UI/Form/FormAffix';
 import NumericField from '../utils/Salient/UI/Form/NumericField';
 import TextField from '../utils/Salient/UI/Form/TextField';
 import Badge from '../utils/Salient/UI/Badge/Badge';
+import List, {ListItem} from '../utils/Salient/UI/List/List';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -246,7 +247,9 @@ const Container = () => {
         </Card>
         
         <Card className="bg-dark card-flat">
-          <CardTitle>Block Button</CardTitle>
+          <CardInfo>
+            <CardTitle>Block Button</CardTitle>
+          </CardInfo>
           <CardContent>
             <Button type="button" buttonStyle="blueBlur" isBlock={true} expandFull={true}>Button1</Button>
             <Button type="button" buttonStyle="blur" isBlock={true} expandFull={true}>Button2</Button>
@@ -254,8 +257,10 @@ const Container = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-flat">
-          <CardTitle>Checkbox</CardTitle>
+        <Card className="card-border">
+            <CardInfo>
+              <CardTitle>Checkboxes</CardTitle>
+            </CardInfo>
             <CardContent>
             <Table columns={['Checkbox Status', 'Display']}>
                 <TableRow>
@@ -288,7 +293,9 @@ const Container = () => {
                 </TableRow>
               </Table>
             </CardContent>
-            <CardTitle>Toggle Switch</CardTitle>
+            <CardInfo>
+              <CardTitle>Toggle Switch</CardTitle>
+            </CardInfo>
             <CardContent>
               <Table columns={['Slider Mode / Status', 'Display']}>
                 <TableRow>
@@ -321,7 +328,9 @@ const Container = () => {
                 </TableRow>
               </Table>
             </CardContent>
-            <CardTitle>Widget Button</CardTitle>
+            <CardInfo>
+              <CardTitle>Widget Button</CardTitle>
+            </CardInfo>
             <CardContent>
               <Table columns={['Icon', 'Display']}>
                 <TableRow>
@@ -533,6 +542,17 @@ const Container = () => {
             <Badge text="Stall" status="stall" hasIndicator={true}/>
             <Badge text="Idle" status="idle" hasIndicator={true}/>
           </CardContent>
+        </Card>
+
+        <Card className="card-border">
+          <CardInfo>
+            <CardTitle>List</CardTitle>
+          </CardInfo>
+          <List>
+            <ListItem hasHoverHighlight={true}>List Item 1</ListItem>
+            <ListItem hasHoverHighlight={true}>List Item 2</ListItem>
+            <ListItem hasHoverHighlight={true}>List Item 3</ListItem>
+          </List>
         </Card>
       </div>
     </div>

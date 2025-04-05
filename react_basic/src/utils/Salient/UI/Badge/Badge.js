@@ -1,8 +1,8 @@
 import React from "react";
 
-const Badge = ({text, status, className, hasIndicator, ...rest}) => {
+const Badge = ({text, status, className, hasIndicator = false, ...rest}) => {
     return (
-        <span class={`badge ${status} ${hasIndicator ? 'has-indicator' : ''} ${className || ''}`} {...rest}>{text}</span>
+        <span className={`badge ${status} ${hasIndicator ? 'has-indicator' : ''} ${className || ''}`} {...rest}>{text}</span>
     )
 }
 
