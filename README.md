@@ -765,10 +765,10 @@ Salient Button consist of the following types:
   - **Type**: `String` (See below list of in-built icons) 
   - **Description**: Insert an icon to the button from predefined icons sets. Note: this parameter only works for `buttonType='button'`.
   - **In-built Icons**: 
-    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`, `icon-top-fill`, `icon-bottom-fill`
     - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
     - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
-    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
+    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`, `icon-sort-by`, `icon-sort-by-fill`
     - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
     - Other Icons:  `icon-wrench`, `icon-gear`
 
@@ -822,10 +822,10 @@ Salient Button consist of the following types:
   - **Type**: `ReactNode`
   - **Description**: Include an icon at the front of the dropdown field. To use this, `FormAffix` component can be imported from the Salient library. Alternatively, you may defined your own component to be used. It is possible to use external icon package such as fontAwesome as well, by including the fontAwesome icon directly in the `icon` parameter of the `FormAffix` component.
   - **In-built Icons**: 
-    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`, `icon-top-fill`, `icon-bottom-fill`
     - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
     - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
-    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
+    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`, `icon-sort-by`, `icon-sort-by-fill`
     - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
     - Other Icons:  `icon-wrench`, `icon-gear`
 
@@ -932,10 +932,10 @@ Salient Form affix is a component used to apply in-built icons before a field (p
   - **Type**: `String`   
   - **Description**: Set the type of in-built icons to be applied (see below list).
   - **In-built Icons**: 
-    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`
+    - Directional Icons: `icon-chevron-left`, `icon-chevron-right`, `icon-chevron-up`, `icon-chevron-down`, `icon-left`, `icon-right`, `icon-up`, `icon-down`, `icon-backward`, `icon-forward`, `icon-step-backward`, `icon-step-forward`, `icon-right-arrow`, `icon-left-arrow`, `icon-top-arrow`, `icon-bottom-arrow`, `icon-top-fill`, `icon-bottom-fill`
     - File Type Icons:  `icon-file`, `icon-video`, `icon-photo`, `icon-folder`
     - Social Icons:  `icon-tag`, `icon-heart`,  `icon-comment`, `icon-profile`, `icon-share`, `icon-location`
-    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`
+    - Document Icons:  `icon-search`, `icon-flag`, `icon-forbidden`, `icon-gear`, `icon-lock`, `icon-unlock`, `icon-link`, `icon-list`, `icon-filter`, `icon-bookmark`, `icon-sort-by`, `icon-sort-by-fill`
     - Media Icons:  `icon-eject`, `icon-pause`, `icon-play`, `icon-sound`
     - Other Icons:  `icon-wrench`, `icon-gear`
 

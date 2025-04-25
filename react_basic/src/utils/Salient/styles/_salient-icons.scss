@@ -565,3 +565,63 @@ $arrow-head-width: calc($arrow-line-width * 4);
 .icon-bottom-arrow {
 	transform: rotate(270deg);
 }
+
+/* Sort */
+.icon-sort-by,
+.icon-sort-by-fill,
+.icon-top,
+.icon-bottom  {
+	height: min(50%, 20px);
+}
+
+.icon-sort-by::before,
+.icon-sort-by::after{
+	content: "";
+	display: block;
+	position: absolute;
+	left: 50%;
+	width: 8px;
+	height: 8px;
+	box-shadow: inset -2px -2px 0 0;
+}
+
+.icon-sort-by::before {
+	top: 2px;
+	transform: translateX(-50%) rotate(-135deg); /* Up arrow */
+}
+
+.icon-sort-by::after {
+	bottom: 2px;
+	transform: translateX(-50%) rotate(45deg); /* Down arrow */
+}
+
+.icon-sort-by-fill::before,
+.icon-sort-by-fill::after,
+.icon-top-fill::before,
+.icon-bottom-fill::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	width: 8px;
+	height: 8px;
+	background-color: currentColor;
+	clip-path: polygon(0 0, 100% 0, 0% 100%);
+}
+
+.icon-sort-by-fill::before {
+	bottom: 2px;
+	transform: translateX(-50%) rotate(-135deg); /* Down arrow */
+}
+
+.icon-sort-by-fill::after {
+	top: 2px;
+	transform: translateX(-50%) rotate(45deg); /* Up Arrow */
+}
+
+.icon-top-fill::before {
+    transform: translateX(-50%) translateY(50%) rotate(45deg);
+}
+
+.icon-bottom-fill::before {
+    transform: translateX(-50%) rotate(-135deg);
+}
