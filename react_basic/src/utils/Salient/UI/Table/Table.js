@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, Fragment, useState, useMemo} from "react";
 import classNames from "classnames";
+import { tableSorter } from "../../helpers/Sort";
 
 const Table = (props) => {
     /*** Table Properties **/ 
@@ -41,11 +42,20 @@ const Table = (props) => {
     // states for storing updatedData
     const [dataStore, setDataStore] = props.data && props.data.length > 0 ? useState(props.data) : useState(React.Children.toArray(rows || []));
 
+    // states for sorting
+    const [currentColSortState, setCurrentColSortState] = useState({colId: null, order: null});
+
+    // variable to determine if table is paginated
+    const isPaginatedTable = props.itemsPerPage && props.currentPage;
+
     useEffect(() => {
         setDropdownList(props.columns || []);
         setHiddenColumns(Object.fromEntries(
             (props.columns || []).map((_, index) => [index, false]) // Initialize all columns as visible
         ));
+        // setColsSortOrder(Object.fromEntries(
+        //     (props.columns || []).map((_, index) => [index, null]) // Initialize all columns sorting as null
+        // ))
     }, [props.columns]);
 
     // update the rows after pagination change
@@ -64,6 +74,7 @@ const Table = (props) => {
         'table-draggable': props.draggable
     });
 
+    // Drag Functions
     const handleDragStart = (index) => {
         setDraggedRow(index);
     };
@@ -118,6 +129,7 @@ const Table = (props) => {
         }
     }
 
+    // Select Rows Functions
     const selectAllRows = (e) => {
         setSelectRows((prevState) => {
             const updatedRowStates = Object.fromEntries(
@@ -132,6 +144,19 @@ const Table = (props) => {
             ...prevState,
             [index]: !prevState[index]
         }));
+    }
+
+    // Sort Function
+    const changeSortOrder = (index) => {
+        setCurrentColSortState((prevState) => {
+            const newOrder = prevState.order === 'desc' ? 'asc': 'desc';
+            tableSorter(tBodyRef.current, index, newOrder === 'asc');
+            return {
+                ...prevState,
+                colId: index,
+                order: newOrder
+            }
+        })
     }
 
     // helper function to filter from object
@@ -205,6 +230,13 @@ const Table = (props) => {
                         {props.columns.map((columnName, index) => (
                             <th key={index} className={hiddenColumns[index] ? 'hide-table-col' : ''}>
                                 {columnName}
+                                {
+                                    props.sortable && 
+                                    <span 
+                                        className={`icon table-sort-icon ${currentColSortState.colId !== (props.showRowSelector ? index + 1  : index) ? 'icon-sort-by-fill' : ( currentColSortState.order === 'asc' ? 'icon-top-fill' : 'icon-bottom-fill')}`} 
+                                        onClick={() => changeSortOrder(props.showRowSelector ? index + 1  : index)}>
+                                    </span>
+                                }
                             </th>
                         ))}
                     </tr>
@@ -212,7 +244,7 @@ const Table = (props) => {
                 <tbody ref={tBodyRef}>
                     {/* Pass the hiddenColumns state to <Row> to decide which column to hide*/}
                     {React.Children.map(rows, (child, index) => {
-                        const rowIndex = props.itemsPerPage && props.currentPage ? (props.currentPage - 1) * props.itemsPerPage + index : index;
+                        const rowIndex = isPaginatedTable ? (props.currentPage - 1) * props.itemsPerPage + index : index;
                         return React.isValidElement(child) ? React.cloneElement(child, { 
                                 ...child.props,
                                 hiddenColumns, 
@@ -242,7 +274,8 @@ Table.defaultProps = {
     onDragUpdate: () => {},
     showColToggleUI: false,
     showRowSelector: false,
-    retrieveRowsBtnTitle: 'Retrieve Rows'
+    retrieveRowsBtnTitle: 'Retrieve Rows',
+    sortable: false
 };
 
 const TableRow = ({ children, hiddenColumns, draggable, onDragStart, onDragOver, onDragLeave, onDrop, isHighlighted, showRowSelector, selectRow, updateRowCheckState, rowId, className }) => {

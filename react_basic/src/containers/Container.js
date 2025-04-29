@@ -94,7 +94,7 @@ const Container = () => {
           </CardInfo>
           <CardContent>
             <input type="text" placeholder="search filter..." style={{display:'block', width: '100%', padding: '.4em', marginBottom: '.2em', boxSizing: "border-box"}} onChange={(e) => setTableFilterValue(e.target.value)}/>
-            <SampleDynamicPaginatedTable items={filteredTable} itemsPerPage={3} showPageItemsControl={true}/>
+            <SampleDynamicPaginatedTable items={filteredTable} itemsPerPage={3} showPageItemsControl={true} sortable={true}/>
           </CardContent>
 
           <CardInfo>

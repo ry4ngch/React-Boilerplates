@@ -14,7 +14,7 @@ const SampleDynamicTable = (props) => {
     }
 
     return (
-        <Table draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} onDragUpdate={onDragUpdate} data={props.data} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} retrieveRowsBtnTitle="Get Row">
+        <Table draggable={true} showColToggleUI={true} columns={["Type", "Name", "Description", "Tags", "Last Viewed", "Expiration"]} onDragUpdate={onDragUpdate} data={props.data} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} retrieveRowsBtnTitle="Get Row" {...props}>
             {props.items.map((row, index) => (
                 <TableRow key={index}>
                     <td data-field="Type"><FontAwesomeIcon icon={"file-"+row.Type}></FontAwesomeIcon></td>
