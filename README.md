@@ -30,14 +30,14 @@ This version is suitable for starting with a clean slate, without any pre-config
 - Integration with Bootstrap for UI components (installed via npm)
 - A custom component built with customs classes (see salient folder in utils)
 - A sample single-page app (SPA) structure
-- This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar, dropdown, timeline, breadcrumb, button, card, modal, pagination, tab, table, timeline and treeview.
+- This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar, dropdown, timeline, breadcrumb, button, card, modal, pagination, tab, table, timeline, list and treeview.
 
 ### 3. `react_bootstrap` - React with Bootstrap
 
 - Integration with Bootstrap version 5 for UI components (installed via npm)
 - Navbar using Bootstrap Offcanvas design
 
-> **Note:** 
+> [!NOTE] 
 > Bootstrap 5 currently has some issues with the latest SASS implementation, webpack has been configured to ignore the @import warnings.
 
 
@@ -47,7 +47,7 @@ This version is suitable for starting with a clean slate, without any pre-config
 - Ideal for quick iterations, prototypes, or proof of concept (PoC) development.
 - Prebuilt with Offcanvas Navbar (side nav) and Standard top navbar 
 
-> **Note:** 
+> [!NOTE]
 > Based on personal experience, it's not advisable to use Tailwind for large-scale project development. While Tailwind provides great flexibility and speed in development, its utility-based approach might become difficult to manage as the project grows larger and more complex.
 
 
@@ -146,7 +146,9 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   ├── FontAwesome
 │   │   │   └── fontAwesome.js             (For Packing all the font awesome library)  
 │   │   ├── Salient                        (Salient is a custom CSS and Javascript Library that I've written)
-│   │   │   ├── styles.scss                (Salient styles library)
+│   │   │   ├── helper                     
+│   │   │   │   ├── Sort.js          
+│   │   │   ├── styles                     (Salient styles library)
 │   │   │   │   ├── _salient-all.scss      (For packing all the salient styles library)
 │   │   │   │   ├── _salient-accordian.scss
 │   │   │   │   ├── _salient_breadcrumb.scss
@@ -159,6 +161,7 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   ├── _salient-tabs.scss
 │   │   │   │   ├── _salient-timeline.scss
 │   │   │   │   ├── _salient-form.scss
+│   │   │   │   ├── _salient-list.scss
 │   │   │   │   └── _salient-treeview.scss
 │   │   │   ├── UI                         (Salient components library)
 │   │   │   │   ├── Accordian  
@@ -184,6 +187,8 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   │   └── Pagination.js 
 │   │   │   │   ├── Table  
 │   │   │   │   │   └── Table.js 
+│   │   │   │   ├── List  
+│   │   │   │   │   └── List.js 
 │   │   │   │   ├── Treeview  
 │   │   │   │   │    └── Treeview.js 
 │   │   │   │   └── Timeline  
@@ -206,10 +211,10 @@ Here’s the basic file structure for `react_basic` versions:
 |-------------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------|
 | **Bootstrap**           | Not included                      | Integrated via npm (Note: Bootstrap is not used in any Salient components)                                                                                    |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` <br> &nbsp;&nbsp; - Salient List: : `salient-list.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component ( `Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component ( `Table.js`)  <br> &nbsp;&nbsp; - Modal component ( `Modal.js`) <br> &nbsp;&nbsp; - Card component ( `Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component ( `Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component ( `Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component ( `Timeline.js`) <br> &nbsp;&nbsp; - Form Dropdown component ( `Dropdown.js`, `FormAffix.js`, `NumericField.js`,  `TextField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component ( `Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component (`Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component (`Table.js`)  <br> &nbsp;&nbsp; - Modal component (`Modal.js`) <br> &nbsp;&nbsp; - Card component (`Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component (`Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component (`Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component (`Timeline.js`) &nbsp;&nbsp; - List component ( `List.js`) <br> &nbsp;&nbsp; - Form Dropdown component (`Dropdown.js`, `FormAffix.js`, `NumericField.js`, `TextField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component (`Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -223,7 +228,7 @@ This library offers:
 - A faster development workflow, reducing boilerplate code while maintaining flexibility for customization.
 - Reusable components that are flexible to accept other attributes that are available on common HTML elements.
 
-> **Note:**  
+> [!NOTE] 
 > While controlling animations and effects in React is simple, it often requires managing additional state variables, which can complicate the codebase and lead to unnecessary boilerplate. Salient was created to address this issue by providing a streamlined solution that abstracts these complexities.
 
 ## Using Salient Navbar
@@ -249,7 +254,8 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 - `offwhite-scheme`
 - `grayscale-scheme`
 
-> Note: If no theme is specified, the navbar will default to the **default theme** automatically.
+> [!NOTE] 
+> If no theme is specified, the navbar will default to the **default theme** automatically.
 
 ### Parameters
 - **`shift`** (Optional)
@@ -404,7 +410,8 @@ The Salient Tabs is a customizable component that can be easily configured using
   - **Type**: `Integer`
   - **Description**: Initialize the tab content based on the set index. Default to 0, the first tab
 
-> Note: The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design*
+> [!NOTE]
+> The tabs will automatically become an accordian when the screen size is less than 768px. This is to cater to mobile responsive design
 
 ### Usage:
 ```jsx
@@ -514,7 +521,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 </Modal>
 ```
 
-> **Note:**  
+> [!NOTE]  
 > Any element can be added within the modal. In the example above, each section is displayed on a separate page.
 
 ## Salient Table
@@ -552,9 +559,13 @@ The Salient Accordion is a customizable component designed for easy integration.
   - **Type**: `String`
   - **Description**: Customizes the default button title used for retrieving row data
 
+- **`sortable`** (Optional)
+  - **Type**: `Boolean`
+  - **Description**: Enables or disable column data sorting. By default this is set to `false`.
+
 ### Usage:
 ```jsx
-<Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} ref={tableRef}>
+<Table draggable={true} columns={["Company", "Contact", "Country"]} showColToggleUI={true} showRowSelector={true} onRetrievedSelected={handleRetrievedRows} ref={tableRef} sortable={true}>
   <TableRow>
       <td data-field="Company">Alfreds Futterkiste</td>
       <td data-field="Contact">Maria Anders</td>
@@ -624,7 +635,8 @@ The Salient Accordion is a customizable component designed for easy integration.
 - **`separator`**  (Optional)
   - **Type**: `String` 
   - **Description**: Sets a custom separator between breadcrumb items. The default separator is `>>`.
-> Note: Seperator will not work with multiStep and triangle breadcrumbs.
+> [!NOTE] 
+> Seperator will not work with multiStep and triangle breadcrumbs.
 
 ### Usage:
 ```jsx
@@ -911,7 +923,8 @@ Salient Button consist of the following types:
   - **Type**: `String`
   - **Description**: Adds a label on top of the text input
 
-> Note: The component also accepts other attributes similar to those on found on standard HTML elements such as `className`, `style` or any other attributes.
+> [!NOTE] 
+> The component also accepts other attributes similar to those on found on standard HTML elements such as `className`, `style` or any other attributes.
 
 ### Usage:
 ```jsx
@@ -942,6 +955,23 @@ Salient Form affix is a component used to apply in-built icons before a field (p
 ### Usage:
 ```jsx
 <FormAffix icon="icon-search"/>
+```
+
+## Salient List
+Salient List is a container component designed to wrap multiple `ListItem` components. To render list items correctly, each item must be defined using the `ListItem` component within the `List`.
+
+### Parameters (For ListItem):
+- **`hasHoverHighlight`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Enables a hover animation effect when set to true.
+
+### Usage:
+```jsx
+<List>
+  <ListItem hasHoverHighlight={true}>List Item 1</ListItem>
+  <ListItem hasHoverHighlight={true}>List Item 2</ListItem>
+  <ListItem hasHoverHighlight={true}>List Item 3</ListItem>
+</List>
 ```
 
 
