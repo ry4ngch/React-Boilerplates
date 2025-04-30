@@ -308,7 +308,7 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 
 The Salient Timeline is a customizable timeline component that can be easily configured using classes and attributes.
 
-![Salient Timeline](Salient_Timeline_Demo.gif)
+![Salient Timeline Demo](Salient_Timeline_Demo.gif)
 
 ### Parameters
 - **`isHorz`** (Optional)
@@ -395,12 +395,12 @@ import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 The Salient Tabs is a customizable component that can be easily configured using classes and attributes.
 
 **<u>Side Tabs</u>**
-![Salient Side Box Tab](Salient_Side_Tab_Box_Demo.png)
-![Salient Side Underline Tab](Salient_Side_Tab_Underline_Demo.png)
+<img src="Salient_Side_Tab_Box_Demo.png" />
+<img src="Salient_Side_Tab_Underline_Demo.png" />
 
 **<u>Vertical Tabs</u>**
-![Salient Vertical Box Tab](Salient_Vert_Tabs_Box_Demo.png)
-![Salient Vertical Underline Tab](Salient_Vert_Tabs_Underline_Demo.png)
+<img src="Salient_Vert_Tabs_Box_Demo.png" />
+<img src="Salient_Vert_Tabs_Underline_Demo.png" />
 
 ### Parameters
 
@@ -495,7 +495,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Modal
 
-<img src="Salient_Modal_Demo.png" height=200>
+<img src="Salient_Modal_Demo.png" height="200" />
 
 ### Parameters
 - **`showModal`**  (Required)
@@ -604,7 +604,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Treeview
 
-<img src="Salient_Treeview_Demo.png" height=300>
+<img src="Salient_Treeview_Demo.png" height="300"/>
 
 ### Parameters:
 - **`text`**  (Required)
@@ -639,7 +639,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Breadcrumb
 
-<img src="Salient_Breadcrumbs_Demo.png" height=300>
+<img src="Salient_Breadcrumbs_Demo.png" height="300" />
 
 ### Parameters:
 - **`bcType`**  (Optional)
@@ -770,9 +770,9 @@ Salient Button consist of the following types:
 - Normal Buttons
 - Checkboxes
 
-<img src="Salient_Buttons_Demo.png" height=300>
+<img src="Salient_Buttons_Demo.png" height="400" />
 
-<img src="Salient_Widget_Demo.png" height=200>
+<img src="Salient_Widget_Demo.png" height="200" />
 
 ### Parameters:
 - **`type`**  (Required)
@@ -881,7 +881,7 @@ Salient Button consist of the following types:
 
 ## Salient Form Numeric Field
 
-<img src="Salient_Numeric_Field_Demo.png" height=200>
+<img src="Salient_Numeric_Field_Demo.png" height="200" />
 
 ### Parameters:
 - **`min`**  (Required)
