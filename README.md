@@ -399,8 +399,8 @@ The Salient Tabs is a customizable component that can be easily configured using
 ![Salient Side Underline Tab](Salient_Side_Tab_Underline_Demo.png)
 
 **<u>Vertical Tabs</u>**
-![Salient Vertical Box Tab](Salient_Vert_Tab_Box_Demo.png)
-![Salient Vertical Underline Tab](Salient_Vert_Tab_Underline_Demo.png)
+![Salient Vertical Box Tab](Salient_Vert_Tabs_Box_Demo.png)
+![Salient Vertical Underline Tab](Salient_Vert_Tabs_Underline_Demo.png)
 
 ### Parameters
 
@@ -495,7 +495,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Modal
 
-![Salient Modal](Salient_Modal_Demo.png)
+<img src="Salient_Modal_Demo.png" height=200>
 
 ### Parameters
 - **`showModal`**  (Required)
@@ -604,7 +604,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Treeview
 
-![Salient Treeview](Salient_Treeview_Demo.png)
+<img src="Salient_Treeview_Demo.png" height=300>
 
 ### Parameters:
 - **`text`**  (Required)
@@ -639,7 +639,7 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Breadcrumb
 
-![Salient Breadcrumb](Salient_Breadcrumbs_Demo.png)
+<img src="Salient_Breadcrumbs_Demo.png" height=300>
 
 ### Parameters:
 - **`bcType`**  (Optional)
@@ -770,9 +770,9 @@ Salient Button consist of the following types:
 - Normal Buttons
 - Checkboxes
 
-![Salient Checkbox & Toggle Switch](Salient_Buttons_Demo.png)
+<img src="Salient_Buttons_Demo.png" height=300>
 
-![Salient Widget Button](Salient_Widget_Demo.png)
+<img src="Salient_Widget_Demo.png" height=200>
 
 ### Parameters:
 - **`type`**  (Required)
@@ -881,7 +881,7 @@ Salient Button consist of the following types:
 
 ## Salient Form Numeric Field
 
-![Salient Numeric Field](Salient_Numeric_Field_Demo.png)
+<img src="Salient_Numeric_Field_Demo.png" height=200>
 
 ### Parameters:
 - **`min`**  (Required)
