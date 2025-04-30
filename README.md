@@ -214,7 +214,7 @@ Here’s the basic file structure for `react_basic` versions:
 | **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` <br> &nbsp;&nbsp; - Salient List: : `salient-list.scss` |
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component (`Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component (`Table.js`)  <br> &nbsp;&nbsp; - Modal component (`Modal.js`) <br> &nbsp;&nbsp; - Card component (`Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component (`Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component (`Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component (`Timeline.js`) &nbsp;&nbsp; - List component ( `List.js`) <br> &nbsp;&nbsp; - Form Dropdown component (`Dropdown.js`, `FormAffix.js`, `NumericField.js`, `TextField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component (`Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component (`Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component (`Table.js`)  <br> &nbsp;&nbsp; - Modal component (`Modal.js`) <br> &nbsp;&nbsp; - Card component (`Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component (`Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component (`Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component (`Timeline.js`) <br> &nbsp;&nbsp; - List component ( `List.js`) <br> &nbsp;&nbsp; - Form Dropdown component (`Dropdown.js`, `FormAffix.js`, `NumericField.js`, `TextField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component (`Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -235,7 +235,7 @@ This library offers:
 
 The Salient Navbar is a customizable navigation bar that can be easily tailored using simple classes and attributes.
 
-![Salient Navbar Demo](Salient_Navbar_Demo.gif)
+![Salient Navbar](Salient_Navbar_Demo.gif)
 
 ### Responsive Sidebar on Mobile
 On mobile screen sizes, the navbar automatically transforms into a sidebar with the following settings:
@@ -308,7 +308,7 @@ The navbar supports the following pre-defined themes. Apply one of these classes
 
 The Salient Timeline is a customizable timeline component that can be easily configured using classes and attributes.
 
-![Salient Timeline Demo](Salient_Timeline_Demo.gif)
+![Salient Timeline](Salient_Timeline_Demo.gif)
 
 ### Parameters
 - **`isHorz`** (Optional)
@@ -394,6 +394,14 @@ import Timeline, {TimelineEvent} from '../utils/Salient/UI/Timeline/Timeline';
 
 The Salient Tabs is a customizable component that can be easily configured using classes and attributes.
 
+**<u>Side Tabs</u>**
+![Salient Side Box Tab](Salient_Side_Tab_Box_Demo.png)
+![Salient Side Underline Tab](Salient_Side_Tab_Underline_Demo.png)
+
+**<u>Vertical Tabs</u>**
+![Salient Vertical Box Tab](Salient_Vert_Tab_Box_Demo.png)
+![Salient Vertical Underline Tab](Salient_Vert_Tab_Underline_Demo.png)
+
 ### Parameters
 
 - **`sideTabs`**  (Optional)
@@ -446,6 +454,8 @@ The Salient Tabs is a customizable component that can be easily configured using
 
 The Salient Accordion is a customizable component designed for easy integration. It allows for smooth expand-and-collapse functionality and can be tailored using classes and attributes to fit any design need.
 
+![Salient Accordian](Salient_Accordian_Demo.png)
+
 ### Parameters
 
 - **`activeToggle`**  (Optional)
@@ -485,6 +495,8 @@ The Salient Accordion is a customizable component designed for easy integration.
 
 ## Salient Modal
 
+![Salient Modal](Salient_Modal_Demo.png)
+
 ### Parameters
 - **`showModal`**  (Required)
   - **Type**: `Boolean` (`true` | `false`)  
@@ -521,10 +533,16 @@ The Salient Accordion is a customizable component designed for easy integration.
 </Modal>
 ```
 
-> [!NOTE]  
+> [!TIP]  
 > Any element can be added within the modal. In the example above, each section is displayed on a separate page.
 
 ## Salient Table
+
+**<u>Dynamic Table With Pagination</u>**
+![Salient Dynamic Table](Salient_Dynamic_Table_Pagination_Demo.png)
+
+**</u>Static Table With & Without Pagination</u>**
+![Salient Static Table](Salient_Static_Table_Demo.png)
 
 ### Parameters:
 - **`draggable`**  (Optional)
@@ -560,7 +578,7 @@ The Salient Accordion is a customizable component designed for easy integration.
   - **Description**: Customizes the default button title used for retrieving row data
 
 - **`sortable`** (Optional)
-  - **Type**: `Boolean`
+  - **Type**: `Boolean` (`true` | `false`)
   - **Description**: Enables or disable column data sorting. By default this is set to `false`.
 
 ### Usage:
@@ -585,6 +603,8 @@ The Salient Accordion is a customizable component designed for easy integration.
 ```
 
 ## Salient Treeview
+
+![Salient Treeview](Salient_Treeview_Demo.png)
 
 ### Parameters:
 - **`text`**  (Required)
@@ -618,6 +638,8 @@ The Salient Accordion is a customizable component designed for easy integration.
 ```
 
 ## Salient Breadcrumb
+
+![Salient Breadcrumb](Salient_Breadcrumbs_Demo.png)
 
 ### Parameters:
 - **`bcType`**  (Optional)
@@ -748,6 +770,10 @@ Salient Button consist of the following types:
 - Normal Buttons
 - Checkboxes
 
+![Salient Checkbox & Toggle Switch](Salient_Buttons_Demo.png)
+
+![Salient Widget Button](Salient_Widget_Demo.png)
+
 ### Parameters:
 - **`type`**  (Required)
   - **Type**: `String` (`button` | `checkbox` | `switch`)  
@@ -817,6 +843,9 @@ Salient Button consist of the following types:
 ```
 
 ## Salient Form Dropdown
+
+![Salient Form Dropdown](Salient_Dropdown_Demo.png)
+
 ### Parameters:
 - **`placeholder`**  (Optional)
   - **Type**: `String`   
@@ -851,6 +880,9 @@ Salient Button consist of the following types:
 ```
 
 ## Salient Form Numeric Field
+
+![Salient Numeric Field](Salient_Numeric_Field_Demo.png)
+
 ### Parameters:
 - **`min`**  (Required)
   - **Type**: `Number`   
@@ -902,6 +934,9 @@ Salient Button consist of the following types:
 ```
 
 ## Salient Form Text Field
+
+![Salient Text Field](Salient_Text_Field_Demo.png)
+
 ### Parameters:
 - **`type`**  (Required)
   - **Type**: `String`   
@@ -959,6 +994,8 @@ Salient Form affix is a component used to apply in-built icons before a field (p
 
 ## Salient List
 Salient List is a container component designed to wrap multiple `ListItem` components. To render list items correctly, each item must be defined using the `ListItem` component within the `List`.
+
+![Salient List](Salient_List_Demo.png)
 
 ### Parameters (For ListItem):
 - **`hasHoverHighlight`**  (Optional)
