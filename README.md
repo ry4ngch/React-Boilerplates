@@ -32,6 +32,8 @@ This version is suitable for starting with a clean slate, without any pre-config
 - A sample single-page app (SPA) structure
 - This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar, dropdown, timeline, breadcrumb, button, card, modal, pagination, tab, table, timeline, list and treeview.
 
+Visit the demo app at https://salient-react-demo.vercel.app/ which integrates with react-router-dom.
+
 ### 3. `react_bootstrap` - React with Bootstrap
 
 - Integration with Bootstrap version 5 for UI components (installed via npm)
@@ -1009,6 +1011,34 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
   <ListItem hasHoverHighlight={true}>List Item 2</ListItem>
   <ListItem hasHoverHighlight={true}>List Item 3</ListItem>
 </List>
+```
+
+## Salient Banner
+
+### Parameters:
+- **`theme`**  (Optional)
+  - **Type**: `String` (`disabled` | `active` | `cancel` | `teal` | `purple` | `emergency` | `warn`)  
+  - **Description**: Set the color theme of the banner
+
+- **`markdownStyle`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Determines if the banner should have a coloured left border
+
+
+> [!NOTE] 
+> Additional attributes or properties passed to any of the banner components (Banner, BannerContent, BannerActions) are automatically spread onto the underlying elements.
+
+### Usage:
+```jsx
+<Banner theme="disabled" markdownStyle={true}>
+    <BannerContent>
+      Some Banner Content
+    </BannerContent>
+    <BannerActions>
+        <BannerAction>Some Action</BannerAction>
+        <BannerAction>Second Action></BannerAction>
+    </BannerActions>
+</Banner>
 ```
 
 
