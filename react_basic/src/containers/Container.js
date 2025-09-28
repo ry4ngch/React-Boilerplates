@@ -22,6 +22,7 @@ import NumericField from '../utils/Salient/UI/Form/NumericField';
 import TextField from '../utils/Salient/UI/Form/TextField';
 import Badge from '../utils/Salient/UI/Badge/Badge';
 import List, {ListItem} from '../utils/Salient/UI/List/List';
+import Banner, {BannerContent, BannerActions, BannerAction} from '../utils/Salient/UI/Banner/Banner';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -149,7 +150,7 @@ const Container = () => {
         </Card>
         
 
-        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}>
+        <Modal title="Header" showModal={showModal} onCloseModal={(e) => {e.preventDefault(); setShowModal(false)}} className="light-theme" hasSections={true} onModalBlur={() => setShowModal(false)}> 
           <section className='center-content'>
                   Section 1
           </section>
@@ -554,6 +555,15 @@ const Container = () => {
             <ListItem hasHoverHighlight={true}>List Item 3</ListItem>
           </List>
         </Card>
+
+        <Banner theme="disabled" markdownStyle={true}>
+            <BannerContent>
+              The message text to be displayed with some longer content for testing use cases. Please do not make the content this long. 
+            </BannerContent>
+            <BannerActions>
+                <BannerAction>Some Action</BannerAction>
+            </BannerActions>
+        </Banner>
       </div>
     </div>
   )
