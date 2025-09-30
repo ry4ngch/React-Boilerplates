@@ -1024,9 +1024,14 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Determines if the banner should have a coloured left border
 
+- **`onBannerDismiss`**  (Optional)
+  - **Type**: `Function` 
+  - **Description**: Triggers an additional actions when the banner closes.
+
 
 > [!NOTE] 
 > Additional attributes or properties passed to any of the banner components (Banner, BannerContent, BannerActions) are automatically spread onto the underlying elements.
+> To trigger an action on the `<BannerAction>` component, you can attached an `onClick` listener or any other listener, the UI will automatically take these attributes/parameters into consideration.
 
 ### Usage:
 ```jsx
