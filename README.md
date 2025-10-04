@@ -70,7 +70,7 @@ See the demo site of [Salient Demo App](https://salient-react-demo.vercel.app/) 
 5. A browser will automatically open, you can see the Basic React app.
 6. To run build:
    ```bash
-  npm run build
+   npm run build
    ```
 
 ## Project Structure
