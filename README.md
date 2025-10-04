@@ -32,7 +32,7 @@ This version is suitable for starting with a clean slate, without any pre-config
 - A sample single-page app (SPA) structure
 - This version is ideal if you're looking for a quick start with a responsive layout and a basic page structure that includes common UI elements like a navbar, dropdown, timeline, breadcrumb, button, card, modal, pagination, tab, table, timeline, list and treeview.
 
-Visit the demo app at https://salient-react-demo.vercel.app/ which integrates with react-router-dom.
+See the demo site of [Salient Demo App](https://salient-react-demo.vercel.app/) which integrates with react-router-dom.
 
 ### 3. `react_bootstrap` - React with Bootstrap
 
@@ -58,16 +58,20 @@ Visit the demo app at https://salient-react-demo.vercel.app/ which integrates wi
 2. Navigate to the folder in your terminal:
    ```bash
    cd react_bare  # or cd react_basic or cd react_bootstrap
+   ```
 3. Install dependencies by running:
    ```bash
    npm install
+   ```
 4. Start the development server:
    ```bash
    npm run dev-server
+   ```
 5. A browser will automatically open, you can see the Basic React app.
 6. To run build:
    ```bash
-   npm run build
+  npm run build
+   ```
 
 ## Project Structure
 Here’s the basic file structure for `react_bare` versions:
@@ -164,7 +168,9 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   ├── _salient-timeline.scss
 │   │   │   │   ├── _salient-form.scss
 │   │   │   │   ├── _salient-list.scss
-│   │   │   │   └── _salient-treeview.scss
+│   │   │   │   ├── _salient-treeview.scss
+│   │   │   │   ├── _salient-banner.scss
+│   │   │   │   └── _salient-sidebar.scss
 │   │   │   ├── UI                         (Salient components library)
 │   │   │   │   ├── Accordian  
 │   │   │   │   │   └── Accordian.js    
@@ -193,6 +199,10 @@ Here’s the basic file structure for `react_basic` versions:
 │   │   │   │   │   └── List.js 
 │   │   │   │   ├── Treeview  
 │   │   │   │   │    └── Treeview.js 
+│   │   │   │   ├── Banner  
+│   │   │   │   │    └── Banner.js 
+│   │   │   │   ├── Sidebar  
+│   │   │   │   │    └── Sidebar.js 
 │   │   │   │   └── Timeline  
 │   │   │   │       └── Timeline.js 
 │   └── app.js
@@ -213,10 +223,10 @@ Here’s the basic file structure for `react_basic` versions:
 |-------------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------|
 | **Bootstrap**           | Not included                      | Integrated via npm (Note: Bootstrap is not used in any Salient components)                                                                                    |
 | **Sample SPA Structure**| Not included                      | Provided for quick start                                                                              |
-| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` <br> &nbsp;&nbsp; - Salient List: : `salient-list.scss` |
+| **Custom SCSS Files**   | Basic SCSS setup                  | Includes detailed layout and component styles: <br> &nbsp;&nbsp; - Salient Buttons: `salient-button.scss` <br> &nbsp;&nbsp; - Salient Card: `salient-card.scss` <br> &nbsp;&nbsp; - Salient Navbar: `salient-nav.scss` <br> &nbsp;&nbsp; - Salient Accordian: `salient-accordian.scss` <br> &nbsp;&nbsp; - Salient Timeline: : `salient-timeline.scss` <br> &nbsp;&nbsp; - Salient Tabs: : `salient-tabs.scss` <br> &nbsp;&nbsp; - Salient Table: : `salient-table.scss` <br> &nbsp;&nbsp; - Salient Breadcrumbs: : `salient-breacrumb.scss` <br> &nbsp;&nbsp; - Salient Modal: : `salient-modal.scss` <br> &nbsp;&nbsp; - Salient Treeview: : `salient-treeview.scss` <br> &nbsp;&nbsp; - Salient Form Dropdown: : `salient-form.scss` <br> &nbsp;&nbsp; - Salient List: : `salient-list.scss`  <br> &nbsp;&nbsp; - Salient Sidebar: : `salient-sidebar.scss` <br> &nbsp;&nbsp; - Salient Banner: : `salient-banner.scss`|
 | **Font Awesome Support**| Not included                      | Integrated for icons                                                                                  |
 | **JQuery Support**      | Not included                      | Configured with Webpack for global usage                                                              |
-| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component (`Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component (`Table.js`)  <br> &nbsp;&nbsp; - Modal component (`Modal.js`) <br> &nbsp;&nbsp; - Card component (`Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component (`Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component (`Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component (`Timeline.js`) <br> &nbsp;&nbsp; - List component ( `List.js`) <br> &nbsp;&nbsp; - Form Dropdown component (`Dropdown.js`, `FormAffix.js`, `NumericField.js`, `TextField.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component (`Pagination.js`) <br> - Bootstrap integration |
+| **Built-in Components** | Not included                      | Custom Components for: <br> &nbsp;&nbsp; - Navbar component (`Nav.js`) <br> &nbsp;&nbsp; - Accordian component (`Accordian.js`) <br> &nbsp;&nbsp; - Tab component ( `Tab.js`) <br> &nbsp;&nbsp; - Table component (`Table.js`)  <br> &nbsp;&nbsp; - Modal component (`Modal.js`) <br> &nbsp;&nbsp; - Card component (`Card.js`) <br> &nbsp;&nbsp; - Button component ( `Button.js`) <br> &nbsp;&nbsp; - Breadcrumb component (`Breadcrumb.js`)  <br> &nbsp;&nbsp; - Treeview component (`Treeview.js`)  <br> &nbsp;&nbsp; - Timeline component (`Timeline.js`) <br> &nbsp;&nbsp; - List component ( `List.js`) <br> &nbsp;&nbsp; - Form Dropdown component (`Dropdown.js`, `FormAffix.js`, `NumericField.js`, `TextField.js`) <br> &nbsp;&nbsp; - Sidebar component (`Sidebar.js`) <br> &nbsp;&nbsp; - Banner component (`Banner.js`) <br> Custom HOC: <br> &nbsp;&nbsp; - Pagination component (`Pagination.js`) <br> - Bootstrap integration |
 
 ---
 
@@ -251,10 +261,11 @@ The `<ul>` list within the navbar can display two types of slide animations:
 If the `sd-slide-in` class is applied to `<ul>` without the `data-effect="shift"` attribute on the `<Nav>` tag, the sidebar will slide in from the left but will not shift the page content.
 
 ### Theme Customization
-The navbar supports the following pre-defined themes. Apply one of these classes to the `<Nav>` tag to customize the theme:
-- `dark-scheme`
-- `offwhite-scheme`
-- `grayscale-scheme`
+The navbar supports the following pre-defined themes. Apply one of these themes to the `<Nav>` tag to customize the theme:
+- `dark`
+- `offwhite`
+- `grayscale`
+- `blue`
 
 > [!NOTE] 
 > If no theme is specified, the navbar will default to the **default theme** automatically.
@@ -281,9 +292,17 @@ The navbar supports the following pre-defined themes. Apply one of these classes
   brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
   ```
 
+- **`theme`** (Optional)
+  - **Type**: `String` (`blue` | `offwhite` | `dark` | `grayscale`)  
+  - **Description**: Apply the predefined themes to the navbar
+
+- **`title`** (Required)
+  - **Type**: `String`  
+  - **Description**: Define the title of the application in the navbar
+
 ### Usage:
 ```jsx
-<Nav title="Salient" className="offwhite-scheme" shift={true} navSlideDown={false} brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
+<Nav title="Salient" theme="offwhite" shift={true} navSlideDown={false} brandLogo={<FontAwesomeIcon icon="circle-notch" size="2x" className="brand-icon"></FontAwesomeIcon>}>
   <NavMenu>
       <li data-tooltip="Home">
           <a href="">
@@ -999,6 +1018,11 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
 
 ![Salient List](Salient_List_Demo.png)
 
+### Parameters (For List)
+- **`theme`**  (Optional)
+  - **Type**: `String` (`dark`) 
+  - **Description**: Apply a predefined theme to the list component.
+
 ### Parameters (For ListItem):
 - **`hasHoverHighlight`**  (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
@@ -1020,7 +1044,7 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
   - **Type**: `String` (`disabled` | `active` | `cancel` | `teal` | `purple` | `emergency` | `warn`)  
   - **Description**: Set the color theme of the banner
 
-- **`markdownStyle`**  (Optional)
+- **`blockquoteStyle`**  (Optional)
   - **Type**: `Boolean` (`true` | `false`)  
   - **Description**: Determines if the banner should have a coloured left border
 
@@ -1028,14 +1052,19 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
   - **Type**: `Function` 
   - **Description**: Triggers an additional actions when the banner closes.
 
+- **`allowBannerDismiss`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)  
+  - **Description**: Determines if the banner should have a close button. The purpose here is so that the banner can be used as an **alert** or a **blockquote**.
+
 
 > [!NOTE] 
 > Additional attributes or properties passed to any of the banner components (Banner, BannerContent, BannerActions) are automatically spread onto the underlying elements.
+> <br/>
 > To trigger an action on the `<BannerAction>` component, you can attached an `onClick` listener or any other listener, the UI will automatically take these attributes/parameters into consideration.
 
 ### Usage:
 ```jsx
-<Banner theme="disabled" markdownStyle={true}>
+<Banner theme="disabled" blockquoteStyle={true}>
     <BannerContent>
       Some Banner Content
     </BannerContent>
@@ -1045,5 +1074,37 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
     </BannerActions>
 </Banner>
 ```
+
+## Salient Sidebar
+
+### Parameters for SidebarItem Component:
+- **`iconPrefix`**  (Optional)
+  - **Type**: `String`
+  - **Description**: Include an icon before the sidebar main header
+
+- **`iconSuffix`**  (Optional)
+  - **Type**: `String`
+  - **Description**: Include an icon after the sidebar main header. By default the component will detect if child elements are present and apply the `icon-right` icon.
+
+- **`title`**  (Required)
+  - **Type**: `String` 
+  - **Description**: Define the title of the Sidebar Item
+
+```jsx
+<Sidebar>
+  <SideBarItem title="Menu Item 1"/>
+  <SideBarItem title="Menu Item 2" iconPrefix="icon icon-file">
+      <li><a>Sub Item 1</a></li>
+      <li><a>Sub Item 2</a></li>
+  </SideBarItem>
+  <SideBarItem title="Menu Item 3" iconPrefix="icon icon-heart">
+      <li><a>Sub Item 1</a></li>
+      <li><a>Sub Item 2</a></li>
+  </SideBarItem>
+</Sidebar>
+```
+
+> [!NOTE] 
+> Any level of sidebar items may be added, the component will auto compute the correct style based on level.
 
 
