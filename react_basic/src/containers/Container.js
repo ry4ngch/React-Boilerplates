@@ -41,7 +41,7 @@ const Container = () => {
   const ExternalPaginatedTable = withPagination()(Table);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/assets/timeline_data.json')
+    axios.get('/assets/timeline_data.json')
       .then((response) => {
         setData(response.data.data || []);
         setIsLoading(false);
@@ -556,7 +556,7 @@ const Container = () => {
           </List>
         </Card>
 
-        <Banner theme="disabled" markdownStyle={true}>
+        <Banner theme="disabled" blockquoteStyle={true}>
             <BannerContent>
               The message text to be displayed with some longer content for testing use cases. Please do not make the content this long. 
             </BannerContent>

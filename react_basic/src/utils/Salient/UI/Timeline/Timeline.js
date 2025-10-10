@@ -77,13 +77,17 @@ const Timeline = (props) => {
     // handle window resize event
     useEffect(() => {
         const observer = new ResizeObserver(() => {
-            handleUlResize();
+            requestAnimationFrame(() => {
+                handleUlResize();
+            })
         });
     
-        observer.observe(timelineRef.current);
+        if(timelineRef.current){
+            observer.observe(timelineRef.current);
+        }
     
         return () => observer.disconnect();
-    }, []);
+    }, [props.isHorz, props.isStaggered]);
 
     // handle UL resize due to props and state change
     useEffect(() => {
