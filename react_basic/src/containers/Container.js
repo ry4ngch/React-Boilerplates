@@ -23,6 +23,8 @@ import TextField from '../utils/Salient/UI/Form/TextField';
 import Badge from '../utils/Salient/UI/Badge/Badge';
 import List, {ListItem} from '../utils/Salient/UI/List/List';
 import Banner, {BannerContent, BannerActions, BannerAction} from '../utils/Salient/UI/Banner/Banner';
+import Sidebar, {SideBarItem} from '../utils/Salient/UI/Sidebar/Sidebar';
+import RangeSlider from '../utils/Salient/UI/Form/RangeSlider';
 
 // Import Components Build with Salient
 import SampleDynamicPaginatedTable from '../components/SampleDynamicPaginatedTable';
@@ -527,6 +529,14 @@ const Container = () => {
                 label="Username:"
               />
           </CardContent>
+          <CardContent>
+              <CardTitle>Form Controls - Range Slider</CardTitle>
+          </CardContent>
+          <CardContent>
+              <RangeSlider defaultValue={40} label="Default Theme Slider" displayMinMaxText={{min: true, max: true}}/>
+              <RangeSlider defaultValue={30} label="Gray Theme Slider" theme="gray"/>
+              <RangeSlider defaultValue={60} label="Dark Theme Slider" theme="dark"/>
+          </CardContent>
         </Card>
 
         <Card className="card-border">
@@ -564,6 +574,19 @@ const Container = () => {
                 <BannerAction>Some Action</BannerAction>
             </BannerActions>
         </Banner>
+
+        <br/>
+        <Sidebar>
+            <SideBarItem title="Menu Item 1"/>
+            <SideBarItem title="Menu Item 2" iconPrefix="icon icon-file">
+                <li><a>Sub Item 1</a></li>
+                <li><a>Sub Item 2</a></li>
+            </SideBarItem>
+            <SideBarItem title="Menu Item 3" iconPrefix="icon icon-heart" notification={2}>
+                <li><a>Sub Item 1</a></li>
+                <li><a>Sub Item 2</a></li>
+            </SideBarItem>
+        </Sidebar>
       </div>
     </div>
   )

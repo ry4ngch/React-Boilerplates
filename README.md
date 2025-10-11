@@ -1013,6 +1013,42 @@ Salient Form affix is a component used to apply in-built icons before a field (p
 <FormAffix icon="icon-search"/>
 ```
 
+# Salient Form Sliders
+
+### Parameters:
+- **`min`**  (Optional)
+  - **Type**: `Number`   
+  - **Description**: Set the minimum range value of the slider field. Default is 0
+
+- **`max`**  (Optional)
+  - **Type**: `Number`
+  - **Description**: Set the maximum range value of the slider field. Default is 100.
+
+- **`step`**  (Optional)
+  - **Type**: `Number`
+  - **Description**: Set the increment or decrement step value. Default is 1.
+
+- **`onChange`**  (Optional)
+  - **Type**: `function`
+  - **Description**: Set a callback function to be trigger when the slider is triggered.
+
+- **`theme`**  (Optional)
+  - **Type**: `String` (`dark` | `gray`)
+  - **Description**: Define the theme for the slider. This is optional, and the component will apply a default theme.
+
+- **`label`**  (Optional)
+  - **Type**: `String`
+  - **Description**: Include a label above the slider.
+
+- **`displayMinMaxText`**  (Optional)
+  - **Type**: `Object`
+  - **Description**: Define the config of to display the min or max values next to the slider. By default both are set to `true`.
+  - **Example:** `displayMinMaxText: {{min: true, max: false }}`.
+
+- **`defaultValue`**  (Optional)
+  - **Type**: `Number`
+  - **Description**: Set the initial starting value for the slider.
+
 ## Salient List
 Salient List is a container component designed to wrap multiple `ListItem` components. To render list items correctly, each item must be defined using the `ListItem` component within the `List`.
 
@@ -1090,6 +1126,10 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
   - **Type**: `String` 
   - **Description**: Define the title of the Sidebar Item
 
+- **`notification`**  (Optional)
+  - **Type**: `String` 
+  - **Description**: Define a badge for the Sidebar Item.
+
 ```jsx
 <Sidebar>
   <SideBarItem title="Menu Item 1"/>
@@ -1097,7 +1137,7 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
       <li><a>Sub Item 1</a></li>
       <li><a>Sub Item 2</a></li>
   </SideBarItem>
-  <SideBarItem title="Menu Item 3" iconPrefix="icon icon-heart">
+  <SideBarItem title="Menu Item 3" iconPrefix="icon icon-heart" notification={4}>
       <li><a>Sub Item 1</a></li>
       <li><a>Sub Item 2</a></li>
   </SideBarItem>
