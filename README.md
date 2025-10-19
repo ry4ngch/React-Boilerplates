@@ -636,6 +636,10 @@ The Salient Accordion is a customizable component designed for easy integration.
   - **Type**: `String` 
   - **Description**: Add a comment next to the main text.
 
+- **`expandOnLoad`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Determine the initial state of the tree item when the UI first render.
+
 ### Usage:
 ```jsx
 <Treeview>
@@ -643,7 +647,7 @@ The Salient Accordion is a customizable component designed for easy integration.
     <li><span>1.1</span></li>
     <li><span>1.2</span></li>
   </TreeItem>
-  <TreeItem text='Item 2' subtext="(multilevel)">
+  <TreeItem text='Item 2' subtext="(multilevel)" expandOnLoad={true}>
     <li><span>2.1</span></li>
     <TreeItem text="2.2">
       <li><span>2.2.1</span></li>
@@ -1130,6 +1134,7 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
   - **Type**: `String` 
   - **Description**: Define a badge for the Sidebar Item.
 
+### Usage:
 ```jsx
 <Sidebar>
   <SideBarItem title="Menu Item 1"/>
@@ -1146,5 +1151,30 @@ Salient List is a container component designed to wrap multiple `ListItem` compo
 
 > [!NOTE] 
 > Any level of sidebar items may be added, the component will auto compute the correct style based on level.
+
+## Salient Grid
+
+Salient grid system works the same way as Bootstrap Grid system. You can add any number of Grid Items within the each grid rows.
+
+Similarly to other components, any number of attribute may be added the component.
+
+### Usage:
+```jsx
+<Sidebar>
+  <Grid>
+    <GridRow>
+        <GridItem>Row 1 - Item 1</GridItem>
+        <GridItem>Row 1 - Item 2</GridItem>
+        <GridItem>Row 1 - Item 3</GridItem>
+    </GridRow>
+    <GridRow>
+        <GridItem>Row 2 - Item 1</GridItem>
+        <GridItem>Row 2 - Item 2</GridItem>
+        <GridItem>Row 2 - Item 3</GridItem>
+        <GridItem>Row 2 - Item 4</GridItem>
+    </GridRow>  
+  </Grid>
+</Sidebar>
+```
 
 

@@ -1,0 +1,175 @@
+@use 'sass:color';
+
+
+$chart-fill-color: #275EFE;
+:root {
+  --chart-fill-color: #{$chart-fill-color};
+  --chart-fill-bgColor: #081921;
+  --chart-bar-size: 8px;
+}
+
+@mixin color-scheme($fill) {
+  background: color.adjust($fill, $lightness: 5%);
+}
+
+/** Bar Chart **/
+.chart {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    /* Theme */
+    &.chart-fill--sunset{
+      --chart-fill-color: hsl(342, 92%, 46%);
+
+      .chart--bar:hover {
+        .chart--fill {
+          @include color-scheme(hsl(342, 92%, 46%));
+        }
+      }
+    }
+
+    &.chart-fill--forest{
+      --chart-fill-color: #40bb93;
+
+      .chart--bar:hover {
+        .chart--fill {
+          @include color-scheme(#40bb93);
+        }
+      }
+    }
+
+    &.chart-fill--indigo{
+      --chart-fill-color: #5a67d8;
+
+      .chart--bar:hover {
+        .chart--fill {
+          @include color-scheme(#5a67d8);
+        }
+      }
+    }
+
+    /** END Theme **/
+
+    * {
+      box-sizing: border-box;
+    }
+
+    ul {
+      padding: 0
+    }
+  
+    ul li{
+      display:flex;
+      gap:5px; 
+      position: relative;
+    }
+  
+    .chart--bar{
+      position:relative;
+      background: var(--chart-fill-bgColor);
+      display:block;
+      border-radius: calc(2*var(--chart-bar-size));
+    }
+
+    .chart--title {
+      margin: 0 10px 10px 10px;
+    }
+  
+    .chart--fill{
+      height: 100%;
+      background: var(--chart-fill-color);
+      border-radius: inherit;
+    }
+
+    .chart--bar:hover {
+      .chart--fill {
+        //background: color.adjust($chart-fill-color, $lightness: 5%);
+        @include color-scheme($chart-fill-color);
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+      }
+    }
+  
+    .chart--label {
+      font-size: .9rem;
+      justify-content: space-between;
+      display: flex;
+      text-align: center;
+    }
+
+    &.chart--horz {
+      ul li {
+        flex-direction:row;
+        margin: 0 10px 10px 10px;
+        vertical-align: middle;
+      }
+
+      &.label--side ul li {
+        flex-direction:column;
+      }
+
+
+      &:not(.label--side){
+
+        ul li {
+          align-items: center;
+        }
+
+        ul li:not(:first-child){
+          margin-top: 15px;
+        }
+
+        .chart--indicator {
+          right: 0;
+        }
+
+        .chart--bar {
+          width: 100%;
+          margin: 0 auto;
+        }
+       
+      }
+
+      .chart--bar {
+        margin-top:5px;
+        width:100%;
+        height:var(--chart-bar-size);
+      }
+    }
+
+    &.chart--vert {
+        height: 15rem;
+
+        ul {
+          display: flex;
+          height: 100%;
+          justify-content: space-around;
+          flex-direction: row;
+        }
+
+        .chart--label {
+          flex-direction: column-reverse;
+        }
+
+
+        ul li {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        &.label--side ul li {
+          flex-direction: row;
+          align-items: stretch;
+        }
+
+        .chart--bar {
+            height: 100%;
+            width: var(--chart-bar-size);
+            border-radius: calc(2*var(--chart-bar-size));
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    }
+  }
