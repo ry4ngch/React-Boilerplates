@@ -1017,7 +1017,7 @@ Salient Form affix is a component used to apply in-built icons before a field (p
 <FormAffix icon="icon-search"/>
 ```
 
-# Salient Form Sliders
+## Salient Form Sliders
 
 ### Parameters:
 - **`min`**  (Optional)
@@ -1175,6 +1175,45 @@ Similarly to other components, any number of attribute may be added the componen
     </GridRow>  
   </Grid>
 </Sidebar>
+```
+
+## Salient Progress
+
+### Parameters:
+- **`progressItems`**  (Required)
+  - **Type**: `Array`
+  - **Description**: Accepts an array of elements where each items represent a milestone.
+
+- **`currentProgressIndex`**  (Optional)
+  - **Type**: `Integer`
+  - **Description**: Used to determine the starting index of the progress or for updating the progress.
+
+- **`type`**  (Optional)
+  - **Type**: `String` (`linear` | `circular`)
+  - **Description**: Define if the progress chart should be linear or circular. Defaults to `linear` progress bar.
+
+- **`onProgressPointClick`**  (Optional)
+  - **Type**: `Function`
+  - **Description**: Use to trigger a callback function when a point on a progress bar is click. This only works with `linear` progress chart.
+
+- **`showProgressStep`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Show the progress step on a `linear` progress bar. Default is `false`.
+
+- **`showCompleteStepCheckmark`**  (Optional)
+  - **Type**: `Boolean` (`true` | `false`)
+  - **Description**: Show the checkmark in place of step number for the completed step. Default is `false`.
+
+
+### Usage:
+```jsx
+  <Progress 
+    progressItems={progressItems}
+    currentProgressIndex={currentProgressIndex}
+    type={progressType}
+    onProgressPointClick={onProgressPointClick}
+    showProgressStep={showProgressStep}
+    showCompleteStepCheckmark={showCheckmark}/>
 ```
 
 
